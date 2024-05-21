@@ -1,0 +1,44 @@
+.Nav{
+    padding: 16px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    gap: 32px;
+    font-weight: 400;
+    color: var(--black);
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+.navLogo{
+    height: 32px;
+}
+
+.navItems{
+    display: flex;
+    flex-grow: 1;
+    gap: 8px;
+    justify-content: space-evenly;
+}
+
+.navBtns{
+    display: flex;
+    gap: 16px;
+}
+
+.navLoginBtn{
+    border: 1px solid var(--black);
+    background-color: white;
+}
+
+.navSignupBtn{
+    border: 1px solid var(--black);
+    background-color: var(--black);
+    color: white;
+}
+
+.navItemBold{
+    font-weight: 700;
+}

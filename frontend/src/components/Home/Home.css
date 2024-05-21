@@ -1,0 +1,450 @@
+.HomeMain{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    /* justify-items: center; */
+    /* align-items: center; */
+    padding: 16px 64px;
+    margin: 40px auto;
+}
+
+.landingContent{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.landingHeadingDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mainHead{
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+.landingsubHead{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.landingImg{
+    width: 100%;
+}
+
+.landingSearch{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    gap: 16px;
+    font-size: 20px;
+    align-items: center;
+}
+
+.searchInput{
+    padding: 10px 16px;
+    border-radius: 25px;
+    width: 350px;
+    border: 1px solid var(--black);
+    font-weight: 400;
+    font-size: inherit;
+}
+
+.searchBtn{
+    padding: 6px 16px;
+    background-color: var(--black);
+    border: 1px solid var(--black);
+    color: white;
+}
+
+.searchdropdown{
+    justify-self: start;
+    padding: 7px 10px;
+    border: 1px solid var(--black);
+    border-radius: 25px;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.freqSearchBtns{
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 440px;
+}
+
+.freqSearchBtns>button{
+    border: 1px solid var(--black);
+    background-color: white;
+}
+
+.viewAllBtn{
+    background-color: var(--black) !important;
+    color: white;
+}
+
+
+.FeaturedCompanies{
+    text-align: left;
+    margin: 100px auto;
+}
+
+.FC_headingDiv{
+    padding: 0 64px;
+}
+
+.FC_container{
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    padding: 0 64px;
+    overflow-x: scroll;
+    /* justify-content: center; */
+}
+
+  .FC_container::-webkit-scrollbar{display: none;}
+
+
+.FC_box{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    min-width: 420px;
+    font-size: 12px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(to right, white, white), linear-gradient(180deg, #332F2A 0%, #221505 100%);; 
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+}
+
+.new{
+    background-color: var(--orange);
+    padding: 4px 8px;
+    color: white;
+    font-weight: 800;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+
+.FC_name{
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 16px;
+}
+
+.FC_facilities{
+    font-size: 14px;
+    background-color: var(--grey);
+    border-radius: 4px;
+    padding: 2px 8px;
+    align-self: flex-start;
+    font-weight: 600;
+    color: #00000099;
+}
+
+.FC_desc{
+    color: #00000099;
+}
+.FC_date{
+    color: #00000080;
+}
+
+
+
+.Benefits{
+    padding: 0 64px;
+    margin: 100px auto;
+}
+
+.benefitsHead{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.benefitsContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.benefitCard{
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+
+    border: 1px solid transparent;
+    border-radius: 20px;
+
+    background: linear-gradient(to right, white, white), linear-gradient(142.65deg, #FFFFFF -10.51%, rgba(227, 143, 38, 0.4) 110.46%); 
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+
+    box-shadow: 0px 10px 20px 0px #0000001A;
+}
+
+.BC_num{
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+.BC_text{
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+}
+
+.benefitsText{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+}
+
+.benefitsText > .text{
+    max-width: 780px;
+}
+
+
+
+.challengesHead{
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    padding: 0 64px;
+}
+
+.challengesContainer{
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    margin: 20px auto 52px;
+    padding: 20px 64px;
+    overflow-x: scroll;
+}
+
+.challengesContainer::-webkit-scrollbar{display: none;}
+
+
+.CC_box{
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+
+    border: 2px solid transparent;
+    border-radius: 20px;
+
+    background: linear-gradient(to right, white, white), linear-gradient(180deg, #F4F4F4 0%, rgba(227, 143, 38, 0.4) 100%);
+    
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    box-shadow: 0px 10px 20px 0px #0000001A;
+
+    min-width: 420px;
+    max-width: 420px;
+}
+
+.CC_icon{
+    height: 100px;
+}
+
+.CC_text{
+    font-size: 14px;
+}
+
+
+
+.OneStopSoln{
+    margin: 0 64px;
+    padding: 32px 72px;
+    border-radius: 20px;
+    display: grid;
+    gap: 72px;
+    grid-template-columns: 40% 50%;
+    /* justify-content: center; */
+    align-items: center;
+    border: 1px solid var(--black);
+    background-image: linear-gradient(180deg, #332F2A 0%, #221505 100%);
+    /* justify-content: center; */
+}
+
+.OSS_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    text-align: left;
+    gap: 24px;
+    max-width: 100%;
+}
+
+.OSS_head{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.OSS_img{
+    width: 100%;
+}
+
+.OSS_btn{
+    background-color: transparent;
+    border: 1px solid var(--orange);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--orange);
+    align-self: flex-start;
+}
+
+.FlowChart{
+    margin: 72px auto;
+    padding: 0 72px;
+    max-width: 934px;
+}
+
+.USPs{
+    margin: 0 64px;
+    padding: 40px 100px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--black);
+    background-color: #221505;
+    color: white;
+    /* background-image: linear-gradient(180deg, #332F2A 0%, #221505 100%); */
+}
+
+.USP_head{
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.USP_text{
+    font-size: 14px;
+}
+
+.USP_container{
+    padding-bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    max-width: 1000px;
+}
+
+.USP_box{
+    padding: 16px 32px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'inter';
+    border: 2px solid transparent;
+    border-radius: 20px;
+
+    /* background: linear-gradient(to right, white, white), linear-gradient(91.78deg, rgba(255, 255, 255, 0.4) 0%, #272727 100%); */
+    
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+
+    background-color: #FFFFFF33;
+}
+
+.USP_foot{
+    padding: 16px 0;
+    background-color: #FFFFFF33;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.USP_footContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.FAQs{
+    margin: 80px auto 56px;
+    padding: 0 64px;
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+}
+
+.FAQ_head{
+    justify-self: start;
+    font-size: 88px;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+.FAQ_content{
+    justify-self: stretch;
+    text-align: left;
+}
+
+.FAQ_box{
+    padding: 18px;
+    border: 1px solid #4A4239;
+    font-family: 'inter';
+    border-radius: 20px;
+    font-weight: 600;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.LetsConnect{
+    padding: 0 64px;
+    display: grid;
+    grid-template-columns: 40% 50%;
+    text-align: left;
+    gap: 10%;
+}
+
+.LC_head{
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.LC_imgDiv{
+    display: flex;
+    justify-content: center;
+}
+.LC_imgDiv>img{
+    width: 500px;
+}
+
+
+/* 40px = 32px spacing  */
+/* 24px = 16px spacing*/
+/* 20px = 16px font  */
