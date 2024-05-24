@@ -3,15 +3,23 @@ import './About.css'
 import Nav from '../Nav/Nav'
 import Footer from '../Footer/Footer'
 import Connect from '../Home/Connect'
-import AboutMain from './AboutMain'
+import AboutWelcome from './AboutWelcome'
+import AboutDesc from './AboutDesc'
 import Solutions from '../Home/Solutions'
+import  { useEffect, useRef } from 'react';
 
 
 const AboutPage = () => {
+
+  const about_ref = useRef(null);
+
+  
   return (
+    
     <div className='AboutPage'>
         <Nav/>
-        <AboutMain/>
+        <AboutWelcome  about_ref={about_ref}/>
+        <AboutDesc  about_ref={about_ref}/>
         <Solutions/>
         <Connect/>
         <Footer/>

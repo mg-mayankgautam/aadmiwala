@@ -6,6 +6,7 @@ import usp4 from '../../assets/usp4.png'
 import usp5 from '../../assets/usp5.png'
 import usp6 from '../../assets/usp6.png'
 import usp7 from '../../assets/usp7.png'
+import usp8 from '../../assets/usp8.png'
 import uspstars from '../../assets/usp-stars.png'
 import uspleaf1 from '../../assets/usp-leaf1.png'
 import uspleaf2 from '../../assets/usp-leaf2.png'
@@ -43,6 +44,10 @@ const Solutions = () => {
             <div className='USP_box'>
                 <img src={usp6}/>
                 <div>Simplified Communication</div>
+            </div>
+            <div className='USP_box'>
+                <img src={usp8}/>
+                <div>Zero Brokerage</div>
             </div>
             <div className='USP_box'>
                 <img src={usp7}/>
