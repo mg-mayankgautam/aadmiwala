@@ -392,36 +392,6 @@
 }
 
 
-.FAQs{
-    margin: 80px auto 56px;
-    padding: 0 64px;
-    display: grid;
-    grid-template-columns: 4fr 6fr;
-}
-
-.FAQ_head{
-    justify-self: start;
-    font-size: 88px;
-    font-weight: 700;
-    color: var(--orange);
-}
-
-.FAQ_content{
-    justify-self: stretch;
-    text-align: left;
-}
-
-.FAQ_box{
-    padding: 18px;
-    border: 1px solid #4A4239;
-    font-family: 'inter';
-    border-radius: 20px;
-    font-weight: 600;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
 .LetsConnect{
     padding: 0 64px;

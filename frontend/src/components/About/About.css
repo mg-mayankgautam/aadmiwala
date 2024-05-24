@@ -39,8 +39,20 @@
     display: grid;
     grid-template-columns: 69% 25%;
     gap: 60px;
+    color: white;
+    text-align: left;
+    
 }
 
 .aboutCardImg{
     width: 100%;
+}
+
+.AboutBoxHeading{color:var(--orange);
+font-size: 40px;
+font-weight: 700;
+}
+
+.AboutBoxText{
+    max-width: 640px;
 }

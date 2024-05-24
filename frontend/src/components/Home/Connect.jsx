@@ -4,15 +4,7 @@ import connect from '../../assets/connect.png'
 const Connect = () => {
   return (
     <>
-    <div className='FAQs'>
-        <div className='FAQ_head'>FAQs</div>
-        <div className='FAQ_content'>
-            <div className='FAQ_box'>
-                <div>What services does Aadmiwala offer?</div>
-                <div>‸</div>
-            </div>
-        </div>
-    </div>
+   
 
     <div className='LetsConnect'>
         <div className='LC_content'>

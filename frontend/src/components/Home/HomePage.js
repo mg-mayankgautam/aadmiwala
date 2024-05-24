@@ -7,6 +7,9 @@ import Challenges from './Challenges'
 import Solutions from './Solutions'
 import Connect from './Connect'
 import Footer from '../Footer/Footer'
+import Faq from './HomeComponents/Faq'
+
+
 
 const HomePage = () => {
   return (
@@ -16,6 +19,7 @@ const HomePage = () => {
         <Benefits/>
         <Challenges/>
         <Solutions/>
+        <Faq/>
         <Connect/>
         <Footer/>
     </div>

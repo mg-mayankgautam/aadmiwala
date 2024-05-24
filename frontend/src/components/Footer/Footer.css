@@ -2,17 +2,41 @@
     background: linear-gradient(180deg, #332F2A 0%, #221505 100%);
     padding: 72px 64px;
     color: white;
+    min-height: 300px;
 }
 
 .footerBold{font-weight: 600;}
 
 
 .footerTerms{
-    padding: 16px 0 0;
+    padding: 32px 0 0;
     font-size: 14px;
     display: flex;
     justify-content: center;
     gap: 56px;
     border: none;
     border-top: 0.5px solid #FFFFFF66;
+}
+
+.footerContent{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    min-height: 250px;
+    column-gap: 80px;
+
+}
+
+.footerHeading{
+    min-height: 80px;
+    /* justify-items: start; */
+text-align: left;
+    /* align-items: baseline; */
+}
+
+.footerList{
+display: grid;
+grid-template-rows: 1fr 1fr 1fr 1fr;
+row-gap: 16px;
+justify-items: start;
+/* align-items: end; */
 }
