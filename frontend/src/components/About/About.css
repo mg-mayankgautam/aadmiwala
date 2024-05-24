@@ -1,0 +1,46 @@
+.AboutMain{
+    min-height: calc(100vh - 69px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 0 64px;
+}
+
+.AboutMain>*{
+    max-width: 700px;
+}
+
+.aboutSubHead{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.aboutHead{
+    font-size: 88px;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+.aboutBtn{
+    background-color: var(--black);
+    border: 1px solid var(--black);
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.AboutBoxDiv{
+    margin: 0 64px;
+    padding: 64px;
+    background: linear-gradient(260.69deg, #713F00 -5.88%, #5A3301 9.16%, #2F1C04 41.54%, #221505 67.57%);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 69% 25%;
+    gap: 60px;
+}
+
+.aboutCardImg{
+    width: 100%;
+}

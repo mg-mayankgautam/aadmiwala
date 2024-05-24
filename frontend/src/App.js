@@ -2,6 +2,7 @@ import './App.css';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Layout from './Layout';
 import HomePage from './components/Home/HomePage';
+import AboutPage from './components/About/AboutPage';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
 
             {/* <Route path="/blog/:id" element={<Blog/>}/> */}
 
-            {/* <Route path="admin" element={<AdminPage />}/>    */}
+            <Route path="about" element={<AboutPage />}/>   
                   
       </Route>
 

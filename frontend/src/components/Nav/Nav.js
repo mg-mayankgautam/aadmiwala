@@ -6,12 +6,12 @@ const Nav = () => {
   return (
     <div className='Nav'>
         <div>
-            <img src={logo} className='navLogo'/>
+            <a href="/"><img src={logo} className='navLogo'/></a>
         </div>
         <div className='navItems'>
             <div>Industries</div>
             <div>Enterprise</div>
-            <div>About Us</div>
+            <div> <a href="about">About Us</a></div>
             <div className='navItemBold'>+ Add Recruiting Company</div>
         </div>
         <div className='navBtns'>
