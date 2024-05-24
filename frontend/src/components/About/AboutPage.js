@@ -7,6 +7,7 @@ import AboutWelcome from './AboutWelcome'
 import AboutDesc from './AboutDesc'
 import Solutions from '../Home/Solutions'
 import  { useEffect, useRef } from 'react';
+import AboutTimeline from './AboutTimeline'
 
 
 const AboutPage = () => {
@@ -20,10 +21,10 @@ const AboutPage = () => {
         <Nav/>
         <AboutWelcome  about_ref={about_ref}/>
         <AboutDesc  about_ref={about_ref}/>
+        <AboutTimeline/>
         <Solutions/>
         <Connect/>
         <Footer/>
-        
     </div>
   )
 }
