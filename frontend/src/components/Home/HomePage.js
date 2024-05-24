@@ -8,6 +8,7 @@ import Solutions from './Solutions'
 import Connect from './Connect'
 import Footer from '../Footer/Footer'
 import Faq from './HomeComponents/Faq'
+import FlowChart from './FlowChart'
 
 
 
@@ -18,6 +19,7 @@ const HomePage = () => {
         <HomeMain/>
         <Benefits/>
         <Challenges/>
+        <FlowChart/>
         <Solutions/>
         <Faq/>
         <Connect/>

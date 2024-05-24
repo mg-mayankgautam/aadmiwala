@@ -1,5 +1,4 @@
 import React from 'react'
-import flowchart from '../../assets/OBJECTS.svg'
 import usp1 from '../../assets/usp1.png'
 import usp2 from '../../assets/usp2.png'
 import usp3 from '../../assets/usp3.png'
@@ -14,10 +13,6 @@ import uspleaf2 from '../../assets/usp-leaf2.png'
 const Solutions = () => {
   return (
     <>
-    <div className='FlowChart'>
-        <img src={flowchart} />
-    </div>
-
     <div className='USPs'>
         <div>
             <div className='USP_head'>Flexible Staffing Solutions for Every Business Need</div>
