@@ -9,11 +9,11 @@ const HomeMain = () => {
         <div className='landingContent'>
             <div className='landingHeadingDiv'>
                 <div className='mainHead'>
-                    CONNECT. <br /> DISCOVER. <br /> THRIVE.
+                    Connecting Businesses With Top Talent <br /> And Agencies For Mutual Success.
                 </div>
 
                 <div className='subHead'>
-                Empowering companies and <br/> candidates together
+                Empowering companies and candidates together
                 </div>
 
                 <div className='landingsubHead'>
@@ -34,7 +34,7 @@ const HomeMain = () => {
             </div>
 
             <div className='freqSearch'>
-                <div>Frequent Search</div>
+                <div className='freqSearchText'>Frequent Search</div>
                 
                 <div className='freqSearchBtns'>
                     <button>Facility Provider</button>
@@ -47,9 +47,9 @@ const HomeMain = () => {
             </div>
         </div>
 
-        <div>
+        {/* <div>
             <img src={landing} className='landingImg'/>
-        </div>
+        </div> */}
     </div>
 
     <div className='FeaturedCompanies'>

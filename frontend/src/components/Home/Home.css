@@ -1,16 +1,16 @@
 .HomeMain{
-    display: grid;
-    grid-template-columns: 60% 40%;
-    /* justify-items: center; */
-    /* align-items: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 16px 64px;
     margin: 40px auto;
 }
 
 .landingContent{
-    text-align: left;
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
     gap: 32px;
 }
 
@@ -38,6 +38,7 @@
 .landingSearch{
     display: grid;
     grid-template-columns: auto auto;
+    /* justify-items: center; */
     justify-content: start;
     gap: 16px;
     font-size: 20px;
@@ -69,10 +70,15 @@
     cursor: pointer;
 }
 
+.freqSearchText{
+    text-align: left;
+}
+
 .freqSearchBtns{
     margin-top: 16px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 8px;
     max-width: 440px;
 }
