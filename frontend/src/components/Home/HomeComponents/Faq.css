@@ -4,7 +4,7 @@
 
 
 .FAQs{
-    margin: 80px auto 56px;
+    margin: 80px auto;
     padding: 0 64px;
     display: grid;
     grid-template-columns: 4fr 6fr;
@@ -35,15 +35,19 @@
     justify-content: space-between; */
 }
 
-.title{display: flex;
-justify-content: space-between;
-align-items: center;
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 
 .content{
     max-height: 0;
     overflow: hidden;
+    transition: all 300ms ease-in-out;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .content.show{
@@ -51,4 +55,5 @@ align-items: center;
     max-height: 999px;
     /* max-height: 0px; */
     overflow: hidden;
+    margin-top: 24px;
 }

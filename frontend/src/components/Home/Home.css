@@ -265,6 +265,11 @@
 
     min-width: 420px;
     max-width: 420px;
+    transition: all 300ms ease-in-out;
+}
+
+.CC_box:hover{
+    background-image: linear-gradient(to bottom right, #ffffff 0%, #ffffff 20%, rgba(227, 142, 38, 0.75) 100%);
 }
 
 .CC_icon{
@@ -288,7 +293,11 @@
     align-items: center;
     border: 1px solid var(--black);
     background-image: linear-gradient(180deg, #332F2A 0%, #221505 100%);
-    /* justify-content: center; */
+    transition: margin 300ms ease-in-out;
+}
+
+.OneStopSoln:hover{
+    margin: 0 60px;
 }
 
 .OSS_content{
@@ -326,7 +335,7 @@
 }
 
 .USPs{
-    margin: 0 64px;
+    margin: 72px 64px;
     padding: 40px 100px;
     border-radius: 20px;
     display: flex;
@@ -355,6 +364,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: start;
     gap: 16px;
     max-width: 1000px;
 }
@@ -375,6 +385,11 @@
     background-origin: padding-box, border-box;
 
     background-color: #FFFFFF33;
+    transition: padding 200ms ease-in-out;
+}
+
+.USP_box:hover{
+    padding: 20px 32px;
 }
 
 .USP_foot{
@@ -401,6 +416,7 @@
 
 .LetsConnect{
     padding: 0 64px;
+    margin: 80px auto 0;
     display: grid;
     grid-template-columns: 40% 50%;
     text-align: left;

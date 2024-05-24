@@ -1,24 +1,28 @@
 import React from 'react'
 import logo from '../../assets/logowhite.png'
 import './Footer.css'
+import fb from '../../assets/fblogo.png'
+import ig from '../../assets/iglogo.png'
 
 const Footer = () => {
   return (
     <div className='Footer'>
         <div className='footerContent'>
             <div>
-                <div className='footerHeading'><img src={logo} /></div>
-                <div className='footerList'>
+                <div className='footerHeading'>
+                    <img src={logo} className='footerLogo'/>
+                </div>
+                <div className='footerAddress'>
                     <div className='footerBold '>INDIA</div>
-                    <div>A/3 PC Colony Kankarbagh, Patna, Bihar</div>
+                    <div>A/3 PC Colony Kankarbagh, <br/> Patna, Bihar</div>
                 </div>
             </div>
 
             <div>
                 <div className='footerHeading footerBold'>QUICK LINKS</div>
                 <div className='footerList'>
-                    <div >FaceBook</div>
-                    <div>Instagram</div>
+                    <div className='footerSocialMedia'><img src={fb}/> Facebook</div>
+                    <div className='footerSocialMedia'><img src={ig}/> Instagram</div>
                     <div>Blogs</div>
                     <div>About Us</div>
                 </div>
@@ -35,7 +39,7 @@ const Footer = () => {
                         Recruitment Agency
                     </div>
                     <div>
-                        CLient Recruiters
+                        Client Recruiters
                     </div>
                     <div>
                         
@@ -54,7 +58,7 @@ const Footer = () => {
                      <div>
                          aadmiwala@gmail.com
                      </div>
-                     <div>
+                     <div className='footerOrange'>
                          Contact Us
                      </div>
                      <div>
@@ -67,10 +71,6 @@ const Footer = () => {
             </div>
 
         </div>
-
-
-
-
 
 
         <div className='footerTerms'>
