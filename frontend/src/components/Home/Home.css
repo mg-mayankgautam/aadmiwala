@@ -57,6 +57,14 @@
     border: 1px solid var(--black);
     font-weight: 400;
     font-size: inherit;
+    position: relative;
+}
+
+.searchIcon{
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
 }
 
 .searchBtn{
@@ -174,22 +182,29 @@
 }
 
 .benefitsHead{
-    font-size: 32px;
+    font-size: 20px;
+    margin-bottom: 32px;
     font-weight: 700;
+}
+
+.stepsImg{
+    object-fit: fill;
+    width: 70%;
 }
 
 .benefitsContainer{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-top: 32px;
 }
 
 .benefitCard{
     padding: 14px;
+    max-width: 100px;
+    min-height: 148px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
     align-items: center;
     justify-content: center;
     background-color: white;
@@ -210,9 +225,15 @@
     color: var(--orange);
 }
 
+.BC_text_bold{
+    font-size: 14px;
+    font-weight: 800;
+    color: black;
+}
+
 .BC_text{
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     color: black;
 }
 
@@ -383,7 +404,7 @@
     font-family: 'inter';
     border: 2px solid transparent;
     border-radius: 20px;
-
+    text-align: left;
     /* background: linear-gradient(to right, white, white), linear-gradient(91.78deg, rgba(255, 255, 255, 0.4) 0%, #272727 100%); */
     
     background-clip: padding-box, border-box;

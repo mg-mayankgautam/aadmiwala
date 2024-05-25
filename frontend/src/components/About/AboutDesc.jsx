@@ -7,29 +7,24 @@ const AboutDesc = ({about_ref}) => {
     
     <div className='AboutBoxDiv' ref={about_ref}>
         <div className='AboutBox'>
-        <div>
+            <div>
+                
+                <div className='AboutBoxHeading'>About Aadmiwala</div>
+                <br/>
+                <br/>
             
-            <div className='AboutBoxHeading'>About Aadmiwala</div>
-            <br/>
-            <br/>
-          
-            <div className='text AboutBoxText'>At Aadmiwala, we understand that your workforce is the backbone of your business. 
-            <br/>
-            <br/>
-            <br />
-
-                That's why we're dedicated to providing tailored staffing solutions that empower organizations with the skilled talent they need to thrive.
+                <div className='text AboutBoxText'>Aadmiwala is your trusted partner in the world of staffing solutions, bridging the gap between companies and staffing agencies with precision and expertise. 
                 <br/>
-            <br/> <br />
-
-                Founded on the principles of quality, reliability, and personalized service, Aadmiwala has become a trusted partner for companies across industries. Our mission is simple: to match you with the right people for the job, every time.</div>
                 <br/>
-            <br/>
+                <br />
+
+                We understand the critical importance of having the right personnel to drive your business forward, and we are dedicated to connecting you with the perfect staffing solutions tailored to your unique needs.
+                    </div>
+            </div>
+            <div>
+                <img src={aboutcard} className='aboutCardImg'/>
+            </div>
         </div>
-        <div>
-            <img src={aboutcard} className='aboutCardImg'/>
-        </div>
-    </div>
     </div>
     
   )

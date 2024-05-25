@@ -33,6 +33,7 @@
     /* display: flex;
     align-items: center;
     justify-content: space-between; */
+    cursor: pointer;
 }
 
 .title{
@@ -56,4 +57,22 @@
     /* max-height: 0px; */
     overflow: hidden;
     margin-top: 24px;
+}
+
+.faqArrows{
+    border-radius: 20px;
+    background-color: var(--grey);
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.faqArrowsOrange{
+    border-radius: 20px;
+    background-color: #E38F2633;
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

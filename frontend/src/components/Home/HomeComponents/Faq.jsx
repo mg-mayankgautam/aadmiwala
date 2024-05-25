@@ -1,6 +1,8 @@
 import React from 'react'
 import './Faq.css'
 import { useState } from 'react'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const Faq = () => {
 
@@ -34,7 +36,8 @@ const Faq = () => {
                     
                     >
                         <div>{item.question}</div>
-                        <span>{selected===i ? '-': '+'}</span>
+                        
+                        {selected===i ? <span className='faqArrows'><ExpandLessIcon/> </span>: <span className='faqArrowsOrange'><ExpandMoreIcon/> </span>}
                     </div>
                     <div className={selected=== i ?'content show' : 'content'}>{item.answer}</div>
 

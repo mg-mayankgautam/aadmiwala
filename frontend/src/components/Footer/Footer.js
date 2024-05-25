@@ -3,6 +3,7 @@ import logo from '../../assets/logowhite.png'
 import './Footer.css'
 import fb from '../../assets/fblogo.png'
 import ig from '../../assets/iglogo.png'
+import EastIcon from '@mui/icons-material/East';
 
 const Footer = () => {
   return (
@@ -59,7 +60,7 @@ const Footer = () => {
                          aadmiwala@gmail.com
                      </div>
                      <div className='footerOrange'>
-                         Contact Us
+                         Contact Us <EastIcon/>
                      </div>
                      <div>
                         

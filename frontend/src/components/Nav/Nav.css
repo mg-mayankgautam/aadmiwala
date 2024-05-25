@@ -38,6 +38,12 @@
     border: 1px solid var(--black);
     background-color: var(--black);
     color: white;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.navSignupBtn>.css-i4bv87-MuiSvgIcon-root{
+    height: 0.8em !important;
 }
 
 .navItemBold{

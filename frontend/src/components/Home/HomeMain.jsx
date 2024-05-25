@@ -1,5 +1,6 @@
 import React from 'react'
 import bg from '../../assets/OBJECTS.png'
+import SearchIcon from '@mui/icons-material/Search';
 
 const HomeMain = () => {
   return (
@@ -22,7 +23,10 @@ const HomeMain = () => {
             </div>
 
             <div className='landingSearch'>
-                <input className='searchInput' type='text' placeholder='Search for City / State / Services'/>
+                <div>
+                    <input className='searchInput' type='text' placeholder='Search for City / State / Services'/>
+                    {/* <SearchIcon className='searchIcon'/> */}
+                </div>
 
                 <button className='searchBtn'>Search</button>
 

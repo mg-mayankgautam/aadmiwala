@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../assets/logo.png'
 import './Nav.css'
+import CallIcon from '@mui/icons-material/Call';
 
 
 const Nav = () => {
@@ -18,7 +19,7 @@ const Nav = () => {
             ><a href="addCompany">+ Add Recruiting Company</a></div>
         </div>
         <div className='navBtns'>
-            <button className='navSignupBtn'>Call Us</button>
+            <button className='navSignupBtn'> <CallIcon/> Call Us</button>
             <button className='navLoginBtn'>Log In</button>
         </div>
     </div>

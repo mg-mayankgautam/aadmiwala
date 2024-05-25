@@ -1,40 +1,38 @@
 import React from 'react'
-import icon1 from '../../assets/icon-1.png'
+import steps from '../../assets/steps.png'
 
 const Benefits = () => {
   return (
     <div className='Benefits'>
-        {/* <div className='benefitsHead'>
-            Marketplace in numbers
+        <div className='benefitsHead'>
+          Upgrade your workforce in 4 easy steps:
         </div>
 
+        <div>
+          <img src={steps} className='stepsImg'/>
+        </div>
         <div className='benefitsContainer'>
             <div className='benefitCard'>
-                <img src={icon1} />
-                <div className='BC_num'>+650</div>
-                <div className='BC_text'>Active Healthcare <br />Recruiting  Firms</div>
+                <div className='BC_text_bold'>STEP</div>
+                <div className='BC_num'>01</div>
+                <div className='BC_text'>Customize Your Needs</div>
             </div>
             <div className='benefitCard'>
-                <img src={icon1} />
-                <div className='BC_num'>+650</div>
-                <div className='BC_text'>Active Healthcare <br />Recruiting  Firms</div>
+                <div className='BC_text_bold'>STEP</div>
+                <div className='BC_num'>02</div>
+                <div className='BC_text'>Connect with Service providers</div>
             </div>
             <div className='benefitCard'>
-                <img src={icon1} />
-                <div className='BC_num'>+650</div>
-                <div className='BC_text'>Active Healthcare <br />Recruiting  Firms</div>
+                <div className='BC_text_bold'>STEP</div>
+                <div className='BC_num'>03</div>
+                <div className='BC_text'>Confirm Your Choices</div>
             </div>
             <div className='benefitCard'>
-                <img src={icon1} />
-                <div className='BC_num'>+650</div>
-                <div className='BC_text'>Active Healthcare <br />Recruiting  Firms</div>
+                <div className='BC_text_bold'>STEP</div>
+                <div className='BC_num'>04</div>
+                <div className='BC_text'>Empower Your Team</div>
             </div>
-            <div className='benefitCard'>
-                <img src={icon1} />
-                <div className='BC_num'>+650</div>
-                <div className='BC_text'>Active Healthcare <br />Recruiting  Firms</div>
-            </div>
-        </div> */}
+        </div>
 
 
         <div className='benefitsText'>

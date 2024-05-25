@@ -23,11 +23,11 @@ const Solutions = () => {
         <div className='USP_container'>
             <div className='USP_box'>
                 <img src={usp1}/>
-                <div>Best Company & Firm Men Power</div>
+                <div>Top Firms for <br />Workforce Excellence</div>
             </div>
             <div className='USP_box'>
                 <img src={usp2}/>
-                <div>Single Vender / Single Payment</div>
+                <div>Single Vender <br /> Single Payment</div>
             </div>
             <div className='USP_box'>
                 <img src={usp3}/>
@@ -43,7 +43,7 @@ const Solutions = () => {
             </div>
             <div className='USP_box'>
                 <img src={usp6}/>
-                <div>Simplified Communication</div>
+                <div>Simplified <br />Communication</div>
             </div>
             <div className='USP_box'>
                 <img src={usp8}/>
