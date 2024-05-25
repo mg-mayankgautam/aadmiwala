@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../../assets/logo.png'
 import './Nav.css'
 
+
 const Nav = () => {
   return (
     <div className='Nav'>
@@ -12,7 +13,9 @@ const Nav = () => {
             <div>Enterprise</div>
             <div> <a href="about">About Us</a></div>
             <div>Share Requirements</div>
-            <div className='navItemBold'>+ Add Recruiting Company</div>
+            <div className='navItemBold'
+            
+            ><a href="addCompany">+ Add Recruiting Company</a></div>
         </div>
         <div className='navBtns'>
             <button className='navSignupBtn'>Call Us</button>

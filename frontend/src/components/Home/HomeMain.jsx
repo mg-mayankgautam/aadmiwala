@@ -1,5 +1,5 @@
 import React from 'react'
-import landing from '../../assets/landing.png'
+import bg from '../../assets/OBJECTS.png'
 
 const HomeMain = () => {
   return (
@@ -9,7 +9,7 @@ const HomeMain = () => {
         <div className='landingContent'>
             <div className='landingHeadingDiv'>
                 <div className='mainHead'>
-                    Connecting Businesses With Top Talent <br /> And Agencies For Mutual Success.
+                Connect. Simplify. Succeed.
                 </div>
 
                 <div className='subHead'>
@@ -34,7 +34,7 @@ const HomeMain = () => {
             </div>
 
             <div className='freqSearch'>
-                <div className='freqSearchText'>Frequent Search</div>
+                {/* <div className='freqSearchText'>Frequent Search</div> */}
                 
                 <div className='freqSearchBtns'>
                     <button>Facility Provider</button>

@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import Layout from './Layout';
 import HomePage from './components/Home/HomePage';
 import AboutPage from './components/About/AboutPage';
+import AddCompany from './components/AddRecruitmentCompany/AddCompany'
 
 function App() {
 
@@ -19,7 +20,8 @@ function App() {
             {/* <Route path="/blog/:id" element={<Blog/>}/> */}
 
             <Route path="about" element={<AboutPage />}/>   
-                  
+            <Route path="addCompany" element={ <AddCompany/>}/>  
+           
       </Route>
 
       {/* <Route element={<RequireloginAuth />}> */}

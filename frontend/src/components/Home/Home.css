@@ -4,6 +4,11 @@
     align-items: center;
     padding: 16px 64px;
     margin: 40px auto;
+    background-image: url(../../assets/);
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 69px);
 }
 
 .landingContent{
