@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     min-height: calc(100vh - 79px);
+    padding: 64px;
 }
 
 .recruiting_input_box{
@@ -29,9 +30,9 @@ font-weight: 700;
 }
 
 .recruiting_input_Subheading{
-    color: black;
+    color: #000000BF;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 700;
     justify-self: start;
     margin-bottom: 8px;
 }
@@ -87,13 +88,31 @@ font-weight: 700;
     width: 250px;
 }
 
-.recruiting_submit_btn{
-    width: 392px;
+
+.recr_btns_div{
+    display: flex;
+    gap: 16px;
+}
+
+.recruiting_next_btn{
+    flex-grow: 1;
+    max-width: 392px;
     border-radius: 20px;
     padding: 6px 16px;
     border: none;
     background-color: var(--orange);
     color: white;
+    font-weight: 600;
+}
+
+.recruiting_back_btn{
+    flex-grow: 1;
+    max-width: 392px;
+    border-radius: 20px;
+    padding: 6px 16px;
+    border: 1px solid var(--orange);
+    background-color: white;
+    color: var(--orange);
     font-weight: 600;
 }
 

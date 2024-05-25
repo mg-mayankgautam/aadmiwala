@@ -2,9 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 16px 64px;
-    margin: 40px auto;
-    background-image: url(../../assets/);
+    padding: 0px 64px;
+    margin: 0 auto;
+    background-image: url(../../assets/OBJECTS.png);
     background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;

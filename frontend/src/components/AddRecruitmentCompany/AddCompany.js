@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './AddCompany.css'
 import Nav from '../Nav/Nav'
 
 const AddCompany = () => {
+
+    const [slide1, setslide1] = useState(true);
+    const [slide2, setslide2] = useState(false);
+    const [slide3, setslide3] = useState(false);
+
   return (
     <>
     <Nav/>
@@ -12,13 +17,17 @@ const AddCompany = () => {
         <div className='recruiting_input_box'>
             <div>
                 <div className='recruiting_input_heading'>Add Recruiting Company</div>
-                <div className='recruiting_input_Subheading'>Your information</div>
+                <div className='recruiting_input_Subheading'>
+                    {slide1?'Your information':''}
+                    {slide2?'Information of your Company':''}
+                    {slide3?'Add Locations':''}
+                </div>
             </div>
             <div className='recr_TabsDiv'> 
-                <div className='orangeTab recr_Tab'></div><div className='recr_Tab'></div><div className='recr_Tab'></div>
+                <div className={slide1?'orangeTab recr_Tab' : 'recr_Tab'}></div><div className={slide2?'orangeTab recr_Tab' : 'recr_Tab'}></div><div className={slide3?'orangeTab recr_Tab' : 'recr_Tab'}></div>
             </div>
 
-            <div>
+            {slide1?<div>
                 <div>
                     <div>Full Name</div>
                     <input className='recr_input'></input>
@@ -37,13 +46,56 @@ const AddCompany = () => {
                         <input className='recr_phone_input'/>
                     </div>
                 </div>
-            </div>
+            </div>:<></>}
 
-            <div>
-                <button className='recruiting_submit_btn'>Next</button>
+            {slide2?<div>
+                <div>
+                    <div>Company Name / Firm Name</div>
+                    <input className='recr_input'></input>
+                </div>
+                <div>
+                    <div >Company Service</div>
+                    <input className='recr_input'></input>
+                </div>
+                <div>
+                    <div>Select the Type of service you provide</div>
+                    <input className='recr_input'></input>
+                </div><div>
+                    <div >Agency Briefing </div>
+                    <input className='recr_input'></input>
+                </div><div>
+                    <div >No. of Positions</div>
+                    <input className='recr_input'></input>
+                </div>
+            </div>:<></>}
+
+            {slide3?<div>
+                <div>
+                    <div>Country</div>
+                    <input className='recr_input'></input>
+                </div>
+                <div>
+                    <div >State</div>
+                    <input className='recr_input'></input>
+                </div>
+                <div>
+                    <div >City</div>
+                    <input className='recr_input'></input>
+                </div>
+            </div>:<></>}
+
+            <div className='recr_btns_div'>
+                {slide1?<button className='recruiting_next_btn' onClick={()=> {setslide2(true); setslide1(false)}}>Next</button>:<></>}
+
+                {slide2?<><button className='recruiting_back_btn' onClick={()=> {setslide2(false); setslide1(true)}} >Back</button>
+                <button className='recruiting_next_btn' onClick={()=> {setslide3(true); setslide2(false)}}>Next</button></>:<></>}
+
+                {slide3?<><button className='recruiting_back_btn' onClick={()=> {setslide2(true); setslide3(false)}}>Back</button>
+                <button className='recruiting_next_btn'>Sign Up</button></>:<></>}
+
             </div>
         </div>
-        
+
     </div>
     </>
   )
