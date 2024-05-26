@@ -20,7 +20,7 @@ const AddCompany = () => {
     //   if(user && pwd && !userfromDB && validPwd ){ 
         console.log('submit succeess')
         try{
-          const data = await axios.post('http://localhost:4700/signUp',{Username})
+          const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signUp`,{Username})
       
         //   console.log(data.data);
         //   if(data.data){

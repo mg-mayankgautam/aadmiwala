@@ -15,10 +15,9 @@ const bodyparser = require('body-parser');//use with axios
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
-app.use(cors( {
-origin: 'http://localhost:3000', credentials: true,
-withCredentials: true
-}))
+app.use(cors( 
+    // {origin: 'http://localhost:3000', credentials: true,withCredentials: true}
+))
 
 
 const mongoose = require('mongoose');
@@ -240,9 +239,9 @@ const download = require('image-downloader');
 
 
     
-app.listen(PORT, () => {
-    console.log(`http://localhost:` + PORT);
-})
+// app.listen(PORT, () => {
+//     console.log(`http://localhost:` + PORT);
+// })
 
 
 
@@ -250,15 +249,15 @@ app.listen(PORT, () => {
 //////USE BELOW CODE WITH MONGOOSE  
 //////
 
-// mongoose.connect(process.env.MONGODB_URL ,{
-// //    useNewUrlParser: true,
-// //    useUnifiedTopology: true,
-//    // useCreateIndex: true
-// })
-//     .then(() => {
-//         app.listen(PORT, () => {
-//             console.log(`http://localhost:` + PORT);
-//         })
-//     })
-//     .catch(err => {console.error(err);});
+mongoose.connect(process.env.MONGODB_URL ,{
+//    useNewUrlParser: true,
+//    useUnifiedTopology: true,
+   // useCreateIndex: true
+})
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`http://localhost:` + PORT);
+        })
+    })
+    .catch(err => {console.error(err);});
 
