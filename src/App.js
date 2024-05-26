@@ -7,6 +7,8 @@ import AddCompany from './components/AddRecruitmentCompany/AddCompany'
 
 function App() {
 
+  // axios.defaults.withCredentials = true;
+  // axios.defaults.Credentials= true;
 
   return (
 

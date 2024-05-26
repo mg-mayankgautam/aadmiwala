@@ -1,12 +1,37 @@
 import React, {useState} from 'react'
 import './AddCompany.css'
 import Nav from '../Nav/Nav'
+import axios from 'axios'
 
 const AddCompany = () => {
 
     const [slide1, setslide1] = useState(true);
     const [slide2, setslide2] = useState(false);
     const [slide3, setslide3] = useState(false);
+
+    const submitNewUser = async (e) => {
+        // e.preventDefault();
+
+
+        //console.log(NewUsername,NewPassword);
+        const Username='hi user';
+        // const Password=pwd;
+
+    //   if(user && pwd && !userfromDB && validPwd ){ 
+        console.log('submit succeess')
+        try{
+          const data = await axios.post('http://localhost:4700/signUp',{Username})
+      
+        //   console.log(data.data);
+        //   if(data.data){
+        //     navigate(`/login`)
+
+        //   }
+      }
+      catch(err){console.log(err);}
+    //  }
+      
+};
 
   return (
     <>
@@ -91,7 +116,7 @@ const AddCompany = () => {
                 <button className='recruiting_next_btn' onClick={()=> {setslide3(true); setslide2(false)}}>Next</button></>:<></>}
 
                 {slide3?<><button className='recruiting_back_btn' onClick={()=> {setslide2(true); setslide3(false)}}>Back</button>
-                <button className='recruiting_next_btn'>Sign Up</button></>:<></>}
+                <button className='recruiting_next_btn' onClick={()=> submitNewUser()}>Sign Up</button></>:<></>}
 
             </div>
         </div>
