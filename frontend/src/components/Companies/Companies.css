@@ -1,0 +1,31 @@
+.Companies{
+    padding: 64px;
+    min-height: calc(100vh - 79px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}
+
+.Companies_container{
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.company_box{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    min-width: 360px;
+    max-width: 360px;
+    font-size: 12px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(to right, white, white), linear-gradient(180deg, #332F2A 0%, #221505 100%);; 
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+}

@@ -1,5 +1,37 @@
-// const usersDB = require("../models/usersDB.js");
+const companyDB = require("../models/companyDB.js");
 // const ratingDB = require("../models/ratingsDB.js");
+
+module.exports.addRecruitingCompany= async (req,res)=>{
+    console.log('working backend wuhu')
+
+    const {fullName, email, phone, companyName, companyService, serviceType, agencyBriefing, noOfPositions, country, state, city} = req.body;
+
+    const noOfpositions= Number(noOfPositions);
+    const Phone = Number(phone);
+
+    console.log(req.body);
+    console.log(noOfpositions, Phone)
+
+    let newCompany = new companyDB({fullName, email, Phone, companyName, companyService, serviceType, agencyBriefing, noOfpositions, country, state, city});
+
+    newCompany.save()
+        .then((saved)=>{
+            console.log('rating added success');
+            res.send(true);
+               
+        })
+       .catch(err =>{console.log(err);});
+
+}
+
+
+module.exports.getCompanies =async (req, res) =>{
+
+    let company= await companyDB.find({})
+   
+    res.send(company);
+
+}
 
 
 module.exports.checkUsername =async(req,res)=>{
@@ -14,7 +46,7 @@ module.exports.checkUsername =async(req,res)=>{
 
 module.exports.signUp = async (req,res)=>{
 
-    console.log('working backend wuhu')
+    // console.log('working backend wuhu')
 
     // const {Username,Password}=req.body; 
     console.log(req.body);

@@ -4,6 +4,7 @@ import Layout from './Layout';
 import HomePage from './components/Home/HomePage';
 import AboutPage from './components/About/AboutPage';
 import AddCompany from './components/AddRecruitmentCompany/AddCompany'
+import Companies from './components/Companies/Companies';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
 
             <Route path="about" element={<AboutPage />}/>   
             <Route path="addCompany" element={ <AddCompany/>}/>  
+            <Route path="companies" element={ <Companies/>}/>  
            
       </Route>
 
