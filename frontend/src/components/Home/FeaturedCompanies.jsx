@@ -39,7 +39,7 @@ const FeaturedCompanies = () => {
 
         {companies&& companies.map(company=>
 
-        <Link to={`/company/${company._id}`}>
+              <Link to={`/company/${company._id}`}>
                         <div className='FC_box'>
                             <div className='new'>New</div>
                             <div className='FC_name'>{company.companyName}</div>
@@ -51,7 +51,7 @@ const FeaturedCompanies = () => {
                             </div>
                             <div className='FC_date'>Posted 2 Days ago</div>
                         </div>
-                        </Link>
+              </Link>
                 )}
             
            
