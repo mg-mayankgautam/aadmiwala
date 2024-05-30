@@ -143,6 +143,14 @@ module.exports.isauth=async (req,res)=>{
 }
 
 
+module.exports.getCompanydata=async(req,res)=>{
+   // console.log('here',req.query.id);
+    const _id = req.query.id;
+    let companydata = await companyDB.findOne({_id});
+   
+    console.log(companydata);
+   res.send(companydata);
+}
 
 
 

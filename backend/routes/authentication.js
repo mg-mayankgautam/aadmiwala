@@ -10,6 +10,7 @@ const authController = require('../controller/authController');
 // router.post('/signUp',authController.signUp)
 router.post('/addrecruitingcompany', authController.addRecruitingCompany)
 router.get('/getallcompanies', authController.getCompanies)
+router.get('/getcompanydata',authController.getCompanydata)
 // router.post('/logout',authController.logout)
 // router.get('/isauth',authController.isauth)
 

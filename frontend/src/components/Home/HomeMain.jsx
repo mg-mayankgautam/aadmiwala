@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import bg from '../../assets/OBJECTS.png'
 import SearchIcon from '@mui/icons-material/Search';
+import { Link } from 'react-router-dom';
 
 const HomeMain = () => {
 
@@ -92,6 +93,7 @@ const HomeMain = () => {
 
             {companies&& companies.map(company=>
 
+<Link to={`/company/${company._id}`}>
                         <div className='FC_box'>
                             <div className='new'>New</div>
                             <div className='FC_name'>{company.companyName}</div>
@@ -103,7 +105,7 @@ const HomeMain = () => {
                             </div>
                             <div className='FC_date'>Posted 2 Days ago</div>
                         </div>
-
+                        </Link>
                 )}
             
            
