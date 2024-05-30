@@ -9,6 +9,7 @@ import Connect from './Connect'
 import Footer from '../Footer/Footer'
 import Faq from './HomeComponents/Faq'
 import FlowChart from './FlowChart'
+import FeaturedCompanies from './FeaturedCompanies'
 
 
 
@@ -17,6 +18,7 @@ const HomePage = () => {
     <div className='HomePage'>
         <Nav/>
         <HomeMain/>
+        <FeaturedCompanies/>
         <Benefits/>
         <Challenges/>
         <FlowChart/>
