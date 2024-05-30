@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import './Companies.css'
 import axios from 'axios'
 import Nav from '../Nav/Nav';
-
+import { Link } from 'react-router-dom';
   
 
 const Companies = () => {
@@ -43,7 +43,7 @@ const Companies = () => {
             <div className='Companies_container'>
 
                 {companies&& companies.map(company=>
-
+                    <Link to={`/company/${company._id}`}>
                         <div className='company_box'>
                             <div className='new'>New</div>
                             <div className='FC_name'>{company.companyName}</div>
@@ -55,7 +55,7 @@ const Companies = () => {
                             </div>
                             <div className='FC_date'>Posted 2 Days ago</div>
                         </div>
-
+                    </Link>
                 )}
     
             </div>
