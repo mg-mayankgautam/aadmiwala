@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 const FeaturedCompanies = () => {
 
@@ -36,8 +37,9 @@ const FeaturedCompanies = () => {
         
         <div className='FC_container'>
 
-            {companies&& companies.map(company=>
+        {companies&& companies.map(company=>
 
+        <Link to={`/company/${company._id}`}>
                         <div className='FC_box'>
                             <div className='new'>New</div>
                             <div className='FC_name'>{company.companyName}</div>
@@ -49,7 +51,7 @@ const FeaturedCompanies = () => {
                             </div>
                             <div className='FC_date'>Posted 2 Days ago</div>
                         </div>
-
+                        </Link>
                 )}
             
            

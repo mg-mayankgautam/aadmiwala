@@ -5,6 +5,8 @@ import HomePage from './components/Home/HomePage';
 import AboutPage from './components/About/AboutPage';
 import AddCompany from './components/AddRecruitmentCompany/AddCompany'
 import Companies from './components/Companies/Companies';
+import CompanyPage from './components/CompanyPage';
+
 
 function App() {
 
@@ -25,6 +27,7 @@ function App() {
             <Route path="about" element={<AboutPage />}/>   
             <Route path="addCompany" element={ <AddCompany/>}/>  
             <Route path="companies" element={ <Companies/>}/>  
+            <Route path="company/:id" element={<CompanyPage/>}/>
            
       </Route>
 
