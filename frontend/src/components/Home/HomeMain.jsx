@@ -74,7 +74,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 // ]
 
 const cities = [
-    'Delhi', 'Mumbai', 'Kolkata', 'Bangalore', 'Chennai', 'Hyderabad', 'Pune', 'Ahmedabad', 'Surat', 'Lucknow', 'Jaipur', 'Kanpur', 'Mirzapur', 'Nagpur', 'Ghaziabad', 'Supaul', 'Vadodara', 'Rajkot', 'Vishakhapatnam', 'Indore', 'Thane', 'Bhopal', 'Pimpri-Chinchwad', 'Patna', 'Bilaspur', 'Ludhiana', 'agra', 'Madurai', 'Jamshedpur', 'Prayagraj', 'Nasik', 'Faridabad', 'Meerut', 'Jabalpur', 'Kalyan', 'Vasai-Virar', 'Najafgarh', 'Varanasi', 'Srinagar', 'Aurangabad', 'Dhanbad', 'Amritsar', 'Alīgarh', 'Guwahati', 'Haora', 'Ranchi', 'Gwalior', 'Chandigarh', 'Haldwani', 'Vijayavada', 'Gaya', 'Rajgir'
+    'Delhi', 'Mumbai', 'Kolkata', 'Bangalore', 'Chennai', 'Hyderabad', 'Pune', 'Ahmedabad', 'Surat', 'Lucknow', 'Jaipur', 'Kanpur', 'Mirzapur', 'Nagpur', 'Ghaziabad', 'Supaul', 'Vadodara', 'Rajkot', 'Vishakhapatnam', 'Indore', 'Thane', 'Bhopal', 'Pimpri-Chinchwad', 'Patna', 'Bilaspur', 'Ludhiana', 'agra', 'Madurai', 'Jamshedpur', 'Prayagraj', 'Nasik', 'Faridabad', 'Meerut', 'Jabalpur', 'Kalyan', 'Vasai-Virar', 'Najafgarh', 'Varanasi', 'Srinagar', 'Aurangabad', 'Dhanbad', 'Amritsar', 'Aligarh', 'Guwahati', 'Haora', 'Ranchi', 'Gwalior', 'Chandigarh', 'Haldwani', 'Vijayavada', 'Gaya', 'Rajgir'
 ];
 
 const services =[
@@ -84,11 +84,29 @@ const services =[
 const HomeMain = () => {
 
     const [searchInput, setSearchInput] = useState('');
-    const [searchType, setSearchType] = useState('')
+    const [searchType, setSearchType] = useState('service');
+    const [service, setService] =useState(true);
+    const [city, setCity] =useState(false);
+
+
+    useEffect(()=>{
+        if(searchType==='city'){
+            setCity(true);
+            setService(false);
+        }
+        else{ 
+            setCity(false);
+            setService(true);
+        }
+    },[searchType])
+
 
     const findSearchedInput =()=>{
-        console.log(searchInput);
+        console.log(searchInput); 
+        
+        
     }
+
 
   return (
     <>
@@ -101,7 +119,7 @@ const HomeMain = () => {
                 </div>
 
                 <div className='subHead'>
-                Empowering companies and candidates together
+                Empowering companies and candidates together                    
                 </div>
 
                 <div className='landingsubHead'>
@@ -113,20 +131,33 @@ const HomeMain = () => {
                 <div>
                     {/* <input className='searchInput' type='text' placeholder='Search for City / State / Services'/> */}
                     {/* <SearchIcon className='searchIcon'/> */}
-                    <Autocomplete className=''
+
+                    {city? 
+                        <Autocomplete className=''
                         disablePortal
                         id="combo-box-demo"
                         options={cities}
                         sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Search for City / State / Services" className='searchInputMui'/>}
+                        renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui'/>}
                         onChange={(event, value) => setSearchInput(value)}
                         value={searchInput}/>
+                    :
+                        <Autocomplete className=''
+                        disablePortal
+                        id="combo-box-demo"
+                        options={services}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui'/>}
+                        onChange={(event, value) => setSearchInput(value)}
+                        value={searchInput}/>
+                    }
+                    
                 </div>
 
                 <button className='searchBtn' onClick={(e)=> findSearchedInput()}>Search</button>
 
-                <select className='searchdropdown' name="" id="" onChange={(e)=> setSearchType(e.target.value)}>
-                    <option value="services">Services</option>
+                <select className='searchdropdown' name="" id="" onChange={(e)=> setSearchType(e.target.value)} value={searchType}>
+                    <option value="service">Services</option>
                     <option value="city">City</option>
                 </select>
             </div>

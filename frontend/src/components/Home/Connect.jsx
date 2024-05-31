@@ -1,5 +1,7 @@
 import React from 'react'
 import connect from '../../assets/connect.png'
+// let transporter = nodemailer.createTransport(transport[, defaults])
+
 
 const Connect = () => {
   return (

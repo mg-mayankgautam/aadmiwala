@@ -16,6 +16,8 @@ const CompanyPage = () => {
     
     useEffect(()=>{
 
+      // window.
+
         const getCompanies= async()=>{
           try{
             const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getcompanydata?id=${id}`);
@@ -31,6 +33,7 @@ const CompanyPage = () => {
       },[]);
 
   return (
+    <>
     <div className='CompanyPage'>
 
       
@@ -77,11 +80,13 @@ const CompanyPage = () => {
           
       </div>
         
-      <FeaturedCompanies/>
-      <Faq/>
-      <Footer/>
+      {/* <FeaturedCompanies/> */}
+      {/* <Faq/> */}
+      
 
     </div>
+    <Footer/>
+    </>
   )
 }
 
