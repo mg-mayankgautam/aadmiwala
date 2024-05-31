@@ -23,8 +23,10 @@ const Nav = () => {
         </div>
         <div className='navBtns'>
             <button className='navSignupBtn'> <CallIcon/> Call Us</button>
-            {/* <button className='navLoginBtn'>Log In</button> */}
-            <Link to={`login`} className='navLoginBtn' >Log In</Link>
+
+            <Link to={`login`}>
+                <button className='navLoginBtn'>Log In</button>
+            </Link>
         </div>
     </div>
   )

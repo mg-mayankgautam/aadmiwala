@@ -5,8 +5,8 @@ import HomePage from './components/Home/HomePage';
 import AboutPage from './components/About/AboutPage';
 import AddCompany from './components/AddRecruitmentCompany/AddCompany'
 import Companies from './components/Companies/Companies';
-import CompanyPage from './components/CompanyPage';
-import LoginPage from './components/LoginPage';
+import CompanyPage from './components/CompanyPage/CompanyPage';
+import LoginPage from './components/Login/LoginPage';
 
 function App() {
 

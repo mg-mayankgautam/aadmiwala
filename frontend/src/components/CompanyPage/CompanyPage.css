@@ -1,0 +1,57 @@
+.companyDiv{
+    padding: 64px;
+    text-align: left;
+    max-width: 850px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    font-size: 14px;
+}
+
+.companyTopFlex{
+    display: grid;
+    grid-template-columns: auto 180px;
+}
+
+.companyData{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.companyImgsDiv{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.companyImgsDiv>div>img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.company_name{
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 32px;
+}
+
+.company_facilities{
+    font-size: 14px;
+    background-color: var(--grey);
+    border-radius: 4px;
+    padding: 2px 8px;
+    align-self: flex-start;
+    font-weight: 600;
+    color: #00000099;
+}
+
+.company_desc{
+    color: #00000099;
+}
+.company_date{
+    color: #00000080;
+}

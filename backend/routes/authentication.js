@@ -13,6 +13,6 @@ router.get('/getallcompanies', authController.getCompanies)
 router.get('/getcompanydata',authController.getCompanydata)
 router.post('/verifyphone',authController.verifyPhoneNum)
 router.post('/verifyotp',authController.verifyOtp)
-// router.get('/isauth',authController.isauth)
+router.get('/login',authController.logIn)
 
 module.exports = router;

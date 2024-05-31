@@ -159,6 +159,26 @@ module.exports.getCompanies =async (req, res) =>{
 }
 
 
+module.exports.logIn = async (req,res)=>{
+
+    const {PhoneNum, pwd} = req.body; 
+    console.log(PhoneNum, pwd);
+
+//     let user = await usersDB.findOne({Username,Password});
+   
+//    //console.log(user);
+
+    
+//     if(user){
+        
+//         req.session.Username=Username;
+//         req.session.UserID=user._id.toString();
+//         res.json({Username:req.session.Username})}
+//     else if(!user){res.json(false)}
+}
+
+
+
 module.exports.checkUsername =async(req,res)=>{
 
     // const Username = req.body.Username;
@@ -201,27 +221,6 @@ module.exports.signUp = async (req,res)=>{
 
 
 
-}
-
-
-
-
-module.exports.logIn = async (req,res)=>{
-
-    const {Username,Password}=req.body; 
-    // console.log(req.body);
-
-    let user = await usersDB.findOne({Username,Password});
-   
-   //console.log(user);
-
-    
-    if(user){
-        
-        req.session.Username=Username;
-        req.session.UserID=user._id.toString();
-        res.json({Username:req.session.Username})}
-    else if(!user){res.json(false)}
 }
 
 
