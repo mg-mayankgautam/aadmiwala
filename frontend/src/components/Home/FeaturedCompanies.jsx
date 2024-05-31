@@ -39,13 +39,15 @@ const FeaturedCompanies = () => {
 
         {companies&& companies.map(company=>
 
-              <Link to={`/company/${company._id}`}>
+              <Link to={`/company/${company._id}`} key={company._id}>
                         <div className='FC_box'>
                             <div className='new'>New</div>
                             <div className='FC_name'>{company.companyName}</div>
                             <div>stars</div>
-                            <div>{company.city}<br/>{company.state}, {company.country}</div>
-                            <div className='FC_facilities'>Provides {company.serviceType.map(service=><span>{service}, </span>)}</div>
+                            <div>{company.city.map(cityy=><span id=''>{cityy}, </span>)}<br/>
+                            {/* {company.state}, */}
+                             {company.country}</div>
+                            <div className='FC_facilities'>Provides {company.serviceType.map(service=><span id=''>{service}, </span>)}</div>
                             <div className='FC_desc'>
                             Company Description: <li>{company.agencyBriefing}</li> 
                             </div>

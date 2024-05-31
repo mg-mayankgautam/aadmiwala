@@ -4,11 +4,10 @@ const {mongo} = require('mongoose');
 const {Schema}=mongoose;
 
 
-const userSchema = new Schema({
+const otpSchema = new Schema({
     Phone: {type:Number},
-    pwd: {type:String}
-//
+    OTP:{type:Number},
 });
 
-module.exports =mongoose.model('Users',userSchema);
+module.exports =mongoose.model('OTPs',otpSchema);
 

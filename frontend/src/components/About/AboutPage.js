@@ -18,7 +18,7 @@ const AboutPage = () => {
   return (
     
     <div className='AboutPage'>
-        <Nav/>
+       
         <AboutWelcome  about_ref={about_ref}/>
         <AboutDesc  about_ref={about_ref}/>
         <AboutTimeline/>

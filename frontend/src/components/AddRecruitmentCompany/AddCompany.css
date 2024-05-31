@@ -88,6 +88,17 @@ font-weight: 700;
     border: 1px solid #00000066;
 }
 
+.addImgBtn{
+    margin-bottom: 24px;
+    border-radius: 20px;
+    padding: 4px 12px;
+    border: 1px solid var(--orange);
+    background-color: white;
+    color: var(--orange);
+    font-weight: 600;
+    font-size: 13px;
+}
+
 .recr_phone_input{
     border-radius: 16px;
     padding: 8px 16px;
@@ -138,7 +149,7 @@ font-weight: 700;
 
 
 
-.recruiting_input_box> div> div, .recr_phone_input_div> div{
+.recruiting_input_box> div> div, .recr_phone_input_div> div, .PasswordDiv{
     position: relative
 }
 
@@ -159,3 +170,15 @@ font-weight: 700;
     font-size: 12px;
 }
 .recruiting_input_box>div{position: relative;}
+
+
+.invalid, .invalid:focus{
+    outline: none;
+    /* border-color: #9b2b2b; */
+    border-color: #d22323;
+}
+.valid, .valid:focus{
+  outline: none;
+  border-color: #299158;
+  /* border: 1px solid #299158; */
+}

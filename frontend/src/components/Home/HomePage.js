@@ -16,7 +16,7 @@ import FeaturedCompanies from './FeaturedCompanies'
 const HomePage = () => {
   return (
     <div className='HomePage'>
-        <Nav/>
+       
         <HomeMain/>
         <FeaturedCompanies/>
         <Benefits/>

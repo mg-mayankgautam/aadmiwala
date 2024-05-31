@@ -20,7 +20,8 @@
     "image-downloader": "^4.3.0",
     "mongo": "^0.1.0",
     "mongoose": "^8.1.1",
-    "nodemon": "^3.0.3"
+    "nodemon": "^3.0.3",
+    "twilio": "^5.1.0"
   },
   "description": ""
 }

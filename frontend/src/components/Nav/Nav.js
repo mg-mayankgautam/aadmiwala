@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../../assets/logo.png'
 import './Nav.css'
 import CallIcon from '@mui/icons-material/Call';
+import { Link } from 'react-router-dom';
 
 
 const Nav = () => {
@@ -14,13 +15,16 @@ const Nav = () => {
             <div>Enterprise</div>
             <div> <a href="about">About Us</a></div>
             <div>Share Requirements</div>
-            <div className='navItemBold'
+            <div className='navItemBold'>
+                
+                <Link to={`addCompany`} >+ Add Recruiting Company</Link>
             
-            ><a href="addCompany">+ Add Recruiting Company</a></div>
+            </div>
         </div>
         <div className='navBtns'>
             <button className='navSignupBtn'> <CallIcon/> Call Us</button>
-            <button className='navLoginBtn'>Log In</button>
+            {/* <button className='navLoginBtn'>Log In</button> */}
+            <Link to={`login`} className='navLoginBtn' >Log In</Link>
         </div>
     </div>
   )

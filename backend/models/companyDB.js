@@ -14,8 +14,9 @@ const companySchema = new Schema({
     agencyBriefing: {type:String},
     noOfpositions: {type:Number},
     country: {type:String},
-    state: {type:String},
-    city: {type:String},
+    address: {type:String},
+    city: {type:Array},
+    imageURLs: {type:Array},
 });
 
 module.exports =mongoose.model('companies', companySchema);

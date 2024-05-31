@@ -21,7 +21,7 @@ app.use(cors(
 
 
 const mongoose = require('mongoose');
-const { mongoConnect } = require('./database/database.js');
+// const { mongoConnect } = require('./database/database.js');
 
 
 

@@ -27,7 +27,7 @@ const CompanyPage = () => {
 
   return (
     <div>
-        <Nav/>
+     
         this is company page
     </div>
   )

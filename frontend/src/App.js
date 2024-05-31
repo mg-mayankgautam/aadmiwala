@@ -6,7 +6,7 @@ import AboutPage from './components/About/AboutPage';
 import AddCompany from './components/AddRecruitmentCompany/AddCompany'
 import Companies from './components/Companies/Companies';
 import CompanyPage from './components/CompanyPage';
-
+import LoginPage from './components/LoginPage';
 
 function App() {
 
@@ -28,6 +28,7 @@ function App() {
             <Route path="addCompany" element={ <AddCompany/>}/>  
             <Route path="companies" element={ <Companies/>}/>  
             <Route path="company/:id" element={<CompanyPage/>}/>
+            <Route path="login"  element={<LoginPage/>}/>
            
       </Route>
 

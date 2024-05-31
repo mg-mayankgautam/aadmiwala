@@ -60,6 +60,15 @@
     position: relative;
 }
 
+.MuiAutocomplete-hasPopupIcon.css-1ow4h4h-MuiAutocomplete-root .MuiOutlinedInput-root, .MuiAutocomplete-hasClearIcon.css-1ow4h4h-MuiAutocomplete-root .MuiOutlinedInput-root{
+    border-radius: 25px !important;
+    padding: 12px 39px 0px 12px;
+}
+.Mui-focused{
+    color: var(--black) !important;
+    border-color: var(--orange)  !important;
+}
+
 .searchIcon{
     position: absolute;
     right: 0;
