@@ -3,6 +3,8 @@ import axios from 'axios';
 import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { useNavigate } from 'react-router-dom';
+
 
 // const combinedSearch = [
 //     { label: 'AC/Telephone Repair', id: 'services' },
@@ -81,12 +83,14 @@ const services =[
     'Administrative Support', 'Facility Service', 'Housekeeping Services', 'Customer Service Representatives', 'Blue Collar', 'White Collar', 'Reception Service', 'Security Service', 'IT Support', 'Catering Service', 'AC/Telephone Repair', 'Electrician/Plumber Service', 'Mailroom Service', 'Pest Control', 'Office Boy', 'Other'
 ]
 
-const HomeMain = () => {
+const HomeMain = ({searchValue,setSearchValue}) => {
+    const navigate = useNavigate();
 
     const [searchInput, setSearchInput] = useState('');
     const [searchType, setSearchType] = useState('service');
     const [service, setService] =useState(true);
     const [city, setCity] =useState(false);
+    const [searchError, setSearchError] =useState(false);
 
 
     useEffect(()=>{
@@ -100,10 +104,33 @@ const HomeMain = () => {
         }
     },[searchType])
 
+    useEffect(()=>{
+        setSearchError(false);
+    },[searchType, searchInput])
 
-    const findSearchedInput =()=>{
+
+    const findSearchedInput =async(e)=>{
+        e.preventDefault();
         console.log(searchInput); 
         
+        if(searchInput){
+
+            try{
+                const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/search?input=${searchInput}&type=${searchType}`);
+                console.log(data.data);
+
+                if(data.data){
+                    setSearchValue(data.data);
+                    navigate(`/search/${searchInput}`)
+                }
+                else{
+                    setSearchError(true);
+                }
+                
+              }
+              catch(err){console.log(err);}
+
+        }
         
     }
 
@@ -133,7 +160,7 @@ const HomeMain = () => {
                     {/* <SearchIcon className='searchIcon'/> */}
 
                     {city? 
-                        <Autocomplete className=''
+                        <Autocomplete
                         disablePortal
                         id="combo-box-demo"
                         options={cities}
@@ -142,7 +169,7 @@ const HomeMain = () => {
                         onChange={(event, value) => setSearchInput(value)}
                         value={searchInput}/>
                     :
-                        <Autocomplete className=''
+                        <Autocomplete
                         disablePortal
                         id="combo-box-demo"
                         options={services}
@@ -154,12 +181,14 @@ const HomeMain = () => {
                     
                 </div>
 
-                <button className='searchBtn' onClick={(e)=> findSearchedInput()}>Search</button>
+                <button className='searchBtn' onClick={(e)=> findSearchedInput(e)}>Search</button>
 
-                <select className='searchdropdown' name="" id="" onChange={(e)=> setSearchType(e.target.value)} value={searchType}>
+                <select className='searchdropdown' name="" onChange={(e)=> setSearchType(e.target.value)} value={searchType}>
                     <option value="service">Services</option>
                     <option value="city">City</option>
                 </select>
+
+                {searchError? <p className='searcherror'>Couldnt find anything</p> : <></>}
             </div>
 
             <div className='freqSearch'>

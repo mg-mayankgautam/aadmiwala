@@ -276,3 +276,36 @@ module.exports.getCompanydata=async(req,res)=>{
    res.send(companydata);
 }
 
+
+module.exports.search= async(req, res)=>{
+
+    console.log('here',req.query);
+    const type = req.query.type;
+    const input = req.query.input;
+
+    if(type==='service'){
+
+        try{
+            let searchdata = await companyDB.find({serviceType: input});
+
+            console.log(searchdata);
+
+            if(searchdata.length>0){
+            res.send(searchdata);
+            }else res.send(false);
+        }
+        catch(err){console.log(err);}
+    }
+
+    if(type==='city'){
+        try{
+            let searchdata = await companyDB.find({city: input});
+            
+            if(searchdata.length>0){
+                res.send(searchdata);
+            }else res.send(false);
+        }
+        catch(err){console.log(err);}
+    }
+    
+}

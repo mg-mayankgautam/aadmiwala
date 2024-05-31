@@ -44,10 +44,10 @@ const FeaturedCompanies = () => {
                             <div className='new'>New</div>
                             <div className='FC_name'>{company.companyName}</div>
                             <div>stars</div>
-                            <div>{company.city.map(cityy=><span id=''>{cityy}, </span>)}<br/>
+                            <div>{company.city.map((cityy,i)=><span key={i}>{cityy}, </span>)}<br/>
                             {/* {company.state}, */}
                              {company.country}</div>
-                            <div className='FC_facilities'>Provides {company.serviceType.map(service=><span id=''>{service}, </span>)}</div>
+                            <div className='FC_facilities'>Provides {company.serviceType.map((service, i)=><span key={i}>{service}, </span>)}</div>
                             <div className='FC_desc'>
                             Company Description: <li>{company.agencyBriefing}</li> 
                             </div>

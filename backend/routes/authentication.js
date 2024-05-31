@@ -3,9 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 
-// const movieController = require('../controller/movieController');
+
 const authController = require('../controller/authController');
-// const blogController = require('../controller/blogController');
+
+
 
 // router.post('/signUp',authController.signUp)
 router.post('/addrecruitingcompany', authController.addRecruitingCompany)
@@ -14,5 +15,6 @@ router.get('/getcompanydata',authController.getCompanydata)
 router.post('/verifyphone',authController.verifyPhoneNum)
 router.post('/verifyotp',authController.verifyOtp)
 router.get('/login',authController.logIn)
+router.get('/search',authController.search)
 
 module.exports = router;

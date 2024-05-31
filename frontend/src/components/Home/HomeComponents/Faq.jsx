@@ -30,7 +30,7 @@ const Faq = () => {
             </div> */}
             {data.map((item,i)=>(
                 <div className='FAQ_box'
-                onClick={()=>toggle(i)}
+                onClick={()=>toggle(i)} key={i}
                 >
                     <div className='title' 
                     

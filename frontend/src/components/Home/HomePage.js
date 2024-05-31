@@ -13,11 +13,11 @@ import FeaturedCompanies from './FeaturedCompanies'
 
 
 
-const HomePage = () => {
+const HomePage = ({searchValue,setSearchValue}) => {
   return (
     <div className='HomePage'>
        
-        <HomeMain/>
+        <HomeMain searchValue={searchValue} setSearchValue={setSearchValue}/>
         <FeaturedCompanies/>
         <Benefits/>
         <Challenges/>

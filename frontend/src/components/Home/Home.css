@@ -48,6 +48,17 @@
     gap: 16px;
     font-size: 20px;
     align-items: center;
+    position: relative;
+}
+
+.searcherror{
+    font-size: 11px;
+    margin: 0;
+    color: #d22323;
+    position: absolute;
+    bottom: 40px;
+    right: 120px;
+    font-weight: 600;
 }
 
 .searchInput{

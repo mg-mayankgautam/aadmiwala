@@ -13,6 +13,10 @@ const CompanyPage = () => {
     console.log(id);
 
     const [company, setCompany] = useState([])
+
+    useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
     
     useEffect(()=>{
 
@@ -44,15 +48,15 @@ const CompanyPage = () => {
             <div className='companyData'>
               <div className='company_date'>Posted 2 Days ago</div>
 
-              <div>Job Title</div>
+              <div className='jobTitle'>Job Title</div>
 
               <div className='company_name'>{company.companyName}</div>
 
               <div>stars</div>
 
               <div>
-                {company.address}    
-                <br />
+                {/* {company.address}     */}
+                {/* <br /> */}
                 {company.city&&company.city.map(cityy=><span id=''>{cityy}, </span>)}
                 <br/>
                 {company.country}
@@ -79,12 +83,13 @@ const CompanyPage = () => {
           </div>
           
       </div>
-        
-      {/* <FeaturedCompanies/> */}
-      {/* <Faq/> */}
+     
       
 
     </div>
+       
+    <FeaturedCompanies/>
+      <Faq/>
     <Footer/>
     </>
   )
