@@ -463,8 +463,8 @@
 
 
 .LetsConnect{
-    padding: 0 64px;
-    margin: 80px auto 0;
+    padding: 80px 64px 0;
+    margin: 0 auto 0;
     display: grid;
     grid-template-columns: 40% 50%;
     text-align: left;

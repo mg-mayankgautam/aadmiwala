@@ -85,10 +85,10 @@ const AddCompany = () => {
     const [address, setAddress] = useState('');
     const [city, setCity] = useState([]);
 
-    const [image1, setimage1] = useState('');
-    const [image2, setimage2] = useState('');
-    const [image3, setimage3] = useState('');
-    const [image4, setimage4] = useState('');
+    // const [image1, setimage1] = useState('');
+    // const [image2, setimage2] = useState('');
+    // const [image3, setimage3] = useState('');
+    // const [image4, setimage4] = useState('');
 
     const [OTP, setOTP] = useState('');
 
@@ -102,6 +102,11 @@ const AddCompany = () => {
     const EMAIL_REGEX = /^[\w]+(\.[\w]+)*@([\w-]){3,7}(.com|.in|.co|.co.in|.edu|.gov)$/
     const PASS_REGEX = /^[a-zA-Z0-9_`~(){}#!%@$^&*\s\]\[\\\/+:;"'<>,.?=|-]{6,10}$/;
 
+
+    const [file1, setFile1] = useState();
+    const [file2, setFile2] = useState();
+    const [file3, setFile3] = useState();
+    const [file4, setFile4] = useState();
 
 
     useEffect(() => {
@@ -160,7 +165,7 @@ const AddCompany = () => {
     const nextBtn2 = (e)=>{
         e.preventDefault();
 
-        if(companyName && serviceType && agencyBriefing ){
+        if(companyName && serviceType ){
             setslide3(true); 
             setslide2(false);
         }
@@ -184,7 +189,7 @@ const AddCompany = () => {
 
         const phone = '+91'+ phonee;
 
-        if(fullName && email && validEmail && phone && validPhone && companyName && serviceType && agencyBriefing && country && address && city){
+        if(fullName && email && validEmail && phone && validPhone && companyName && serviceType && country && address && city){
         
 
             try{
@@ -244,15 +249,32 @@ const AddCompany = () => {
 
 
         const phone = '+91'+ phonee
-        console.log(fullName,email, phone, companyName, serviceType, agencyBriefing, noOfPositions, country, address, city);
-        
+        console.log(fullName,email, phone, companyName, serviceType,  country, address, city);
+        // const imgarray=[];
+        // imgarray.push(file1,file2,file3,file4)
+        const formData = new FormData();
+      //  formData.append('images',imgarray)
+        formData.append("image", file1);
+        formData.append("image", file2);
+        formData.append("image", file3);
+        formData.append("image", file4);
+        formData.append("fullName", fullName);
+        formData.append("email", email);
+        formData.append("phone", phone);
+        formData.append("companyName", companyName);
+        formData.append("serviceType", serviceType);
+        formData.append("country", country);
+        formData.append("address", address);
+        formData.append("city", city);
+        formData.append("pwd", pwd);
+        // formData.append("city", city);
+        console.log(formData)
 
-
-        if(fullName && email && validEmail && phone && validPhone && companyName && serviceType && agencyBriefing && country && address && city && pwd){
+        if(fullName && email && validEmail && phone && validPhone && companyName && serviceType && country && address && city && pwd){
         
 
             try{
-            const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/addrecruitingcompany`, {fullName,email, phone, companyName, serviceType, agencyBriefing, country, address, city, image1, image2, image3, image4, pwd})
+            const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/addrecruitingcompany`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
 
             console.log('submit succeess')
             console.log(data.data);
@@ -364,15 +386,15 @@ const AddCompany = () => {
                         value={serviceType}
                     />
                 </div>
-                <div>
+                {/* <div>
                     <div>Agency Description</div>
                     <input className='recr_input' type='text' onChange={(e)=>setAgencyBriefing(e.target.value)} required  value={agencyBriefing}/>
-                </div>
+                </div> */}
 
 
-                <div>
-                    {/* <div >No. of Positions</div> */}
-                    {/* <input className='recr_input' type='number' onChange={(e)=>setNoOfPositions(e.target.value)} required value={noOfPositions}/> */}
+                {/* <div>
+                    <div >No. of Positions</div>
+                    <input className='recr_input' type='number' onChange={(e)=>setNoOfPositions(e.target.value)} required value={noOfPositions}/>
                     <div >Add Images</div>
                     <h6 >Upload photos to google drive and paste Links</h6>
 
@@ -424,9 +446,86 @@ const AddCompany = () => {
                     
                         </div>:<></>}
                         <button onClick={()=>{addimageboxes()}} className='addImgBtn'>add more images</button>
+                </div> */}
+
+                <div className='fileInputDiv' style={{minHeight:'50px'}}>
+
+                    <div>Add Images</div>
+                
+                  <label for='inputFile' className='inputFileLabel'>
+                    Choose a file
+                  </label>
+                  <input 
+                  onChange={
+                    e => setFile1(e.target.files[0])
+                    } 
+                  type="file" 
+                  accept="image/*"
+                  className='inputFile recr_input'
+                  name='image'
+                  />
+
+                {  imageBoxCount > 1 ? <div>
+                    
+                            
+                    <label for='inputFile1' className='inputFileLabel1'>
+                    Choose a file
+                    </label>
+                    <input 
+                    onChange={
+                        e => setFile2(e.target.files[0])
+                        } 
+                    type="file" 
+                    accept="image/*"
+                    className='inputFile recr_input'
+                    name='image'
+                    />
+                    
+                </div>:<></>}
+
+                {  imageBoxCount > 2 ? <div>
+                
+                        
+                    <label for='inputFile2' className='inputFileLabel2'>
+                    Choose a file
+                    </label>
+                    <input 
+                    onChange={
+                        e => setFile3(e.target.files[0])
+                        } 
+                    type="file" 
+                    accept="image/*"
+                    className='inputFile recr_input'
+                    name='image'
+                    />
+                
+                </div>:<></>}
+
+                {  imageBoxCount > 3 ? <div>
+                
+                        
+                    <label for='inputFile' className='inputFileLabel3'>
+                    Choose a file
+                    </label>
+                    <input 
+                    onChange={
+                        e => setFile4(e.target.files[0])
+                        } 
+                    type="file" 
+                    accept="image/*"
+                    className='inputFile recr_input'
+                    name='image'
+                    />
+                
+                    </div>:<></>}
+                    
+                    <br/>
+                    <button onClick={()=>{addimageboxes()}} className='addImgBtn'>add more images</button>
+
                 </div>
 
-                {!companyName || !serviceType || !agencyBriefing ? (<p className='error'>
+
+                {!companyName || !serviceType ? (<p className='error'>
                     please complete all fields.        
                 </p>): <></>}
 

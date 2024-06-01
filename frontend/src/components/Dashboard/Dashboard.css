@@ -1,0 +1,92 @@
+.Dashboard{
+    padding: 64px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px;
+}
+
+.dash_DataDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+}
+
+.dash_Head{
+    font-size: 32px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.dash_BoxFlex{
+    display: flex;
+    gap: 20px;
+}
+
+.dash_Box{
+    border-radius: 20px;
+    border: 1px solid #4A4239;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.dash_boxNum{
+    font-size: 40px;
+    color: var(--orange);
+    font-weight: 700;
+}
+
+.dash_boxText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+}
+
+
+.dash_ServicesDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+}
+
+.dash_servicesHead{
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.dash_servicesContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.dash_service{
+    padding: 20px;
+    text-align: left;
+    border-radius: 20px;
+    border: 1px solid #332F2A ;
+}
+.service_name{
+    font-weight: 700;
+    color: var(--orange);
+}
+
+.addNewService{
+    align-self: baseline;
+}
+.addNewService> button{
+    max-width: 392px;
+    border-radius: 20px;
+    padding: 8px 16px;
+    border: none;
+    background-color: var(--orange);
+    color: white;
+    font-weight: 600;
+}

@@ -5,7 +5,8 @@ import CallIcon from '@mui/icons-material/Call';
 import { Link } from 'react-router-dom';
 
 
-const Nav = () => {
+const Nav = ({connect_ref}) => {
+
   return (
     <div className='Nav'>
         <div>
@@ -14,7 +15,11 @@ const Nav = () => {
         <div className='navItems'>
             <div>Enterprise</div>
             <div> <a href="about">About Us</a></div>
-            <div>Share Requirements</div>
+            
+            <div onClick={() => {connect_ref.current?.scrollIntoView({behavior:'smooth'})}}>
+                Share Requirements
+            </div>
+
             <div className='navItemBold'>
                 
                 <Link to={`addCompany`} >+ Add Recruiting Company</Link>

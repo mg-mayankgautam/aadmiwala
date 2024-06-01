@@ -102,28 +102,88 @@ res.send(true);
 }
 
 
+const { S3Client,PutObjectCommand  } = require("@aws-sdk/client-s3");
+const multer  = require('multer')
+const storage = multer.memoryStorage()
+// const upload = multer({ storage: storage })
+const crypto = require('crypto');
+
+
+const bucketName = "aadmiwala"
+const bucketRegion ="ap-south-1"
+const accessKeyId = "AKIA6GBMBOXSMOJLY6XA"
+const secretAccessKey = "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"
+
+
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
+const {  GetObjectCommand, DeleteObjectCommand } = require("@aws-sdk/client-s3");
+
+const s3Client = new S3Client({
+    region:bucketRegion,
+    credentials: {
+      accessKeyId,
+      secretAccessKey
+    }
+  })
+
+const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex');
+
+
+
 module.exports.addRecruitingCompany= async (req,res)=>{
 
-    console.log('working backend wuhu');
+    //console.log('working backend wuhu',req.files);
+    //console.log('working backend wuhu',req.body);
 
-    const {fullName, email, phone, companyName, serviceType, agencyBriefing, country, address, city, image1, image2, image3, image4, pwd} = req.body;
+    const imgsarray = req.files;
 
-    const imageURLs = [
-        {url: image1}, 
-        {url: image2}, 
-        {url: image3}, 
-        {url: image4}
-    ]
 
+     const imageURLs = []
+
+    for (const img of imgsarray){
+       // console.log(img);
+        const fileName = generateFileName();
+
+
+        const uploadParams = {
+            Bucket: bucketName,
+            Body: img.buffer,
+            Key: fileName,
+            ContentType: img.mimetype
+          }
+
+          await s3Client.send(new PutObjectCommand(uploadParams));
+          const URL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
+        //  console.log(URL);
+         
+          imageURLs.push({url:URL})
+
+    }
+
+    const {image,fullName, email, phone, companyName, serviceType, country, address, city, pwd} = req.body;
+    
+  
+   
+
+
+//console.log(data)
+
+
+
+   
+
+    //console.log(URL)
 
     // const noOfpositions= Number(noOfPositions);
-    const noOfpositions= Number(0);
-    const Phone = Number(phone);
+    // const noOfpositions= Number(0);
+     const Phone = Number(phone);
 
-    console.log(req.body);
-    console.log(noOfpositions, Phone);
+   // console.log(req.body);
+   // console.log(noOfpositions, Phone);
 
-    let newCompany = new companyDB({fullName, email, Phone, companyName, serviceType, agencyBriefing, noOfpositions, country, address, city, imageURLs});
+    let newCompany = new companyDB({fullName, email, Phone, companyName, serviceType, country, address, city, imageURLs});
+
+
 
     newCompany.save()
         .then((saved)=>{
@@ -145,7 +205,7 @@ module.exports.addRecruitingCompany= async (req,res)=>{
         .catch(err =>{console.log(err);});
 
 
-    // res.send(true);
+   
 
 }
 
@@ -163,18 +223,20 @@ module.exports.logIn = async (req,res)=>{
 
     const {PhoneNum, pwd} = req.body; 
     console.log(PhoneNum, pwd);
+    const Phone = Number(PhoneNum);
 
-//     let user = await usersDB.findOne({Username,Password});
+    let user = await userDB.findOne({Phone,pwd});
    
-//    //console.log(user);
+   console.log(user);
 
     
-//     if(user){
-        
-//         req.session.Username=Username;
-//         req.session.UserID=user._id.toString();
-//         res.json({Username:req.session.Username})}
-//     else if(!user){res.json(false)}
+    if(user){
+        console.log('welcome')
+        // req.session.Username=Username;
+        // req.session.UserID=user._id.toString();
+        // res.json({Username:req.session.Username})
+    }
+    else if(!user){res.json(false)}
 }
 
 

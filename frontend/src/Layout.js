@@ -1,11 +1,11 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
-const Layout = () => {
+const Layout = ({connect_ref}) => {
   return (
   
     <div className="App">
-      <Nav/>
+      <Nav connect_ref={connect_ref}/>
 
       <Outlet/>
 

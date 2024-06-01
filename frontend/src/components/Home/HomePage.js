@@ -13,7 +13,9 @@ import FeaturedCompanies from './FeaturedCompanies'
 
 
 
-const HomePage = ({searchValue,setSearchValue}) => {
+const HomePage = ({searchValue,setSearchValue, connect_ref}) => {
+
+
   return (
     <div className='HomePage'>
        
@@ -24,7 +26,7 @@ const HomePage = ({searchValue,setSearchValue}) => {
         <FlowChart/>
         <Solutions/>
         <Faq/>
-        <Connect/>
+        <Connect connect_ref={connect_ref}/>
         <Footer/>
     </div>
   )

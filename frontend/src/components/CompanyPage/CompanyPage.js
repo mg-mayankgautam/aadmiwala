@@ -61,13 +61,13 @@ const CompanyPage = () => {
                 <br/>
                 {company.country}
               </div>
+
             </div>
 
             <div className='companyImgsDiv'>
-              <div><img src='https://drive.google.com/file/d/1iEIyL32uTJLwAxjQRwDgqBv4hvIrtDfr/view?usp=drive_link' alt="1" /> </div>
-              <div><img src='https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt="2" /> </div>
-              <div><img src={company.image3} alt="3" /> </div>
-              <div><img src={company.image4} alt="4" /> </div>
+              {company.imageURLs&& company.imageURLs.map(img =>
+                  <div><img src={img.url} alt="1" /> </div>
+              )}
             </div>
 
           </div>
@@ -82,6 +82,7 @@ const CompanyPage = () => {
               <li>{company.agencyBriefing}</li> 
           </div>
           
+          <button className='getinTouchBtn'>Get in Touch</button>
       </div>
      
       

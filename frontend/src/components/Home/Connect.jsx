@@ -3,12 +3,12 @@ import connect from '../../assets/connect.png'
 // let transporter = nodemailer.createTransport(transport[, defaults])
 
 
-const Connect = () => {
+const Connect = ({connect_ref}) => {
   return (
     <>
    
 
-    <div className='LetsConnect'>
+    <div className='LetsConnect' ref={connect_ref}>
         <div className='LC_content'>
             <div>
                 <div className='LC_head'>Let's Connect</div>
@@ -19,7 +19,7 @@ const Connect = () => {
                 <input type="text" placeholder='E Mail ID*' className='connectinput'/>
                 <input type="text" placeholder='Phone Number*' className='connectinput'/>
                 <input type="text" placeholder='Location*' className='connectinput'/>
-                <input type="text" placeholder='Services*' className='connectinput'/>
+                {/* <input type="text" placeholder='Services*' className='connectinput'/> */}
                 <input type="text" placeholder='Requirements*' className='connectinput LC_reqinput'/>
             </div>
             <div>

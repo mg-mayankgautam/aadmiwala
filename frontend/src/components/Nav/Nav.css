@@ -23,6 +23,7 @@
     gap: 8px;
     justify-content: space-evenly;
 }
+.navItems>div{cursor: pointer;}
 
 .navBtns{
     display: flex;

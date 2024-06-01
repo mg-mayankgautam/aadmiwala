@@ -48,7 +48,7 @@ const LoginPage = () => {
                 // setAuth({user});
                 // console.log('after login',user);
                 // setUserName(user);
-                navigate('/');
+                navigate('/dashboard');
                 
                 // navigate(`${state.prev.pathname}`)
               }                
@@ -71,7 +71,7 @@ const LoginPage = () => {
           <div className='loginHead'>Login</div> 
       
           <div>
-            <div>Enter Phone Number</div>
+            <div>Enter Phone Number(include dialing code, eg: +9198XXXXXXXX)</div>
             <input className={`login_input ${inputStyle}`} type='Number'    
               placeholder='Phone Number'
               onChange={(e)=>setPhoneNum(e.target.value)}
