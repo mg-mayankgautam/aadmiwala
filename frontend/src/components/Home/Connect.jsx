@@ -1,9 +1,51 @@
-import React from 'react'
+import React, {useRef, useEffect} from 'react'
 import connect from '../../assets/connect.png'
 // let transporter = nodemailer.createTransport(transport[, defaults])
+import emailjs from '@emailjs/browser';
 
 
 const Connect = ({connect_ref}) => {
+
+    useEffect(() => emailjs.init("v5csxvz6IFDcQ0NZA"), []);
+
+    const nameRef = useRef();
+    const emailRef = useRef();
+    const phoneRef = useRef();
+    const locationRef = useRef();
+    const reqRef = useRef();
+
+  const sendEmail = async(e) => {
+    e.preventDefault();
+
+    try {
+        await emailjs.send('service_qkemi3i', 'template_ur5el55', {
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            phone: phoneRef.current.value,
+            location: locationRef.current.value,
+            requirements: reqRef.current.value
+        });
+        alert("email successfully sent check inbox");
+      } 
+    catch (error) {
+        console.log(error);
+      }
+
+    // emailjs
+    //   .sendForm('service_qkemi3i', 'template_vfehnm5', .current, {
+    //     publicKey: 'v5csxvz6IFDcQ0NZA',
+    //   })
+    //   .then(
+    //     () => {
+    //       console.log('SUCCESS!');
+    //     },
+    //     (error) => {
+    //       console.log('FAILED...', error.text);
+    //     },
+    //   );
+  };
+
+
   return (
     <>
    
@@ -14,17 +56,17 @@ const Connect = ({connect_ref}) => {
                 <div className='LC_head'>Let's Connect</div>
                 <div className='text'>Please enter the following details</div>
             </div>
-            <div className='LC_Inputs'>
-                <input type="text" placeholder='Full Name*' className='connectinput'/>
-                <input type="text" placeholder='E Mail ID*' className='connectinput'/>
-                <input type="text" placeholder='Phone Number*' className='connectinput'/>
-                <input type="text" placeholder='Location*' className='connectinput'/>
+            <form onSubmit={sendEmail} className='LC_Inputs'>
+                <input type="text" ref={nameRef} placeholder='Full Name*' className='connectinput'/>
+                <input type="text" ref={emailRef} placeholder='E Mail ID*' className='connectinput'/>
+                <input type="text" ref={phoneRef} placeholder='Phone Number*' className='connectinput'/>
+                <input type="text" ref={locationRef} placeholder='Location*' className='connectinput'/>
                 {/* <input type="text" placeholder='Services*' className='connectinput'/> */}
-                <input type="text" placeholder='Requirements*' className='connectinput LC_reqinput'/>
-            </div>
-            <div>
-                <button className='LC_btn'>Submit</button>
-            </div>
+                <input type="text" ref={reqRef} placeholder='Requirements*' className='connectinput LC_reqinput'/>
+            {/* </div>
+            <div> */}
+                <button className='LC_btn' type='submit'>Submit</button>
+            </form>
         </div>
         <div className='LC_imgDiv'>
             <img src={connect}/>
