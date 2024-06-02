@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import Company from '../Company/Company';
 
 const SearchPage = ({searchValue,setSearchValue}) => {
 
@@ -22,19 +23,7 @@ const SearchPage = ({searchValue,setSearchValue}) => {
 
                 {searchValue&& searchValue.map(company=>
                     <Link to={`/company/${company._id}`} key={company._id}>
-                        <div className='company_box'>
-                            <div className='new'>New</div>
-                            <div className='FC_name'>{company.companyName}</div>
-                            <div>stars</div>
-                            <div>{company.city.map(cityy=><span id=''>{cityy}, </span>)}<br/>
-                            {/* {company.state}, */}
-                             {company.country}</div>
-                            <div className='FC_facilities'>Provides {company.serviceType.map(service=><span id=''>{service}, </span>)}</div>
-                            <div className='FC_desc'>
-                            Company Description: <li>{company.agencyBriefing}</li> 
-                            </div>
-                            <div className='FC_date'>Posted 2 Days ago</div>
-                        </div>
+                        <Company company={company}/>
                     </Link>
                 )}
     

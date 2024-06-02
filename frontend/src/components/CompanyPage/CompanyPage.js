@@ -6,6 +6,7 @@ import './CompanyPage.css'
 import FeaturedCompanies from '../Home/FeaturedCompanies';
 import Faq from '../Home/HomeComponents/Faq';
 import Footer from '../Footer/Footer';
+import GetinTouch from './GetinTouch';
 
 const CompanyPage = () => {
 
@@ -13,6 +14,8 @@ const CompanyPage = () => {
     console.log(id);
 
     const [company, setCompany] = useState([])
+    const [modal, setModal] = useState(false)
+    
 
     useEffect(() => {
       window.scrollTo(0, 0)
@@ -52,7 +55,6 @@ const CompanyPage = () => {
 
               <div className='company_name'>{company.companyName}</div>
 
-              <div>stars</div>
 
               <div>
                 {/* {company.address}     */}
@@ -65,8 +67,8 @@ const CompanyPage = () => {
             </div>
 
             <div className='companyImgsDiv'>
-              {company.imageURLs&& company.imageURLs.map(img =>
-                  <div><img src={img.url} alt="1" /> </div>
+              {company.imageURLs&& company.imageURLs.map((img,i) =>
+                  <div key={i}><img src={img.url} alt="1" /> </div>
               )}
             </div>
 
@@ -77,12 +79,15 @@ const CompanyPage = () => {
             Provides {company.serviceType&&company.serviceType.map(service=><span id=''>{service}, </span>)}
           </div>
           
-          <div className='company_desc'>
+          {/* <div className='company_desc'>
               Company Description: 
               <li>{company.agencyBriefing}</li> 
-          </div>
+          </div> */}
           
-          <button className='getinTouchBtn'>Get in Touch</button>
+          <button onClick={()=> setModal(true)} className='getinTouchBtn'>Get in Touch</button>
+
+          {modal? <GetinTouch company={company}/> : <></>}
+
       </div>
      
       

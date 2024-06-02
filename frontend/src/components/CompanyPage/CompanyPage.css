@@ -71,11 +71,27 @@
 
 .getinTouchBtn{
     /* flex-grow: 1; */
-    max-width: 200px;
+    max-width: 140px;
     border-radius: 20px;
     padding: 6px 16px;
     border: none;
     background-color: var(--orange);
     color: white;
     font-weight: 600;
+}
+
+.GetinTouchDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.GIT_input{
+    border-radius: 8px;
+    padding: 12px 16px;
+    background-color: #6484961A;
+    border: 0.25px solid #2a2f336e;
+    font-size: 14px;
+    color: #2A2F3399;
+    max-width: 300px;
 }

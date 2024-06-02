@@ -5,17 +5,40 @@ import axios from 'axios'
 
 
 const LoginPage = () => {
-  const [error, seterror] = useState(false)
+
   axios.defaults.withCredentials = true;
   // const {setAuth}=useAuth();
+   // let { state } = useLocation();
+    
+    //console.log(state.prev);
     
   const navigate = useNavigate();
   const [PhoneNum, setPhoneNum] = useState('');
   const [Pwd, setPwd] = useState('');
+  const [validPhone, setValidPhone] = useState(false);
+  const [error, seterror] = useState(false)
   const [inputStyle, setinputStyle] = useState('');
-  // let { state } = useLocation();
-    
-    //console.log(state.prev);
+
+  const PHONE_REGEX = /^[1-9]{1}[0-9]{9}$/
+
+  useEffect(() => {
+    const result = PHONE_REGEX.test(PhoneNum);
+
+    console.log(result);
+    setValidPhone(result);
+
+}, [PhoneNum])
+
+  useEffect(() => {
+    if (PhoneNum) {
+      if (!validPhone) {
+        setinputStyle('invalid');
+      } else {
+        setinputStyle('valid');
+      }
+    }
+  }, [PhoneNum, validPhone]);
+
 
     useEffect(()=>{
 
@@ -29,10 +52,12 @@ const LoginPage = () => {
     }, [error])
 
 
+
     const submitUser = async (e) => {
         e.preventDefault();
        
 
+        if(PhoneNum && validPhone && Pwd)
         try{
           const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {PhoneNum, Pwd})
 
@@ -70,20 +95,29 @@ const LoginPage = () => {
         <div className="LoginBox"  >
           <div className='loginHead'>Login</div> 
       
-          <div>
-            <div>Enter Phone Number(include dialing code, eg: +9198XXXXXXXX)</div>
+          <div className='LoginPhoneDiv'>
+
+            <div>Enter Phone Number</div>
             <input className={`login_input ${inputStyle}`} type='Number'    
               placeholder='Phone Number'
               onChange={(e)=>setPhoneNum(e.target.value)}
           />
+          { PhoneNum && !validPhone? (<p className='loginerror'>
+                        add valid phone no. without dialing code.       
+                        </p>): <></>}
           </div>
           
-          <div>
+          <div className='LoginPwdDiv'>
+
             <div>Enter Password</div>
-            <input className={`login_input ${inputStyle}`} type='password'
+            <input className={`login_input`} type='password'
               placeholder='Password' 
               onChange={(e)=>setPwd(e.target.value)}
           />
+
+          {!PhoneNum || !Pwd ? (<p className='loginerror'>
+                    please complete all fields.        
+                    </p>): <></>}
           </div>
           
 
@@ -92,7 +126,7 @@ const LoginPage = () => {
               Login
           </button>
 
-          {error?<p className='error'>Invalid Username or Password.</p>:<></>}
+          {error?<p className='invalidUserError'>Invalid Username or Password.</p>:<></>}
       
         </div>
     </div>

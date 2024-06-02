@@ -1,0 +1,74 @@
+.FC_box{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    min-width: 340px;
+    max-width: 360px;
+    min-height: 200px;
+    font-size: 12px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(to right, white, white), linear-gradient(180deg, #332F2A 0%, #221505 100%);; 
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+}
+
+.FC_TopFlex{
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    gap: 32px;
+}
+
+.FC_dataDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.FC_ImgsDiv{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+}
+
+.FC_ImgsDiv>div>img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.new{
+    background-color: var(--orange);
+    padding: 4px 8px;
+    color: white;
+    font-weight: 800;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+
+.FC_name{
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 16px;
+}
+
+.FC_facilities{
+    font-size: 14px;
+    background-color: var(--grey);
+    border-radius: 4px;
+    padding: 2px 8px;
+    align-self: flex-start;
+    font-weight: 600;
+    color: #00000099;
+}
+
+.FC_desc{
+    color: #00000099;
+}
+.FC_date{
+    color: #00000080;
+}

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import EastIcon from '@mui/icons-material/East';
+import Company from '../Company/Company';
 
 const FeaturedCompanies = () => {
 
@@ -29,8 +31,11 @@ const FeaturedCompanies = () => {
     <div className='FeaturedCompanies'>
 
         <div className='FC_headingDiv'>
-            <div className='subHead'>
-                Featured Companies
+            <div className='FC_subhead'>
+                <div className='subHead'>Featured Companies</div>
+                <Link to={'/companies'}>
+                  <div className='FC_viewAllBtn'>View All <EastIcon/></div>
+                </Link>
             </div>
             <div className='text'>Today's talent marketplace</div>
         </div>
@@ -40,19 +45,7 @@ const FeaturedCompanies = () => {
         {companies&& companies.map(company=>
 
               <Link to={`/company/${company._id}`} key={company._id}>
-                        <div className='FC_box'>
-                            <div className='new'>New</div>
-                            <div className='FC_name'>{company.companyName}</div>
-                            <div>stars</div>
-                            <div>{company.city.map((cityy,i)=><span key={i}>{cityy}, </span>)}<br/>
-                            {/* {company.state}, */}
-                             {company.country}</div>
-                            <div className='FC_facilities'>Provides {company.serviceType.map((service, i)=><span key={i}>{service}, </span>)}</div>
-                            <div className='FC_desc'>
-                            Company Description: <li>{company.agencyBriefing}</li> 
-                            </div>
-                            <div className='FC_date'>Posted 2 Days ago</div>
-                        </div>
+                        <Company company={company}/>
               </Link>
                 )}
             

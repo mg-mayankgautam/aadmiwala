@@ -7,6 +7,9 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import one from '../../assets/timeline1.png'
+import two from '../../assets/timeline2.png'
+import three from '../../assets/timeline3.png'
+import four from '../../assets/timeline4.png'
 
 const AboutTimeline = () => {
   return (
@@ -43,7 +46,7 @@ const AboutTimeline = () => {
         </TimelineSeparator>
         <TimelineContent>
             <div className='timelineImgDiv'>
-                <img src={one} />
+                <img src={two} />
             </div>
         </TimelineContent>
       </TimelineItem>
@@ -61,7 +64,7 @@ const AboutTimeline = () => {
         </TimelineSeparator>
         <TimelineContent>
             <div className='timelineImgDiv'>
-                <img src={one} />
+                <img src={three} />
             </div>
         </TimelineContent>
       </TimelineItem>
@@ -79,7 +82,7 @@ const AboutTimeline = () => {
         </TimelineSeparator>
         <TimelineContent>
             <div className='timelineImgDiv'>
-                <img src={one} />
+                <img src={four} />
             </div>
         </TimelineContent>
       </TimelineItem>

@@ -1,5 +1,6 @@
 import React from 'react'
 import './Dashboard.css'
+import dashicon from '../../assets/dash-icon.png'
 
 const Dashboard = () => {
   return (
@@ -16,7 +17,7 @@ const Dashboard = () => {
                         45
                     </div>
                     <div className='dash_boxText'>
-                        <div><img src=''/></div>
+                        <div><img src={dashicon}/></div>
                         <div>Total No. of Submissions</div>
                     </div>
                 </div>
@@ -25,7 +26,7 @@ const Dashboard = () => {
                         45
                     </div>
                     <div className='dash_boxText'>
-                        <div><img src=''/></div>
+                        <div><img src={dashicon}/></div>
                         <div>Placement Rate</div>
                     </div>
                 </div>
@@ -34,7 +35,7 @@ const Dashboard = () => {
                         45
                     </div>
                     <div className='dash_boxText'>
-                        <div><img src=''/></div>
+                        <div><img src={dashicon}/></div>
                         <div>Avg. Placement Time</div>
                     </div>
                 </div>

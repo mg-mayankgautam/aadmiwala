@@ -221,9 +221,11 @@ module.exports.getCompanies =async (req, res) =>{
 
 module.exports.logIn = async (req,res)=>{
 
-    const {PhoneNum, pwd} = req.body; 
-    console.log(PhoneNum, pwd);
-    const Phone = Number(PhoneNum);
+    const {PhoneNum, Pwd} = req.body; 
+    console.log(PhoneNum, Pwd);
+    const pwd = Pwd;
+    const phonenum = '+91' + PhoneNum;
+    const Phone = Number(phonenum);
 
     let user = await userDB.findOne({Phone,pwd});
    
@@ -235,6 +237,7 @@ module.exports.logIn = async (req,res)=>{
         // req.session.Username=Username;
         // req.session.UserID=user._id.toString();
         // res.json({Username:req.session.Username})
+        res.json(true)
     }
     else if(!user){res.json(false)}
 }
