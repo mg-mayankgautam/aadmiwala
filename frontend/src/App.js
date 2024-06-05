@@ -14,8 +14,8 @@ import axios from 'axios'
 
 function App() {
 
-  // axios.defaults.withCredentials = true;
-  // axios.defaults.Credentials= true;
+  axios.defaults.withCredentials = true;
+  axios.defaults.Credentials= true;
 
   const [searchValue, setSearchValue] = useState([]);
 
