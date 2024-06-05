@@ -16,7 +16,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 app.use(cors( 
-    {origin: process.env.FRONTEND_URL, credentials: true, withCredentials: true}
+    {origin: process.env.FRONTEND_URL, credentials: true, 
+        withCredentials: true
+    }
 ))
 
 
