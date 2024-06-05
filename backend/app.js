@@ -16,7 +16,10 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 app.use(cors( 
-    {origin: process.env.FRONTEND_URL, credentials: true, 
+    {
+        // origin: process.env.FRONTEND_URL, 
+        origin: 'https://aadmiwala-elal.onrender.com',
+        credentials: true, 
         withCredentials: true
     }
 ))
