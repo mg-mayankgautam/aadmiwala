@@ -27,7 +27,7 @@ const GetinTouch = ({company}) => {
             postedby : company.fullName,
             companyname : company.companyName,
         });
-        alert("email successfully sent check inbox");
+        alert("email successfully sent to admin");
       } 
     catch (error) {
         console.log(error);
