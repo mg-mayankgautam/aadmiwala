@@ -18,7 +18,7 @@ const cookieParser = require('cookie-parser');
 app.use(cors( 
     {
         // origin: process.env.FRONTEND_URL, 
-        origin: 'https://aadmiwala-elal.onrender.com',
+        origin: 'https://aadmiwala.in',
         credentials: true, 
         withCredentials: true
     }
