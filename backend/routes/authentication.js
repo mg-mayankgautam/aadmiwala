@@ -21,6 +21,7 @@ router.get('/search',authController.search)
 router.get('/isauth',authController.isauth)
 router.post('/checkphonenumber',authController.checkPhnNumber);
 router.get('/getuserdata',authController.getUserData);
+router.post('/updateuserservices',authController.updateUserServices);
 router.post('/logout',authController.logout)
 
 

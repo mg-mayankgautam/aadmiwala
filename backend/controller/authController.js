@@ -375,3 +375,19 @@ module.exports.getUserData =async(req,res)=>{
     catch(e){console.log(e)}
     
     }
+
+
+module.exports.updateUserServices = async(req, res) => {
+    const {UserName, serviceType} = req.body;
+
+    try{
+        const data = await companyDB.findOneAndUpdate({Phone:UserName},{serviceType: serviceType}, {returnDocument: 'after'})
+
+            .then((saved)=>{
+                console.log(saved)
+                res.send(saved.serviceType)
+            })
+            .catch((e)=>{console.log(e)})
+    }
+    catch(e){console.log(e)}
+}

@@ -22,8 +22,15 @@ const Footer = () => {
             <div>
                 <div className='footerHeading footerBold'>QUICK LINKS</div>
                 <div className='footerList'>
-                    <div className='footerSocialMedia'><img src={fb}/> Facebook</div>
-                    <div className='footerSocialMedia'><img src={ig}/> Instagram</div>
+                    <a href="https://www.facebook.com/aadmiwala" target='_blank'>
+                        <div className='footerSocialMedia'> <img src={fb}/> Facebook
+                        </div>
+                    </a>
+
+                    <a href="https://www.instagram.com/aadmiwala">
+                        <div className='footerSocialMedia'><img src={ig}/> Instagram</div>
+                    </a>
+                    
                     <div>Blogs</div>
                     <div>About Us</div>
                 </div>

@@ -58,7 +58,7 @@ const LoginPage = ({userLogged,setUserLogged}) => {
         e.preventDefault();
        
 
-        if(PhoneNum && validPhone && Pwd)
+        if(PhoneNum && validPhone && Pwd){
         try{
           const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {PhoneNum, Pwd})
 
@@ -84,6 +84,7 @@ const LoginPage = ({userLogged,setUserLogged}) => {
           
   
       catch(err){console.log(err);}
+    }
     }
 
 

@@ -23,6 +23,7 @@ function App() {
 
   const [searchValue, setSearchValue] = useState([]);
   const [userLogged, setUserLogged] = useState('');
+  const [SRmodal, setSRmodal] = useState(false);
 
 
   const connect_ref = useRef(null);
@@ -33,7 +34,7 @@ function App() {
 
     <Routes>
         
-      <Route  path="/" element={<Layout connect_ref={connect_ref} userLogged={userLogged} setUserLogged={setUserLogged}/>}>
+      <Route  path="/" element={<Layout connect_ref={connect_ref} userLogged={userLogged} setUserLogged={setUserLogged} SRmodal={SRmodal} setSRmodal={setSRmodal}/>}>
             
               <Route 
               index element={<HomePage searchValue={searchValue} 
