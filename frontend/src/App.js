@@ -35,28 +35,31 @@ function App() {
         
       <Route  path="/" element={<Layout connect_ref={connect_ref} userLogged={userLogged} setUserLogged={setUserLogged}/>}>
             
-            <Route index element={<HomePage searchValue={searchValue} setSearchValue={setSearchValue} connect_ref={connect_ref}/>} /> 
+              <Route 
+              index element={<HomePage searchValue={searchValue} 
+              setSearchValue={setSearchValue} 
+              connect_ref={connect_ref}/>} /> 
 
-            {/* <Route path="/blog/:id" element={<Blog/>}/> */}
+              {/* <Route path="/blog/:id" element={<Blog/>}/> */}
 
-            <Route path="about" element={<AboutPage connect_ref={connect_ref}/>}/>   
-            <Route path="addCompany" element={ <AddCompany/>}/>  
-            <Route path="companies" element={ <Companies/>}/>  
-            <Route path="company/:id" element={<CompanyPage/>}/>
+              <Route path="about" element={<AboutPage connect_ref={connect_ref}/>}/>   
+              <Route path="addCompany" element={ <AddCompany/>}/>  
+              <Route path="companies" element={ <Companies/>}/>  
+              <Route path="company/:id" element={<CompanyPage/>}/>
 
-            <Route element={<RequireloginAuth/>}>
+              <Route element={<RequireloginAuth/>}>
 
-            </Route>
+              </Route>
 
-            <Route path="login"  element={<LoginPage userLogged={userLogged} setUserLogged={setUserLogged}/>}/>
-            
-            <Route path="search/:value" element={<SearchPage searchValue={searchValue} setSearchValue={setSearchValue} />}/>
+              <Route path="login"  element={<LoginPage userLogged={userLogged} setUserLogged={setUserLogged}/>}/>
 
-            <Route element={<RequireAuth />}>
-              
-              <Route path='dashboard/:id' element={<Dashboard/>}/>
-            </Route>
+              <Route path="search/:value" element={<SearchPage searchValue={searchValue} setSearchValue={setSearchValue} />}/>
 
+              <Route element={<RequireAuth />}>
+
+                  <Route path="dashboard/:id" element={<Dashboard/>}/>
+              </Route>
+      
            
       </Route>
 

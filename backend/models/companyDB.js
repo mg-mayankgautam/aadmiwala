@@ -17,6 +17,7 @@ const companySchema = new Schema({
     address: {type:String},
     city: {type:Array},
     imageURLs: {type:Array},
+    date: {type:String}
 });
 
 module.exports =mongoose.model('companies', companySchema);

@@ -31,14 +31,23 @@
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
-    gap: 8px;
     padding: 4px;
+    gap: 4px;
+    width: max-content;
+    background-color: #0000001b;
+}
+
+.FC_ImgsDiv>div{
+    height: 50px;
+    width: 50px;
+    /* border: 1px solid #00000056; */
+    background-color: white;
 }
 
 .FC_ImgsDiv>div>img{
     height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .new{

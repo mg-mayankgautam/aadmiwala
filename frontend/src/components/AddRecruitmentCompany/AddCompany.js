@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import {useNavigate} from 'react-router-dom'
 import './AddCompany.css'
 import Nav from '../Nav/Nav'
@@ -78,17 +78,13 @@ const AddCompany = () => {
     const [phonee, setPhonee] = useState('');
     const [companyName, setCompanyName] = useState('');
     const [companyService, setCompanyService] = useState('');
-    const [serviceType, setServiceType] = useState([]);
+    const [servicetype, setServicetype] = useState([]);
     const [agencyBriefing, setAgencyBriefing] = useState('');
     const [noOfPositions, setNoOfPositions] = useState('');
     const [country, setCountry] = useState('');
     const [address, setAddress] = useState('');
-    const [city, setCity] = useState([]);
+    const [City, setCity] = useState([]);
 
-    // const [image1, setimage1] = useState('');
-    // const [image2, setimage2] = useState('');
-    // const [image3, setimage3] = useState('');
-    // const [image4, setimage4] = useState('');
 
     const [OTP, setOTP] = useState('');
 
@@ -108,11 +104,16 @@ const AddCompany = () => {
     const [file3, setFile3] = useState();
     const [file4, setFile4] = useState();
 
+    const userRef = useRef();
+
+    const [phonefromDB, setphonefromDB] = useState(true);
+    const [validPhnError, setValidPhnError] = useState(false);
+
 
     useEffect(() => {
         const result = PHONE_REGEX.test(phonee);
 
-        console.log(result);
+        // console.log(result);
         setValidPhone(result);
    
     }, [phonee])
@@ -120,7 +121,7 @@ const AddCompany = () => {
     useEffect(() => {
         const result = EMAIL_REGEX.test(email);
 
-        console.log(result);
+        // console.log(result);
         setValidEmail(result);
    
     }, [email])
@@ -128,7 +129,7 @@ const AddCompany = () => {
     useEffect(() => {
         const result = PASS_REGEX.test(pwd);
       
-        console.log(result);
+        // console.log(result);
         setValidPwd(result);
    
     }, [pwd])
@@ -149,23 +150,57 @@ const AddCompany = () => {
 
 
     useEffect(() => {
-        console.log(serviceType);
-    }, []);
+        console.log(servicetype);
+    }, [servicetype]);
+
+    useEffect(() => {
+        setValidPhnError(false)
+    }, [phonee]);
 
 
-    const nextBtn1 = (e)=>{
+    const nextBtn1 =async(e)=>{
+      
         e.preventDefault();
+       
+        if(phonee && validPhone ){
+            
+            const phonenum =phonee;
+            try{
+                const valid = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/checkphonenumber`,{phonenum})
+                
+                console.log(valid);
+                console.log(phonefromDB)
 
-        if(fullName && email && validEmail && phonee && validPhone){
-            setslide2(true); 
-            setslide1(false);
+                if(valid.data){
+                    setphonefromDB(true)
+                    console.log(phonefromDB)
+                    setValidPhnError(true)
+                }
+                else{
+                    setphonefromDB(false)
+                    console.log(phonefromDB)
+                    setValidPhnError(false)
+                    
+                    if(fullName && email && validEmail){
+                        console.log('working')
+            
+                        setslide2(true);
+                        setslide1(false);
+                    }
+                }
+            }
+            catch(err){console.log(err); }
+        
+            
         }
-    }
+    
+    } 
+
 
     const nextBtn2 = (e)=>{
         e.preventDefault();
 
-        if(companyName && serviceType ){
+        if(companyName && servicetype ){
             setslide3(true); 
             setslide2(false);
         }
@@ -189,7 +224,7 @@ const AddCompany = () => {
 
         const phone = '+91'+ phonee;
 
-        if(fullName && email && validEmail && phone && validPhone && companyName && serviceType && country && address && city){
+        if(fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype && country && address && City){
         
 
             try{
@@ -221,7 +256,7 @@ const AddCompany = () => {
         
 
 
-        if(phone && validPhone && OTP){
+        if(phone && validPhone && OTP && !phonefromDB){
         
 
             try{
@@ -249,7 +284,8 @@ const AddCompany = () => {
 
 
         const phone = '+91'+ phonee
-        console.log(fullName,email, phone, companyName, serviceType,  country, address, city);
+        //    console.log(fullName,email, phone, companyName, servicetype,  country, address, city);
+      console.log(servicetype);
         // const imgarray=[];
         // imgarray.push(file1,file2,file3,file4)
         const formData = new FormData();
@@ -262,15 +298,15 @@ const AddCompany = () => {
         formData.append("email", email);
         formData.append("phone", phone);
         formData.append("companyName", companyName);
-        formData.append("serviceType", serviceType);
+        formData.append("servicetype", servicetype);
         formData.append("country", country);
         formData.append("address", address);
-        formData.append("city", city);
+        formData.append("City", City);
         formData.append("pwd", pwd);
         // formData.append("city", city);
         console.log(formData)
 
-        if(fullName && email && validEmail && phone && validPhone && companyName && serviceType && country && address && city && pwd){
+        if(fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype && country && address && City && pwd){
         
 
             try{
@@ -296,7 +332,7 @@ const AddCompany = () => {
         }
 
     };
-    console.log(imageBoxCount)
+    // console.log(imageBoxCount)
 
   return (
     <>
@@ -342,11 +378,14 @@ const AddCompany = () => {
                         { phonee && !validPhone? (<p className='validerror'>
                         add valid phone number.        
                         </p>): <></>}
+                        { phonee && validPhone && phonefromDB && validPhnError ? (<p className='validerror'>
+                        phone number is already registered.        
+                        </p>): <></>}
                     </div>
                 </div>
 
                     {!fullName || !email || !phonee ? (<p className='error'>
-                    please complete all fields.        
+                    please complete all fields.     
                     </p>): <></>}
             </div>:<></>}
 
@@ -382,8 +421,8 @@ const AddCompany = () => {
                         renderInput={(params) => (
                             <TextField {...params} label="" placeholder="" />
                         )}
-                        onChange={(event, value) => setServiceType(value)}
-                        value={serviceType}
+                        onChange={(event, value) => setServicetype(value)}
+                        value={servicetype}
                     />
                 </div>
                 {/* <div>
@@ -391,62 +430,6 @@ const AddCompany = () => {
                     <input className='recr_input' type='text' onChange={(e)=>setAgencyBriefing(e.target.value)} required  value={agencyBriefing}/>
                 </div> */}
 
-
-                {/* <div>
-                    <div >No. of Positions</div>
-                    <input className='recr_input' type='number' onChange={(e)=>setNoOfPositions(e.target.value)} required value={noOfPositions}/>
-                    <div >Add Images</div>
-                    <h6 >Upload photos to google drive and paste Links</h6>
-
-                    <input 
-                    className='recr_input' 
-                    
-                    onChange={(e)=>setimage1(e.target.value)} 
-                     
-                    value={image1}
-                    />
-                    
-
-                    {  imageBoxCount > 1 ? <div>
-                    
-                            
-                        <input 
-                        className='recr_input' 
-                        
-                        onChange={(e)=>setimage2(e.target.value)} 
-                        
-                        value={image2}
-                        />
-                        
-                    </div>:<></>}
-
-                    {  imageBoxCount > 2 ? <div>
-                    
-                            
-                    <input 
-                    className='recr_input' 
-                    
-                    onChange={(e)=>setimage3(e.target.value)} 
-                    
-                    value={image3}
-                    />
-                    
-                    </div>:<></>}
-
-                    {  imageBoxCount > 3 ? <div>
-                    
-                            
-                    <input 
-                    className='recr_input' 
-                    
-                    onChange={(e)=>setimage4(e.target.value)} 
-                    
-                    value={image4}
-                    />
-                    
-                        </div>:<></>}
-                        <button onClick={()=>{addimageboxes()}} className='addImgBtn'>add more images</button>
-                </div> */}
 
                 <div className='fileInputDiv' style={{minHeight:'50px'}}>
 
@@ -525,7 +508,7 @@ const AddCompany = () => {
                 </div>
 
 
-                {!companyName || !serviceType ? (<p className='error'>
+                {!companyName || !servicetype ? (<p className='error'>
                     please complete all fields.        
                 </p>): <></>}
 
@@ -568,10 +551,10 @@ const AddCompany = () => {
                             <TextField {...params} label="" placeholder="" />
                         )}
                         onChange={(event, value) => setCity(value)}
-                        value={city}
+                        value={City}
                     />
                 </div>
-                {!country || !address || !city ? (<p className='error'>
+                {!country || !address || !City ? (<p className='error'>
                     please complete all fields.        
                     </p>): <></>}
             </div>:<></>}
@@ -622,7 +605,9 @@ const AddCompany = () => {
            
            
             <div className='recr_btns_div'>
-                {slide1?<button className='recruiting_next_btn' onClick={(e)=> nextBtn1(e)}>Next</button>:<></>}
+                {slide1?<>
+                <button className='recruiting_next_btn' onClick={(e)=> nextBtn1(e)}>Next</button>
+                </>:<></>}
 
                 {slide2?<><button className='recruiting_back_btn' onClick={(e)=> {setslide2(false); setslide1(true)}} >Back</button>
                 <button className='recruiting_next_btn' onClick={(e)=> nextBtn2(e)}>Next</button></>:<></>}

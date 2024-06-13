@@ -130,10 +130,35 @@ const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex
 
 
 
+
+module.exports.checkPhnNumber =async(req,res)=>{
+
+    const PhoneNum = req.body.phonenum;
+    const Phone = Number('+91' + PhoneNum)
+        console.log('phone', Phone);
+
+    try{
+        const phn = await userDB.findOne({Phone},{Phone:1});
+        if(phn){
+            res.send(true);
+            console.log(phn);
+
+        }
+        else{
+            console.log(phn);
+            res.send(false);
+        }
+        
+    }
+    catch(err){console.log(err)}
+    
+}
+
+
 module.exports.addRecruitingCompany= async (req,res)=>{
 
-    //console.log('working backend wuhu',req.files);
-    //console.log('working backend wuhu',req.body);
+    console.log('req.files',req.files);
+    console.log('working backend',req.body);
 
     const imgsarray = req.files;
 
@@ -160,28 +185,28 @@ module.exports.addRecruitingCompany= async (req,res)=>{
 
     }
 
-    const {image,fullName, email, phone, companyName, serviceType, country, address, city, pwd} = req.body;
+    const {image,fullName, email, phone, companyName, servicetype, country, address, City, pwd} = req.body;
     
   
+    const Phone = Number(phone);
+
+    serviceType = servicetype.split(',')
+    city = City.split(',')
+
+//    const postedDate = new Date();
+//    const date = postedDate.toDateString()
+
+   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let newDate = new Date()
+        let day = newDate.getDate();
+        let month = monthNames[newDate.getMonth()];
+        let year = newDate.getFullYear();
+        const date = `${month} ${day}, ${year}`
+   console.log(date);
+
    
 
-
-//console.log(data)
-
-
-
-   
-
-    //console.log(URL)
-
-    // const noOfpositions= Number(noOfPositions);
-    // const noOfpositions= Number(0);
-     const Phone = Number(phone);
-
-   // console.log(req.body);
-   // console.log(noOfpositions, Phone);
-
-    let newCompany = new companyDB({fullName, email, Phone, companyName, serviceType, country, address, city, imageURLs});
+    let newCompany = new companyDB({fullName, email, Phone, companyName, serviceType, country, address, city, imageURLs, date});
 
 
 
@@ -234,59 +259,18 @@ module.exports.logIn = async (req,res)=>{
     
     if(user){
         console.log('welcome')
-        // req.session.Username=Username;
-        // req.session.UserID=user._id.toString();
-        // res.json({Username:req.session.Username})
-        res.json(true)
+         req.session.Username=Phone;
+         req.session.UserID=user._id.toString();
+         res.json({Username:req.session.Username})
+        //res.json(true)
     }
-    else if(!user){res.json(false)}
-}
-
-
-
-module.exports.checkUsername =async(req,res)=>{
-
-    // const Username = req.body.Username;
-    //     console.log('usgernamer',Username);
-    // const user = await usersDB.findOne({Username},{Username:1});
-    // console.log(user);
-    // res.send({user});
-}
-
-
-module.exports.signUp = async (req,res)=>{
-
-    // console.log('working backend wuhu')
-
-    // const {Username,Password}=req.body; 
-    console.log(req.body);
-
-    // let newUser = new usersDB ({Username,Password});
-    // newUser.save()
-    //  .then((saved)=>{
-    //                    const UserID = saved._id.toString();
-    //                    const Username = saved.Username;
-    //                    const watchedmovie=[];
-    //                    const WatchList=[]; 
-    //                    const Lists=[];
-    //                  let rating = new ratingDB ({UserID,Username,watchedmovie,WatchList, Lists});
-    //                  rating.save()
-    //                   .then(()=>{
-
-
-    //                  console.log('rating added success');
-    //                 res.send(true);
-    //                  })
-    //                    .catch(err =>{console.log(err);});
-        
-    //             console.log('user addes success');
-    //     // res.redirect('/');
-    //   })
-    //    .catch(err =>{console.log(err);});
-
+    else if(!user){
+        res.json(false)
+    }
 
 
 }
+
 
 
 module.exports.logout = async (req,res)=>{
@@ -307,7 +291,7 @@ module.exports.logout = async (req,res)=>{
 
 
 module.exports.isauth=async (req,res)=>{
-// console.log('isauth controller');
+ console.log('isauth controller');
     if(!req.session.Username){
      
 
@@ -374,3 +358,20 @@ module.exports.search= async(req, res)=>{
     }
     
 }
+
+
+module.exports.getUserData =async(req,res)=>{
+ 
+     //console.log(req.query.username, 'get username') 
+     //const userID=req.session.UserID
+     const Phone = req.query.id;
+    
+    try{
+      const data = await companyDB.findOne({Phone})
+      console.log(data,'found user');
+      
+      res.send(data);
+    }
+    catch(e){console.log(e)}
+    
+    }

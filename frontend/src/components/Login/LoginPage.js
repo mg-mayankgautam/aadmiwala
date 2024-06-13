@@ -74,7 +74,7 @@ const LoginPage = ({userLogged,setUserLogged}) => {
                 setAuth({user});
                 console.log('after login',user);
                 setUserLogged(user);
-                // navigate('/dashboard');
+                 navigate(`/dashboard/${user}`);
                 
                 // navigate(`${state.prev.pathname}`)
               }                

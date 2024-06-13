@@ -346,19 +346,19 @@ module.exports.getLists= async(req,res)=>{
 }
 
 
-module.exports.getUserData =async(req,res)=>{
+// module.exports.getUserData =async(req,res)=>{
  
- //console.log(req.query.username, 'get username') 
- //const userID=req.session.UserID
- const Username = req.query.username;
+//  //console.log(req.query.username, 'get username') 
+//  //const userID=req.session.UserID
+//  const Username = req.query.username;
 
-try{
-  const data = await ratingDB.findOne({Username})
-  // console.log(data.WatchList,'found user');
-  const movieswatched = data.watchedmovie
-  const watchlist = data.WatchList
-  res.send({movieswatched, watchlist});
-}
-catch(e){console.log(e)}
+// try{
+//   const data = await ratingDB.findOne({Username})
+//   // console.log(data.WatchList,'found user');
+//   const movieswatched = data.watchedmovie
+//   const watchlist = data.WatchList
+//   res.send({movieswatched, watchlist});
+// }
+// catch(e){console.log(e)}
 
-}
+// }

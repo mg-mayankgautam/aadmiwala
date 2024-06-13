@@ -18,5 +18,11 @@ router.post('/verifyphone',authController.verifyPhoneNum)
 router.post('/verifyotp',authController.verifyOtp)
 router.post('/login',authController.logIn)
 router.get('/search',authController.search)
+router.get('/isauth',authController.isauth)
+router.post('/checkphonenumber',authController.checkPhnNumber);
+router.get('/getuserdata',authController.getUserData);
+router.post('/logout',authController.logout)
+
+
 
 module.exports = router;
