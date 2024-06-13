@@ -9,11 +9,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
 <Router>
-     {/* <AuthProvider> */}
+     <AuthProvider>
          <Routes>
            <Route path="/*" element={<App/>} />
          </Routes>
-      {/* </AuthProvider> */}
+      </AuthProvider>
   </Router>
 
 );

@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import './Login.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import useAuth from '../../hook/useAuth';
 import axios from 'axios'
 
 
-const LoginPage = () => {
+const LoginPage = ({userLogged,setUserLogged}) => {
 
   axios.defaults.withCredentials = true;
-  // const {setAuth}=useAuth();
-   // let { state } = useLocation();
+  const {setAuth}=useAuth();
+   let { state } = useLocation();
     
     //console.log(state.prev);
     
@@ -70,10 +71,10 @@ const LoginPage = () => {
             }
             else{            
               const user = axiosdata.Username;
-                // setAuth({user});
-                // console.log('after login',user);
-                // setUserName(user);
-                navigate('/dashboard');
+                setAuth({user});
+                console.log('after login',user);
+                setUserLogged(user);
+                // navigate('/dashboard');
                 
                 // navigate(`${state.prev.pathname}`)
               }                

@@ -11,13 +11,19 @@ import SearchPage from './components/Search/SearchPage';
 import Dashboard from './components/Dashboard/Dashboard';
 import { useState, useRef } from 'react';
 import axios from 'axios'
+import RequireAuth from './RequireAuth';
+import RequireloginAuth from './RequireloginAuth';
+
+
 
 function App() {
 
-  // axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = true;
   // axios.defaults.Credentials= true;
 
   const [searchValue, setSearchValue] = useState([]);
+  const [userLogged, setUserLogged] = useState('');
+
 
   const connect_ref = useRef(null);
 
@@ -27,7 +33,7 @@ function App() {
 
     <Routes>
         
-      <Route  path="/" element={<Layout connect_ref={connect_ref}/>}>
+      <Route  path="/" element={<Layout connect_ref={connect_ref} userLogged={userLogged} setUserLogged={setUserLogged}/>}>
             
             <Route index element={<HomePage searchValue={searchValue} setSearchValue={setSearchValue} connect_ref={connect_ref}/>} /> 
 
@@ -37,19 +43,24 @@ function App() {
             <Route path="addCompany" element={ <AddCompany/>}/>  
             <Route path="companies" element={ <Companies/>}/>  
             <Route path="company/:id" element={<CompanyPage/>}/>
-            <Route path="login"  element={<LoginPage/>}/>
+
+            <Route element={<RequireloginAuth/>}>
+
+            </Route>
+
+            <Route path="login"  element={<LoginPage userLogged={userLogged} setUserLogged={setUserLogged}/>}/>
+            
             <Route path="search/:value" element={<SearchPage searchValue={searchValue} setSearchValue={setSearchValue} />}/>
 
-
-            <Route path='dashboard' element={<Dashboard/>}/>
+            <Route element={<RequireAuth />}>
+              
+              <Route path='dashboard/:id' element={<Dashboard/>}/>
+            </Route>
 
            
       </Route>
 
-      {/* <Route element={<RequireloginAuth />}> */}
-              
-            {/* <Route path='dashboard' element={<AdminDashboard/>}/> */}
-      {/* </Route> */}
+      
    
     
     </Routes> 
