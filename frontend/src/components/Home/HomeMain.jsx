@@ -146,7 +146,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                 </div>
 
                 <div className='subHead'>
-                Empowering companies and candidates together                    
+                Empowering companies and service providers together                   
                 </div>
 
                 <div className='landingsubHead'>

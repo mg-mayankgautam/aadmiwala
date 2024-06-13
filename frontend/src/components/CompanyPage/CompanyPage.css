@@ -41,8 +41,8 @@
 }
 
 .companyImgsDiv>div{
-    height: 100px;
-    width: 100px;
+    height: 130px;
+    width: 130px;
     /* border: 1px solid #00000056; */
     background-color: white;
 }
@@ -60,13 +60,14 @@
 }
 
 .company_facilities{
-    font-size: 14px;
+    /* font-size: 14px; */
     background-color: var(--grey);
     border-radius: 4px;
     padding: 2px 8px;
     align-self: flex-start;
     font-weight: 600;
     color: #00000099;
+    margin: 24px 0;
 }
 
 .company_desc{

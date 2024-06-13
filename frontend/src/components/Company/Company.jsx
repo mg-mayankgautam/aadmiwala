@@ -32,7 +32,7 @@ const Company = ({company}) => {
                             {/* <div className='FC_desc'>
                             Company Description: <li>{company.agencyBriefing}</li> 
                             </div> */}
-                            <div className='FC_date'>Posted 2 Days ago</div>
+                            <div className='FC_date'>Posted {company.date}</div>
                         </div>
   )
 }

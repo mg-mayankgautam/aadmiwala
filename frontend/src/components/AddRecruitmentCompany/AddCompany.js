@@ -342,7 +342,7 @@ const AddCompany = () => {
 
         <div className='recruiting_input_box'>
             <div>
-                <div className='recruiting_input_heading'>Add Recruiting Company</div>
+                <div className='recruiting_input_heading'>Add Service Providers</div>
                 <div className='recruiting_input_Subheading'>
                     {slide1?'Your information':''}
                     {slide2?'Information of your Company':''}

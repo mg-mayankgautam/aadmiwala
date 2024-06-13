@@ -92,7 +92,7 @@ const handleLogout = async() =>{
 
             <div className='navItemBold'>
                 
-                <Link to={`addCompany`} >+ Add Recruiting Company</Link>
+                <Link to={`addCompany`} >+ Add Service Providers</Link>
             
             </div>
         </div>

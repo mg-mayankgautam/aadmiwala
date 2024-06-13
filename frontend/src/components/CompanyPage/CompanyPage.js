@@ -49,7 +49,7 @@ const CompanyPage = () => {
           <div className='companyTopFlex'>
 
             <div className='companyData'>
-              <div className='company_date'>Posted 2 Days ago</div>
+              <div className='company_date'>Posted {company.date}</div>
 
               <div className='jobTitle'>Job Title</div>
 
@@ -64,6 +64,12 @@ const CompanyPage = () => {
                 {company.country}
               </div>
 
+              <div className='company_facilities'>
+                Provides {company.serviceType&&company.serviceType.map(service=><span id=''>{service}, </span>)}
+              </div>
+
+              <button onClick={()=> setModal(true)} className='getinTouchBtn'>Get in Touch</button>
+
             </div>
 
             <div className='companyImgsDiv'>
@@ -75,16 +81,16 @@ const CompanyPage = () => {
           </div>
 
           
-          <div className='company_facilities'>
+          {/* <div className='company_facilities'>
             Provides {company.serviceType&&company.serviceType.map(service=><span id=''>{service}, </span>)}
-          </div>
+          </div> */}
           
           {/* <div className='company_desc'>
               Company Description: 
               <li>{company.agencyBriefing}</li> 
           </div> */}
           
-          <button onClick={()=> setModal(true)} className='getinTouchBtn'>Get in Touch</button>
+          {/* <button onClick={()=> setModal(true)} className='getinTouchBtn'>Get in Touch</button> */}
 
           {modal? <GetinTouch company={company}/> : <></>}
 
