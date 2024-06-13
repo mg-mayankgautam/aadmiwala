@@ -18,6 +18,7 @@ const cookieParser = require('cookie-parser');
 app.use(cors( 
     {
         // origin: process.env.FRONTEND_URL, 
+        // origin: 'http://localhost:3000', 
         origin: 'https://aadmiwala.in',
         credentials: true, 
         withCredentials: true
