@@ -69,4 +69,5 @@
     gap: 4px;
     justify-content: flex-start;
     text-align: left;
+    cursor: pointer;
 }
