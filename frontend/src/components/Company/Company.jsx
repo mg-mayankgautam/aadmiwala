@@ -18,6 +18,11 @@ const Company = ({company}) => {
                     {company.country}
                 </div>
 
+                <div className='FC_PR'>
+                  Avg Price Range: {company.priceRange} INR
+                </div>
+            
+
             </div>
 
             <div className='FC_ImgsDiv'>
@@ -27,13 +32,18 @@ const Company = ({company}) => {
             </div>
 
         </div>
+
+        <div className='FC_bottomFlex'>
             
-                            <div className='FC_facilities'>Provides {company.serviceType.map((service, i)=><span key={i}>{service}, </span>)}</div>
-                            {/* <div className='FC_desc'>
+            <div className='FC_facilities'>Provides {company.serviceType.map((service, i)=><span key={i}>{service}, </span>)}</div>
+            {/* <div className='FC_desc'>
                             Company Description: <li>{company.agencyBriefing}</li> 
                             </div> */}
-                            <div className='FC_date'>Posted {company.date}</div>
-                        </div>
+            <div className='FC_date'>Posted {company.date}</div>
+        </div>
+            
+                            
+      </div>
   )
 }
 

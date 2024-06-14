@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    justify-content: space-between;
     padding: 16px;
     min-width: 340px;
     max-width: 360px;
@@ -20,6 +21,16 @@
     gap: 32px;
 }
 
+.FC_bottomFlex{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.FC_PR{
+    color: #00000099;
+}
+
 .FC_dataDiv{
     display: flex;
     flex-direction: column;
@@ -34,6 +45,7 @@
     padding: 4px;
     gap: 4px;
     width: max-content;
+    height: max-content;
     background-color: #0000001b;
 }
 
