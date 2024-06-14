@@ -91,6 +91,7 @@ font-weight: 700;
 .recr_range_input_div{
     display: flex;
     gap: 16px;
+    margin-top: 16px;
     /* justify-content: space-between; */
 }
 

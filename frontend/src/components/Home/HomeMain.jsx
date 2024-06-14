@@ -6,74 +6,6 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { useNavigate } from 'react-router-dom';
 
 
-// const combinedSearch = [
-//     { label: 'AC/Telephone Repair', id: 'services' },
-//     { label: 'Administrative Support', id: 'services' },
-//     { label: 'Agra', id: 'cities' },
-//     { label: 'Ahmedabad', id: 'cities' },
-//     { label: 'Aligarh', id: 'cities' },
-//     { label: 'Amritsar', id: 'cities' },
-//     { label: 'Aurangabad', id: 'cities' },
-//     { label: 'Bangalore', id: 'cities' },
-//     { label: 'Bhopal', id: 'cities' },
-//     { label: 'Bilaspur', id: 'cities' },
-//     { label: 'Blue Collar', id: 'services' },
-//     { label: 'Catering Service', id: 'services' },
-//     { label: 'Chandigarh', id: 'cities' },
-//     { label: 'Chennai', id: 'cities' },
-//     { label: 'Customer Service Representatives', id: 'services' },
-//     { label: 'Delhi', id: 'cities' },
-//     { label: 'Dhanbad', id: 'cities' },
-//     { label: 'Electrician/Plumber Service', id: 'services' },
-//     { label: 'Facility Service', id: 'services' },
-//     { label: 'Faridabad', id: 'cities' },
-//     { label: 'Gaya', id: 'cities' },
-//     { label: 'Ghaziabad', id: 'cities' },
-//     { label: 'Guwahati', id: 'cities' },
-//     { label: 'Gwalior', id: 'cities' },
-//     { label: 'Haora', id: 'cities' },
-//     { label: 'Haldwani', id: 'cities' },
-//     { label: 'Housekeeping Services', id: 'services' },
-//     { label: 'Hyderabad', id: 'cities' },
-//     { label: 'IT Support', id: 'services' },
-//     { label: 'Indore', id: 'cities' },
-//     { label: 'Jabalpur', id: 'cities' },
-//     { label: 'Jaipur', id: 'cities' },
-//     { label: 'Jamshedpur', id: 'cities' },
-//     { label: 'Kanpur', id: 'cities' },
-//     { label: 'Kalyan', id: 'cities' },
-//     { label: 'Kolkata', id: 'cities' },
-//     { label: 'Lucknow', id: 'cities' },
-//     { label: 'Ludhiana', id: 'cities' },
-//     { label: 'Madurai', id: 'cities' },
-//     { label: 'Mailroom Service', id: 'services' },
-//     { label: 'Meerut', id: 'cities' },
-//     { label: 'Mirzapur', id: 'cities' },
-//     { label: 'Mumbai', id: 'cities' },
-//     { label: 'Nagpur', id: 'cities' },
-//     { label: 'Najafgarh', id: 'cities' },
-//     { label: 'Nasik', id: 'cities' },
-//     { label: 'Office Boy', id: 'services' },
-//     { label: 'Other', id: 'services' },
-//     { label: 'Patna', id: 'cities' },
-//     { label: 'Pest Control', id: 'services' },
-//     { label: 'Pimpri-Chinchwad', id: 'cities' },
-//     { label: 'Prayagraj', id: 'cities' },
-//     { label: 'Pune', id: 'cities' },
-//     { label: 'Rajgir', id: 'cities' },
-//     { label: 'Rajkot', id: 'cities' },
-//     { label: 'Ranchi', id: 'cities' },
-//     { label: 'Reception Service', id: 'services' },
-//     { label: 'Security Service', id: 'services' },
-//     { label: 'Srinagar', id: 'cities' },
-//     { label: 'Supaul', id: 'cities' },
-//     { label: 'Surat', id: 'cities' },
-//     { label: 'Thane', id: 'cities' },
-//     { label: 'Vadodara', id: 'cities' },
-//     { label: 'Varanasi', id: 'cities' },
-//     { label: 'Vasai-Virar', id: 'cities' },
-//     { label: 'Vijayavada', id: 'cities' },
-// ]
 
 const cities = [
     'Delhi', 'Mumbai', 'Kolkata', 'Bangalore', 'Chennai', 'Hyderabad', 'Pune', 'Ahmedabad', 'Surat', 'Lucknow', 'Jaipur', 'Kanpur', 'Mirzapur', 'Nagpur', 'Ghaziabad', 'Supaul', 'Vadodara', 'Rajkot', 'Vishakhapatnam', 'Indore', 'Thane', 'Bhopal', 'Pimpri-Chinchwad', 'Patna', 'Bilaspur', 'Ludhiana', 'agra', 'Madurai', 'Jamshedpur', 'Prayagraj', 'Nasik', 'Faridabad', 'Meerut', 'Jabalpur', 'Kalyan', 'Vasai-Virar', 'Najafgarh', 'Varanasi', 'Srinagar', 'Aurangabad', 'Dhanbad', 'Amritsar', 'Aligarh', 'Guwahati', 'Haora', 'Ranchi', 'Gwalior', 'Chandigarh', 'Haldwani', 'Vijayavada', 'Gaya', 'Rajgir'
@@ -87,6 +19,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
     const navigate = useNavigate();
 
     const [searchInput, setSearchInput] = useState('');
+    const [freqSearch, setfreqSearch] = useState('');
     const [searchType, setSearchType] = useState('service');
     const [service, setService] =useState(true);
     const [city, setCity] =useState(false);
@@ -107,6 +40,13 @@ const HomeMain = ({searchValue,setSearchValue}) => {
     useEffect(()=>{
         setSearchError(false);
     },[searchType, searchInput])
+
+    useEffect(()=>{
+        console.log(freqSearch);
+        if(freqSearch){
+            findfreqSearched()
+        }
+    },[freqSearch])
 
 
     const findSearchedInput =async(e)=>{
@@ -134,6 +74,31 @@ const HomeMain = ({searchValue,setSearchValue}) => {
         
     }
 
+    const findfreqSearched =async()=>{
+        // e.preventDefault();
+        console.log(freqSearch); 
+        
+        if(freqSearch){
+
+            // console.log()
+            try{
+                const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/search?input=${freqSearch}&type=service`);
+                console.log(data.data);
+
+                if(data.data){
+                    setSearchValue(data.data);
+                    navigate(`/search/${freqSearch}`)
+                }
+                else{
+                    setSearchError(true);
+                }
+                
+              }
+              catch(err){console.log(err);}
+
+        }
+        
+    }
 
   return (
     <>
@@ -195,12 +160,12 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                 {/* <div className='freqSearchText'>Frequent Search</div> */}
                 
                 <div className='freqSearchBtns'>
-                    <button>Facility Provider</button>
-                    <button>Security Guard</button>
-                    <button>Blue Collars</button>
+                    <button onClick={(e)=> setfreqSearch(e.target.innerHTML)}>Facility Service</button>
+                    <button>Security Service</button>
+                    <button>Blue Collar</button>
                     <button>Office Boy</button>
-                    <button>Housekeeping</button>
-                    <button className='viewAllBtn'>View All</button>
+                    <button onClick={(e)=> setfreqSearch(e.target.innerHTML)}>IT Support</button>
+                    {/* <button className='viewAllBtn'>View All</button> */}
                 </div>
             </div>
         </div>

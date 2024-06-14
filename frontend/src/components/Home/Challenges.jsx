@@ -12,16 +12,16 @@ const Challenges = () => {
 <>
     <div className='Challenges'>
 
-        <div className='challengesHead'>Challenges in Best Services Company Sourcing</div>
+        <div className='challengesHead'>Why Aadmiwala?</div>
 
-        <div className='text'>The difficulties of sourcing talent in today's talent marketplace</div>
+        <div className='text'>Eases the difficulties of sourcing talent in today's talent marketplace</div>
 
         <div className='challengesContainer'>
-        <div className='CC_box'>
+        {/* <div className='CC_box'>
                 <img src={c0} className='CC_icon'/>
-                <div className='subHead'>Adapting to Changing <br />Business Needs</div>
+                <div className='subHead'>Adapting to Changing <br />Business Needs</div> */}
                 {/* <div className='CC_text'>Aadmiwala offers flexible and customizable staffing solutions that adapt to your evolving business needs. Whether you need temporary, permanent, or contract staffing, we have the agility to tailor our services to meet your changing requirements.</div> */}
-            </div>
+            {/* </div> */}
             <div className='CC_box'>
                 <img src={c1} className='CC_icon'/>
                 <div className='subHead'>Ensuring Quality and <br />Reliability</div>

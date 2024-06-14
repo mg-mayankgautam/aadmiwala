@@ -340,7 +340,7 @@ module.exports.search= async(req, res)=>{
     const input = req.query.input;
 
     if(type==='service'){
-
+        
         try{
             let searchdata = await companyDB.find({serviceType: input});
 
