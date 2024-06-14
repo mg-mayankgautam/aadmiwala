@@ -283,7 +283,7 @@ const AddCompany = () => {
 
         const phone = '+91'+ phonee
         const priceRange = lowPR + ' - ' + highPR;
-      console.log(servicetype);
+    //   console.log(servicetype);
         
         const formData = new FormData();
       
@@ -523,7 +523,7 @@ const AddCompany = () => {
                 </div>
 
 
-                {!companyName || !servicetype || !GSTno || !agencyBriefing || !lowPR || !highPR? (<p className='error'>
+                {!companyName || !servicetype || !lowPR || !highPR? (<p className='error'>
                     please complete all fields.        
                 </p>): <></>}
 
@@ -570,7 +570,7 @@ const AddCompany = () => {
                         value={City}
                     />
                 </div>
-                {!country || !address || !City ? (<p className='error'>
+                {!country || !City ? (<p className='error'>
                     please complete all fields.        
                     </p>): <></>}
             </div>:<></>}

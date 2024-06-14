@@ -1,7 +1,7 @@
 import React from 'react'
 import './Dashboard.css'
 import dashicon from '../../assets/dash-icon.png'
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect} from 'react';
 import axios from 'axios';
 import useAuth from '../../hook/useAuth';
@@ -32,6 +32,8 @@ const Dashboard = () => {
     const [name, setName] = useState('');
     const [modal, setmodal] = useState(false)
     const [serviceType, setServiceType] = useState([])
+
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -91,6 +93,7 @@ const Dashboard = () => {
       console.log(id)
     }, [])
 
+
     const updateUserServices = async(e)=>{
         e.preventDefault();
 
@@ -102,12 +105,14 @@ const Dashboard = () => {
             const axiosdata = data.data
             console.log(axiosdata);
 
-            if(axiosdata){setUserServices(axiosdata)}
+            if(axiosdata){
+                console.log(axiosdata)
+                setUserServices(axiosdata)
+                navigate(`/dashboard/${UserName}`)
+            }
   
-          }
-  
+        }
             
-    
         catch(err){console.log(err);}
     }
 
@@ -178,39 +183,42 @@ const Dashboard = () => {
             </div>
         </div>
 
-        <div>
-            <div>
-                <div>Select the Type of service you provide</div>
-                <Autocomplete
-                        multiple
-                        id="checkboxes-tags-demo"
-                        options={services}
-                        disableCloseOnSelect
-                        getOptionLabel={(option) => option}
-                        renderOption={(props, option, { selected }) => (
-                            <li {...props}>
-                            <Checkbox
-                                icon={icon}
-                                checkedIcon={checkedIcon}
-                                style={{ marginRight: 8 }}
-                                checked={selected}
-                            />
-                            {option}
-                            </li>
-                        )}
-                        style={{ width: 392 }}
-                        value={serviceType}
-                        onChange={(event, newValue) => setServiceType(newValue)}
-                        renderInput={(params) => (
-                            <TextField {...params} label="" placeholder="" />
-                        )}
-                        
-                />
+        {modal? 
+            <div className='dashModal'>
+                <div className='modalBox'>
+                    <div onClick={()=> setmodal(false)} className='closeDashModal'> X </div>
+                    <div>Select the Type of service you provide</div>
+                    <Autocomplete
+                            multiple
+                            id="checkboxes-tags-demo"
+                            options={services}
+                            disableCloseOnSelect
+                            getOptionLabel={(option) => option}
+                            renderOption={(props, option, { selected }) => (
+                                <li {...props}>
+                                <Checkbox
+                                    icon={icon}
+                                    checkedIcon={checkedIcon}
+                                    style={{ marginRight: 8 }}
+                                    checked={selected}
+                                />
+                                {option}
+                                </li>
+                            )}
+                            style={{ width: 392 }}
+                            value={serviceType}
+                            onChange={(event, newValue) => setServiceType(newValue)}
+                            renderInput={(params) => (
+                                <TextField {...params} label="" placeholder="" />
+                            )}
+                            
+                    />
 
-                <button onClick={(e)=> updateUserServices(e)}>Submit New Services</button>
+                    <button onClick={(e)=> updateUserServices(e)} className='submitNewServices'>Submit New Services</button>
 
+                </div>
             </div>
-        </div>
+        :<></>}
 
     </div>
   )
