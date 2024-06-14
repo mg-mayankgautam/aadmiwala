@@ -65,6 +65,10 @@ const services =[
 
 const AddCompany = () => {
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     const navigate = useNavigate();
 
     const [slide1, setslide1] = useState(true);
