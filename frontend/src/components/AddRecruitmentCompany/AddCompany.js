@@ -152,10 +152,6 @@ const AddCompany = () => {
 
 
     useEffect(() => {
-        console.log(servicetype);
-    }, [servicetype]);
-
-    useEffect(() => {
         setValidPhnError(false)
     }, [phonee]);
 
@@ -164,7 +160,7 @@ const AddCompany = () => {
       
         e.preventDefault();
        
-        if(phonee && validPhone ){
+        if(phonee && validPhone){
             
             const phonenum =phonee;
             try{
@@ -202,7 +198,7 @@ const AddCompany = () => {
     const nextBtn2 = (e)=>{
         e.preventDefault();
 
-        if(companyName && servicetype && GSTno && agencyBriefing && lowPR && highPR){
+        if(companyName && servicetype && lowPR && highPR){
             setslide3(true); 
             setslide2(false);
         }
@@ -226,7 +222,7 @@ const AddCompany = () => {
 
         const phone = '+91'+ phonee;
 
-        if(fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype && GSTno && agencyBriefing && lowPR && highPR && country && address && City){
+        if(fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype && lowPR && highPR && country && City){
         
 
             try{
@@ -310,7 +306,7 @@ const AddCompany = () => {
         // formData.append("city", city);
         console.log(formData)
 
-        if(fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype &&agencyBriefing && priceRange && country && address && City && pwd){
+        if(fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype && priceRange && country && City && pwd){
         
 
             try{
@@ -546,8 +542,9 @@ const AddCompany = () => {
                     <div>Main Office Address</div>                   
                     <input className='recr_input' type='text' onChange={(e)=>setAddress(e.target.value)} required value={address}/>
                 </div>
-                <div>
-                    <div >Cities Operational in:</div>
+
+                <div className='city_input_div'>
+                    <div className='city_input_text'>Cities Operational in:</div>
                     <Autocomplete
                         multiple
                         id="checkboxes-tags-demo"

@@ -231,3 +231,9 @@ font-weight: 700;
   .inputFileLabel3{top: 192px}
 
   .selectservicetext{margin-bottom: 12px;}
+  .city_input_div{
+    margin-bottom: 16px;
+  }
+  .city_input_text{
+    margin-bottom: 12px;
+  }
