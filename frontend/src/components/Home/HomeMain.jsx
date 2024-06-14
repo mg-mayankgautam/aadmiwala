@@ -161,9 +161,9 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                 
                 <div className='freqSearchBtns'>
                     <button onClick={(e)=> setfreqSearch(e.target.innerHTML)}>Facility Service</button>
-                    <button>Security Service</button>
-                    <button>Blue Collar</button>
-                    <button>Office Boy</button>
+                    <button onClick={(e)=> setfreqSearch(e.target.innerHTML)}>Security Service</button>
+                    <button onClick={(e)=> setfreqSearch(e.target.innerHTML)}>Blue Collar</button>
+                    <button onClick={(e)=> setfreqSearch(e.target.innerHTML)}>Office Boy</button>
                     <button onClick={(e)=> setfreqSearch(e.target.innerHTML)}>IT Support</button>
                     {/* <button className='viewAllBtn'>View All</button> */}
                 </div>

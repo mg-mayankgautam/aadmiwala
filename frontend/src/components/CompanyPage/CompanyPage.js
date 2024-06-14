@@ -17,13 +17,13 @@ const CompanyPage = () => {
     const [modal, setModal] = useState(false)
     
 
-    useEffect(() => {
-      window.scrollTo(0, 0)
-    }, [])
+    // useEffect(() => {
+    //   window.scrollTo(0, 0)
+    // }, [])
     
     useEffect(()=>{
 
-      // window.
+      window.scrollTo(0, 0)
 
         const getCompanies= async()=>{
           try{
@@ -37,7 +37,7 @@ const CompanyPage = () => {
     
         getCompanies()
       
-      },[]);
+      },[id]);
 
   return (
     <>

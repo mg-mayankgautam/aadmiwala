@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../assets/logowhite.png'
 import './Footer.css'
 import fb from '../../assets/fblogo.png'
@@ -6,6 +6,9 @@ import ig from '../../assets/iglogo.png'
 import EastIcon from '@mui/icons-material/East';
 
 const Footer = () => {
+
+    const [callus, setcallus] = useState(false)
+
   return (
     <div className='Footer'>
         <div className='footerContent'>
@@ -66,9 +69,16 @@ const Footer = () => {
                      <div>
                          aadmiwala@gmail.com
                      </div>
-                     <div className='footerOrange'>
-                         Contact Us <EastIcon/>
-                     </div>
+                     
+                     <div className={callus? 'footerOrange footerbtnwidth' : 'footerOrange' }
+                        onClick={()=> setcallus(!callus)}>
+                        {callus? 
+                            <>8210072553 <EastIcon/></>
+                        : 
+                        <>
+                            Contact Us <EastIcon/>
+                        </>}
+                    </div>
                      <div>
                         
                      </div>
