@@ -14,7 +14,7 @@ const Challenges = () => {
 
         <div className='challengesHead'>Why Aadmiwala?</div>
 
-        <div className='text'>Our platform simplifies agency connections, allowing you to focus on core business while we manage staffing intricacies.</div>
+        <div className='text'>Our platform simplifies agency connections, <br />allowing you to focus on core business while we manage staffing intricacies.</div>
 
         <div className='challengesContainer'>
         {/* <div className='CC_box'>
