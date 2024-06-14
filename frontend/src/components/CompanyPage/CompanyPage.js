@@ -72,6 +72,8 @@ const CompanyPage = () => {
                 Provides {company.serviceType&&company.serviceType.map(service=><span id=''>{service}, </span>)}
               </div>
 
+              <div className='company_PR'>Average Price Range: {company.priceRange} INR</div>
+
               <button onClick={()=> setModal(true)} className='getinTouchBtn'>Get in Touch</button>
 
             </div>

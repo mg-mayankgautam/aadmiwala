@@ -27,7 +27,7 @@ const Solutions = () => {
             </div>
             <div className='USP_box'>
                 <img src={usp2}/>
-                <div>Single Vender <br /> Single Payment</div>
+                <div>Single Vendor <br /> Single Payment</div>
             </div>
             <div className='USP_box'>
                 <img src={usp3}/>

@@ -107,7 +107,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
         <div className='landingContent'>
             <div className='landingHeadingDiv'>
                 <div className='mainHead'>
-                One Solution, Every Need.
+                    One Vendor, One Contract, One Solution
                 </div>
 
                 <div className='subHead'>
@@ -115,7 +115,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                 </div>
 
                 <div className='landingsubHead'>
-                    B2B talent marketplace
+                    {/* B2B talent marketplace */}
                 </div>
             </div>
 

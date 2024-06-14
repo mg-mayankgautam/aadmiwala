@@ -68,7 +68,11 @@
     align-self: flex-start;
     font-weight: 600;
     color: #00000099;
-    margin: 24px 0;
+    margin: 24px 0 8px;
+}
+
+.company_PR{
+    margin-bottom: 24px;
 }
 
 .company_desc{
