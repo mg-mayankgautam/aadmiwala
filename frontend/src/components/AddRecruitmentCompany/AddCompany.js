@@ -410,7 +410,7 @@ const AddCompany = () => {
                 </div>
 
                 <div>
-                    <div>Select the Type of service you provide</div>
+                    <div className='selectservicetext'>Select the Type of service you provide</div>
                     <Autocomplete
                         multiple
                         id="checkboxes-tags-demo"
