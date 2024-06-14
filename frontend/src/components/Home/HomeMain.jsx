@@ -157,7 +157,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
             </div>
 
             <div className='freqSearch'>
-                {/* <div className='freqSearchText'>Frequent Search</div> */}
+                <div className='freqSearchText'>Frequently Searched</div>
                 
                 <div className='freqSearchBtns'>
                     <button onClick={(e)=> setfreqSearch(e.target.innerHTML)}>Facility Service</button>
