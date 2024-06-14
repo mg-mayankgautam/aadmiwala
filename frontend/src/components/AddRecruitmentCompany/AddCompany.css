@@ -91,7 +91,7 @@ font-weight: 700;
 .recr_range_input_div{
     display: flex;
     gap: 16px;
-    margin-top: 16px;
+    /* margin-top: 16px; */
     /* justify-content: space-between; */
 }
 
@@ -155,13 +155,13 @@ font-weight: 700;
 
 .css-1tw9w9k-MuiAutocomplete-root .MuiOutlinedInput-root {
     padding: 9px 39px 9px 9px !important;
-    border-radius: 20px;
-    margin-top: 12px;
-    margin-bottom: 16px;
+    border-radius: 20px !important;
+    margin-top: 12px !important;
+    margin-bottom: 16px !important;
 }
 
 .css-1tw9w9k-MuiAutocomplete-root .MuiAutocomplete-inputRoot .MuiAutocomplete-input{
-    min-width: 0;
+    min-width: 0 !important;
 }
 
 
@@ -230,4 +230,4 @@ font-weight: 700;
   .inputFileLabel2{top: 142px}
   .inputFileLabel3{top: 192px}
 
-  .selectservicetext{margin-bottom: 12px;}
+  /* .selectservicetext{margin-bottom: 12px;} */
