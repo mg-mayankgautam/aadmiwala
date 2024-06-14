@@ -10,7 +10,7 @@ import  { useEffect, useRef } from 'react';
 import AboutTimeline from './AboutTimeline'
 
 
-const AboutPage = ({connect_ref}) => {
+const AboutPage = () => {
 
   const about_ref = useRef(null);
 
@@ -22,8 +22,8 @@ const AboutPage = ({connect_ref}) => {
         <AboutWelcome  about_ref={about_ref}/>
         <AboutDesc  about_ref={about_ref}/>
         <AboutTimeline/>
-        <Solutions/>
-        <Connect connect_ref={connect_ref}/>
+        {/* <Solutions/> */}
+        <Connect/>
         <Footer/>
     </div>
   )

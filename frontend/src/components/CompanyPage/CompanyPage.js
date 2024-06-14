@@ -64,6 +64,10 @@ const CompanyPage = () => {
                 {company.country}
               </div>
 
+              <div className='company_desc'>
+                {company.agencyBriefing}
+              </div>
+
               <div className='company_facilities'>
                 Provides {company.serviceType&&company.serviceType.map(service=><span id=''>{service}, </span>)}
               </div>

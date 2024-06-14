@@ -42,7 +42,14 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    width: 110px;
+    transition: width 200ms ease-in-out;
 }
+
+.navSignupBtn.navbtnwidth{
+    width: 140px;
+}
+
 .navSignupBtn>.css-i4bv87-MuiSvgIcon-root{
     height: 0.8em !important;
 }

@@ -80,7 +80,9 @@ const AddCompany = () => {
     const [companyService, setCompanyService] = useState('');
     const [servicetype, setServicetype] = useState([]);
     const [agencyBriefing, setAgencyBriefing] = useState('');
-    const [noOfPositions, setNoOfPositions] = useState('');
+    const [GSTno, setGSTno] = useState('');
+    const [lowPR, setlowPR] = useState('');
+    const [highPR, sethighPR] = useState('');
     const [country, setCountry] = useState('');
     const [address, setAddress] = useState('');
     const [City, setCity] = useState([]);
@@ -104,7 +106,7 @@ const AddCompany = () => {
     const [file3, setFile3] = useState();
     const [file4, setFile4] = useState();
 
-    const userRef = useRef();
+   
 
     const [phonefromDB, setphonefromDB] = useState(true);
     const [validPhnError, setValidPhnError] = useState(false);
@@ -200,7 +202,7 @@ const AddCompany = () => {
     const nextBtn2 = (e)=>{
         e.preventDefault();
 
-        if(companyName && servicetype ){
+        if(companyName && servicetype && GSTno && agencyBriefing && lowPR && highPR){
             setslide3(true); 
             setslide2(false);
         }
@@ -224,7 +226,7 @@ const AddCompany = () => {
 
         const phone = '+91'+ phonee;
 
-        if(fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype && country && address && City){
+        if(fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype && GSTno && agencyBriefing && lowPR && highPR && country && address && City){
         
 
             try{
@@ -284,12 +286,11 @@ const AddCompany = () => {
 
 
         const phone = '+91'+ phonee
-        //    console.log(fullName,email, phone, companyName, servicetype,  country, address, city);
+        const priceRange = lowPR + ' - ' + highPR;
       console.log(servicetype);
-        // const imgarray=[];
-        // imgarray.push(file1,file2,file3,file4)
+        
         const formData = new FormData();
-      //  formData.append('images',imgarray)
+      
         formData.append("image", file1);
         formData.append("image", file2);
         formData.append("image", file3);
@@ -298,7 +299,10 @@ const AddCompany = () => {
         formData.append("email", email);
         formData.append("phone", phone);
         formData.append("companyName", companyName);
+        formData.append("GSTno", GSTno);
+        formData.append("agencyBriefing", agencyBriefing);
         formData.append("servicetype", servicetype);
+        formData.append("priceRange", priceRange);
         formData.append("country", country);
         formData.append("address", address);
         formData.append("City", City);
@@ -306,7 +310,7 @@ const AddCompany = () => {
         // formData.append("city", city);
         console.log(formData)
 
-        if(fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype && country && address && City && pwd){
+        if(fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype &&agencyBriefing && priceRange && country && address && City && pwd){
         
 
             try{
@@ -394,10 +398,17 @@ const AddCompany = () => {
                     <div>Company Name / Firm Name</div>
                     <input className='recr_input' type='text' onChange={(e)=>setCompanyName(e.target.value)} required value={companyName}/>
                 </div>
-                {/* <div>
-                    <div>Company Service</div>
-                    <input className='recr_input' type='text' onChange={(e)=>setCompanyService(e.target.value)} required value={companyService}/>
-                </div> */}
+
+                <div>
+                    <div>GST Number</div>
+                    <input className='recr_input' type='text' onChange={(e)=>setGSTno(e.target.value)} required  value={GSTno}/>
+                </div>
+
+                <div>
+                    <div>Agency Description</div>
+                    <input className='recr_input' type='text' onChange={(e)=>setAgencyBriefing(e.target.value)} required  value={agencyBriefing}/>
+                </div>
+
                 <div>
                     <div>Select the Type of service you provide</div>
                     <Autocomplete
@@ -425,10 +436,18 @@ const AddCompany = () => {
                         value={servicetype}
                     />
                 </div>
-                {/* <div>
-                    <div>Agency Description</div>
-                    <input className='recr_input' type='text' onChange={(e)=>setAgencyBriefing(e.target.value)} required  value={agencyBriefing}/>
-                </div> */}
+
+
+                <div className='recr_range_input_div'>
+                    <div>
+                        <div>Lowest Price Range</div>
+                        <input className='recr_range_input' type='number' onChange={(e)=>setlowPR(e.target.value)} required  value={lowPR}/> 
+                    </div>
+                    <div>
+                        <div>Highest Price Range</div>
+                        <input className='recr_range_input' type='number' onChange={(e)=>sethighPR(e.target.value)} required  value={highPR}/> 
+                    </div>
+                </div>
 
 
                 <div className='fileInputDiv' style={{minHeight:'50px'}}>
@@ -502,13 +521,13 @@ const AddCompany = () => {
                 
                     </div>:<></>}
                     
-                    <br/>
-                    <button onClick={()=>{addimageboxes()}} className='addImgBtn'>add more images</button>
+                <br/>
+                <button onClick={()=>{addimageboxes()}} className='addImgBtn'>add more images</button>
 
                 </div>
 
 
-                {!companyName || !servicetype ? (<p className='error'>
+                {!companyName || !servicetype || !GSTno || !agencyBriefing || !lowPR || !highPR? (<p className='error'>
                     please complete all fields.        
                 </p>): <></>}
 

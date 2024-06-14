@@ -1,0 +1,58 @@
+.ShareReq{
+    padding: 80px 64px 0;
+    margin: 0 auto 0;
+    display: flex;
+    justify-content: center;
+    /* text-align: left; */
+    gap: 10%;
+}
+
+.LC_content{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.LC_head{
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.LC_imgDiv{
+    display: flex;
+    justify-content: center;
+}
+.LC_imgDiv>img{
+    width: 500px;
+}
+
+.SR_Inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.SR_input{
+    border-radius: 20px;
+    padding: 14px 16px;
+    background-color: #6484961A;
+    border: 0.25px solid #2a2f336e;
+    font-size: 14px;
+    color: #2A2F3399;
+    width: 300px;
+}
+.LC_reqinput{
+    height: 48px;
+    display: flex;
+    align-items: first baseline;
+}
+
+.LC_btn{
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    font-weight: 600;
+    width: 160px;
+    margin-bottom: 40px;
+}

@@ -13,6 +13,7 @@ import { useState, useRef } from 'react';
 import axios from 'axios'
 import RequireAuth from './RequireAuth';
 import RequireloginAuth from './RequireloginAuth';
+import ShareReq from './components/ShareReq/ShareReq';
 
 
 
@@ -23,10 +24,10 @@ function App() {
 
   const [searchValue, setSearchValue] = useState([]);
   const [userLogged, setUserLogged] = useState('');
-  const [SRmodal, setSRmodal] = useState(false);
+  
 
 
-  const connect_ref = useRef(null);
+  // const connect_ref = useRef(null);
 
 
   return (
@@ -34,25 +35,25 @@ function App() {
 
     <Routes>
         
-      <Route  path="/" element={<Layout connect_ref={connect_ref} userLogged={userLogged} setUserLogged={setUserLogged} SRmodal={SRmodal} setSRmodal={setSRmodal}/>}>
+      <Route  path="/" element={<Layout userLogged={userLogged} setUserLogged={setUserLogged} />}>
             
               <Route 
               index element={<HomePage searchValue={searchValue} 
               setSearchValue={setSearchValue} 
-              connect_ref={connect_ref}/>} /> 
+              />} /> 
 
               {/* <Route path="/blog/:id" element={<Blog/>}/> */}
 
-              <Route path="about" element={<AboutPage connect_ref={connect_ref}/>}/>   
+              <Route path="about" element={<AboutPage/>}/>   
               <Route path="addCompany" element={ <AddCompany/>}/>  
               <Route path="companies" element={ <Companies/>}/>  
               <Route path="company/:id" element={<CompanyPage/>}/>
+              <Route path="sharerequirements" element={<ShareReq/>}/>
 
               <Route element={<RequireloginAuth/>}>
-
+                <Route path="login"  element={<LoginPage userLogged={userLogged} setUserLogged={setUserLogged}/>}/>
               </Route>
 
-              <Route path="login"  element={<LoginPage userLogged={userLogged} setUserLogged={setUserLogged}/>}/>
 
               <Route path="search/:value" element={<SearchPage searchValue={searchValue} setSearchValue={setSearchValue} />}/>
 

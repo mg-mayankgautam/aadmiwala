@@ -142,7 +142,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
         <div className='landingContent'>
             <div className='landingHeadingDiv'>
                 <div className='mainHead'>
-                Connect. Simplify. Succeed.
+                One Solution, Every Need.
                 </div>
 
                 <div className='subHead'>
@@ -150,7 +150,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                 </div>
 
                 <div className='landingsubHead'>
-                    B2B talent marketplace in Hub
+                    B2B talent marketplace
                 </div>
             </div>
 

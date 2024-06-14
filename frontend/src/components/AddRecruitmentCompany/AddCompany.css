@@ -88,8 +88,24 @@ font-weight: 700;
     border: 1px solid #00000066;
 }
 
+.recr_range_input_div{
+    display: flex;
+    gap: 16px;
+    /* justify-content: space-between; */
+}
+
+.recr_range_input{
+    border-radius: 16px;
+    padding: 8px 16px;
+    border: 1px solid #00000066;
+    margin-top: 12px;
+    margin-bottom: 16px;
+    flex-grow: 1;
+    max-width: 150px;
+}
+
 .addImgBtn{
-    margin-bottom: 24px;
+    margin: 16px 0 32px;
     border-radius: 20px;
     padding: 4px 12px;
     border: 1px solid var(--orange);
@@ -209,6 +225,6 @@ font-weight: 700;
     border-radius: 4px;
   }
 
-  .inputFileLabel1{top: 88px}
-  .inputFileLabel2{top: 138px}
-  .inputFileLabel3{top: 188px}
+  .inputFileLabel1{top: 90px}
+  .inputFileLabel2{top: 142px}
+  .inputFileLabel3{top: 192px}

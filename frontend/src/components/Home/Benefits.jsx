@@ -35,12 +35,12 @@ const Benefits = () => {
         </div>
 
 
-        <div className='benefitsText'>
+        {/* <div className='benefitsText'>
           <div className='subHead'>Everything You Need for an Easier, Faster and Better Staffing Experience</div>
           <div className='text'>
             Seamlessly tap into our pool of best service providers, optimize your workforce management, and minimize administrative burdens. Our mission is to deliver high-quality staffing solutions efficiently, empowering you to focus on propelling your business towards growth and success.
           </div>
-        </div>
+        </div> */}
     </div>
   )
 }

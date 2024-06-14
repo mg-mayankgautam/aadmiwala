@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import logo from '../../assets/logo.png'
 import useAuth from '../../hook/useAuth';
 import './Nav.css'
@@ -7,9 +7,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
-const Nav = ({connect_ref, userLogged, setUserLogged}) => {
+const Nav = ({ userLogged, setUserLogged}) => {
 
-  const {auth, setAuth}=useAuth();
+  const {auth, setAuth}= useAuth();
+  const [callus, setcallus]= useState(false);
 
   useEffect(() => {
         
@@ -86,8 +87,8 @@ const handleLogout = async() =>{
             <div>Enterprise</div>
             <div> <a href="about">About Us</a></div>
             
-            <div onClick={() => {connect_ref.current?.scrollIntoView({behavior:'smooth'})}}>
-                Share Requirements
+            <div>
+              <Link to={`sharerequirements`} >Share Requirements</Link>
             </div>
 
             <div className='navItemBold'>
@@ -97,7 +98,15 @@ const handleLogout = async() =>{
             </div>
         </div>
         <div className='navBtns'>
-            <button className='navSignupBtn'> <CallIcon/> Call Us</button>
+            <button className={callus? 'navSignupBtn navbtnwidth' : 'navSignupBtn' }
+            onClick={()=> setcallus(!callus)}> <CallIcon/>
+              {callus? 
+                <> 8210072553</>
+              : 
+              <>
+                Call Us
+              </>}
+            </button>
 
             {auth.user? 
             <>

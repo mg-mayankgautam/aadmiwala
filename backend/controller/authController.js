@@ -157,80 +157,87 @@ module.exports.checkPhnNumber =async(req,res)=>{
 
 module.exports.addRecruitingCompany= async (req,res)=>{
 
-    console.log('req.files',req.files);
-    console.log('working backend',req.body);
+    // console.log('req.files',req.files);
+    // console.log('working backend',req.body);
+
+    const {image,fullName, email, phone, companyName, GSTno, agencyBriefing, servicetype, priceRange, country, address, City, pwd} = req.body;
 
     const imgsarray = req.files;
-
-
-     const imageURLs = []
-
-    for (const img of imgsarray){
-       // console.log(img);
-        const fileName = generateFileName();
-
-
-        const uploadParams = {
-            Bucket: bucketName,
-            Body: img.buffer,
-            Key: fileName,
-            ContentType: img.mimetype
-          }
-
-          await s3Client.send(new PutObjectCommand(uploadParams));
-          const URL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
-        //  console.log(URL);
-         
-          imageURLs.push({url:URL})
-
-    }
-
-    const {image,fullName, email, phone, companyName, servicetype, country, address, City, pwd} = req.body;
-    
-  
     const Phone = Number(phone);
 
-    serviceType = servicetype.split(',')
-    city = City.split(',')
-
-//    const postedDate = new Date();
-//    const date = postedDate.toDateString()
-
-   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        let newDate = new Date()
-        let day = newDate.getDate();
-        let month = monthNames[newDate.getMonth()];
-        let year = newDate.getFullYear();
-        const date = `${month} ${day}, ${year}`
-   console.log(date);
-
-   
-
-    let newCompany = new companyDB({fullName, email, Phone, companyName, serviceType, country, address, city, imageURLs, date});
 
 
+    const user = await userDB.findOne({Phone});
 
-    newCompany.save()
-        .then((saved)=>{
-            console.log('company added success');
-            // res.send(true);
-               
-        })
-       .catch(err =>{console.log(err);});
+    if(!user){
+
+        const imageURLs = []
+
+        for (const img of imgsarray){
+        // console.log(img);
+            const fileName = generateFileName();
 
 
-   let newUser = new userDB({Phone, pwd})
+            const uploadParams = {
+                Bucket: bucketName,
+                Body: img.buffer,
+                Key: fileName,
+                ContentType: img.mimetype
+            }
 
-   newUser.save()
-        .then((saved)=>{
-            console.log('user added success');
-            res.send(true);
+            await s3Client.send(new PutObjectCommand(uploadParams));
+            const URL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
+            //  console.log(URL);
             
-        })
-        .catch(err =>{console.log(err);});
+            imageURLs.push({url:URL})
+
+        }
+
+        
+    
+
+        const serviceType = servicetype.split(',')
+        const city = City.split(',')
+
+        //    const postedDate = new Date();
+        //    const date = postedDate.toDateString()
+
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                let newDate = new Date()
+                let day = newDate.getDate();
+                let month = monthNames[newDate.getMonth()];
+                let year = newDate.getFullYear();
+                const date = `${month} ${day}, ${year}`
+        console.log(date);
+
+    
+
+        let newCompany = new companyDB({fullName, email, Phone, companyName, GSTno, agencyBriefing, serviceType, priceRange, country, address, city, imageURLs, date});
 
 
-   
+
+        newCompany.save()
+            .then((saved)=>{
+                console.log('company added success');
+                // res.send(true);
+                
+            })
+            .catch(err =>{console.log(err);});
+
+
+        let newUser = new userDB({Phone, pwd})
+
+        newUser.save()
+                .then((saved)=>{
+                    console.log('user added success');
+                    res.send(true);
+                    
+                })
+                .catch(err =>{console.log(err);});
+
+
+    }
+        
 
 }
 

@@ -1,13 +1,13 @@
-import React from 'react'
-import flowchart from '../../assets/OBJECTS.svg'
+// import React from 'react'
+// import flowchart from '../../assets/OBJECTS-new.png'
 
-const FlowChart = () => {
-  return (
+// const FlowChart = () => {
+//   return (
     
-    <div className='FlowChart'>
-        <img src={flowchart} />
-    </div>
-  )
-}
+//     <div className='FlowChart'>
+//         <img src={flowchart} />
+//     </div>
+//   )
+// }
 
-export default FlowChart
+// export default FlowChart

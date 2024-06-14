@@ -13,7 +13,7 @@ import FeaturedCompanies from './FeaturedCompanies'
 
 
 
-const HomePage = ({searchValue,setSearchValue, connect_ref}) => {
+const HomePage = ({searchValue,setSearchValue}) => {
 
 
   return (
@@ -23,10 +23,10 @@ const HomePage = ({searchValue,setSearchValue, connect_ref}) => {
         <FeaturedCompanies/>
         <Benefits/>
         <Challenges/>
-        <FlowChart/>
+        {/* <FlowChart/> */}
         <Solutions/>
         <Faq/>
-        <Connect connect_ref={connect_ref}/>
+        <Connect/>
         <Footer/>
     </div>
   )
