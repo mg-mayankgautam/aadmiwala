@@ -100,6 +100,7 @@ const Dashboard = () => {
         console.log(serviceType);
 
         try{
+            console.log('here?')
             const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateuserservices`, {UserName, serviceType})
   
             console.log('reaching here in dash')
