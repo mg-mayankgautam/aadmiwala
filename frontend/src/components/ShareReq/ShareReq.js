@@ -5,6 +5,10 @@ import emailjs from '@emailjs/browser';
 
 const ShareReq = () => {
 
+  useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
+
     useEffect(() => emailjs.init("v5csxvz6IFDcQ0NZA"), []);
 
     const nameRef = useRef();

@@ -12,6 +12,10 @@ import AboutTimeline from './AboutTimeline'
 
 const AboutPage = () => {
 
+  useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
+
   const about_ref = useRef(null);
 
   
