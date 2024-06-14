@@ -24,7 +24,7 @@ const AboutPage = () => {
         <AboutTimeline/>
         {/* <Solutions/> */}
         <Connect/>
-        <Footer/>
+        {/* <Footer/> */}
     </div>
   )
 }

@@ -4,7 +4,7 @@ import connect from '../../assets/connect.png'
 import emailjs from '@emailjs/browser';
 
 
-const Connect = () => {
+const Connect = ({connect_ref}) => {
 
     useEffect(() => emailjs.init("v5csxvz6IFDcQ0NZA"), []);
 
@@ -50,7 +50,7 @@ const Connect = () => {
     <>
    
 
-    <div className='LetsConnect' >
+    <div className='LetsConnect' ref={connect_ref}>
         <div className='LC_content'>
             <div>
                 <div className='LC_head'>Let's Connect</div>

@@ -4,6 +4,7 @@ import './Footer.css'
 import fb from '../../assets/fblogo.png'
 import ig from '../../assets/iglogo.png'
 import EastIcon from '@mui/icons-material/East';
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
 
@@ -35,13 +36,15 @@ const Footer = () => {
                     </a>
                     
                     <div>Blogs</div>
-                    <div>About Us</div>
+                    <div>
+                        <Link to={`/about`}>About Us</Link>
+                    </div>
                 </div>
             </div>
 
 
 
-            <div>
+            {/* <div>
                 <div className='footerHeading footerBold'>
                     FAQ's
                 </div>
@@ -59,7 +62,7 @@ const Footer = () => {
                         
                      </div>
                 </div>
-            </div>
+            </div> */}
 
             <div>
                 <div className='footerHeading footerBold'>

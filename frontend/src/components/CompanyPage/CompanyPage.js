@@ -108,7 +108,7 @@ const CompanyPage = () => {
        
     <FeaturedCompanies/>
       <Faq/>
-    <Footer/>
+    {/* <Footer/> */}
     </>
   )
 }
