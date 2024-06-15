@@ -97,10 +97,11 @@
 .searchdropdown{
     justify-self: start;
     padding: 7px 10px;
-    border: 1px solid var(--black);
+    border: 1px solid #0000003c;
     border-radius: 25px;
-    font-size: inherit;
+    font-size: 16px;
     cursor: pointer;
+    color: #000000c3;
 }
 
 .freqSearchText{

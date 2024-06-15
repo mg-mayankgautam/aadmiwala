@@ -21,7 +21,11 @@ const services =[
 
 const Dashboard = () => {
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
+      
 
     const [value, setValue] = useState('1');
    

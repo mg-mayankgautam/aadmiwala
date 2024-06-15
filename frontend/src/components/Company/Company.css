@@ -4,9 +4,9 @@
     gap: 8px;
     justify-content: space-between;
     padding: 16px;
-    min-width: 340px;
+    min-width: 360px;
     max-width: 360px;
-    min-height: 200px;
+    min-height: 206px;
     font-size: 12px;
     border: 1px solid transparent;
     border-radius: 20px;
@@ -85,6 +85,8 @@
     align-self: flex-start;
     font-weight: 600;
     color: #00000099;
+    height: 19px;
+    overflow-y: hidden;
 }
 
 .FC_desc{
@@ -92,4 +94,9 @@
 }
 .FC_date{
     color: #00000080;
+}
+
+.FC_cityDiv{
+    height: 16px;
+    overflow-y: hidden;
 }

@@ -13,9 +13,11 @@ const Company = ({company}) => {
                 <div className='FC_name'>{company.companyName}</div>
                             
                 <div>
-                    {company.city.map((cityy,i)=><span key={i}>{cityy}, </span>)}<br/>
+                    <div className='FC_cityDiv'>
+                      {company.city.map((cityy,i)=><span key={i}>{cityy}, </span>)}
+                    </div>
                             
-                    {company.country}
+                    <div>{company.country}</div>
                 </div>
 
                 <div className='FC_PR'>
@@ -35,10 +37,9 @@ const Company = ({company}) => {
 
         <div className='FC_bottomFlex'>
             
-            <div className='FC_facilities'>Provides {company.serviceType.map((service, i)=><span key={i}>{service}, </span>)}</div>
-            {/* <div className='FC_desc'>
-                            Company Description: <li>{company.agencyBriefing}</li> 
-                            </div> */}
+            <div className='FC_facilities'>Provides {company.serviceType.map((service, i)=><span key={i}>{service}, </span>)}
+            </div>
+            
             <div className='FC_date'>Posted {company.date}</div>
         </div>
             
