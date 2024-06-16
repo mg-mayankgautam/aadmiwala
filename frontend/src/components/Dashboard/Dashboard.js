@@ -44,7 +44,8 @@ const Dashboard = () => {
         
         const verifyAuth = async ()=>{
             try {
-                const URL =  `${process.env.REACT_APP_BACKEND_URL}/isauth` ;
+                // const URL =  `${process.env.REACT_APP_BACKEND_URL}/isauth` ;
+                const URL =  `http://localhost:4700/isauth` ;
                 //console.log('url',URL);
                 const response = await axios.get(URL);
     
@@ -80,7 +81,7 @@ const Dashboard = () => {
         
         const getUserData = async()=>{
           try{
-          const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getuserdata?id=${id}`)
+          const data = await axios.get(`http://localhost:4700/getuserdata?id=${id}`)
           console.log(data.data, 'getuser data')
     
           setUserServices(data.data.serviceType);
@@ -105,7 +106,7 @@ const Dashboard = () => {
 
         try{
             console.log('here?')
-            const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateuserservices`, {UserName, serviceType})
+            const data = await axios.post(`http://localhost:4700/updateuserservices`, {UserName, serviceType})
   
             console.log('reaching here in dash')
             const axiosdata = data.data

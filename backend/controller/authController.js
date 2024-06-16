@@ -386,12 +386,13 @@ module.exports.getUserData =async(req,res)=>{
 
 module.exports.updateUserServices = async(req, res) => {
     const {UserName, serviceType} = req.body;
+    console.log('reaching here')
 
     try{
         const data = await companyDB.findOneAndUpdate({Phone:UserName},{serviceType: serviceType}, {returnDocument: 'after'})
 
             .then((saved)=>{
-                console.log(saved)
+                console.log(saved, 'updated services')
                 res.send(saved.serviceType)
             })
             .catch((e)=>{console.log(e)})
