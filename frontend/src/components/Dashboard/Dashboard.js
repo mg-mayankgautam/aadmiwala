@@ -117,7 +117,7 @@ const Dashboard = () => {
             if(axiosdata){
                 console.log(axiosdata)
                 setUserServices(axiosdata)
-                navigate(`/dashboard/${UserName}`)
+                // navigate(`/dashboard/${UserName}`)
             }
   
         }
