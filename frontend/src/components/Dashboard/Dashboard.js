@@ -106,7 +106,7 @@ const Dashboard = () => {
 
         try{
             console.log('here?')
-            const data = await axios.post(`http://localhost:4700/updateuserservices`, {UserName, serviceType})
+            const data = await axios.post(`http://localhost:4700/updateuserservices`, {id, serviceType})
   
             console.log('reaching here in dash')
             const axiosdata = data.data
