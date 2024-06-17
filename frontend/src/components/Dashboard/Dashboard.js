@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import Settings from '@mui/icons-material/Settings';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -28,16 +29,24 @@ const Dashboard = () => {
       
 
     const [value, setValue] = useState('1');
+    const navigate = useNavigate()
    
     const { id } = useParams();
     const [UserName, setUserName] = useState('');
     const {auth, setAuth}= useAuth();
-    const [userServices, setUserServices] = useState([]);
-    const [name, setName] = useState('');
     const [modal, setmodal] = useState(false)
-    const [serviceType, setServiceType] = useState([])
 
-    const navigate = useNavigate()
+    const [userServices, setUserServices] = useState([]);
+    const [userCities, setUserCities] = useState([]);
+    const [name, setName] = useState('');
+    const [companyName, setcompanyName] = useState('');
+    const [companyDesc, setcompanyDesc] = useState('');
+    const [PR, setPR] = useState('');
+    const [userEmail, setuserEmail] = useState('');
+
+    const [serviceType, setServiceType] = useState([])
+    const [sideBar, setSideBar] = useState(false)
+
 
 
     useEffect(() => {
@@ -86,7 +95,12 @@ const Dashboard = () => {
     
           setUserServices(data.data.serviceType);
           setServiceType(data.data.serviceType);
+          setUserCities(data.data.city);
           setName(data.data.fullName);
+          setuserEmail(data.data.email);
+          setcompanyName(data.data.companyName);
+          setcompanyDesc(data.data.agencyBriefing);
+          setPR(data.data.priceRange);
             } catch(e){console.log(e)}
         }
     
@@ -132,65 +146,115 @@ const Dashboard = () => {
   return (
     <div className='Dashboard'>
 
-        <div className='dash_DataDiv'>
-            <div className='dash_Head'>
-                welcome to the dashboard, {name} !
-            </div>
+        <div className='mainDash'>
 
-            <div className='dash_BoxFlex'>
-                <div className='dash_Box'>
-                    <div className='dash_boxNum'>
-                        {userServices&& userServices.length}
-                    </div>
-                    <div className='dash_boxText'>
-                        <div><img src={dashicon}/></div>
-                        <div>No. of Services</div>
-                    </div>
+            <div className='dash_DataDiv'>
+                <div className='dash_Head'>
+                    <div>welcome to the dashboard, {name} !</div>
+                    <div className='profileSettings'
+                        onClick={()=> setSideBar(!sideBar)}>
+                        <Settings/>
+                    </div> 
                 </div>
-                
-                {/* <div className='dash_Box'>
-                    <div className='dash_boxNum'>
-                        45
+
+                <div className='dash_BoxFlex'>
+                    <div className='dash_Box'>
+                        <div className='dash_boxNum'>
+                            {userServices&& userServices.length}
+                        </div>
+                        <div className='dash_boxText'>
+                            <div><img src={dashicon}/></div>
+                            <div>No. of Services</div>
+                        </div>
                     </div>
-                    <div className='dash_boxText'>
-                        <div><img src={dashicon}/></div>
-                        <div>Placement Rate</div>
+                    
+                    <div className='dash_Box'>
+                        <div className='dash_boxNum'>
+                            {userCities&& userCities.length}
+                        </div>
+                        <div className='dash_boxText'>
+                            <div><img src={dashicon}/></div>
+                            <div>No. of Cities</div>
+                        </div>
                     </div>
+                    {/* <div className='dash_Box'>
+                        <div className='dash_boxNum'>
+                            45
+                        </div>
+                        <div className='dash_boxText'>
+                            <div><img src={dashicon}/></div>
+                            <div>Avg. Placement Time</div>
+                        </div>
+                    </div> */}
+
                 </div>
-                <div className='dash_Box'>
-                    <div className='dash_boxNum'>
-                        45
-                    </div>
-                    <div className='dash_boxText'>
-                        <div><img src={dashicon}/></div>
-                        <div>Avg. Placement Time</div>
-                    </div>
+
+                {/* <div className='dash_chart'>
+                    chart
                 </div> */}
-
             </div>
 
-            {/* <div className='dash_chart'>
-                chart
-            </div> */}
-        </div>
-
-        <div className='dash_ServicesDiv'>
-            <div className='dash_servicesHead'>
-                Your Services
-            </div>
-            <div className='dash_servicesContainer'>
-                
-                {userServices&& userServices.map((service, i)=>
-                <div className='dash_service' key={i}>
-                    <div className='service_name'>{service}</div>
+            <div className='dash_ServicesDiv'>
+                <div className='dash_servicesHead'>
+                    Your Services
                 </div>
-               )}
-                
+                <div className='dash_servicesContainer'>
+                    
+                    {userServices&& userServices.map((service, i)=>
+                    <div className='dash_service' key={i}>
+                        <div className='service_name'>{service}</div>
+                    </div>
+                )}
+                    
+                </div>
+                <div className='addNewService'>
+                    <button onClick={(e)=>setmodal(true)}>Add New Services</button>
+                </div>
+
+                <div className='dash_servicesHead'>
+                    Your Cities
+                </div>
+                <div className='dash_servicesContainer'>
+                    
+                    {userCities&& userCities.map((city, i)=>
+                    <div className='dash_service' key={i}>
+                        <div className='service_name'>{city}</div>
+                    </div>
+                )}
+                    
+                </div>
+                <div className='addNewService'>
+                    <button>Add New Cities</button>
+                </div>
             </div>
-            <div className='addNewService'>
-                <button onClick={(e)=>setmodal(true)}>Add New Services</button>
-            </div>
+
         </div>
+
+
+
+        {sideBar? 
+            <div className='dashSideBar'>
+                <div>
+                    <span className='sidebarTitle'>Company Name:</span> {companyName}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>Description:</span> {companyDesc}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>Price Range:</span> {PR}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>Phone:</span> {id}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>Email:</span> {userEmail}
+                </div>  
+            </div>
+            :
+            <></>
+        }
+
+        
 
         {modal? 
             <div className='dashModal'>

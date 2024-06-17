@@ -1,9 +1,15 @@
 .Dashboard{
     padding: 64px;
     display: flex;
-    flex-wrap: wrap;
     min-height: calc(100vh - 179px);
     gap: 56px;
+}
+
+.mainDash{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px;
+    flex-grow: 1;
 }
 
 .dash_DataDiv{
@@ -18,6 +24,9 @@
     font-weight: 700;
     text-align: left;
     margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .dash_BoxFlex{
@@ -28,7 +37,8 @@
 .dash_Box{
     border-radius: 20px;
     border: 1px solid #4A4239;
-    flex-grow: 1;
+    max-width: 300px;
+    min-width: 180px;
     padding: 20px;
 }
 
@@ -130,4 +140,33 @@
     top: 16px;
     right: 32px;
     cursor: pointer;
+}
+
+.profileSettings{
+    cursor: pointer;
+}
+
+.dashSideBar{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+    /* padding: 20px; */
+    text-align: left;
+    border-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 1px solid #332F2A ;
+    border-right: none;
+    /* background-color: var(--black); */
+    color: var(--black);
+    position: sticky;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebarTitle{
+    font-weight: 600;
+    color: var(--orange);
 }

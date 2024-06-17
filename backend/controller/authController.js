@@ -373,13 +373,16 @@ module.exports.getUserData =async(req,res)=>{
      //const userID=req.session.UserID
      const Phone = req.query.id;
     
-    try{
-      const data = await companyDB.findOne({Phone})
-      console.log(data,'found user');
-      
-      res.send(data);
-    }
-    catch(e){console.log(e)}
+     if(req.session.Username==Phone){
+        try{
+            const data = await companyDB.findOne({Phone})
+            console.log(data,'found user');
+            
+            res.send(data);
+          }
+          catch(e){console.log(e)}
+     }
+    
     
     }
 
@@ -388,13 +391,17 @@ module.exports.updateUserServices = async(req, res) => {
     const {id, serviceType} = req.body;
     // console.log('reaching here', req.body);
 
-    try{
-        await companyDB.findOneAndUpdate({Phone:id},{serviceType: serviceType}, {returnDocument: 'after'})
-            .then((saved)=>{
-                // console.log(saved, 'updated services')
-                res.send(saved.serviceType)
-            })
-            .catch((e)=>{console.log(e)})
+    if(req.session.Username==id){
+
+        try{
+            await companyDB.findOneAndUpdate({Phone:id},{serviceType: serviceType}, {returnDocument: 'after'})
+                .then((saved)=>{
+                    // console.log(saved, 'updated services')
+                    res.send(saved.serviceType)
+                })
+                .catch((e)=>{console.log(e)})
+        }
+        catch(e){console.log(e)}
+
     }
-    catch(e){console.log(e)}
 }
