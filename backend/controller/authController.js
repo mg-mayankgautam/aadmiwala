@@ -427,3 +427,23 @@ module.exports.updateUserCities = async(req, res) => {
 
     // }
 }
+
+
+module.exports.updateUserInfo = async(req, res) => {
+    const {id, newCompanyName, newcompanyDesc, newPR, newName, newEmail} = req.body;
+    // console.log('reaching here', req.body);
+
+    // if(req.session.Username==id){
+
+        try{
+            await companyDB.findOneAndUpdate({Phone:id}, {fullName: newName, email: newEmail, companyName: newCompanyName, agencyBriefing: newcompanyDesc, priceRange: newPR}, {returnDocument: 'after'})
+                .then((saved)=>{
+                    // console.log(saved, 'updated services')
+                    res.send(saved)
+                })
+                .catch((e)=>{console.log(e)})
+        }
+        catch(e){console.log(e)}
+
+    // }
+}

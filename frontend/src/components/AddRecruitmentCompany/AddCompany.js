@@ -170,21 +170,17 @@ const AddCompany = () => {
             try{
                 const valid = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/checkphonenumber`,{phonenum})
                 
-                console.log(valid);
-                console.log(phonefromDB)
+                
 
                 if(valid.data){
                     setphonefromDB(true)
-                    console.log(phonefromDB)
                     setValidPhnError(true)
                 }
                 else{
                     setphonefromDB(false)
-                    console.log(phonefromDB)
                     setValidPhnError(false)
                     
                     if(fullName && email && validEmail){
-                        console.log('working')
             
                         setslide2(true);
                         setslide1(false);
@@ -232,7 +228,7 @@ const AddCompany = () => {
             try{
             const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/verifyphone`, {phone})
 
-            console.log('submit succeess')
+            
             console.log(data.data);
             
               if(data.data){

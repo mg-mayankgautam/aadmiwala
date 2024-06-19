@@ -54,7 +54,7 @@ const Dashboard = () => {
     const [newName, setNewName] = useState('');
     const [newCompanyName, setnewcompanyName] = useState('');
     const [newcompanyDesc, setnewcompanyDesc] = useState('');
-    const [newPR, setnewPR] = useState('');
+    // const [newPR, setnewPR] = useState('');
     const [newEmail, setnewEmail] = useState('');
     const [sideBar, setSideBar] = useState(false)
 
@@ -73,14 +73,14 @@ const Dashboard = () => {
                if(!response.data.auth){
                
                      
-                   console.log('auth')
+                //    console.log('auth')
                    
                    }
     
     
                   else if(response.data.auth){
                    
-                   console.log(response.data.auth);
+                //    console.log(response.data.auth);
                     const user = response.data.auth;
                     setAuth({user});
                     setUserName(user);
@@ -102,7 +102,7 @@ const Dashboard = () => {
         const getUserData = async()=>{
           try{
           const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getuserdata?id=${id}`)
-          console.log(data.data, 'getuser data')
+        //   console.log(data.data, 'getuser data')
     
           setUserServices(data.data.serviceType);
           setNewServiceType(data.data.serviceType);
@@ -117,7 +117,7 @@ const Dashboard = () => {
           setcompanyDesc(data.data.agencyBriefing);
           setnewcompanyDesc(data.data.agencyBriefing);
           setPR(data.data.priceRange);
-          setnewPR(data.data.priceRange);
+        //   setnewPR(data.data.priceRange);
             } catch(e){console.log(e)}
         }
     
@@ -126,28 +126,25 @@ const Dashboard = () => {
         getUserData();
 
 
-      console.log(id)
+    //   console.log(id)
     }, [])
 
 
     const updateUserServices = async(e)=>{
         e.preventDefault();
 
-        console.log(newServiceType);
+        // console.log(newServiceType);
 
         try{
-            console.log('here?')
+            
             const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateuserservices`, {id, newServiceType})
   
-            console.log('reaching here in dash')
+            
             const axiosdata = data.data
-            console.log(axiosdata);
-            console.log('reaching here in dash')
-
 
             if(axiosdata){
-                console.log(axiosdata)
-                setUserServices(axiosdata)
+                setUserServices(axiosdata);
+                setmodal(false);
                 // navigate(`/dashboard/${UserName}`)
             }
   
@@ -160,21 +157,19 @@ const Dashboard = () => {
     const updateUserCities = async(e)=>{
         e.preventDefault();
 
-        console.log(newCity);
+        
 
         try{
-            console.log('here?')
+            
             const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateusercities`, {id, newCity})
   
-            console.log('reaching here in dash')
             const axiosdata = data.data
-            console.log(axiosdata);
-            console.log('reaching here in dash')
 
 
             if(axiosdata){
-                console.log(axiosdata)
-                setUserCities(axiosdata)
+                
+                setUserCities(axiosdata);
+                setmodal2(false);
                 // navigate(`/dashboard/${UserName}`)
             }
   
@@ -275,7 +270,7 @@ const Dashboard = () => {
 
 
         {sideBar? 
-            <SideBar setName={setName} name={name} setcompanyName={setcompanyName} companyName={companyName} setcompanyDesc={setcompanyDesc} companyDesc={companyDesc} setPR={setPR} PR={PR} id={id} setuserEmail={setuserEmail} userEmail={userEmail} setNewName={setNewName} newName={newName} setnewcompanyName={setnewcompanyName} newCompanyName={newCompanyName} setnewcompanyDesc={setnewcompanyDesc} newcompanyDesc={newcompanyDesc} setnewPR={setnewPR} newPR={newPR} setnewEmail={setnewEmail} newEmail={newEmail}/>
+            <SideBar setName={setName} name={name} setcompanyName={setcompanyName} companyName={companyName} setcompanyDesc={setcompanyDesc} companyDesc={companyDesc} setPR={setPR} PR={PR} id={id} setuserEmail={setuserEmail} userEmail={userEmail} setNewName={setNewName} newName={newName} setnewcompanyName={setnewcompanyName} newCompanyName={newCompanyName} setnewcompanyDesc={setnewcompanyDesc} newcompanyDesc={newcompanyDesc} setnewEmail={setnewEmail} newEmail={newEmail}/>
             :
             <></>
         }

@@ -58,12 +58,12 @@ const Nav = ({ userLogged, setUserLogged}) => {
 
 
 const handleLogout = async() =>{
-  console.log('logout');
+  // console.log('logout');
   try{
     const data = await axios.post( `${process.env.REACT_APP_BACKEND_URL}/logout`);
     
     if(!data.data){
-      console.log('data.data',data.data)
+      // console.log('data.data',data.data)
     //  console.log('kuch ni aya',auth)
       const boo = data.data;
     setAuth('');

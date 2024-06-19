@@ -42,7 +42,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
     },[searchType, searchInput])
 
     useEffect(()=>{
-        console.log(freqSearch);
+        // console.log(freqSearch);
         if(freqSearch){
             findfreqSearched()
         }
@@ -83,7 +83,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
             // console.log()
             try{
                 const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/search?input=${freqSearch}&type=service`);
-                console.log(data.data);
+                // console.log(data.data);
 
                 if(data.data){
                     setSearchValue(data.data);

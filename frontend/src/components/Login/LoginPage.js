@@ -31,7 +31,6 @@ const LoginPage = ({userLogged,setUserLogged}) => {
   useEffect(() => {
     const result = PHONE_REGEX.test(PhoneNum);
 
-    console.log(result);
     setValidPhone(result);
 
 }, [PhoneNum])
@@ -69,16 +68,16 @@ const LoginPage = ({userLogged,setUserLogged}) => {
           const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {PhoneNum, Pwd})
 
           const axiosdata = data.data
-          console.log('/a/a/a',axiosdata);
+          // console.log('/a/a/a',axiosdata);
 
             if(!axiosdata){
-              console.log('wrong id');
+              // console.log('wrong id');
               seterror(true);
             }
             else{            
               const user = axiosdata.Username;
                 setAuth({user});
-                console.log('after login',user);
+                // console.log('after login',user);
                 setUserLogged(user);
                  navigate(`/dashboard/${user}`);
                 

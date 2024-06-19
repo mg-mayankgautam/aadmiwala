@@ -15,7 +15,7 @@ const Companies = () => {
         const getCompanies= async()=>{
           try{
             const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getallcompanies`);
-            console.log(data);
+            // console.log(data);
             const array = data.data
             setCompanies(array);
             // setpublicLists(publiclists);

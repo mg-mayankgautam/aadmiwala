@@ -4,9 +4,9 @@ import Company from '../Company/Company';
 
 const SearchPage = ({searchValue,setSearchValue}) => {
 
-    useEffect(()=>{
-        console.log(searchValue);
-    },[searchValue])
+    // useEffect(()=>{
+    //     console.log(searchValue);
+    // },[searchValue])
 
   return (
 

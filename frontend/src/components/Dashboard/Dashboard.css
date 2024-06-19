@@ -8,6 +8,7 @@
 .mainDash{
     display: flex;
     flex-wrap: wrap;
+    /* flex-direction: column; */
     gap: 56px;
     flex-grow: 1;
 }
@@ -17,6 +18,7 @@
     flex-direction: column;
     gap: 20px;
     flex-grow: 1;
+    max-width: 764px;
 }
 
 .dash_Head{
@@ -147,7 +149,7 @@
 }
 
 .dashSideBar{
-    width: 250px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -157,9 +159,9 @@
     border-radius: 20px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    border: 1px solid #332F2A ;
+    border: 1px solid #332f2a46 ;
     border-right: none;
-    /* background-color: var(--black); */
+    background-color: var(--grey);
     color: var(--black);
     position: sticky;
     top: 0;
@@ -170,3 +172,50 @@
     font-weight: 600;
     color: var(--orange);
 }
+
+.editInfoInput, .PRInfoInput{
+    max-width: 500px;
+    min-width: 400px;
+    border-radius: 20px;
+    padding: 8px 16px;
+    border: 1px solid #0000002d;
+    color: var(--black);
+    margin: 4px 0;
+}
+
+.PRInfoInput{
+    max-width: 100%;
+    min-width: 150px;
+}
+
+.PRInputDiv{display: flex;
+justify-content: space-between;
+max-width: 100%;
+gap: 30px;}
+
+.modalBox.modal3{
+    font-size: 14px;
+    text-align: left;
+}
+
+.validerrordash{
+    font-size: 11px;
+    margin: 0;
+    color: #d22323;
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+    font-weight: 400;
+}
+
+.errordash{
+    font-size: 11px;
+    margin: 0;
+    color: #d22323;
+    position: absolute;
+    bottom: 20px;
+    left: 32px;
+    font-weight: 400;
+}
+
+.editIcon{cursor: pointer;}
