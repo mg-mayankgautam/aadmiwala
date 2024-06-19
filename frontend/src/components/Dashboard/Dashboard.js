@@ -48,13 +48,15 @@ const Dashboard = () => {
     const [companyDesc, setcompanyDesc] = useState('');
     const [PR, setPR] = useState('');
     const [userEmail, setuserEmail] = useState('');
+    const [GSTno, setGSTno] = useState('');
+    const [address, setAddress] = useState('');
+    const [country, setCountry] = useState('');
 
     const [newServiceType, setNewServiceType] = useState([])
     const [newCity, setNewCity] = useState([])
     const [newName, setNewName] = useState('');
     const [newCompanyName, setnewcompanyName] = useState('');
     const [newcompanyDesc, setnewcompanyDesc] = useState('');
-    // const [newPR, setnewPR] = useState('');
     const [newEmail, setnewEmail] = useState('');
     const [sideBar, setSideBar] = useState(false)
 
@@ -102,7 +104,7 @@ const Dashboard = () => {
         const getUserData = async()=>{
           try{
           const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getuserdata?id=${id}`)
-        //   console.log(data.data, 'getuser data')
+          console.log(data.data, 'getuser data')
     
           setUserServices(data.data.serviceType);
           setNewServiceType(data.data.serviceType);
@@ -117,6 +119,9 @@ const Dashboard = () => {
           setcompanyDesc(data.data.agencyBriefing);
           setnewcompanyDesc(data.data.agencyBriefing);
           setPR(data.data.priceRange);
+          setGSTno(data.data.GSTno);
+          setAddress(data.data.address);
+          setCountry(data.data.country);
         //   setnewPR(data.data.priceRange);
             } catch(e){console.log(e)}
         }
@@ -270,7 +275,7 @@ const Dashboard = () => {
 
 
         {sideBar? 
-            <SideBar setName={setName} name={name} setcompanyName={setcompanyName} companyName={companyName} setcompanyDesc={setcompanyDesc} companyDesc={companyDesc} setPR={setPR} PR={PR} id={id} setuserEmail={setuserEmail} userEmail={userEmail} setNewName={setNewName} newName={newName} setnewcompanyName={setnewcompanyName} newCompanyName={newCompanyName} setnewcompanyDesc={setnewcompanyDesc} newcompanyDesc={newcompanyDesc} setnewEmail={setnewEmail} newEmail={newEmail}/>
+            <SideBar setName={setName} name={name} setcompanyName={setcompanyName} companyName={companyName} setcompanyDesc={setcompanyDesc} companyDesc={companyDesc} setPR={setPR} PR={PR} id={id} setuserEmail={setuserEmail} userEmail={userEmail} setNewName={setNewName} newName={newName} setnewcompanyName={setnewcompanyName} newCompanyName={newCompanyName} setnewcompanyDesc={setnewcompanyDesc} newcompanyDesc={newcompanyDesc} setnewEmail={setnewEmail} newEmail={newEmail} GSTno={GSTno} address={address} country={country}/>
             :
             <></>
         }

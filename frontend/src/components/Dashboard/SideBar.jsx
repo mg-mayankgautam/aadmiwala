@@ -3,7 +3,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 
 
-const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, companyDesc, setPR,PR, id,setuserEmail, userEmail, setNewName, newName, setnewcompanyName, newCompanyName, setnewcompanyDesc, newcompanyDesc, setnewEmail, newEmail}) => {
+const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, companyDesc, setPR,PR, id,setuserEmail, userEmail, setNewName, newName, setnewcompanyName, newCompanyName, setnewcompanyDesc, newcompanyDesc, setnewEmail, newEmail, GSTno, address, country}) => {
 
     const [modal3, setmodal3] = useState(false);
     // const [PRange, setPRange] = useState(PR.split(' - '));
@@ -88,6 +88,15 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
             </div> 
             <div>
                 <span className='sidebarTitle'>Email:</span> {userEmail}
+            </div> 
+            <div>
+                <span className='sidebarTitle'>GST Number:</span> {GSTno}
+            </div> 
+            <div>
+                <span className='sidebarTitle'>Address:</span> {address}
+            </div> 
+            <div>
+                <span className='sidebarTitle'>Country:</span> {country}
             </div>  
     </div>
 

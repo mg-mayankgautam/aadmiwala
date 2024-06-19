@@ -157,11 +157,11 @@
     /* padding: 20px; */
     text-align: left;
     border-radius: 20px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border: 1px solid #332f2a46 ;
-    border-right: none;
-    background-color: var(--grey);
+    /* border-top-right-radius: 0px; */
+    /* border-bottom-right-radius: 0px; */
+    border: 1px solid #332f2a8c ;
+    /* border-right: none; */
+    /* background-color: var(--grey); */
     color: var(--black);
     position: sticky;
     top: 0;
