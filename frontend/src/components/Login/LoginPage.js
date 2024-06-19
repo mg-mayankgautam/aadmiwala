@@ -7,6 +7,12 @@ import axios from 'axios'
 
 const LoginPage = ({userLogged,setUserLogged}) => {
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  
+
   axios.defaults.withCredentials = true;
   const {setAuth}=useAuth();
    let { state } = useLocation();

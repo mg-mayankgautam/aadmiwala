@@ -11,6 +11,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import Settings from '@mui/icons-material/Settings';
+import SideBar from './SideBar';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -18,6 +19,10 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 const services =[
     'Administrative Support', 'Facility Service', 'Housekeeping Services', 'Customer Service Representatives', 'Blue Collar', 'White Collar', 'Reception Service', 'Security Service', 'IT Support', 'Catering Service', 'AC/Telephone Repair', 'Electrician/Plumber Service', 'Mailroom Service', 'Pest Control', 'Office Boy', 'Other'
 ]
+const cities = [
+    'Delhi', 'Mumbai', 'Kolkata', 'Bangalore', 'Chennai', 'Hyderabad', 'Pune', 'Ahmedabad', 'Surat', 'Lucknow', 'Jaipur', 'Kanpur', 'Mirzapur', 'Nagpur', 'Ghaziabad', 'Supaul', 'Vadodara', 'Rajkot', 'Vishakhapatnam', 'Indore', 'Thane', 'Bhopal', 'Pimpri-Chinchwad', 'Patna', 'Bilaspur', 'Ludhiana', 'agra', 'Madurai', 'Jamshedpur', 'Prayagraj', 'Nasik', 'Faridabad', 'Meerut', 'Jabalpur', 'Kalyan', 'Vasai-Virar', 'Najafgarh', 'Varanasi', 'Srinagar', 'Aurangabad', 'Dhanbad', 'Amritsar', 'Aligarh', 'Guwahati', 'Haora', 'Ranchi', 'Gwalior', 'Chandigarh', 'Haldwani', 'Vijayavada', 'Gaya', 'Rajgir'
+];
+
 
 
 const Dashboard = () => {
@@ -29,12 +34,12 @@ const Dashboard = () => {
       
 
     const [value, setValue] = useState('1');
-    const navigate = useNavigate()
    
     const { id } = useParams();
     const [UserName, setUserName] = useState('');
     const {auth, setAuth}= useAuth();
     const [modal, setmodal] = useState(false)
+    const [modal2, setmodal2] = useState(false)
 
     const [userServices, setUserServices] = useState([]);
     const [userCities, setUserCities] = useState([]);
@@ -44,7 +49,13 @@ const Dashboard = () => {
     const [PR, setPR] = useState('');
     const [userEmail, setuserEmail] = useState('');
 
-    const [serviceType, setServiceType] = useState([])
+    const [newServiceType, setNewServiceType] = useState([])
+    const [newCity, setNewCity] = useState([])
+    const [newName, setNewName] = useState('');
+    const [newCompanyName, setnewcompanyName] = useState('');
+    const [newcompanyDesc, setnewcompanyDesc] = useState('');
+    const [newPR, setnewPR] = useState('');
+    const [newEmail, setnewEmail] = useState('');
     const [sideBar, setSideBar] = useState(false)
 
 
@@ -94,13 +105,19 @@ const Dashboard = () => {
           console.log(data.data, 'getuser data')
     
           setUserServices(data.data.serviceType);
-          setServiceType(data.data.serviceType);
+          setNewServiceType(data.data.serviceType);
           setUserCities(data.data.city);
+          setNewCity(data.data.city);
           setName(data.data.fullName);
+          setNewName(data.data.fullName);
           setuserEmail(data.data.email);
+          setnewEmail(data.data.email);
           setcompanyName(data.data.companyName);
+          setnewcompanyName(data.data.companyName);
           setcompanyDesc(data.data.agencyBriefing);
+          setnewcompanyDesc(data.data.agencyBriefing);
           setPR(data.data.priceRange);
+          setnewPR(data.data.priceRange);
             } catch(e){console.log(e)}
         }
     
@@ -116,11 +133,11 @@ const Dashboard = () => {
     const updateUserServices = async(e)=>{
         e.preventDefault();
 
-        console.log(serviceType);
+        console.log(newServiceType);
 
         try{
             console.log('here?')
-            const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateuserservices`, {id, serviceType})
+            const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateuserservices`, {id, newServiceType})
   
             console.log('reaching here in dash')
             const axiosdata = data.data
@@ -138,8 +155,33 @@ const Dashboard = () => {
             
         catch(err){console.log(err);}
     }
+    
 
-    // const services=[]
+    const updateUserCities = async(e)=>{
+        e.preventDefault();
+
+        console.log(newCity);
+
+        try{
+            console.log('here?')
+            const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateusercities`, {id, newCity})
+  
+            console.log('reaching here in dash')
+            const axiosdata = data.data
+            console.log(axiosdata);
+            console.log('reaching here in dash')
+
+
+            if(axiosdata){
+                console.log(axiosdata)
+                setUserCities(axiosdata)
+                // navigate(`/dashboard/${UserName}`)
+            }
+  
+        }
+            
+        catch(err){console.log(err);}
+    }
 
 
 
@@ -150,7 +192,7 @@ const Dashboard = () => {
 
             <div className='dash_DataDiv'>
                 <div className='dash_Head'>
-                    <div>welcome to the dashboard, {name} !</div>
+                    <div>Welcome to the dashboard, {name} !</div>
                     <div className='profileSettings'
                         onClick={()=> setSideBar(!sideBar)}>
                         <Settings/>
@@ -224,7 +266,7 @@ const Dashboard = () => {
                     
                 </div>
                 <div className='addNewService'>
-                    <button>Add New Cities</button>
+                    <button onClick={(e)=>setmodal2(true)}>Add New Cities</button>
                 </div>
             </div>
 
@@ -233,23 +275,7 @@ const Dashboard = () => {
 
 
         {sideBar? 
-            <div className='dashSideBar'>
-                <div>
-                    <span className='sidebarTitle'>Company Name:</span> {companyName}
-                </div> 
-                <div>
-                    <span className='sidebarTitle'>Description:</span> {companyDesc}
-                </div> 
-                <div>
-                    <span className='sidebarTitle'>Price Range:</span> {PR}
-                </div> 
-                <div>
-                    <span className='sidebarTitle'>Phone:</span> {id}
-                </div> 
-                <div>
-                    <span className='sidebarTitle'>Email:</span> {userEmail}
-                </div>  
-            </div>
+            <SideBar setName={setName} name={name} setcompanyName={setcompanyName} companyName={companyName} setcompanyDesc={setcompanyDesc} companyDesc={companyDesc} setPR={setPR} PR={PR} id={id} setuserEmail={setuserEmail} userEmail={userEmail} setNewName={setNewName} newName={newName} setnewcompanyName={setnewcompanyName} newCompanyName={newCompanyName} setnewcompanyDesc={setnewcompanyDesc} newcompanyDesc={newcompanyDesc} setnewPR={setnewPR} newPR={newPR} setnewEmail={setnewEmail} newEmail={newEmail}/>
             :
             <></>
         }
@@ -279,8 +305,8 @@ const Dashboard = () => {
                                 </li>
                             )}
                             style={{ width: 392 }}
-                            value={serviceType}
-                            onChange={(event, newValue) => setServiceType(newValue)}
+                            value={newServiceType}
+                            onChange={(event, newValue) => setNewServiceType(newValue)}
                             renderInput={(params) => (
                                 <TextField {...params} label="" placeholder="" />
                             )}
@@ -292,6 +318,44 @@ const Dashboard = () => {
                 </div>
             </div>
         :<></>}
+
+
+        {modal2? 
+            <div className='dashModal'>
+                <div className='modalBox'>
+                    <div onClick={()=> setmodal2(false)} className='closeDashModal'> X </div>
+                    <div>Edit Operational Cities:</div>
+                    <Autocomplete
+                            multiple
+                            id="checkboxes-tags-demo"
+                            options={cities}
+                            disableCloseOnSelect
+                            getOptionLabel={(option) => option}
+                            renderOption={(props, option, { selected }) => (
+                                <li {...props}>
+                                <Checkbox
+                                    icon={icon}
+                                    checkedIcon={checkedIcon}
+                                    style={{ marginRight: 8 }}
+                                    checked={selected}
+                                />
+                                {option}
+                                </li>
+                            )}
+                            style={{ width: 392 }}
+                            value={newCity}
+                            onChange={(event, newValue) => setNewCity(newValue)}
+                            renderInput={(params) => (
+                                <TextField {...params} label="" placeholder="" />
+                            )}
+                            
+                    />
+
+                    <button onClick={(e)=> updateUserCities(e)} className='submitNewServices'>Submit New Cities</button>
+
+                </div>
+            </div>
+        :<></>} 
 
     </div>
   )

@@ -389,16 +389,37 @@ module.exports.getUserData =async(req,res)=>{
 
 
 module.exports.updateUserServices = async(req, res) => {
-    const {id, serviceType} = req.body;
+    const {id, newServiceType} = req.body;
     // console.log('reaching here', req.body);
 
     // if(req.session.Username==id){
 
         try{
-            await companyDB.findOneAndUpdate({Phone:id},{serviceType: serviceType}, {returnDocument: 'after'})
+            await companyDB.findOneAndUpdate({Phone:id},{serviceType: newServiceType}, {returnDocument: 'after'})
                 .then((saved)=>{
                     // console.log(saved, 'updated services')
                     res.send(saved.serviceType)
+                })
+                .catch((e)=>{console.log(e)})
+        }
+        catch(e){console.log(e)}
+
+    // }
+}
+
+
+
+module.exports.updateUserCities = async(req, res) => {
+    const {id, newCity} = req.body;
+    // console.log('reaching here', req.body);
+
+    // if(req.session.Username==id){
+
+        try{
+            await companyDB.findOneAndUpdate({Phone:id},{city: newCity}, {returnDocument: 'after'})
+                .then((saved)=>{
+                    // console.log(saved, 'updated services')
+                    res.send(saved.city)
                 })
                 .catch((e)=>{console.log(e)})
         }
