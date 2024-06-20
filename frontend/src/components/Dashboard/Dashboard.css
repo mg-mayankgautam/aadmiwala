@@ -22,7 +22,7 @@
 }
 
 .dash_Head{
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     text-align: left;
     margin-bottom: 16px;
@@ -38,14 +38,23 @@
 
 .dash_Box{
     border-radius: 20px;
-    border: 1px solid #4A4239;
+    /* border: 1px solid #4A4239; */
     max-width: 300px;
     min-width: 180px;
     padding: 20px;
+    background-color: white;
+
+    border: 1px solid transparent;
+
+    background: linear-gradient(to right, white, white), linear-gradient(142.65deg, #FFFFFF -10.51%, rgba(227, 143, 38, 0.4) 110.46%); 
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+
+    box-shadow: 0px 5px 10px 0px #0000001A;
 }
 
 .dash_boxNum{
-    font-size: 40px;
+    font-size: 32px;
     color: var(--orange);
     font-weight: 700;
 }
@@ -69,7 +78,7 @@
 }
 
 .dash_servicesHead{
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     text-align: left;
 }
@@ -78,6 +87,7 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
+    font-size: 14px;
 }
 
 .dash_service{
@@ -85,6 +95,15 @@
     text-align: left;
     border-radius: 20px;
     border: 1px solid #332F2A ;
+    background-color: white;
+
+    border: 1px solid transparent;
+
+    background: linear-gradient(to right, white, white), linear-gradient(142.65deg, #FFFFFF -10.51%, rgba(227, 143, 38, 0.4) 110.46%); 
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+
+    box-shadow: 0px 3px 8px 0px #0000001A;
 }
 .service_name{
     font-weight: 700;
@@ -101,6 +120,7 @@
     border: none;
     background-color: var(--orange);
     color: white;
+    font-size: 14px;
     font-weight: 600;
 }
 
@@ -158,18 +178,17 @@
     flex-direction: column;
     gap: 16px;
     padding: 32px;
-    /* padding: 20px; */
     text-align: left;
     border-radius: 20px;
-    /* border-top-right-radius: 0px; */
-    /* border-bottom-right-radius: 0px; */
-    border: 1px solid #332f2a8c ;
-    /* border-right: none; */
-    /* background-color: var(--grey); */
+    border: 1px solid #332f2a25 ;
+    background-color: #00000010;
     color: var(--black);
     position: sticky;
     top: 0;
     bottom: 0;
+    font-size: 14px;
+    box-shadow: 0px 10px 20px 0px #ffffff1a;
+
 }
 
 .sidebarTitle{
