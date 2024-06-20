@@ -122,14 +122,18 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     padding: 32px;
     gap: 16px;
     box-shadow: 0px 10px 20px 0px #0000001A;
     position: relative;
     border: 1px solid var(--orange);
+    overflow-y: scroll;
+    max-height: 450px;
 }
+
+.modalBox::-webkit-scrollbar{display: none;}
 
 .submitNewServices{
     border: none;

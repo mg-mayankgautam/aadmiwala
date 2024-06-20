@@ -18,7 +18,7 @@ const Connect = ({connect_ref}) => {
     e.preventDefault();
 
     try {
-        await emailjs.send('service_qkemi3i', 'template_ur5el55', {
+        await emailjs.send('service_qkemi3i', 'template_x4w111d', {
             name: nameRef.current.value,
             email: emailRef.current.value,
             phone: phoneRef.current.value,

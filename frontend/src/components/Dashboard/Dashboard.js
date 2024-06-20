@@ -58,6 +58,8 @@ const Dashboard = () => {
     const [newCompanyName, setnewcompanyName] = useState('');
     const [newcompanyDesc, setnewcompanyDesc] = useState('');
     const [newEmail, setnewEmail] = useState('');
+    const [newGSTno, setnewGSTno] = useState('');
+    const [newaddr, setnewaddr] = useState('');
     const [sideBar, setSideBar] = useState(false)
 
 
@@ -120,7 +122,9 @@ const Dashboard = () => {
           setnewcompanyDesc(data.data.agencyBriefing);
           setPR(data.data.priceRange);
           setGSTno(data.data.GSTno);
+          setnewGSTno(data.data.GSTno);
           setAddress(data.data.address);
+          setnewaddr(data.data.address);
           setCountry(data.data.country);
         //   setnewPR(data.data.priceRange);
             } catch(e){console.log(e)}
@@ -275,7 +279,7 @@ const Dashboard = () => {
 
 
         {sideBar? 
-            <SideBar setName={setName} name={name} setcompanyName={setcompanyName} companyName={companyName} setcompanyDesc={setcompanyDesc} companyDesc={companyDesc} setPR={setPR} PR={PR} id={id} setuserEmail={setuserEmail} userEmail={userEmail} setNewName={setNewName} newName={newName} setnewcompanyName={setnewcompanyName} newCompanyName={newCompanyName} setnewcompanyDesc={setnewcompanyDesc} newcompanyDesc={newcompanyDesc} setnewEmail={setnewEmail} newEmail={newEmail} GSTno={GSTno} address={address} country={country}/>
+            <SideBar setName={setName} name={name} setcompanyName={setcompanyName} companyName={companyName} setcompanyDesc={setcompanyDesc} companyDesc={companyDesc} setPR={setPR} PR={PR} id={id} setuserEmail={setuserEmail} userEmail={userEmail} setNewName={setNewName} newName={newName} setnewcompanyName={setnewcompanyName} newCompanyName={newCompanyName} setnewcompanyDesc={setnewcompanyDesc} newcompanyDesc={newcompanyDesc} setnewEmail={setnewEmail} newEmail={newEmail} setGSTno={setGSTno} GSTno={GSTno} setAddress={setAddress} address={address} country={country} setnewGSTno={setnewGSTno} newGSTno={newGSTno} setnewaddr={setnewaddr} newaddr={newaddr} />
             :
             <></>
         }

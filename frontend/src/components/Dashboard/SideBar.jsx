@@ -3,7 +3,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 
 
-const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, companyDesc, setPR,PR, id,setuserEmail, userEmail, setNewName, newName, setnewcompanyName, newCompanyName, setnewcompanyDesc, newcompanyDesc, setnewEmail, newEmail, GSTno, address, country}) => {
+const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, companyDesc, setPR,PR, id,setuserEmail, userEmail, setNewName, newName, setnewcompanyName, newCompanyName, setnewcompanyDesc, newcompanyDesc, setnewEmail, newEmail, setGSTno, GSTno, setAddress, address, country, setnewGSTno, newGSTno, setnewaddr, newaddr}) => {
 
     const [modal3, setmodal3] = useState(false);
     // const [PRange, setPRange] = useState(PR.split(' - '));
@@ -39,7 +39,7 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
         if(newCompanyName && newPR && newName && newEmail && validEmail){
             try{
 
-                const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateuserinfo`, {id, newCompanyName, newcompanyDesc, newPR, newName, newEmail})
+                const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateuserinfo`, {id, newCompanyName, newcompanyDesc, newPR, newName, newEmail, newGSTno, newaddr})
       
                
                 const axiosdata = data.data;    
@@ -51,6 +51,8 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
                     setPR(axiosdata.priceRange);
                     setName(axiosdata.fullName);
                     setuserEmail(axiosdata.email);
+                    setGSTno(axiosdata.GSTno);
+                    setAddress(axiosdata.address);
                     setmodal3(false);
                     // navigate(`/dashboard/${UserName}`)
                 }
@@ -78,7 +80,7 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
                 <span className='sidebarTitle'>Description:</span> {companyDesc}
             </div> 
             <div>
-                <span className='sidebarTitle'>Price Range:</span> {PR}
+                <span className='sidebarTitle'>Price Range:</span> {PR} INR
             </div>
             <div>
                 <span className='sidebarTitle'>Your Name:</span> {name}
@@ -122,10 +124,10 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
                     <div>Average Price Range</div>
 
                     <div className='PRInputDiv'>
-                        <input className='PRInfoInput' type='text' placeholder='Price Range' value={newLowPR}
+                        <input className='PRInfoInput' type='text' placeholder='Low Range' value={newLowPR}
                             onChange={(e)=> setnewLowPR(e.target.value)} required
                         />
-                        <input className='PRInfoInput' type='text' placeholder='Price Range' value={newHighPR}
+                        <input className='PRInfoInput' type='text' placeholder='High Range' value={newHighPR}
                             onChange={(e)=> setnewHighPR(e.target.value)} required
                         />
                     </div>
@@ -146,6 +148,20 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
                     { newEmail && !validEmail? (<p className='validerrordash'>
                         add valid email.        
                         </p>): <></>}
+                </div>
+
+                <div>
+                    <div>GST Number</div>
+                    <input className='editInfoInput' type='text' placeholder='GST Number' value={newGSTno}
+                    onChange={(e)=> setnewGSTno(e.target.value)} required
+                />
+                </div>
+
+                <div>
+                    <div>Main Office Address</div>
+                    <input className='editInfoInput' type='text' placeholder='Main Address' value={newaddr}
+                    onChange={(e)=> setnewaddr(e.target.value)} required
+                />
                 </div>
 
                 <button onClick={(e)=> updateUserProfile(e)} className='submitNewServices'>Submit</button>

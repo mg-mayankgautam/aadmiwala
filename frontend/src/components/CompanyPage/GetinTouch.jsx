@@ -20,7 +20,7 @@ const GetinTouch = ({company}) => {
     e.preventDefault();
 
     try {
-        await emailjs.send('service_qkemi3i', 'template_es3432s', {
+        await emailjs.send('service_qkemi3i', 'template_2z6jlzp', {
             name: nameRef.current.value,
             email: emailRef.current.value,
             phone: phoneRef.current.value,
