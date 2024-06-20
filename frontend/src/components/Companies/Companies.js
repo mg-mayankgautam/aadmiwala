@@ -7,6 +7,10 @@ import Company from '../Company/Company';
 
 
 const Companies = () => {
+
+    useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
     
     const [companies, setCompanies] =useState([])
 

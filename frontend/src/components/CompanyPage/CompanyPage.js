@@ -10,6 +10,10 @@ import GetinTouch from './GetinTouch';
 
 const CompanyPage = () => {
 
+    useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
+
     const {id} = useParams();
     console.log(id);
 

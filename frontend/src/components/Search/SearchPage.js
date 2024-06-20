@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import Company from '../Company/Company';
 
 const SearchPage = ({searchValue,setSearchValue}) => {
-
-    // useEffect(()=>{
-    //     console.log(searchValue);
-    // },[searchValue])
+    
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
   return (
 
