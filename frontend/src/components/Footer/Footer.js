@@ -99,6 +99,8 @@ const Footer = () => {
             <div>Terms & Conditions</div>
             <div>Privacy Policy</div>
         </div>
+        <div className='footerCopyright'>©2024 Aadmiwala, All Rights Reserved. <br />
+        (A Division of Janshakti Manpower Services Pvt. Ltd.)</div>
     </div>
   )
 }
