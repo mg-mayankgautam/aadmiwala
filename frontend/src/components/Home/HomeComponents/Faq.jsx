@@ -52,12 +52,9 @@ const Faq = () => {
 
 const data = [{
     question:'What services does Aadmiwala offer?',
-    answer:'At Aadmiwala, we offer tailored staffing solutions to meet your unique business needs, whether you require temporary staff, permanent hires, or specialized talent. Our extensive network of vetted staffing agencies ensures reliable and high-quality options, meticulously evaluated to meet our stringent standards, providing you with peace of mind and confidence. Acting as the crucial link between your company and staffing agencies, Aadmiwala facilitates seamless integration, allowing you to focus on your core business while we handle the intricacies of staffing efficiently.'
+    answer:'At Aadmiwala, we offer a one-stop solution for all your staffing/vendor needs, eliminating the hassle of searching multiple service providers. Whether you require  housekeeping support, or office assistance, we provide tailored opportunities to meet your unique business requirements. Say goodbye to the complexity of managing multiple vendors and enjoy peace of mind and confidence with Aadmiwala.'
 },
-{
-    question:'What makes Aadmiwala different from other staffing agencies?',
-    answer:"Aadmiwala sets itself apart from other staffing solution providers through its commitment to delivering tailored, high-quality staffing solutions. With an extensive network of vetted staffing agencies, we offer personalized services designed to meet the unique needs of each client. Our rigorous quality assurance processes ensure reliability and confidence in our partners, while seamless integration simplifies the staffing process for clients. We prioritize compliance with legal requirements and industry standards, providing peace of mind and mitigating risks for businesses. Aadmiwala's flexibility and adaptability allow us to customize our services to meet evolving client needs, whether they require temporary, permanent, or contract staffing solutions."
-},
+
 {
     question:"What industries does Aadmiwala cater to?",
     answer:"Aadmiwala serves clients across various industries, including but not limited to healthcare, IT, finance, manufacturing, hospitality, and retail."
