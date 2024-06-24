@@ -13,12 +13,15 @@ const AboutDesc = ({about_ref}) => {
                 <br/>
                 <br/>
             
-                <div className='text AboutBoxText'>Aadmiwala is your trusted partner in the world of staffing solutions, bridging the gap between companies and staffing agencies with precision and expertise. 
+                <div className='text AboutBoxText'>
+                Aadmiwala is your trusted partner in the world of staffing/Vendor solutions, bridging the gap between companies and vendors with precision and expertise.
                 <br/>
                 <br/>
                 <br />
+                We understand the critical importance of having the right personnel to drive your business forward, and we are dedicated to connect you with the perfect one stop solution tailored to your unique needs. 
+             
 
-                We understand the critical importance of having the right personnel to drive your business forward, and we are dedicated to connecting you with the perfect staffing solutions tailored to your unique needs.
+               
                     </div>
             </div>
             <div>
