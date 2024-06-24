@@ -38,8 +38,8 @@ const AboutTimeline = () => {
           <div className='timelineContent'>
             <div className='timelineHead'>Rigorous Screening</div>
             <div className='text'>Understanding that the caliber of your staff directly influences your business's success, we offer a comprehensive solution through our single-vendor, single-contract approach.
-
-Our meticulous screening and assessment process ensures that each vendor presented to you has undergone a thorough evaluation by our team of experts. We assess their skills, experience, and quality of work to guarantee they possess the perfect combination of expertise and cultural fit, enriching your organization and driving its prosperity.</div>
+            <br /> <br />
+            Our meticulous screening and assessment process ensures that each vendor presented to you has undergone a thorough evaluation by our team of experts. We assess their skills, experience, and quality of work to guarantee they possess the perfect combination of expertise and cultural fit, enriching your organization and driving its prosperity.</div>
           </div>
         </TimelineOppositeContent>
         <TimelineSeparator>
