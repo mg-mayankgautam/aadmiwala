@@ -55,7 +55,7 @@ const CompanyPage = () => {
             <div className='companyData'>
               <div className='company_date'>Posted {company.date}</div>
 
-              <div className='jobTitle'>Job Title</div>
+              // <div className='jobTitle'>Job Title</div>
 
               <div className='company_name'>{company.companyName}</div>
 
