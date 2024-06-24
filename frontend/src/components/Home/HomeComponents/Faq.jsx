@@ -65,7 +65,7 @@ const data = [{
 },
 {
     question:"How does Aadmiwala ensure the quality of the staffing agencies in its network?",
-    answer:"We meticulously evaluate and validate all vendors or staffing agencies before partnering with them."
+    answer:"We meticulously evaluate and validate all vendors or staffing agencies before partnering with them . Our stringent standards ensure that only reliable and high-quality vendors or agencies are included in our network."
 },
 
 ]
