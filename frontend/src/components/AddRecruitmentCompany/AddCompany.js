@@ -114,6 +114,7 @@ const AddCompany = () => {
 
     const [phonefromDB, setphonefromDB] = useState(true);
     const [validPhnError, setValidPhnError] = useState(false);
+    const [validOTPError, setValidOTPError] = useState(false);
 
 
     useEffect(() => {
@@ -158,6 +159,11 @@ const AddCompany = () => {
     useEffect(() => {
         setValidPhnError(false)
     }, [phonee]);
+
+    useEffect(() => {
+        setValidOTPError(false)
+    }, [OTP]);
+
 
 
     const nextBtn1 =async(e)=>{
@@ -266,7 +272,9 @@ const AddCompany = () => {
                 setPasswordComp(true);
                 setslide4(false);
               }
-              else{}
+              else{
+                setValidOTPError(true);
+              }
 
             }
             catch(err){console.log(err);}
@@ -592,6 +600,10 @@ const AddCompany = () => {
                 
                 {!OTP ? (<p className='error'>
                     please enter OTP.        
+                    </p>): <></>}
+
+                {OTP && validOTPError ? (<p className='validerror'>
+                    Incorrect OTP.        
                     </p>): <></>}
 
             </div>:

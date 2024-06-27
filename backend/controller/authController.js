@@ -102,7 +102,7 @@ module.exports.verifyPhoneNum = async(req,res) =>{
                 });
 
 
-        console.log(JSON.stringify(response.data));
+            console.log(JSON.stringify(response.data));
         })
         .catch(function (error) {
         console.log(error);
