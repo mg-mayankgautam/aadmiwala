@@ -26,8 +26,7 @@ module.exports.verifyOtp=async(req, res)=>{
 
         console.log(saved)
         if(saved){res.send(true);}
-        else res.send(true);//change this to false
-       // 
+        else res.send(false);
     })
     .catch( err =>{
         console.error(err)
@@ -44,15 +43,48 @@ module.exports.verifyPhoneNum = async(req,res) =>{
     
     const OTP = `${Math.floor(1000+Math.random()*9000)}`;
 
-    const sendSMS= async(body)=>{
+    // const sendSMS= async(body)=>{
 
-        let msgOptions = {
-            from: '+13642047179',
-            to: phone,
-            body,
-        };
-        try{
+    //     let msgOptions = {
+    //         from: '+13642047179',
+    //         to: phone,
+    //         body,
+    //     };
+    //     try{
             
+
+    //         let newotpentry = new otpDB({Phone, OTP});
+            
+           
+    //         newotpentry.save()
+    //             .then(async(saved)=>{
+    //                 console.log('otp added success');
+                    
+    //             // const message = await client.messages.create(msgOptions);    
+    //                 //res.send(true);                    
+    //             })
+    //             .catch(err =>{
+    //                 console.log(err);
+    //                 res.send(false);
+    //             });
+
+
+           
+
+
+    //         res.send(true);
+    //     }catch(e){console.log(e);}
+    // }
+
+    var config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `https://2factor.in/API/V1/9dfd8b94-1f26-11ef-8b60-0200cd936042/SMS/${phone}/${OTP}/JNSHKOTP`,
+        headers: { }
+      };
+
+      axios(config)
+        .then(function (response) {
 
             let newotpentry = new otpDB({Phone, OTP});
             
@@ -70,27 +102,11 @@ module.exports.verifyPhoneNum = async(req,res) =>{
                 });
 
 
-           
-
-
-            res.send(true);
-        }catch(e){console.log(e);}
-    }
-
-    // var config = {
-    //     method: 'get',
-    //   maxBodyLength: Infinity,
-    //     url: `https://2factor.in/API/V1/9dfd8b94-1f26-11ef-8b60-0200cd936042/SMS/+919810533987/1234/OTP1`,
-    //     headers: { }
-    //   };
-
-    //   axios(config)
-    //     .then(function (response) {
-    //     console.log(JSON.stringify(response.data));
-    //     })
-    //     .catch(function (error) {
-    //     console.log(error);
-    //     });
+        console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
 
 
 

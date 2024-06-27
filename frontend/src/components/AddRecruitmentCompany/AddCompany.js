@@ -232,8 +232,8 @@ const AddCompany = () => {
             console.log(data.data);
             
               if(data.data){
-                // setslide4(true); 
-                setPasswordComp(true);// remove this when adding otp feature
+                 setslide4(true); 
+              //  setPasswordComp(true);// remove this when adding otp feature
                 setslide3(false);
               }
 
@@ -266,6 +266,7 @@ const AddCompany = () => {
                 setPasswordComp(true);
                 setslide4(false);
               }
+              else{}
 
             }
             catch(err){console.log(err);}
@@ -576,7 +577,7 @@ const AddCompany = () => {
             </div>:<></>}
 
 
-            {/* {slide4 ?
+            {slide4 ?
             <div>
                 
                 <div>
@@ -599,7 +600,7 @@ const AddCompany = () => {
             <CircularProgress />
           </Box>:<></>}</>
           
-          } */}
+          }
 
           {passwordComp? 
             <div className='PasswordDiv'>
