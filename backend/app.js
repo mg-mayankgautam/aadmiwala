@@ -18,7 +18,7 @@ app.use(cors(
     {
         // origin: process.env.FRONTEND_URL, 
         // origin: 'http://localhost:3000', 
-        origin: 'https://aadmiwala.in',
+        origin: 'https://covendx.com/',
         credentials: true, 
         withCredentials: true
     }

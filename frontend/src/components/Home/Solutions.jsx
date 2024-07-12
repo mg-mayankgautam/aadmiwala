@@ -16,8 +16,8 @@ const Solutions = () => {
     <>
     <div className='USPs'>
         <div>
-            <div className='USP_head'>Flexible Staffing Solutions for Every Business Need</div>
-            <div className='USP_text'>Choose the staffing solution that aligns with your business needs - consistent support or flexible assistance, we deliver.</div>
+            {/* <div className='USP_head'>Flexible Staffing Solutions for Every Business Need</div> */}
+            {/* <div className='USP_text'>Choose the staffing solution that aligns with your business needs - consistent support or flexible assistance, we deliver.</div> */}
         </div>
 
         <div className='USP_container'>
