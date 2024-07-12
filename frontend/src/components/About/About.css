@@ -48,8 +48,8 @@
 
 .AboutBox{
     padding: 64px 80px;
-
-    background: linear-gradient(260.69deg, #713F00 -5.88%, #5A3301 9.16%, #2F1C04 41.54%, #221505 67.57%);
+    /* background: linear-gradient(260.69deg, #713F00 -5.88%, #5A3301 9.16%, #2F1C04 41.54%, #221505 67.57%); */
+    background: linear-gradient(344deg, #164F55 24.07%, #051113 89.08%);
     border-radius: 20px;
     display: grid;
     grid-template-columns: 69% 25%;
