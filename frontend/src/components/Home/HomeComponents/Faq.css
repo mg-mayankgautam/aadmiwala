@@ -25,7 +25,7 @@
 .FAQ_box{
     margin-top: 24px;
     padding: 18px;
-    border: 1px solid #4A4239;
+    border: 1px solid var(--green);
     font-family: 'inter';
     border-radius: 20px;
     font-weight: 600;

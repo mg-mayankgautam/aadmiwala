@@ -12,7 +12,8 @@ code {
 }
 
 :root{
-  --black : #332F2A;
+  /* --black : #332F2A; */
+  --black : #051113;
   /* --orange : #E38E27; */
   /* --orange : #FF0000; */
   --orange : #FFAA00;
