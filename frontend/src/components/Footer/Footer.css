@@ -1,5 +1,5 @@
 .Footer{
-    background: linear-gradient(180deg, #332F2A 0%, #221505 100%);
+    background: linear-gradient(180deg, #051113 0%, var(--green) 100%);
     padding: 72px 64px;
     color: white;
     min-height: 300px;
@@ -38,6 +38,7 @@
 
 .footerLogo{
     align-self: flex-start;
+    height: 40px;
 }
 
 .footerAddress{

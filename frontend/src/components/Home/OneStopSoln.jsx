@@ -11,7 +11,7 @@ const OneStopSoln = ({connect_ref}) => {
         <div className='OSS_content'>
             <div className='OSS_head'>One-Stop solution</div>
             <div className='text'>
-                Say goodbye to the hassle of searching multiple service providers. At Aadmiwala, we offer a one-stop solution for all your staffing/Vendor needs.
+                Say goodbye to the hassle of searching multiple service providers. At Covendx, we offer a one-stop solution for all your staffing/Vendor needs.
                 <br /> <br />
                 Whether you're in need of housekeeping support or office assistance, we provide opportunities perfectly tailored to meet your organization's needs.
             </div>

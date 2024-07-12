@@ -75,7 +75,7 @@ const AboutTimeline = () => {
         <TimelineOppositeContent >
           <div className='timelineContent'>
             <div className='timelineHead'>Our Promise</div>
-            <div className='text'>At Aadmiwala, We take pride in our capacity to deliver one vendor solution tailored precisely to your needs, executed efficiently, and steadfast in their outcomes. Our dedication to excellence propels us to surpass your expectations, contributing significantly to the advancement and prosperity of your business.</div>
+            <div className='text'>At Covendx, We take pride in our capacity to deliver one vendor solution tailored precisely to your needs, executed efficiently, and steadfast in their outcomes. Our dedication to excellence propels us to surpass your expectations, contributing significantly to the advancement and prosperity of your business.</div>
           </div>
         </TimelineOppositeContent>
         <TimelineSeparator>
