@@ -31,7 +31,7 @@ const Footer = () => {
                         </div>
                     </a>
 
-                    <a href="https://www.instagram.com/aadmiwala" target='_blank'>
+                    <a href="https://www.instagram.com/covendx_" target='_blank'>
                         <div className='footerSocialMedia'><img src={ig}/> Instagram</div>
                     </a>
                     
