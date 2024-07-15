@@ -18,7 +18,7 @@ app.use(cors(
     {
         // origin: process.env.FRONTEND_URL, 
         // origin: 'http://localhost:3000', 
-        origin: 'https://covendx.com/',
+        origin: 'https://www.covendx.com/',
         credentials: true, 
         withCredentials: true
     }
