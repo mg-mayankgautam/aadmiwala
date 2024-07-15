@@ -27,7 +27,7 @@ app.use(cors(
 app.use((req, res, next)=>{
     res.setHeader(
         "Access-Control-Allow-Origin",
-        "https://covendx.com/"
+        "https://covendx.com"
     );
     res.setHeader(
         "Access-Control-Allow-Headers",
