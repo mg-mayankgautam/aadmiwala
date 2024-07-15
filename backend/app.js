@@ -19,8 +19,8 @@ app.use(cors(
         // origin: process.env.FRONTEND_URL, 
         // origin: 'http://localhost:3000', 
         origin: '*',
-       // credentials: true, 
-       // withCredentials: true
+       credentials: true, 
+      withCredentials: true
     }
 ))
 
