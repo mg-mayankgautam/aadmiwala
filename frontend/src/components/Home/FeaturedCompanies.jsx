@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import EastIcon from '@mui/icons-material/East';
 import Company from '../Company/Company';
+import Loader from '../Loader/Loader';
 
 const FeaturedCompanies = () => {
 
@@ -44,7 +45,7 @@ const FeaturedCompanies = () => {
 
         {companies.length===0 ?
 
-          <div>Loading</div>
+          <Loader/>
 
         :
           companies.map(company=>
