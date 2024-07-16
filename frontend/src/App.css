@@ -27,3 +27,8 @@ button{
   font-family: 'inter';
   font-weight: 400;
 }
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Loader.css';
 
 const Loader = ({ fadingOut }) => {
@@ -10,6 +10,16 @@ const Loader = ({ fadingOut }) => {
   const c = Math.round(r / Math.SQRT2);
   const l = Math.ceil((3 * Math.PI + 4) * r);
   const d = Math.floor(Math.PI * r);
+
+  useEffect(() => {
+    // Add no-scroll class to body when loader is mounted
+    document.body.classList.add('no-scroll');
+
+    // Remove no-scroll class from body when loader is unmounted
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, []);
 
   return (
     <div className={`Loader ${fadingOut ? 'fade-out' : ''}`}>
