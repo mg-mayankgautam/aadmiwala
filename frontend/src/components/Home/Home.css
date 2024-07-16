@@ -4,11 +4,12 @@
     align-items: center;
     padding: 0px 64px;
     margin: 0 auto;
-    background-image: url(../../assets/OBJECTS.png);
+    background-image: url(../../assets/Frame\ 9513\ \(1\).png);
     background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
     min-height: calc(100vh - 69px);
+    color: white;
 }
 
 .landingContent{
@@ -49,6 +50,7 @@
     font-size: 20px;
     align-items: center;
     position: relative;
+    color: white !important;
 }
 
 .searcherror{
@@ -71,10 +73,10 @@
     position: relative;
 }
 
-.MuiAutocomplete-hasPopupIcon.css-1ow4h4h-MuiAutocomplete-root .MuiOutlinedInput-root, .MuiAutocomplete-hasClearIcon.css-1ow4h4h-MuiAutocomplete-root .MuiOutlinedInput-root{
+/* .MuiAutocomplete-hasPopupIcon.css-1ow4h4h-MuiAutocomplete-root .MuiOutlinedInput-root, .MuiAutocomplete-hasClearIcon.css-1ow4h4h-MuiAutocomplete-root .MuiOutlinedInput-root{
     border-radius: 25px !important;
     padding: 12px 39px 0px 12px;
-}
+} */
 .Mui-focused{
     color: var(--black) !important;
     border-color: var(--orange)  !important;
@@ -90,8 +92,13 @@
 .searchBtn{
     padding: 6px 16px;
     background-color: var(--black);
-    border: 1px solid var(--black);
+    border: 1px solid white;
     color: white;
+}
+.searchBtn:hover{
+    background-color: white;
+    border: 1px solid white;
+    color: var(--orange);
 }
 
 .searchdropdown{
