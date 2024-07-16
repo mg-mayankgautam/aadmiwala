@@ -42,12 +42,17 @@ const FeaturedCompanies = () => {
         
         <div className='FC_container'>
 
-        {companies&& companies.map(company=>
+        {companies.length===0 ?
+
+          <div>Loading</div>
+
+        :
+          companies.map(company=>
 
               <Link to={`/company/${company._id}`} key={company._id}>
                         <Company company={company}/>
               </Link>
-                )}
+            )}
             
            
         </div>
