@@ -13,11 +13,12 @@ const Loader = ({ fadingOut }) => {
 
   useEffect(() => {
     // Add no-scroll class to body when loader is mounted
-    document.body.classList.add('no-scroll');
+    // document.body.classList.add('no-scroll');
 
     // Remove no-scroll class from body when loader is unmounted
     return () => {
-      document.body.classList.remove('no-scroll');
+      // document.body.classList.remove('no-scroll');
+      window.scrollTo(0, 0)
     };
   }, []);
 

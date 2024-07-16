@@ -1,36 +1,36 @@
 .Loader {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background-color: #082124c9; */
-    background-color: var(--green);
-    z-index: 10;
-    transition: opacity 0.5s ease-out;
-  }
-  
-  .Loader.fade-out {
-    opacity: 0;
-    visibility: hidden;
-  }
-  
-  svg {
-    max-width: 20em;
-    fill: none;
-    stroke: white;
-    stroke-width: 8%;
-  }
-  
-  use {
-    stroke: var(--orange);
-    animation: a 2s linear infinite;
-  }
-  
-  @keyframes a { 
-    to { stroke-dashoffset: 0px; } 
-  }
-  
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(344deg, #164F55 24.07%, #051113 89.08%);
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  visibility: visible;
+}
+
+.Loader.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out 1s;
+  visibility: hidden;
+}
+
+svg {
+  max-width: 20em;
+  fill: none;
+  stroke-width: 6%;
+}
+
+use {
+  stroke: var(--orange);
+  animation: a 1.5s linear infinite;
+}
+
+@keyframes a { 
+  to { stroke-dashoffset: 0px; } 
+}
