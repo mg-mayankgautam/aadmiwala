@@ -16,10 +16,17 @@ const FeaturedCompanies = () => {
         const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getallcompanies`);
         const array = data.data;
         setCompanies(array);
-        setTimeout(() => {
-          setFadingOut(true);
-          setTimeout(() => setLoading(false), 500); // Wait for fade-out transition
-        }, 2000); // Minimum 2 seconds before fade-out starts
+        if (!localStorage.getItem('visited')) {
+          setTimeout(() => {
+            setFadingOut(true);
+            setTimeout(() => {
+              setLoading(false);
+              localStorage.setItem('visited', 'true');
+            }, 500); // Wait for fade-out transition
+          }, 2000); // Minimum 2 seconds before fade-out starts
+        } else {
+          setLoading(false);
+        }
       } catch (err) {
         console.log(err);
       }
