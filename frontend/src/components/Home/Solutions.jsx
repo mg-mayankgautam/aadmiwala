@@ -56,7 +56,7 @@ const Solutions = () => {
         </div>
 
         <div className='USP_foot'>
-            <img src={uspstars} />
+            {/* <img src={uspstars} /> */}
             <div className='USP_footContent'>
                 <img src={uspleaf1}/>
                 <div>Your Trusted Partner For Best Services <br /> Company Sourcing</div>
