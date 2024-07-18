@@ -26,8 +26,8 @@ const HomePage = ({searchValue,setSearchValue}) => {
         <FeaturedCompanies/>
         <Benefits/>
         <Challenges/>
-        <OneStopSoln connect_ref={connect_ref}/>
-        <Solutions/>
+        {/* <OneStopSoln connect_ref={connect_ref}/> */}
+        <Solutions connect_ref={connect_ref}/>
         <Faq/>
         <Connect connect_ref={connect_ref}/>
         {/* <Footer/> */}

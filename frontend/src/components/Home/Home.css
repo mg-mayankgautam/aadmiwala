@@ -334,6 +334,16 @@
     max-width: 100%;
 }
 
+.OSS_content.USP{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    gap: 24px;
+    max-width: 80%;
+}
+
 .OSS_head{
     font-size: 32px;
     font-weight: 700;
@@ -350,6 +360,15 @@
     font-weight: 700;
     color: var(--orange);
     align-self: flex-start;
+}
+
+.OSS_btn:hover{
+    padding: 10px 18px;
+    transition: padding 150ms ease-in-out;
+}
+
+.OSS_btn.USP{
+    align-self: center;
 }
 
 .FlowChart{

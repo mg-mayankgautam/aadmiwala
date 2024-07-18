@@ -11,13 +11,23 @@ import uspstars from '../../assets/usp-stars.png'
 import uspleaf1 from '../../assets/usp-leaf1.png'
 import uspleaf2 from '../../assets/usp-leaf2.png'
 
-const Solutions = () => {
+const Solutions = ({connect_ref}) => {
   return (
     <>
     <div className='USPs'>
-        <div>
-            {/* <div className='USP_head'>Flexible Staffing Solutions for Every Business Need</div> */}
-            {/* <div className='USP_text'>Choose the staffing solution that aligns with your business needs - consistent support or flexible assistance, we deliver.</div> */}
+        {/* <div>
+            <div className='USP_head'>Flexible Staffing Solutions for Every Business Need</div>
+            <div className='USP_text'>Choose the staffing solution that aligns with your business needs - consistent support or flexible assistance, we deliver.</div>
+        </div> */}
+
+        <div className='OSS_content USP'>
+            <div className='OSS_head'>One-Stop solution</div>
+            <div className='text'>
+                Say goodbye to the hassle of searching multiple service providers. At Covendx, we offer a one-stop solution for all your staffing/Vendor needs.
+                <br /> <br />
+                Whether you're in need of housekeeping support or office assistance, we provide opportunities perfectly tailored to meet your organization's needs.
+            </div>
+            <button className='OSS_btn USP' onClick={() => {connect_ref.current?.scrollIntoView({behavior:'smooth'})}}>Speak with us →</button>
         </div>
 
         <div className='USP_container'>
@@ -58,9 +68,9 @@ const Solutions = () => {
         <div className='USP_foot'>
             {/* <img src={uspstars} /> */}
             <div className='USP_footContent'>
-                <img src={uspleaf1}/>
+                {/* <img src={uspleaf1}/> */}
                 <div>Your Trusted Partner For Best Services <br /> Company Sourcing</div>
-                <img src={uspleaf2}/>
+                {/* <img src={uspleaf2}/> */}
             </div>
         </div>
         
