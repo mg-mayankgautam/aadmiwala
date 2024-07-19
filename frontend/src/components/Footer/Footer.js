@@ -70,13 +70,13 @@ const Footer = () => {
                 </div>
                 <div className='footerList'>
                      <div>
-                         aadmiwala@gmail.com
+                        covendx@gmail.com
                      </div>
                      
                      <div className={callus? 'footerOrange footerbtnwidth' : 'footerOrange' }
                         onClick={()=> setcallus(!callus)}>
                         {callus? 
-                            <>8210072553 <EastIcon/></>
+                            <>9155018111 <EastIcon/></>
                         : 
                         <>
                             Contact Us <EastIcon/>

@@ -101,7 +101,7 @@ const handleLogout = async() =>{
             <button className={callus? 'navSignupBtn navbtnwidth' : 'navSignupBtn' }
             onClick={()=> setcallus(!callus)}> <CallIcon/>
               {callus? 
-                <> 8210072553</>
+                <> 9155018111</>
               : 
               <>
                 Call Us

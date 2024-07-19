@@ -65,14 +65,14 @@ const Solutions = ({connect_ref}) => {
             </div>
         </div>
 
-        <div className='USP_foot'>
-            {/* <img src={uspstars} /> */}
+        {/* <div className='USP_foot'>
+            <img src={uspstars} />
             <div className='USP_footContent'>
-                {/* <img src={uspleaf1}/> */}
+                <img src={uspleaf1}/>
                 <div>Your Trusted Partner For Best Services <br /> Company Sourcing</div>
-                {/* <img src={uspleaf2}/> */}
+                <img src={uspleaf2}/>
             </div>
-        </div>
+        </div> */}
         
     </div>
     </>

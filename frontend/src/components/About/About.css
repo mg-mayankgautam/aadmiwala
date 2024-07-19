@@ -85,11 +85,16 @@
 }
 
 .timelineHead{
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 700;
     margin-bottom: 16px;
 }
 
+.timelineText{
+    font-family: 'inter';
+    font-weight: 400;
+    font-size: 15px;
+}
 .MuiTimelineSeparator-root.css-1fe7e6p-MuiTimelineSeparator-root> *{
     background-color: var(--orange);
 }

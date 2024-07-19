@@ -19,7 +19,7 @@ const AboutTimeline = () => {
         <TimelineOppositeContent >
           <div className='timelineContent'>
             <div className='timelineHead'>Our Approach</div>
-            <div className='text'>We believe that effective staffing solutions begin with a deep understanding of your unique needs and challenges. That's why our process starts with a consultative approach, where we take the time to learn about your company culture, operational goals, and staffing requirements. <br /> <br />Through this collaborative effort, we craft bespoke manpower solutions that seamlessly integrate with your existing workforce, ensuring a cohesive and productive team environment.</div>
+            <div className='timelineText'>We believe that effective staffing solutions begin with a deep understanding of your unique needs and challenges. That's why our process starts with a consultative approach, where we take the time to learn about your company culture, operational goals, and staffing requirements. <br /> <br />Through this collaborative effort, we craft bespoke manpower solutions that seamlessly integrate with your existing workforce, ensuring a cohesive and productive team environment.</div>
           </div>
         </TimelineOppositeContent>
         <TimelineSeparator style={{marginTop:"0px"}}>
@@ -37,7 +37,7 @@ const AboutTimeline = () => {
         <TimelineOppositeContent >
           <div className='timelineContent'>
             <div className='timelineHead'>Rigorous Screening</div>
-            <div className='text'>Understanding that the caliber of your staff directly influences your business's success, we offer a comprehensive solution through our single-vendor, single-contract approach.
+            <div className='timelineText'>Understanding that the caliber of your staff directly influences your business's success, we offer a comprehensive solution through our single-vendor, single-contract approach.
             <br /> <br />
             Our meticulous screening and assessment process ensures that each vendor presented to you has undergone a thorough evaluation by our team of experts. We assess their skills, experience, and quality of work to guarantee they possess the perfect combination of expertise and cultural fit, enriching your organization and driving its prosperity.</div>
           </div>
@@ -57,7 +57,7 @@ const AboutTimeline = () => {
         <TimelineOppositeContent >
           <div className='timelineContent'>
             <div className='timelineHead'>Ongoing Support</div>
-            <div className='text'>Our commitment to your triumph extends beyond initial placement. We prioritize cultivating enduring partnerships with our clients, offering continuous support and guidance to facilitate a seamless integration of our staff into your team. <br /> <br />From tackling any arising challenges to nurturing open communication and feedback channels, we stand by you every step of the way, ensuring a seamless and triumphant journey.</div>
+            <div className='timelineText'>Our commitment to your triumph extends beyond initial placement. We prioritize cultivating enduring partnerships with our clients, offering continuous support and guidance to facilitate a seamless integration of our staff into your team. <br /> <br />From tackling any arising challenges to nurturing open communication and feedback channels, we stand by you every step of the way, ensuring a seamless and triumphant journey.</div>
           </div>
         </TimelineOppositeContent>
         <TimelineSeparator>
@@ -75,7 +75,7 @@ const AboutTimeline = () => {
         <TimelineOppositeContent >
           <div className='timelineContent'>
             <div className='timelineHead'>Our Promise</div>
-            <div className='text'>At Covendx, We take pride in our capacity to deliver one vendor solution tailored precisely to your needs, executed efficiently, and steadfast in their outcomes. Our dedication to excellence propels us to surpass your expectations, contributing significantly to the advancement and prosperity of your business.</div>
+            <div className='timelineText'>At Covendx, We take pride in our capacity to deliver one vendor solution tailored precisely to your needs, executed efficiently, and steadfast in their outcomes. Our dedication to excellence propels us to surpass your expectations, contributing significantly to the advancement and prosperity of your business.</div>
           </div>
         </TimelineOppositeContent>
         <TimelineSeparator>
