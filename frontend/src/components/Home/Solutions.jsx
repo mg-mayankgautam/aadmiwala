@@ -15,18 +15,20 @@ const Solutions = ({connect_ref}) => {
   return (
     <>
     <div className='USPs'>
-        {/* <div>
-            <div className='USP_head'>Flexible Staffing Solutions for Every Business Need</div>
-            <div className='USP_text'>Choose the staffing solution that aligns with your business needs - consistent support or flexible assistance, we deliver.</div>
-        </div> */}
 
         <div className='OSS_content USP'>
-            <div className='OSS_head'>One-Stop solution</div>
-            <div className='text'>
+
+            {/* <div className='OSS_content_Head'> */}
+                <div className='OSS_head'>One-Stop solution</div>
+            
+            {/* </div> */}
+
+            <div className='OSStext'>
                 Say goodbye to the hassle of searching multiple service providers. At Covendx, we offer a one-stop solution for all your staffing/Vendor needs.
                 <br /> <br />
                 Whether you're in need of housekeeping support or office assistance, we provide opportunities perfectly tailored to meet your organization's needs.
             </div>
+
             <button className='OSS_btn USP' onClick={() => {connect_ref.current?.scrollIntoView({behavior:'smooth'})}}>Speak with us →</button>
         </div>
 
