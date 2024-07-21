@@ -175,7 +175,16 @@
     margin: 100px auto;
 }
 
-.benefitsHead{
+.stepsContainer{
+
+}
+
+.stepsContainer>img{
+    object-fit: cover;
+    width: 75%;
+}
+
+/* .benefitsHead{
     font-size: 20px;
     margin-bottom: 32px;
     font-weight: 700;
@@ -242,7 +251,7 @@
 
 .benefitsText > .text{
     max-width: 780px;
-}
+} */
 
 
 
