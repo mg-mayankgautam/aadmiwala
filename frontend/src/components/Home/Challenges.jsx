@@ -22,7 +22,7 @@ const Challenges = () => {
                 <div className='flip-box-inner'>
                     <div className='flip-box-front'>
                         <img src={c1} className='CC_icon'/>
-                        <div className='subHead'>Ensuring Quality and <br />Reliability</div>
+                        <div className='subHead'>ANIM 1: Ensuring Quality and <br />Reliability</div>
                     </div>
 
                     <div className='flip-box-back'>
@@ -36,7 +36,7 @@ const Challenges = () => {
                 <div className='inner'>
                     <div className='front'>
                     <img src={c2} className='CC_icon' alt="Icon" />
-                    <div className='subHead'>Managing Multiple Service <br />Providers</div>
+                    <div className='subHead'>ANIM 2: Managing Multiple Service Providers</div>
                     </div>
                     <div className='back'>
                     <div className='CC1_text'>
@@ -50,7 +50,7 @@ const Challenges = () => {
                 <div className='flip-box-inner1'>
                     <div className='flip-box-front1'>
                         <img src={c1} className='CC_icon'/>
-                        <div className='subHead'>Ensuring Quality and <br />Reliability</div>
+                        <div className='subHead'>ANIM 3: Ensuring Quality and <br />Reliability</div>
                     </div>
 
                     <div className='flip-box-back1'>
@@ -64,7 +64,7 @@ const Challenges = () => {
                 <div className='flip-box-inner2'>
                     <div className='flip-box-front2'>
                         <img src={c1} className='CC_icon'/>
-                        <div className='subHead'>Ensuring Quality and <br />Reliability</div>
+                        <div className='subHead'>ANIM 4: Ensuring Quality and <br />Reliability</div>
                     </div>
 
                     <div className='flip-box-back2'>
