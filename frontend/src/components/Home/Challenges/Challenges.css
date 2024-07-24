@@ -309,7 +309,17 @@
     
 
 @media only screen and (orientation: portrait){
+    
+    .challengesHead{
+        font-size: 32px;
+        padding: 0 24px;
+    }
+
     .challengesContainer{
         padding: 20px 24px 32px;
+    }
+
+    .Challenges>.text{
+        padding: 0 24px;
     }
 }

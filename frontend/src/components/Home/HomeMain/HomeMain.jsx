@@ -131,7 +131,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                         id="combo-box-demo"
                         options={cities}
                         sx={{
-                            width: 300,
+                            width: 250,
                             // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
                             // },
                             // '& .MuiOutlinedInput-notchedOutline': {
@@ -167,7 +167,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                         options={services}
                         bgColor="white"
                         sx={{
-                            width: 300,
+                            width: 250,
                             // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
                             // },
                             // '& .MuiOutlinedInput-notchedOutline': {
@@ -201,6 +201,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                 </div>
 
                 <button className='searchBtn' onClick={(e)=> findSearchedInput(e)}>Search</button>
+                <button className='searchBtnMobile' onClick={(e)=> findSearchedInput(e)}><SearchIcon/></button>
 
                 <select className='searchdropdown' name="" onChange={(e)=> setSearchType(e.target.value)} value={searchType}>
                     <option value="service">Services</option>
