@@ -59,3 +59,71 @@
 .navItemBold{
     font-weight: 700;
 }
+
+.hamburgerIcon{
+    display: none;
+    cursor: pointer;
+}
+
+.mobileNavContainer{
+    position: fixed;
+    background-color: #00000065;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    justify-content: flex-end;
+}
+
+.mobilenavItems{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 16px;
+    font-size: 16px;
+}
+.mobilenavItems>div{cursor: pointer;}
+
+.mobilenavBtns{
+    display: flex;
+    gap: 16px;
+}
+
+.mobileNav{
+    max-width: 300px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+    background-color: white;
+    padding: 24px;
+}
+
+.closeMobileNavBtn{
+    font-size: 18px;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+@media only screen and (orientation: portrait){
+    .Nav{
+        padding: 16px 24px;
+    }
+
+    .navItems{
+        display: none;
+    }
+    .navBtns{
+        display: none;
+    }
+
+    .hamburgerIcon{
+        display: block;
+    }
+
+    .mobileNavContainer{
+        display: flex;
+    }
+}

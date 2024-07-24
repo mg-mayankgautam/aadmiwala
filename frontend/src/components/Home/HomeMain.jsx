@@ -131,29 +131,29 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                         options={cities}
                         sx={{
                             width: 300,
-                            '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
-                            },
-                            '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: 'white !important', // Border color of the input field
-                            },
-                            '& .MuiInputLabel-root': {
-                                color: 'white !important', // Default label color
-                                '&.Mui-focused': {
-                                    color: 'white !important', // Label color when focused
-                                },
-                            },
-                            '& .MuiFormHelperText-root': {
-                                color: 'white !important', // Helper text color
-                            },
-                            '& .MuiSvgIcon-root': {
-                                color: 'white !important', // Icon color
-                            },
+                            // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
+                            // },
+                            // '& .MuiOutlinedInput-notchedOutline': {
+                            //     borderColor: 'white !important', // Border color of the input field
+                            // },
+                            // '& .MuiInputLabel-root': {
+                            //     color: 'white !important', // Default label color
+                            //     '&.Mui-focused': {
+                            //         color: 'white !important', // Label color when focused
+                            //     },
+                            // },
+                            // '& .MuiFormHelperText-root': {
+                            //     color: 'white !important', // Helper text color
+                            // },
+                            // '& .MuiSvgIcon-root': {
+                            //     color: 'white !important', // Icon color
+                            // },
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: '30px', // Rounded corners with 25px radius
                             },
-                            '& .MuiAutocomplete-input': {
-                                color: 'white !important', // Text color for typed input
-                            }
+                            // '& .MuiAutocomplete-input': {
+                            //     color: 'white !important', // Text color for typed input
+                            // }
                         }}
                         
                         renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui'/>}
@@ -167,29 +167,29 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                         bgColor="white"
                         sx={{
                             width: 300,
-                            '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
-                            },
-                            '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: 'white !important', // Border color of the input field
-                            },
-                            '& .MuiInputLabel-root': {
-                                color: 'white !important', // Default label color
-                                '&.Mui-focused': {
-                                    color: 'white !important', // Label color when focused
-                                },
-                            },
-                            '& .MuiFormHelperText-root': {
-                                color: 'white !important', // Helper text color
-                            },
-                            '& .MuiSvgIcon-root': {
-                                color: 'white !important', // Icon color
-                            },
+                            // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
+                            // },
+                            // '& .MuiOutlinedInput-notchedOutline': {
+                            //     borderColor: 'white !important', // Border color of the input field
+                            // },
+                            // '& .MuiInputLabel-root': {
+                            //     color: 'white !important', // Default label color
+                            //     '&.Mui-focused': {
+                            //         color: 'white !important', // Label color when focused
+                            //     },
+                            // },
+                            // '& .MuiFormHelperText-root': {
+                            //     color: 'white !important', // Helper text color
+                            // },
+                            // '& .MuiSvgIcon-root': {
+                            //     color: 'white !important', // Icon color
+                            // },
                             '& .MuiOutlinedInput-root': {
                                 borderRadius: '30px', // Rounded corners with 25px radius
                             },
-                            '& .MuiAutocomplete-input': {
-                                color: 'white !important', // Text color for typed input
-                            }
+                            // '& .MuiAutocomplete-input': {
+                            //     color: 'white !important', // Text color for typed input
+                            // }
                         }}
                         
                         renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui'/>}

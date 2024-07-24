@@ -1,5 +1,5 @@
 .Loader {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(344deg, #164F55 24.07%, #051113 89.08%);
+  /* background: linear-gradient(344deg, #164F55 24.07%, #051113 89.08%); */
   z-index: 10;
   opacity: 1;
   transition: opacity 0.5s ease-in-out;

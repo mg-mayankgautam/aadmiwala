@@ -5,12 +5,14 @@ import './Nav.css'
 import CallIcon from '@mui/icons-material/Call';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 const Nav = ({ userLogged, setUserLogged}) => {
 
   const {auth, setAuth}= useAuth();
   const [callus, setcallus]= useState(false);
+  const [showMobileNav, setShowMobileNav]= useState(false);
 
   useEffect(() => {
         
@@ -125,6 +127,70 @@ const handleLogout = async() =>{
 
             
         </div>
+
+        <div className='hamburgerIcon' 
+          onClick={()=> setShowMobileNav(true)}>
+            <MenuIcon/>
+        </div>
+
+        {
+          showMobileNav? 
+            <div className='mobileNavContainer'>
+
+              <div className='mobileNav'>
+
+                  <div className='closeMobileNavBtn' onClick={()=> setShowMobileNav(false)}>X</div>
+
+                  <div className='mobilenavItems'>
+                      <div>Enterprise</div>
+                      <div> <a href="about">About Us</a></div>
+                      
+                      <div>
+                        <Link to={`sharerequirements`} >Share Requirements</Link>
+                      </div>
+
+                      <div className='navItemBold'>
+                          
+                          <Link to={`addCompany`} >+ Add Service Providers</Link>
+                      
+                      </div>
+                  </div>
+
+                  <div className='mobilenavBtns'>
+                      <button className={callus? 'navSignupBtn navbtnwidth' : 'navSignupBtn' }
+                      onClick={()=> setcallus(!callus)}> <CallIcon/>
+                        {callus? 
+                          <> 9155018111</>
+                        : 
+                        <>
+                          Call Us
+                        </>}
+                      </button>
+
+                      {auth.user? 
+                      <>
+                      <Link to={`/dashboard/${auth.user}`}>
+                          <button className='navLoginBtn'>Dashboard</button>
+                      </Link>
+                      
+                      <button className='navLoginBtn' onClick={handleLogout}>Logout</button>
+                      </>
+                      
+                      :
+                      <Link to={`login`}>
+                          <button className='navLoginBtn'>Log In</button>
+                      </Link>
+                  }
+
+                      
+                  </div>
+              </div>
+
+            </div>
+
+            :
+            <></>
+        }
     </div>
   )
 }
