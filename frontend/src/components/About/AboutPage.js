@@ -2,10 +2,10 @@ import React from 'react'
 import './About.css'
 import Nav from '../Nav/Nav'
 import Footer from '../Footer/Footer'
-import Connect from '../Home/Connect'
+import Connect from '../Home/Connect/Connect'
 import AboutWelcome from './AboutWelcome'
 import AboutDesc from './AboutDesc'
-import Solutions from '../Home/Solutions'
+import Solutions from '../Home/Solutions/Solutions'
 import  { useEffect, useRef } from 'react';
 import AboutTimeline from './AboutTimeline'
 

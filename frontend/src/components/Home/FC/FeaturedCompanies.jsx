@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import EastIcon from '@mui/icons-material/East';
-import Company from '../Company/Company';
-import Loader from '../Loader/Loader';
+import Company from '../../Company/Company';
+import Loader from '../../Loader/Loader';
+import './FeaturedCompanies.css'
 
 const FeaturedCompanies = () => {
   const [companies, setCompanies] = useState([]);

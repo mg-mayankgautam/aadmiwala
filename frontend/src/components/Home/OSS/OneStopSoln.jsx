@@ -1,6 +1,6 @@
 import React from 'react'
-import onestop from '../../assets/onestop.png'
-
+import onestop from '../../../assets/onestop.png'
+import './OneStopSoln.css'
 
 const OneStopSoln = ({connect_ref}) => {
   return (

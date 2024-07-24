@@ -13,6 +13,7 @@ const Footer = () => {
   return (
     <div className='Footer'>
         <div className='footerContent'>
+            
             <div>
                 <div className='footerHeading'>
                     <img src={logo} className='footerLogo'/>
@@ -99,8 +100,11 @@ const Footer = () => {
             <div>Terms & Conditions</div>
             <div>Privacy Policy</div>
         </div>
-        <div className='footerCopyright'>©2024 Covendx, All Rights Reserved. <br />
-        (A Division of Janshakti Manpower Services Pvt. Ltd.)</div>
+
+        <div className='footerCopyright'>
+            ©2024 Covendx, All Rights Reserved. <br />
+            (A Division of Janshakti Manpower Services Pvt. Ltd.)
+        </div>
     </div>
   )
 }

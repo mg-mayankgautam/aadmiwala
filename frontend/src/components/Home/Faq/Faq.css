@@ -76,3 +76,11 @@
     align-items: center;
     justify-content: center;
 }
+
+@media only screen and (orientation: portrait){
+    .FAQs{
+        margin: 80px auto;
+        padding: 0 24px;
+        grid-template-columns: 1fr;
+    }
+}

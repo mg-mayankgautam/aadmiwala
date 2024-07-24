@@ -1,0 +1,50 @@
+.FeaturedCompanies{
+    text-align: left;
+    margin: 100px auto;
+}
+
+.FC_headingDiv{
+    padding: 0 64px;
+}
+
+.FC_subhead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.FC_subhead>.subHead{
+    text-align: left !important;
+    justify-content: flex-start;
+}
+
+.FC_viewAllBtn{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--orange);
+}
+
+.FC_container{
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    padding: 0 64px;
+    overflow-x: scroll;
+    position: relative;
+    min-height: 200px;
+    /* justify-content: center; */
+}
+
+  .FC_container::-webkit-scrollbar{display: none;}
+
+
+@media only screen and (orientation: portrait){
+    .FC_headingDiv{
+        padding: 0 24px;
+    }
+
+    .FC_container{
+        padding: 0 24px;
+    }
+}

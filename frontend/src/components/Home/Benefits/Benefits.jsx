@@ -1,7 +1,8 @@
 import React from 'react'
-import Line from '../Line/Line'
-import steps from '../../assets/4steps.png'
-import Svg from './Svg'
+import Line from '../../Line/Line'
+import steps from '../../../assets/4steps.png'
+import Svg from '../Svg'
+import './Benefits.css'
 
 
 const Benefits = () => {

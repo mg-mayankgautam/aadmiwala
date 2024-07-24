@@ -40,7 +40,7 @@
     align-self: flex-start;
     height: 40px;
 }
-
+ 
 .footerAddress{
     text-align: left;
 }
@@ -76,4 +76,26 @@
 .footerCopyright{
     font-size: 12px;
     margin-top: 32px;
+}
+
+@media only screen and (orientation: portrait){
+    .Footer{
+        padding: 72px 32px;
+    }
+    .footerContent{
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 24px;
+    }
+
+    .footerList{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 16px;
+    }
+
+    .footerOrange{
+        margin-bottom: 32px;
+    }
 }

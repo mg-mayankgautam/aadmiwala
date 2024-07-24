@@ -1,0 +1,315 @@
+.challengesHead{
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    padding: 0 64px;
+}
+
+.challengesContainer{
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    margin: 20px auto 52px;
+    padding: 20px 64px 32px;
+    overflow-x: scroll;
+}
+
+.challengesContainer::-webkit-scrollbar{display: none;}
+
+
+.CC_box{
+    padding: 32px;
+    /* display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center; */
+    background-color: white;
+
+    border: 2px solid transparent;
+    border-radius: 20px;
+
+    background: linear-gradient(to right, white, white), linear-gradient(180deg, #F4F4F4 0%, rgba(227, 143, 38, 0.4) 100%);
+    
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    box-shadow: 0px 10px 20px 0px #0000001A;
+    min-width: 360px;
+    max-width: 420px;
+    min-height: 180px;
+    transition: all 300ms ease-in-out;
+    perspective: 1000px;
+    /* background-color: transparent !important; */
+}
+
+.CC_box:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to bottom right, #ffffff 0%, #ffffff 20%, rgba(227, 142, 38, 0.75) 100%);
+    /* background-image: linear-gradient(to bottom right, #ffffff 0%, #ffffff 20%, #164f556c 100%);*/
+}
+  
+  .flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+  
+  .CC_box:hover .flip-box-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-box-front, .flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+  }
+  
+  .flip-box-front {
+    
+    background-color: black;
+    z-index: 5;
+  }
+  
+  .flip-box-back {
+    background-color: red !important;
+    transform: rotateY(180deg);
+    z-index: 5;
+  }
+
+.CC_icon{
+    height: 100px;
+}
+
+.CC_text{
+    font-size: 14px;
+    margin-top: 30px;
+}
+.CC1_box {
+    /* padding: 32px; */
+    background-color: white;
+    /* border: 2px solid transparent; */
+    border-radius: 20px;
+    /* background: linear-gradient(to right, white, white), linear-gradient(180deg, #F4F4F4 0%, rgba(227, 143, 38, 0.4) 100%); */
+    /* background-clip: padding-box, border-box; */
+    /* background-origin: padding-box, border-box; */
+    min-width: 420px;
+    max-width: 420px;
+    min-height: 240px;
+    transition: all 300ms ease-in-out;
+    perspective: 1000px;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.CC1_box:hover {
+    cursor: pointer;
+    /* background-image: linear-gradient(to bottom right, #ffffff 0%, #ffffff 20%, rgba(227, 142, 38, 0.75) 100%); */
+}
+
+.inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.CC1_box:hover .inner {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    box-shadow: 0px 10px 20px 0px #0000001A;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    box-sizing: border-box; /* Ensure padding/margin do not extend beyond the box */
+    padding: 32px; /* Add padding here instead of .CC_box */
+    background-color: white;
+    border: 2px solid transparent;
+    background: linear-gradient(to right, white, white), linear-gradient(180deg, #F4F4F4 0%, rgba(227, 143, 38, 0.4) 100%);
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+}
+
+.front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom right, #ffffff 0%, #ffffff 20%, rgba(227, 142, 38, 0.75) 100%);
+
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+
+.CC_icon {
+    height: 100px;
+}
+
+.subHead {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.CC1_text {
+    font-size: 14px;
+    text-align: center;
+}
+
+
+
+.CC_box1{
+    padding: 32px;
+    /* display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center; */
+    background-color: white;
+
+    border: 2px solid transparent;
+    border-radius: 20px;
+
+    background: linear-gradient(to right, white, white), linear-gradient(180deg, #F4F4F4 0%, rgba(227, 143, 38, 0.4) 100%);
+    
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    box-shadow: 0px 10px 20px 0px #0000001A;
+    min-width: 360px;
+    max-width: 420px;
+    min-height: 180px;
+    transition: all 300ms ease-in-out;
+    perspective: 1000px;
+    /* background-color: transparent !important; */
+}
+
+.CC_box1:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to bottom right, #ffffff 0%, #ffffff 20%, rgba(227, 142, 38, 0.75) 100%);
+    /* background-image: linear-gradient(to bottom right, #ffffff 0%, #ffffff 20%, #164f556c 100%);*/
+}
+  
+  .flip-box-inner1 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+  
+  .CC_box1:hover .flip-box-inner1 {
+    transform: rotateX(180deg);
+  }
+  
+  .flip-box-front1, .flip-box-back1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+  }
+  
+  .flip-box-front1 {
+    
+    background-color: black;
+    z-index: 5;
+  }
+  
+  .flip-box-back1 {
+    background-color: red !important;
+    transform: rotateX(180deg);
+    z-index: 5;
+  }
+
+
+
+    .CC_box2 {
+        padding: 32px;
+        background-color: white;
+        border: 2px solid transparent;
+        border-radius: 20px;
+        box-shadow: 0px 10px 20px 0px #0000001A;
+        min-width: 360px;
+        max-width: 420px;
+        min-height: 180px;
+        perspective: 1000px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .flip-box-inner2 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: transform 1s;
+        transform-style: preserve-3d;
+    }
+    
+    .CC_box2:hover .flip-box-inner2 {
+        transform: translateY(0%);
+    }
+    
+    .flip-box-front2, .flip-box-back2 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 20px;
+        box-sizing: border-box;
+        transition: transform 1s;
+    }
+    
+    .flip-box-front2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* background-color: black; */
+        /* color: white; */
+        z-index: 2;
+    }
+    
+    .flip-box-back2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: red; */
+        /* color: white; */
+        transform: translateY(100%);
+    }
+    
+    .CC_box2:hover .flip-box-front2 {
+        transform: translateY(-100%);
+    }
+    
+    .CC_box2:hover .flip-box-back2 {
+        transform: translateY(0);
+    }
+    
+
+@media only screen and (orientation: portrait){
+    .challengesContainer{
+        padding: 20px 24px 32px;
+    }
+}

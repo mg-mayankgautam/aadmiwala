@@ -1,0 +1,68 @@
+.LetsConnect{
+    padding: 80px 64px 0;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 40% 50%;
+    text-align: left;
+    gap: 10%;
+}
+
+.LC_content{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.LC_head{
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.LC_imgDiv{
+    display: flex;
+    justify-content: center;
+}
+.LC_imgDiv>img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.LC_Inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.connectinput{
+    border-radius: 8px;
+    padding: 14px 16px;
+    background-color: #6484961A;
+    border: 0.25px solid #2a2f336e;
+    font-size: 14px;
+    color: #2A2F3399;
+}
+.LC_reqinput{
+    height: 48px;
+    display: flex;
+    align-items: first baseline;
+}
+
+.LC_btn{
+    background-color: var(--green) !important;
+    color: white;
+    border: none;
+    font-weight: 600;
+    width: 160px;
+    margin-bottom: 40px;
+}
+
+
+@media only screen and (orientation: portrait){
+    .LetsConnect{
+        padding: 80px 24px;
+        grid-template-columns: 1fr;
+        text-align: left;
+        gap: 32px;
+    }
+}

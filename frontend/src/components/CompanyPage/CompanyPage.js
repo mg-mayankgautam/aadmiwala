@@ -3,8 +3,8 @@ import Nav from '../Nav/Nav'
 import axios from 'axios';
 import { useParams, Link, useLocation } from "react-router-dom";
 import './CompanyPage.css'
-import FeaturedCompanies from '../Home/FeaturedCompanies';
-import Faq from '../Home/HomeComponents/Faq';
+import FeaturedCompanies from '../Home/FC/FeaturedCompanies';
+import Faq from '../Home/Faq/Faq';
 import Footer from '../Footer/Footer';
 import GetinTouch from './GetinTouch';
 

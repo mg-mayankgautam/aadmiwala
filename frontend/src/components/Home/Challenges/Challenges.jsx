@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import c0 from '../../assets/c-0.png'
-import c1 from '../../assets/c-1.png'
-import c2 from '../../assets/c-2.png'
-import c3 from '../../assets/c-3.png'
-import c4 from '../../assets/c-4.png'
+import c0 from '../../../assets/c-0.png'
+import c1 from '../../../assets/c-1.png'
+import c2 from '../../../assets/c-2.png'
+import c3 from '../../../assets/c-3.png'
+import c4 from '../../../assets/c-4.png'
+import './Challenges.css'
 
 const Challenges = () => {
 

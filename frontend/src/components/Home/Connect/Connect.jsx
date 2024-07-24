@@ -1,7 +1,8 @@
 import React, {useRef, useEffect} from 'react'
-import connect from '../../assets/connect.png'
+import connect from '../../../assets/connect.png'
 // let transporter = nodemailer.createTransport(transport[, defaults])
 import emailjs from '@emailjs/browser';
+import './Connect.css'
 
 
 const Connect = ({connect_ref}) => {
