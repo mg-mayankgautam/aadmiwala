@@ -8,33 +8,56 @@ import './FeaturedCompanies.css'
 
 const FeaturedCompanies = () => {
   const [companies, setCompanies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [fadingOut, setFadingOut] = useState(false);
+  const [loading, setLoading] = useState(true);
+  // const [fadingOut, setFadingOut] = useState(false);
+
+  const getCompanies = async () => {
+    try {
+      const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getallcompanies`);
+      const array = data.data;
+      setCompanies(array);
+      // if(companies.length != 0) {
+      //   setLoading(false);
+      // }
+      // if (!localStorage.getItem('visited')) {
+      //   setTimeout(() => {
+      //     setFadingOut(true);
+      //     setTimeout(() => {
+      //       setLoading(false);
+      //       localStorage.setItem('visited', 'true');
+      //     }, 500); // Wait for fade-out transition
+      //   }, 2000); // Minimum 2 seconds before fade-out starts
+      // } else {
+      //   setLoading(false);
+      // }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
-    const getCompanies = async () => {
-      try {
-        const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getallcompanies`);
-        const array = data.data;
-        setCompanies(array);
-        // if (!localStorage.getItem('visited')) {
-        //   setTimeout(() => {
-        //     setFadingOut(true);
-        //     setTimeout(() => {
-        //       setLoading(false);
-        //       localStorage.setItem('visited', 'true');
-        //     }, 500); // Wait for fade-out transition
-        //   }, 2000); // Minimum 2 seconds before fade-out starts
-        // } else {
-        //   setLoading(false);
-        // }
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
     getCompanies();
   }, []);
+
+  useEffect(()=>{
+    if(companies.length===0){
+      setLoading(true)
+    }
+    else{
+      setLoading(false);
+    }
+  },[companies.length])
+
+  useEffect(() => {
+    let interval;
+    if (companies.length === 0) {
+      interval = setInterval(() => {
+        getCompanies();
+      }, 10000); // Retry every 10 seconds
+    }
+    return () => clearInterval(interval);
+  }, [companies.length]);
+
 
   return (
     <div className='FeaturedCompanies'>
@@ -60,7 +83,7 @@ const FeaturedCompanies = () => {
               ))
           } */}
 
-          {companies.length===0 ? <Loader fadingOut={fadingOut} />
+          {loading ? <Loader/>
             :
             // companies&&
               companies.map(company => (

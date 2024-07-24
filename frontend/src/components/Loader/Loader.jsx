@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './Loader.css';
 
-const Loader = ({ fadingOut }) => {
+const Loader = () => {
   const r = 500;
   const w = 8 * r;
   const h = 0.5 * w;
@@ -11,19 +11,20 @@ const Loader = ({ fadingOut }) => {
   const l = Math.ceil((3 * Math.PI + 4) * r);
   const d = Math.floor(Math.PI * r);
 
-  useEffect(() => {
-    // Add no-scroll class to body when loader is mounted
-    // document.body.classList.add('no-scroll');
+  // useEffect(() => {
+  //   // Add no-scroll class to body when loader is mounted
+  //   // document.body.classList.add('no-scroll');
 
-    // Remove no-scroll class from body when loader is unmounted
-    return () => {
-      // document.body.classList.remove('no-scroll');
-      window.scrollTo(0, 0)
-    };
-  }, []);
+  //   // Remove no-scroll class from body when loader is unmounted
+  //   return () => {
+  //     // document.body.classList.remove('no-scroll');
+  //     window.scrollTo(0, 0)
+  //   };
+  // }, []);
 
   return (
-    <div className={`Loader ${fadingOut ? 'fade-out' : ''}`}>
+    <div className={`Loader`}>
+    {/* <div className={`Loader ${fadingOut ? 'fade-out' : ''}`}> */}
       <svg viewBox={`${x} ${y} ${w} ${h}`}>
         <path
           id="inf"
