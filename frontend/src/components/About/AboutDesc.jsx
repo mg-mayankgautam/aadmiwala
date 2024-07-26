@@ -14,7 +14,7 @@ const AboutDesc = ({about_ref}) => {
                 <br/>
             
                 <div className='text AboutBoxText'>
-                Covendx is your trusted partner in the world of staffing/Vendor solutions, bridging the gap between companies and vendors with precision and expertise.
+                Covendx is your trusted partner in the world of Vendor solutions, bridging the gap between companies and vendors with precision and expertise.
                 <br/>
                 <br/>
                 <br />

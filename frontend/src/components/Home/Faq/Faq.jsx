@@ -52,7 +52,7 @@ const Faq = () => {
 
 const data = [{
     question:'What services does Covendx offer?',
-    answer:'At Covendx, we offer a one-stop solution for all your staffing/vendor needs, eliminating the hassle of searching multiple service providers. Whether you require  housekeeping support, or office assistance, we provide tailored opportunities to meet your unique business requirements. Say goodbye to the complexity of managing multiple vendors and enjoy peace of mind and confidence with Covendx.'
+    answer:'At Covendx, we offer a one-stop solution for all your vendor needs, eliminating the hassle of searching multiple service providers. Whether you require  housekeeping support, or office assistance, we provide tailored opportunities to meet your unique business requirements. Say goodbye to the complexity of managing multiple vendors and enjoy peace of mind and confidence with Covendx.'
 },
 
 {
@@ -61,11 +61,11 @@ const data = [{
 },
 {
     question:"What is the process for partnering with Covendx?",
-    answer:"Partnering with Covendx is simple. You can get started by contacting us through our website or by phone. Our team will then work with you to understand your staffing needs and tailor a solution that meets your requirements."
+    answer:"Partnering with Covendx is simple. You can get started by contacting us through our website or by phone. Our team will then work with you to understand your vendor needs and tailor a solution that meets your requirements."
 },
 {
-    question:"How does Covendx ensure the quality of the staffing agencies in its network?",
-    answer:"We meticulously evaluate and validate all vendors or staffing agencies before partnering with them . Our stringent standards ensure that only reliable and high-quality vendors or agencies are included in our network."
+    question:"How does Covendx ensure the quality of the vendor agencies in its network?",
+    answer:"We meticulously evaluate and validate all vendor agencies before partnering with them . Our stringent standards ensure that only reliable and high-quality vendors or agencies are included in our network."
 },
 
 ]
