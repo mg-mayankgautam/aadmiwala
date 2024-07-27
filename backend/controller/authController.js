@@ -171,6 +171,9 @@ module.exports.checkPhnNumber =async(req,res)=>{
 }
 
 
+const nodemailer = require('nodemailer');
+
+
 module.exports.addRecruitingCompany= async (req,res)=>{
 
     // console.log('req.files',req.files);
@@ -247,6 +250,47 @@ module.exports.addRecruitingCompany= async (req,res)=>{
                 .then((saved)=>{
                     console.log('user added success');
                     res.send(true);
+
+                    let transporter = nodemailer.createTransport({
+                        service : 'gmail',
+                        auth : {
+                            user: 'noreply.aadmiwala@gmail.com',
+                            pass: 'ulgpwlxtzonjsbvs'
+                        }
+                    });
+                
+                    
+                
+                    let mailContent = {
+                        from : 'noreply.aadmiwala@gmail.com',
+                        to : email,
+                        subject: `Welcome to Covendx!`,
+                        text: 
+                            `Welcome to Covendx, your trusted partner in the world of vendor solutions! 🌟
+
+                            At Covendx, we prioritize your security and trust. As you embark on your journey with us, rest assured that your login process is safeguarded and protected.
+
+                            Our commitment goes beyond just bridging the gap between companies and vendor agencies. We understand the critical importance of having the right personnel to drive your business forward, and we are dedicated to connecting you with the perfect vendor solutions tailored to your unique needs.
+
+                            Your decision to join Covendx marks the beginning of a fruitful partnership, where your security and satisfaction are our top priorities. As you explore our platform, you'll discover a seamless and secure environment designed to enhance your staffing experience.
+
+                            Should you have any questions or concerns regarding your account security, please don't hesitate to reach out to us at covendx@gmail.com. Our team is here to ensure that your journey with Covendx is safe, trusted, and successful.
+
+                            Thank you for entrusting Covendx as your staffing solutions partner. We're excited to support your business growth and success!
+
+                            Best regards,
+                            Covendx
+                            covendx@gmail.com `
+                    }
+                
+                
+                
+                    transporter.sendMail(mailContent,function(err,val){
+                        if(err){
+                            console.log(err)
+                        }else{console.log(val.response,'mail sent success')}
+                
+                    })
                     
                 })
                 .catch(err =>{console.log(err);});

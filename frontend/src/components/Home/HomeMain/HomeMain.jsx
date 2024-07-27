@@ -131,6 +131,97 @@ const HomeMain = ({searchValue,setSearchValue}) => {
                         id="combo-box-demo"
                         options={cities}
                         sx={{
+                            width: 300,
+                            // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
+                            // },
+                            // '& .MuiOutlinedInput-notchedOutline': {
+                            //     borderColor: 'white !important', // Border color of the input field
+                            // },
+                            // '& .MuiInputLabel-root': {
+                            //     color: 'white !important', // Default label color
+                            //     '&.Mui-focused': {
+                            //         color: 'white !important', // Label color when focused
+                            //     },
+                            // },
+                            // '& .MuiFormHelperText-root': {
+                            //     color: 'white !important', // Helper text color
+                            // },
+                            // '& .MuiSvgIcon-root': {
+                            //     color: 'white !important', // Icon color
+                            // },
+                            '& .MuiOutlinedInput-root': {
+                                borderRadius: '30px', // Rounded corners with 25px radius
+                            },
+                            // '& .MuiAutocomplete-input': {
+                            //     color: 'white !important', // Text color for typed input
+                            // }
+                        }}
+                        
+                        renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui'/>}
+                        onChange={(event, value) => setSearchInput(value)}
+                        value={searchInput}/>
+                    :
+                        <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={services}
+                        bgColor="white"
+                        sx={{
+                            width: 300,
+                            // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
+                            // },
+                            // '& .MuiOutlinedInput-notchedOutline': {
+                            //     borderColor: 'white !important', // Border color of the input field
+                            // },
+                            // '& .MuiInputLabel-root': {
+                            //     color: 'white !important', // Default label color
+                            //     '&.Mui-focused': {
+                            //         color: 'white !important', // Label color when focused
+                            //     },
+                            // },
+                            // '& .MuiFormHelperText-root': {
+                            //     color: 'white !important', // Helper text color
+                            // },
+                            // '& .MuiSvgIcon-root': {
+                            //     color: 'white !important', // Icon color
+                            // },
+                            '& .MuiOutlinedInput-root': {
+                                borderRadius: '30px', // Rounded corners with 25px radius
+                            },
+                            // '& .MuiAutocomplete-input': {
+                            //     color: 'white !important', // Text color for typed input
+                            // }
+                        }}
+                        
+                        renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui'/>}
+                        onChange={(event, value) => setSearchInput(value)}
+                        value={searchInput}/>
+                    }
+                    
+                </div>
+
+                <button className='searchBtn' onClick={(e)=> findSearchedInput(e)}>Search</button>
+                <button className='searchBtnMobile' onClick={(e)=> findSearchedInput(e)}><SearchIcon/></button>
+
+                <select className='searchdropdown' name="" onChange={(e)=> setSearchType(e.target.value)} value={searchType}>
+                    <option value="service">Services</option>
+                    <option value="city">City</option>
+                </select>
+
+                {searchError? <p className='searcherror'>Couldnt find anything</p> : <></>}
+            </div>
+
+            <div className='landingSearchMobile'>
+                <div>
+                    {/* <input className='searchInput' type='text' placeholder='Search for City / State / Services'/> */}
+                    {/* <SearchIcon className='searchIcon'/> */}
+
+                    {city? 
+                        <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={cities}
+                        sx={{
                             width: 250,
                             // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
                             // },

@@ -1,13 +1,14 @@
 import React, {useRef, useEffect} from 'react'
 import connect from '../../../assets/connect.png'
 // let transporter = nodemailer.createTransport(transport[, defaults])
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import './Connect.css'
+import axios from 'axios'
 
 
 const Connect = ({connect_ref}) => {
 
-    useEffect(() => emailjs.init("v5csxvz6IFDcQ0NZA"), []);
+    // useEffect(() => emailjs.init("v5csxvz6IFDcQ0NZA"), []);
 
     const nameRef = useRef();
     const emailRef = useRef();
@@ -17,33 +18,14 @@ const Connect = ({connect_ref}) => {
 
   const sendEmail = async(e) => {
     e.preventDefault();
-
-    try {
-        await emailjs.send('service_qkemi3i', 'template_x4w111d', {
-            name: nameRef.current.value,
-            email: emailRef.current.value,
-            phone: phoneRef.current.value,
-            location: locationRef.current.value,
-            requirements: reqRef.current.value
-        });
-        alert("email successfully sent to admin");
-      } 
-    catch (error) {
-        console.log(error);
-      }
-
-    // emailjs
-    //   .sendForm('service_qkemi3i', 'template_vfehnm5', .current, {
-    //     publicKey: 'v5csxvz6IFDcQ0NZA',
-    //   })
-    //   .then(
-    //     () => {
-    //       console.log('SUCCESS!');
-    //     },
-    //     (error) => {
-    //       console.log('FAILED...', error.text);
-    //     },
-    //   );
+    console.log(nameRef.current.value , emailRef.current.value ,phoneRef.current.value, locationRef.current.value ,reqRef.current.value );
+    
+    const postdata = {name: nameRef.current.value , email: emailRef.current.value , phone: phoneRef.current.value, location: locationRef.current.value , requirements: reqRef.current.value}
+ 
+    try{
+      const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/sharerequirements`,{postdata })
+    }
+    catch(e) {console.log(e)}
   };
 
 
