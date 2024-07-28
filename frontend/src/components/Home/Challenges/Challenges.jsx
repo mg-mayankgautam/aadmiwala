@@ -15,7 +15,7 @@ const Challenges = () => {
 
         <div className='challengesHead'>Why Covendx?</div>
 
-        <div className='text'>tform simplifies agency connections, <br />allowing you to focus on core business while we manage vendor intricacies.</div>
+        {/* <div className='text'>tform simplifies agency connections, <br />allowing you to focus on core business while we manage vendor intricacies.</div> */}
 
         <div className='challengesContainer'>
        
