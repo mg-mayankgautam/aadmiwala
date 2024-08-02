@@ -53,6 +53,18 @@
     color: white !important;
 }
 
+.landingSearchMobile{
+    display: none;
+    grid-template-columns: auto auto;
+    /* justify-items: center; */
+    justify-content: start;
+    gap: 16px;
+    font-size: 20px;
+    align-items: center;
+    position: relative;
+    color: white !important;
+}
+
 .searcherror{
     font-size: 11px;
     margin: 0;
@@ -167,8 +179,13 @@
     
     .landingsubHead{
     }
-    
+
     .landingSearch{
+        display: none;
+    }
+    
+    .landingSearchMobile{
+        display: grid;
         grid-template-columns: auto auto;
         gap: 8px;
         font-size: 16px;

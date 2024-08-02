@@ -1,37 +1,29 @@
 import React, {useRef, useEffect} from 'react'
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
+import axios from 'axios';
 
 
 const GetinTouch = ({company}) => {
 
-    useEffect(() => emailjs.init("v5csxvz6IFDcQ0NZA"), []);
+    // useEffect(() => emailjs.init("v5csxvz6IFDcQ0NZA"), []);
 
     const nameRef = useRef();
     const emailRef = useRef();
     const phoneRef = useRef();
 
-    // const companyname = company.Phone;
-
-    useEffect(()=>{
-        // console.log(postedby, companyname, company)
-    },[])
+    
 
   const sendEmail = async(e) => {
     e.preventDefault();
-
-    try {
-        await emailjs.send('service_qkemi3i', 'template_2z6jlzp', {
-            name: nameRef.current.value,
-            email: emailRef.current.value,
-            phone: phoneRef.current.value,
-            postedby : company.fullName,
-            companyname : company.companyName,
-        });
-        alert("email successfully sent to admin");
-      } 
-    catch (error) {
-        console.log(error);
-      }
+    console.log(nameRef.current.value , emailRef.current.value ,phoneRef.current.value,);
+    
+    const postdata = {name: nameRef.current.value , email: emailRef.current.value , phone: phoneRef.current.value, postedby : company.fullName,
+      companyname : company.companyName}
+ 
+    try{
+      const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/getintouch`,{postdata })
+    }
+    catch(e) {console.log(e)}
   };
 
   return (

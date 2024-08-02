@@ -7,6 +7,7 @@ const upload = multer({ storage: storage })
 require("dotenv").config();
 
 const authController = require('../controller/authController');
+const mailController = require('../controller/mailController');
 
 
 
@@ -25,6 +26,10 @@ router.post('/updateuserservices',authController.updateUserServices);
 router.post('/updateusercities',authController.updateUserCities);
 router.post('/updateuserinfo',authController.updateUserInfo);
 router.post('/logout',authController.logout)
+
+router.post('/sharerequirements',mailController.shareRequirements)
+router.post('/getintouch',mailController.getInTouch)
+
 
 
 

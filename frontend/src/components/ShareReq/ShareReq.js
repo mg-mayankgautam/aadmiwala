@@ -1,6 +1,7 @@
 import React, {useRef, useEffect} from 'react'
 import './ShareReq.css'
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
+import axios from 'axios'
 
 
 const ShareReq = () => {
@@ -8,8 +9,6 @@ const ShareReq = () => {
   useEffect(() => {
       window.scrollTo(0, 0)
     }, [])
-
-    useEffect(() => emailjs.init("v5csxvz6IFDcQ0NZA"), []);
 
     const nameRef = useRef();
     const emailRef = useRef();
@@ -19,20 +18,26 @@ const ShareReq = () => {
 
   const sendEmail = async(e) => {
     e.preventDefault();
+    console.log(nameRef.current.value , emailRef.current.value ,phoneRef.current.value, locationRef.current.value ,reqRef.current.value );
 
-    try {
-        await emailjs.send('service_qkemi3i', 'template_x4w111d', {
-            name: nameRef.current.value,
-            email: emailRef.current.value,
-            phone: phoneRef.current.value,
-            location: locationRef.current.value,
-            requirements: reqRef.current.value
-        });
-        alert("email successfully sent to admin");
-      } 
-    catch (error) {
-        console.log(error);
-      }
+    const postdata = {name: nameRef.current.value , email: emailRef.current.value , phone: phoneRef.current.value, location: locationRef.current.value , requirements: reqRef.current.value}
+ 
+    try{
+      const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/sharerequirements`,{postdata })
+    }
+    catch(e) {console.log(e)}
+    //     await emailjs.send('service_qkemi3i', 'template_x4w111d', {
+    //         name: nameRef.current.value,
+    //         email: emailRef.current.value,
+    //         phone: phoneRef.current.value,
+    //         location: locationRef.current.value,
+    //         requirements: reqRef.current.value
+    //     });
+    //     alert("email successfully sent to admin");
+    //   } 
+    // catch (error) {
+    //     console.log(error);
+    //   }
 
   };
 

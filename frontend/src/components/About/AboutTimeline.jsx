@@ -19,7 +19,7 @@ const AboutTimeline = () => {
         <TimelineOppositeContent >
           <div className='timelineContent'>
             <div className='timelineHead'>Our Approach</div>
-            <div className='timelineText'>We believe that effective staffing solutions begin with a deep understanding of your unique needs and challenges. That's why our process starts with a consultative approach, where we take the time to learn about your company culture, operational goals, and staffing requirements. <br /> <br />Through this collaborative effort, we craft bespoke manpower solutions that seamlessly integrate with your existing workforce, ensuring a cohesive and productive team environment.</div>
+            <div className='timelineText'>We believe that effective vendor solutions begin with a deep understanding of your unique needs and challenges. That's why our process starts with a consultative approach, where we take the time to learn about your company culture, operational goals, and vendors requirements. <br /> <br />Through this collaborative effort, we craft bespoke manpower solutions that seamlessly integrate with your existing workforce, ensuring a cohesive and productive team environment.</div>
           </div>
         </TimelineOppositeContent>
         <TimelineSeparator style={{marginTop:"0px"}}>
