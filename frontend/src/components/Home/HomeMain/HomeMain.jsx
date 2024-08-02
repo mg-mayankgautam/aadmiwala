@@ -108,7 +108,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
         <div className='landingContent'>
             <div className='landingHeadingDiv'>
                 <div className='mainHead'>
-                    One Vendor, One Contract, One Solution
+                    One Vendor, One Contract, One Payment Solution
                 </div>
 
                 <div className='subHead'>
