@@ -15,14 +15,11 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 
-// const nodemailer = require('nodemailer');
-// const Mailgen = require('mailgen');
-
 app.use(cors( 
     {
         // origin: process.env.FRONTEND_URL, 
-        // origin: 'https://covendx.com', 
-        origin: "http://localhost:3000", 
+        origin: 'https://covendx.com', 
+        // origin: "http://localhost:3000", 
         // origin: '*',
        credentials: true, 
       withCredentials: true
@@ -32,8 +29,8 @@ app.use(cors(
 app.use((req, res, next)=>{
     res.setHeader(
         "Access-Control-Allow-Origin",
-        // "https://covendx.com"
-        "http://localhost:3000"
+        "https://covendx.com"
+        // "http://localhost:3000"
     );
     res.setHeader(
         "Access-Control-Allow-Headers",
@@ -86,10 +83,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'photos')));
 
 
-
-// const nodemailer = require('nodemailer');
-// const Mailgen = require('mailgen');
-
 // const EMAIL = 'jordanrhodes@gmail.com'; 
 // const PASSWORD = 'ixep ljzv drjh lxih'; 
 
@@ -97,71 +90,7 @@ app.use(express.static(path.join(__dirname, 'photos')));
 
 const AuthRouter = require('./routes/authentication.js');
 app.use('/', AuthRouter);
-
-
-// app.post('/sendmail',async (req,res)=>{
-
-//     console.log(req.body.postdata);
-//     const userEmail = req.body.postdata.email;
-
-//     // let config = {
-       
-//     // }
-
-//     let transporter = nodemailer.createTransport({
-//         service : 'gmail',
-//         auth : {
-//             user: 'jordanrhodes127@gmail.com',
-//             pass: 'gcdfqpiswmflrlgy'
-//         }
-//     });
-
-    
-
-//     let mailContent = {
-//         from : 'jordanrhodes127@gmail.com',
-//         to : userEmail,
-//         subject: "Place Order",
-//         text: 'hellllo'
-//     }
-
-
-
-//     transporter.sendMail(mailContent,function(err,val){
-//         if(err){
-//             console.log(err)
-//         }else{console.log(val.response,'mail sent success')}
-
-//     })
-    
-    
-    
-//     // .then(() => {
-//     //     // return res.status(201).json({
-//     //     //     msg: "you should receive an email"
-//     //     // })
-//     //     console.log('email sent successfully')
-        
-//     // }).catch(error => {
-//     //     // return res.status(500).json({ error })
-//     //     console.log(error,'error sending email')
-//     // })
-
-//     // res.status(201).json("getBill Successfully...!");
-
-// })
-
-
-
-
-
-
-
-
-
-
-
-    
+ 
 
 
 

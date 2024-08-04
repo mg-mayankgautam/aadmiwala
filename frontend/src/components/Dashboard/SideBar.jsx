@@ -33,7 +33,7 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
         const pr = PR.split(' - ');
         setnewLowPR(pr[0])
         setnewHighPR(pr[1])
-    }, [])
+    }, [PR])
 
 
     const [imageBoxCount, setImageBoxCount] = useState(4-imageURLs.length);
@@ -56,13 +56,13 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
             const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/deleteuserimage`, {id, filename})
   
             
-            // const axiosdata = data.data
+            const axiosdata = data.data
 
-            // if(axiosdata){
-            //     setUserServices(axiosdata);
-            //     setmodal(false);
-            //     // navigate(`/dashboard/${UserName}`)
-            // }
+            if(axiosdata){
+                setimageURLs(axiosdata.imageURLs);
+                // setmodal(false);
+                // navigate(`/dashboard/${UserName}`)
+            }
   
         }
             
@@ -110,6 +110,7 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
                     setuserEmail(axiosdata.email);
                     setGSTno(axiosdata.GSTno);
                     setAddress(axiosdata.address);
+                    setimageURLs(axiosdata.imageURLs)
                     setmodal3(false);
                     // navigate(`/dashboard/${UserName}`)
                 }

@@ -111,11 +111,10 @@ const HomeMain = ({searchValue,setSearchValue}) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentIndex((currentIndex + 1) % texts.length);
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
         }, 10000);
-
         return () => clearInterval(interval);
-    }, [currentIndex]);
+    }, []);
 
 
 
@@ -127,7 +126,9 @@ const HomeMain = ({searchValue,setSearchValue}) => {
             <div className='landingHeadingDiv'>
 
                 <div className='mainHead'>
-                    One Vendor, One Contract, One Payment Solution
+                    <div className="animText" key={currentIndex}>
+                        {texts[currentIndex]}
+                    </div>
                 </div>
 
                 <div className='subHead'>
