@@ -38,4 +38,7 @@ button{
   .text{
     font-size: 14px;
   }
+  .subHead{
+    font-size: 18px;
+  }
 }

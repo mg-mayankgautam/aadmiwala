@@ -292,7 +292,7 @@ const AddCompany = () => {
 
         const phone = '+91'+ phonee
         const priceRange = lowPR + ' - ' + highPR;
-    //   console.log(servicetype);
+        //   console.log(servicetype);
         
         const formData = new FormData();
       
@@ -340,7 +340,7 @@ const AddCompany = () => {
         setImageBoxCount(imageBoxCount+1);
         }
 
-    };
+    }; 
     // console.log(imageBoxCount)
 
   return (

@@ -24,7 +24,7 @@ module.exports.verifyOtp=async(req, res)=>{
     otpDB.findOneAndDelete({Phone, OTP})
     .then((saved)=>{
 
-        console.log(saved)
+        // console.log(saved)
         if(saved){res.send(true);}
         else res.send(false);
     })
@@ -208,7 +208,7 @@ module.exports.addRecruitingCompany= async (req,res)=>{
             const URL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
             //  console.log(URL);
             
-            imageURLs.push({url:URL})
+            imageURLs.push({url:URL,fileName:fileName})
 
         }
 
@@ -388,7 +388,7 @@ module.exports.getCompanydata=async(req,res)=>{
     const _id = req.query.id;
     let companydata = await companyDB.findOne({_id});
    
-    console.log(companydata);
+    // console.log(companydata);
    res.send(companydata);
 }
 
@@ -490,13 +490,47 @@ module.exports.updateUserCities = async(req, res) => {
 
 
 module.exports.updateUserInfo = async(req, res) => {
-    const {id, newCompanyName, newcompanyDesc, newPR, newName, newEmail, newGSTno, newaddr} = req.body;
-    // console.log('reaching here', req.body);
 
-    // if(req.session.Username==id){
+
+    const {fullName, email, phone, companyName, GSTno, agencyBriefing, priceRange,address} = req.body;
+     console.log('req.body', req.body);
+     console.log('req.files', req.files);
+
+    const imgsarray = req.files;
+    const Phone = Number(phone);
+
+
+    const user = await companyDB.findOne({Phone});
+    console.log('user', user);
+
+    if(user){
 
         try{
-            await companyDB.findOneAndUpdate({Phone:id}, {fullName: newName, email: newEmail, companyName: newCompanyName, agencyBriefing: newcompanyDesc, priceRange: newPR, GSTno: newGSTno, address: newaddr}, {returnDocument: 'after'})
+            
+            const imageURLs = user.imageURLs;
+            console.log('imageURLs', imageURLs);
+
+            for (const img of imgsarray){
+                // console.log(img);
+                const fileName = generateFileName();
+
+
+                const uploadParams = {
+                    Bucket: bucketName,
+                    Body: img.buffer,
+                    Key: fileName,
+                    ContentType: img.mimetype
+                }
+
+                await s3Client.send(new PutObjectCommand(uploadParams));
+                const URL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
+                //  console.log(URL);
+                
+                imageURLs.push({url:URL,fileName:fileName})
+
+            }
+
+            await companyDB.findOneAndUpdate({Phone}, {fullName: fullName, email: email, companyName: companyName, agencyBriefing: agencyBriefing, priceRange: priceRange, GSTno: GSTno, address: address, imageURLs: imageURLs}, {returnDocument: 'after'})
                 .then((saved)=>{
                     // console.log(saved, 'updated services')
                     res.send(saved)
@@ -505,5 +539,42 @@ module.exports.updateUserInfo = async(req, res) => {
         }
         catch(e){console.log(e)}
 
-    // }
+    }
+}
+
+
+
+
+
+module.exports.deleteUserImage =async(req, res)=>{
+    const {id, filename} =req.body;
+    console.log(id, filename)
+
+    const company = await companyDB.findOne({Phone:id});
+    const images = company.imageURLs;
+
+    const index = images.findIndex(img => {return img.fileName ===filename})
+
+    images.splice(index,1);
+
+    
+    const deleteParams = {
+        Bucket: bucketName,
+        // Body: img.buffer,
+        Key: filename,
+        // ContentType: img.mimetype
+    }
+
+
+    await companyDB.findOneAndUpdate({Phone:id},{imageURLs: images}, {returnDocument: 'after'})
+
+    .then(async(saved)=>{
+        await s3Client.send(new DeleteObjectCommand(deleteParams));
+
+        res.send('deleted')
+    })
+    .catch((e)=>{console.log(e)})
+    
+    
+
 }

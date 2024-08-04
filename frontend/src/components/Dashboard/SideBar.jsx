@@ -1,9 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
-const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, companyDesc, setPR,PR, id,setuserEmail, userEmail, setNewName, newName, setnewcompanyName, newCompanyName, setnewcompanyDesc, newcompanyDesc, setnewEmail, newEmail, setGSTno, GSTno, setAddress, address, country, setnewGSTno, newGSTno, setnewaddr, newaddr}) => {
+
+const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, companyDesc, setPR,PR, id,setuserEmail, userEmail, setNewName, newName, setnewcompanyName, newCompanyName, setnewcompanyDesc, newcompanyDesc, setnewEmail, newEmail, setGSTno, GSTno, setAddress, address, country, setnewGSTno, newGSTno, setnewaddr, newaddr,imageURLs,setimageURLs, newimageURLs, setnewimageURLs}) => {
+
+    const [file1, setFile1] = useState();
+    const [file2, setFile2] = useState();
+    const [file3, setFile3] = useState();
+    const [file4, setFile4] = useState();
 
     const [modal3, setmodal3] = useState(false);
     // const [PRange, setPRange] = useState(PR.split(' - '));
@@ -26,20 +33,70 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
         const pr = PR.split(' - ');
         setnewLowPR(pr[0])
         setnewHighPR(pr[1])
-   
     }, [])
+
+
+    const [imageBoxCount, setImageBoxCount] = useState(4-imageURLs.length);
+
+    useEffect(()=> {
+        setImageBoxCount(4 - imageURLs.length)
+    },[imageURLs])
+
+    const addimageboxes = ()=>{
+        if(imageBoxCount>0){
+            setImageBoxCount(imageBoxCount-1);
+        }
+    }; 
+
+    const deleteimg=async(filename)=>{
+        console.log(filename)
+
+        try{
+            
+            const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/deleteuserimage`, {id, filename})
+  
+            
+            // const axiosdata = data.data
+
+            // if(axiosdata){
+            //     setUserServices(axiosdata);
+            //     setmodal(false);
+            //     // navigate(`/dashboard/${UserName}`)
+            // }
+  
+        }
+            
+        catch(err){console.log(err);}
+    }
 
 
     const updateUserProfile = async(e)=>{
 
-        console.log(newName, newCompanyName, newcompanyDesc, newEmail);
-
+        // console.log(newName, newCompanyName, newcompanyDesc, newEmail);
+        
         const newPR = newLowPR + ' - ' + newHighPR;
+
+        const formData = new FormData();
+
+        formData.append("image", file1);
+        formData.append("image", file2);
+        formData.append("image", file3);
+        formData.append("image", file4);
+        formData.append("fullName", newName);
+        formData.append("email", newEmail);
+        formData.append("phone", id);
+        formData.append("companyName", newCompanyName);
+        formData.append("GSTno", newGSTno);
+        formData.append("agencyBriefing", newcompanyDesc);
+        formData.append("priceRange", newPR);
+        formData.append("address", newaddr);
+
 
         if(newCompanyName && newPR && newName && newEmail && validEmail){
             try{
 
-                const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateuserinfo`, {id, newCompanyName, newcompanyDesc, newPR, newName, newEmail, newGSTno, newaddr})
+                const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateuserinfo`,formData, { headers: {'Content-Type': 'multipart/form-data'}})
+                // {id, newCompanyName, newcompanyDesc, newPR, newName, newEmail, newGSTno, newaddr})
       
                
                 const axiosdata = data.data;    
@@ -105,8 +162,11 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
     {modal3? 
         <div className='dashModal'>
             <div className='modalBox modal3'>
-                <div onClick={()=> setmodal3(false)} className='closeDashModal'> X </div>
-                <div style={{fontSize:'16px'}}>Edit your information</div>
+
+                <div className='editInfoHeader'>
+                    <div onClick={()=> setmodal3(false)} className='closeEditInfoModal'> X </div>
+                    <div style={{fontSize:'16px'}}>Edit your information</div>
+                </div>
                 
                 <div>
                     <div>Company Name</div>
@@ -144,7 +204,7 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
                     <div>Email</div>
                     <input className='editInfoInput' type='email' placeholder='Email' value={newEmail}
                     onChange={(e)=> setnewEmail(e.target.value)} required
-                />
+                    />
                     { newEmail && !validEmail? (<p className='validerrordash'>
                         add valid email.        
                         </p>): <></>}
@@ -154,15 +214,93 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
                     <div>GST Number</div>
                     <input className='editInfoInput' type='text' placeholder='GST Number' value={newGSTno}
                     onChange={(e)=> setnewGSTno(e.target.value)} required
-                />
+                    />
                 </div>
 
                 <div>
                     <div>Main Office Address</div>
                     <input className='editInfoInput' type='text' placeholder='Main Address' value={newaddr}
                     onChange={(e)=> setnewaddr(e.target.value)} required
-                />
+                    />
                 </div>
+
+                <div className='userImgsDiv'>
+
+                    <div>Edit Images</div>
+
+                    {imageURLs&& imageURLs.map((img,i) =>
+                        
+                        <div key={i} className='userImgEdit'>
+
+                            <img src={img.url} alt="1" />
+                                    
+                            <div onClick={(e)=>{deleteimg(img.fileName)}}>
+                                <DeleteIcon />
+                            </div>
+                            <div>Delete Image</div>
+                        </div>
+                    )}
+
+                    {imageBoxCount >3 ?
+                        <input 
+                        onChange={
+                            e => setFile1(e.target.files[0])
+                            } 
+                        type="file" 
+                        accept="image/*"
+                        className='editInfoInput inputfile'
+                        name='image'
+                        />
+                    : <></>
+                    }
+
+                    {imageBoxCount >2 ?
+                        <input 
+                        onChange={
+                            e => setFile2(e.target.files[0])
+                            } 
+                        type="file" 
+                        accept="image/*"
+                        className='editInfoInput inputfile'
+                        name='image'
+                        />
+                    : <></>
+                    }
+
+                    {imageBoxCount >1 ?
+                        <input 
+                        onChange={
+                            e => setFile3(e.target.files[0])
+                            } 
+                        type="file" 
+                        accept="image/*"
+                        className='editInfoInput inputfile'
+                        name='image'
+                        />
+                    : <></>
+                    }
+
+                    {imageBoxCount >0 ?
+                        <input 
+                        onChange={
+                            e => setFile4(e.target.files[0])
+                            } 
+                        type="file" 
+                        accept="image/*"
+                        className='editInfoInput inputfile'
+                        name='image'
+                        />
+                    : <></>
+                    }
+
+                
+                
+                    <br/>
+                    {/* <button onClick={()=>{addimageboxes()}} className='addImgBtn'>add more images</button> */}
+
+
+                </div>
+                
 
                 <button onClick={(e)=> updateUserProfile(e)} className='submitNewServices'>Submit</button>
 

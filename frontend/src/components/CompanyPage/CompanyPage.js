@@ -41,7 +41,8 @@ const CompanyPage = () => {
     
         getCompanies()
       
-      },[id]);
+    },[id]);
+    
 
   return (
     <>

@@ -143,14 +143,14 @@
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    align-items: center;
+    /* align-items: center; */
     padding: 32px;
     gap: 16px;
     box-shadow: 0px 10px 20px 0px #0000001A;
     position: relative;
     border: 1px solid var(--orange);
     overflow-y: scroll;
-    max-height: 450px;
+    max-height: 550px;
 }
 
 .modalBox::-webkit-scrollbar{display: none;}
@@ -206,20 +206,44 @@
     margin: 4px 0;
 }
 
+.editInfoInput.inputfile{
+    max-width: 400px;
+    min-width: 300px;
+}
+
 .PRInfoInput{
     max-width: 100%;
     min-width: 150px;
 }
 
-.PRInputDiv{display: flex;
-justify-content: space-between;
-max-width: 100%;
-gap: 30px;}
+.PRInputDiv{
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    gap: 30px;
+}
 
 .modalBox.modal3{
     font-size: 14px;
     text-align: left;
+    padding-top: 0;
 }
+
+.editInfoHeader{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 32px 0 16px;
+    z-index: 5;
+}
+
+.closeEditInfoModal{
+    position: absolute;
+    right: 0;
+    top: 32px;
+    cursor: pointer;
+}
+
 
 .validerrordash{
     font-size: 11px;
@@ -242,3 +266,24 @@ gap: 30px;}
 }
 
 .editIcon{cursor: pointer;}
+
+.userImgsDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.userImgEdit{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    /* justify-content: ; */
+}
+
+.userImgEdit>img{
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    object-position: center;
+}

@@ -24,7 +24,7 @@ const AboutDesc = ({about_ref}) => {
                
                     </div>
             </div>
-            <div>
+            <div className='aboutCardImgDiv'>
                 <img src={aboutcard} className='aboutCardImg'/>
             </div>
         </div>

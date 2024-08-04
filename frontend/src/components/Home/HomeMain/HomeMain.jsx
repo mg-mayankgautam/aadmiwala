@@ -16,6 +16,12 @@ const services =[
     'Administrative Support', 'Facility Service', 'Housekeeping Services', 'Customer Service Representatives', 'Blue Collar', 'White Collar', 'Reception Service', 'Security Service', 'IT Support', 'Catering Service', 'AC/Telephone Repair', 'Electrician/Plumber Service', 'Mailroom Service', 'Pest Control', 'Office Boy', 'Other'
 ]
 
+const texts = [
+    "One Vendor, One Contract, One Payment Solution",
+    "Looking to Upgrade Your Vendor Needs.",
+    "Connecting Businesses to Vendor Excellence."
+];
+
 const HomeMain = ({searchValue,setSearchValue}) => {
     const navigate = useNavigate();
 
@@ -101,14 +107,29 @@ const HomeMain = ({searchValue,setSearchValue}) => {
         
     }
 
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((currentIndex + 1) % texts.length);
+        }, 10000);
+
+        return () => clearInterval(interval);
+    }, [currentIndex]);
+
+
+
   return (
     <>
     <div className='HomeMain'>
 
         <div className='landingContent'>
             <div className='landingHeadingDiv'>
+
                 <div className='mainHead'>
-                    One Vendor, One Contract, One Solution
+                    <div className="animText">
+                        {texts[currentIndex]}
+                    </div>
                 </div>
 
                 <div className='subHead'>

@@ -50,6 +50,7 @@ const Dashboard = () => {
     const [userEmail, setuserEmail] = useState('');
     const [GSTno, setGSTno] = useState('');
     const [address, setAddress] = useState('');
+    const [imageURLs, setimageURLs] = useState([]);
     const [country, setCountry] = useState('');
 
     const [newServiceType, setNewServiceType] = useState([])
@@ -60,7 +61,8 @@ const Dashboard = () => {
     const [newEmail, setnewEmail] = useState('');
     const [newGSTno, setnewGSTno] = useState('');
     const [newaddr, setnewaddr] = useState('');
-    const [sideBar, setSideBar] = useState(false)
+    const [newimageURLs, setnewimageURLs] = useState([]);
+    const [sideBar, setSideBar] = useState(true)
 
 
 
@@ -124,6 +126,7 @@ const Dashboard = () => {
           setGSTno(data.data.GSTno);
           setnewGSTno(data.data.GSTno);
           setAddress(data.data.address);
+          setimageURLs(data.data.imageURLs);
           setnewaddr(data.data.address);
           setCountry(data.data.country);
         //   setnewPR(data.data.priceRange);
@@ -197,10 +200,10 @@ const Dashboard = () => {
             <div className='dash_DataDiv'>
                 <div className='dash_Head'>
                     <div>Welcome to the dashboard, {name} !</div>
-                    <div className='profileSettings'
+                    {/* <div className='profileSettings'
                         onClick={()=> setSideBar(!sideBar)}>
                         <Settings/>
-                    </div> 
+                    </div>  */}
                 </div>
 
                 <div className='dash_BoxFlex'>
@@ -278,11 +281,11 @@ const Dashboard = () => {
 
 
 
-        {sideBar? 
-            <SideBar setName={setName} name={name} setcompanyName={setcompanyName} companyName={companyName} setcompanyDesc={setcompanyDesc} companyDesc={companyDesc} setPR={setPR} PR={PR} id={id} setuserEmail={setuserEmail} userEmail={userEmail} setNewName={setNewName} newName={newName} setnewcompanyName={setnewcompanyName} newCompanyName={newCompanyName} setnewcompanyDesc={setnewcompanyDesc} newcompanyDesc={newcompanyDesc} setnewEmail={setnewEmail} newEmail={newEmail} setGSTno={setGSTno} GSTno={GSTno} setAddress={setAddress} address={address} country={country} setnewGSTno={setnewGSTno} newGSTno={newGSTno} setnewaddr={setnewaddr} newaddr={newaddr} />
-            :
+        {/* {sideBar?  */}
+            <SideBar setName={setName} name={name} setcompanyName={setcompanyName} companyName={companyName} setcompanyDesc={setcompanyDesc} companyDesc={companyDesc} setPR={setPR} PR={PR} id={id} setuserEmail={setuserEmail} userEmail={userEmail} setNewName={setNewName} newName={newName} setnewcompanyName={setnewcompanyName} newCompanyName={newCompanyName} setnewcompanyDesc={setnewcompanyDesc} newcompanyDesc={newcompanyDesc} setnewEmail={setnewEmail} newEmail={newEmail} setGSTno={setGSTno} GSTno={GSTno} setAddress={setAddress} address={address} country={country} setnewGSTno={setnewGSTno} newGSTno={newGSTno} setnewaddr={setnewaddr} newaddr={newaddr} imageURLs={imageURLs} setimageURLs={setimageURLs} newimageURLs={newimageURLs} setnewimageURLs={setnewimageURLs} />
+            {/* :
             <></>
-        }
+        } */}
 
         
 
