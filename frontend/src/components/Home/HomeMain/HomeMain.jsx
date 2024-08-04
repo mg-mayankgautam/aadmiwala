@@ -127,9 +127,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
             <div className='landingHeadingDiv'>
 
                 <div className='mainHead'>
-                    <div className="animText">
-                        {texts[currentIndex]}
-                    </div>
+                    One Vendor, One Contract, One Payment Solution
                 </div>
 
                 <div className='subHead'>
