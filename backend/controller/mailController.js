@@ -23,7 +23,7 @@ module.exports.shareRequirements = async(req, res)=>{
 
     let mailContent = {
         from : 'noreply.covendx@gmail.com',
-        to : 'mayankgautam0811@gmail.com',
+        to : 'sales@covendx.com',
         subject: `New Requirement from ${name}`,
         text: `You got a new message from ${name}:
 
@@ -61,16 +61,16 @@ module.exports.getInTouch = async(req, res)=>{
     let transporter = nodemailer.createTransport({
         service : 'gmail',
         auth : {
-            user: 'noreply.aadmiwala@gmail.com',
-            pass: 'ulgpwlxtzonjsbvs'
+           user: 'noreply.covendx@gmail.com',
+            pass: 'ivukyxozcrduxwau'
         }
     });
 
     
 
     let mailContent = {
-        from : 'noreply.aadmiwala@gmail.com',
-        to : 'mayankgautam0811@gmail.com',
+        from : 'noreply.covendx@gmail.com',
+        to : 'sales@covendx.com',
         subject: `New Service Interest from ${name}`,
 
         text: `An applier is interested in the following service:
