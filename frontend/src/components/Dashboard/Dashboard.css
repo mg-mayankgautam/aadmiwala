@@ -172,23 +172,27 @@
     cursor: pointer;
 }
 
-.dashSideBar{
+.dashSideBarContainer{
     width: 350px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 32px;
     text-align: left;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+}
+
+.dashSideBar{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
     border-radius: 20px;
     border: 1px solid #332f2a25 ;
     background-color: #00000010;
     color: var(--black);
-    position: sticky;
-    top: 0;
-    bottom: 0;
-    font-size: 14px;
     box-shadow: 0px 10px 20px 0px #ffffff1a;
-
 }
 
 .sidebarTitle{
@@ -265,7 +269,13 @@
     font-weight: 400;
 }
 
-.editIcon{cursor: pointer;}
+.editIcon{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
 
 .userImgsDiv{
     display: flex;
@@ -287,3 +297,52 @@
     object-fit: cover;
     object-position: center;
 }
+
+.ManageAcctBtn{
+    border: 1px solid var(--green);
+    display: flex;
+    background-color: white;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.dashManageAccount{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+    border-radius: 20px;
+    border: 1px solid #332f2a25 ;
+    background-color: #00000010;
+    color: var(--black);
+    box-shadow: 0px 10px 20px 0px #ffffff1a;
+}
+
+.showEditPhoneBtn{
+    background-color: var(--green);
+    color: white;
+}
+
+.editPhoneDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.submitPhoneBtn{
+    margin-top: 16px;
+    background-color: white;
+    border: 1px solid var(--green);
+    color: var(--green);
+    max-width: 160px;
+}
+
+.editPhoneInput{
+    border-radius: 20px;
+    padding: 8px 16px;
+    border: 1px solid #0000002d;
+    color: var(--black);
+}
+

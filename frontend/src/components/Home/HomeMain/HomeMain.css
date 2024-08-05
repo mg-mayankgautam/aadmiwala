@@ -47,7 +47,7 @@
     font-size: inherit;
     font-weight: inherit;
     color: inherit;
-    animation: textAnimation 30s infinite;
+    animation: textAnimation 15s infinite;
 }
 
 @keyframes textAnimation {

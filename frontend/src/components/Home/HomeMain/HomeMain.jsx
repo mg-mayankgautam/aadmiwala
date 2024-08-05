@@ -17,9 +17,9 @@ const services =[
 ]
 
 const texts = [
-    "One Vendor, One Contract, One Payment Solution",
     "Looking to Upgrade Your Vendor Needs.",
-    "Connecting Businesses to Vendor Excellence."
+    "Connecting Businesses to Vendor Excellence.",
+    "One Vendor, One Contract, One Payment Solution"
 ];
 
 const HomeMain = ({searchValue,setSearchValue}) => {
@@ -112,7 +112,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
-        }, 10000);
+        }, 5000);
         return () => clearInterval(interval);
     }, []);
 

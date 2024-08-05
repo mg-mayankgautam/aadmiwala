@@ -2,20 +2,31 @@ import React, {useState, useEffect} from 'react'
 import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Settings from '@mui/icons-material/Settings';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, companyDesc, setPR,PR, id,setuserEmail, userEmail, setNewName, newName, setnewcompanyName, newCompanyName, setnewcompanyDesc, newcompanyDesc, setnewEmail, newEmail, setGSTno, GSTno, setAddress, address, country, setnewGSTno, newGSTno, setnewaddr, newaddr,imageURLs,setimageURLs, newimageURLs, setnewimageURLs}) => {
 
+    const navigate = useNavigate();
     const [file1, setFile1] = useState();
     const [file2, setFile2] = useState();
     const [file3, setFile3] = useState();
     const [file4, setFile4] = useState();
 
     const [modal3, setmodal3] = useState(false);
-    // const [PRange, setPRange] = useState(PR.split(' - '));
+    const [showManageAcct, setShowManageAcct] = useState(false);
+    const [showEditPhone, setShowEditPhone] = useState(false);
+    const [showEditPwd, setShowEditPwd] = useState(false);
+    const [editPhoneSlide1, seteditPhoneSlide1] = useState(true);
+    const [editPhoneSlide2, seteditPhoneSlide2] = useState(false);
+    
     const [newLowPR, setnewLowPR] = useState('')
     const [newHighPR, setnewHighPR] = useState('')
+    const [newPhone, setNewPhone] = useState(id.split('91')[1])
+    const [newPwd, setNewPwd] = useState('')
+    const [newOTP, setNewOTP] = useState('')
 
 
     const [validEmail, setValidEmail] = useState(false);
@@ -36,6 +47,7 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
     }, [PR])
 
 
+
     const [imageBoxCount, setImageBoxCount] = useState(4-imageURLs.length);
 
     useEffect(()=> {
@@ -47,6 +59,7 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
             setImageBoxCount(imageBoxCount-1);
         }
     }; 
+
 
     const deleteimg=async(filename)=>{
         console.log(filename)
@@ -122,43 +135,181 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
 
     }
 
+    const verifyNewPhone= async()=>{
+
+        console.log(newPhone)
+
+        try{
+            
+            const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/verifynewphone`, {newPhone})
+  
+            
+            const axiosdata = data.data
+
+            if(axiosdata){
+                seteditPhoneSlide1(false)
+                seteditPhoneSlide2(true)
+            }
+  
+        }
+            
+        catch(err){console.log(err);}
+    }
+
+    const updateNewPhone= async()=>{
+
+        console.log(newPhone)
+
+        try{
+            
+            const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/updateuserphone`, {id, newOTP, newPhone, newPwd})
+  
+            
+            const axiosdata = data.data
+
+            if(axiosdata){
+                navigate('/')
+            }
+  
+        }
+            
+        catch(err){console.log(err);}
+    }
 
   return (
     <>
-    
-    <div className='dashSideBar'>
-            <div className='dashSidebar_head'>
-                {/* <div>My Profile</div>  */}
-                <div onClick={()=> setmodal3(true)} className='editIcon'><EditIcon/></div>
+    <div className='dashSideBarContainer'>
+        
+        <button className='ManageAcctBtn'
+            onClick={()=> setShowManageAcct(!showManageAcct)}
+            >
+            <Settings/> Manage Your Account
+        </button>
+        
+
+        {showManageAcct? 
+            <div className='dashManageAccount'>
+
+                <button className='showEditPhoneBtn'
+                    onClick={()=> {setShowEditPhone(!showEditPhone); setShowEditPwd(false) }}
+                    >
+                    Edit Phone Number
+                </button>
+
+            
+                {showEditPhone ? (
+                <>
+                    {editPhoneSlide1 ? (
+                    <div className='editPhoneDiv'>
+                        <div>Edit Phone Number</div>
+                        <input
+                        type="number"
+                        className='editPhoneInput'
+                        onChange={(e) => setNewPhone(e.target.value)}
+                        value={newPhone}
+                        />
+                        <div>Enter New Password</div>
+                        <input
+                        type="text"
+                        className='editPhoneInput'
+                        onChange={(e) => setNewPwd(e.target.value)}
+                        value={newPwd}
+                        />
+                        <button
+                        className='submitPhoneBtn'
+                        onClick={() => verifyNewPhone()}
+                        >
+                        Submit new info
+                        </button>
+                    </div>
+                    ) : null}
+                    {editPhoneSlide2 ? (
+                    <div className='editPhoneDiv'>
+                        <div>Enter OTP</div>
+                        <input
+                        type="number"
+                        className='editPhoneInput'
+                        onChange={(e) => setNewOTP(e.target.value)}
+                        value={newOTP}
+                        />
+                        <button
+                        className='submitPhoneBtn'
+                        onClick={() => updateNewPhone()}
+                        >
+                        Submit OTP
+                        </button>
+                    </div>
+                    ) : null}
+                </>
+                ) : null}
+
+
+                {!showEditPhone ?
+                    <button  className='showEditPhoneBtn'
+                        onClick={()=> setShowEditPwd(!showEditPwd)}
+                        >
+                        Change Password
+                    </button>
+                : <></>
+                }
+
+            
+                {showEditPwd?
+                    <div className='editPhoneDiv'>
+
+                        <div>Enter New Password</div>
+                        <input type="text" 
+                            className='editPhoneInput'
+                            onChange={(e)=> setNewPwd(e.target.value)}
+                            value={newPwd}
+                            />
+
+                        <button className='submitPhoneBtn'>
+                            Submit new pwd
+                        </button>
+
+                    </div>
+
+                :<></>}
+                                
             </div>
-            <div>
-                <span className='sidebarTitle'>Company Name:</span> {companyName}
-            </div> 
-            <div>
-                <span className='sidebarTitle'>Description:</span> {companyDesc}
-            </div> 
-            <div>
-                <span className='sidebarTitle'>Price Range:</span> {PR} INR
-            </div>
-            <div>
-                <span className='sidebarTitle'>Your Name:</span> {name}
-            </div> 
-            <div>
-                <span className='sidebarTitle'>Phone:</span> {id}
-            </div> 
-            <div>
-                <span className='sidebarTitle'>Email:</span> {userEmail}
-            </div> 
-            <div>
-                <span className='sidebarTitle'>GST Number:</span> {GSTno}
-            </div> 
-            <div>
-                <span className='sidebarTitle'>Address:</span> {address}
-            </div> 
-            <div>
-                <span className='sidebarTitle'>Country:</span> {country}
-            </div>  
+        : <></>}
+
+        <div className='dashSideBar'>
+                <div className='dashSidebar_head'>
+                    {/* <div>My Profile</div>  */}
+                    <div onClick={()=> setmodal3(true)} className='editIcon'><EditIcon/> Edit Information</div>
+                </div>
+                <div>
+                    <span className='sidebarTitle'>Company Name:</span> {companyName}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>Description:</span> {companyDesc}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>Price Range:</span> {PR} INR
+                </div>
+                <div>
+                    <span className='sidebarTitle'>Your Name:</span> {name}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>Phone:</span> {id}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>Email:</span> {userEmail}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>GST Number:</span> {GSTno}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>Address:</span> {address}
+                </div> 
+                <div>
+                    <span className='sidebarTitle'>Country:</span> {country}
+                </div>  
+        </div>
     </div>
+    
 
     {modal3? 
         <div className='dashModal'>

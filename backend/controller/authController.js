@@ -113,7 +113,7 @@ module.exports.verifyPhoneNum = async(req,res) =>{
     //Twilio
    // sendSMS(`hello from admiwala your OTP is${OTP}`);
    
-res.send(true);
+    res.send(true);
 
 }
 
@@ -445,7 +445,7 @@ module.exports.getUserData =async(req,res)=>{
     //  }
     
     
-    }
+}
 
 
 module.exports.updateUserServices = async(req, res) => {
@@ -544,8 +544,6 @@ module.exports.updateUserInfo = async(req, res) => {
 
 
 
-
-
 module.exports.deleteUserImage =async(req, res)=>{
     const {id, filename} =req.body;
     console.log(id, filename)
@@ -566,15 +564,107 @@ module.exports.deleteUserImage =async(req, res)=>{
     }
 
 
-    await companyDB.findOneAndUpdate({Phone:id},{imageURLs: images}, {returnDocument: 'after'})
+   // await companyDB.findOneAndUpdate({Phone:id},{imageURLs: images}, {returnDocument: 'after'})
 
-    .then(async(saved)=>{
-        await s3Client.send(new DeleteObjectCommand(deleteParams));
+    // .then(async(saved)=>{
+    //     await s3Client.send(new DeleteObjectCommand(deleteParams));
 
-        res.send('deleted', saved.imageURLs)
+    //     res.send('deleted', saved.imageURLs)
+    // })
+    // .catch((e)=>{console.log(e)})
+    
+    try{ await s3Client.send(new DeleteObjectCommand(deleteParams));
+
+        res.send('deleted', saved.imageURLs)}
+        catch(e){console.log(e)}
+   
+
+}
+
+module.exports.verifyNewPhone = async(req, res) =>{
+    
+    //const newPwd = req.body.newPwd;
+
+    const newPhone = req.body.newPhone;
+    const phone = '+91' + newPhone
+    // console.log(newPwd,phone)
+
+    const Phone = Number(phone);
+    
+    const OTP = `${Math.floor(1000+Math.random()*9000)}`;
+
+    
+
+    var config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `https://2factor.in/API/V1/9dfd8b94-1f26-11ef-8b60-0200cd936042/SMS/${phone}/${OTP}/JNSHKOTP`,
+        headers: { }
+    };
+
+    axios(config)
+    .then(function (response) {
+
+            let newotpentry = new otpDB({Phone, OTP});
+            
+           
+            newotpentry.save()
+                .then(async(saved)=>{
+                    console.log('otp added success');
+                    
+                // const message = await client.messages.create(msgOptions);    
+                    res.send(true);                    
+                })
+                .catch(err =>{
+                    console.log(err);
+                    res.send(false);
+                });
+
+
+            console.log(JSON.stringify(response.data));
     })
-    .catch((e)=>{console.log(e)})
-    
-    
+    .catch(function (error) {
+        console.log(error);
+    });
 
+
+}
+
+
+module.exports.updateUserPhone =async(req,res)=>{
+
+    const{id, newOTP, newPhone, newPwd}=req.body;
+
+    const OTP = Number(newOTP);
+    const phone = '+91' + newPhone;
+    const Phone = Number(phone);
+
+
+    await otpDB.findOneAndDelete({Phone, OTP})
+    .then(async(saved)=>{
+
+        if(saved){
+            await companyDB.findOneAndUpdate({Phone:id}, {Phone:Phone}, {returnDocument: 'after'})
+                .then((saved)=>{
+                    // console.log(saved, 'updated services')
+                    // res.send(saved)
+                })
+                .catch((e)=>{console.log(e)})
+            
+            await userDB.findOneAndUpdate({Phone:id}, {Phone:Phone, pwd:newPwd}, {returnDocument: 'after'})
+                .then(async(saved)=>{
+                    console.log('updated pwd and phone')
+                    await req.session.destroy();
+                    res.send(saved)
+                })
+                .catch((e)=>{console.log(e)})
+        }
+        else {
+            res.send(false);
+        }
+    })
+    .catch( err =>{
+        console.error(err)
+        res.send(false)
+    })
 }

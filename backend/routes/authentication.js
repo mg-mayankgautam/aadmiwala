@@ -26,6 +26,8 @@ router.post('/updateuserservices',authController.updateUserServices);
 router.post('/updateusercities',authController.updateUserCities);
 router.post('/updateuserinfo',upload.array("image"),authController.updateUserInfo);
 router.post('/deleteuserimage',authController.deleteUserImage);
+router.post('/verifynewphone',authController.verifyNewPhone);
+router.post('/updateuserphone',authController.updateUserPhone);
 router.post('/logout',authController.logout)
 
 router.post('/sharerequirements',mailController.shareRequirements)
