@@ -7,6 +7,12 @@ import FeaturedCompanies from '../Home/FC/FeaturedCompanies';
 import Faq from '../Home/Faq/Faq';
 import Footer from '../Footer/Footer';
 import GetinTouch from './GetinTouch';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination, Navigation } from 'swiper/modules';
+
 
 const CompanyPage = () => {
 
@@ -20,10 +26,8 @@ const CompanyPage = () => {
     const [company, setCompany] = useState([])
     const [modal, setModal] = useState(false)
     
+    const [carousel, setCarousel] = useState(false)
 
-    // useEffect(() => {
-    //   window.scrollTo(0, 0)
-    // }, [])
     
     useEffect(()=>{
 
@@ -42,6 +46,11 @@ const CompanyPage = () => {
         getCompanies()
       
     },[id]);
+
+    useEffect(()=>{
+      console.log(carousel)
+      
+    },[carousel]);
     
 
   return (
@@ -62,8 +71,6 @@ const CompanyPage = () => {
 
 
               <div>
-                {/* {company.address}     */}
-                {/* <br /> */}
                 {company.city&&company.city.map(cityy=><span id=''>{cityy}, </span>)}
                 <br/>
                 {company.country}
@@ -83,11 +90,13 @@ const CompanyPage = () => {
 
             </div>
 
-            <div className='companyImgsDiv'>
-              {company.imageURLs&& company.imageURLs.map((img,i) =>
+            {company.imageURLs && company.imageURLs.length>0 && 
+            <div className='companyImgsDiv' onClick={()=> setCarousel(true)}>
+              {company.imageURLs.map((img,i) =>
                   <div key={i}><img src={img.url} alt="1" /> </div>
               )}
             </div>
+            }
 
           </div>
 
@@ -112,8 +121,38 @@ const CompanyPage = () => {
     </div>
        
     <FeaturedCompanies/>
-      <Faq/>
-    {/* <Footer/> */}
+    <Faq/>
+    
+
+    {carousel? 
+      <div className='imgCarousel'>
+        <div className='closeCarouselBtn' onClick={()=> setCarousel(false)}>X</div>
+
+        <Swiper
+        slidesPerView={1}
+        spaceBetween={10}
+        speed={1000}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        centeredSlides={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiper"
+        >
+          {company&& company.imageURLs.length>0 && company.imageURLs.map((img,i) =>
+            <SwiperSlide key={i}>
+              <div className='fullImg'>
+                <img src={img.url} alt={i} />
+              </div>
+            </SwiperSlide>
+          )}
+        
+      </Swiper>
+      </div>
+    : null
+    }
+
     </>
   )
 }
