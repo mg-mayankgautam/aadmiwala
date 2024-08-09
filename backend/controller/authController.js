@@ -564,14 +564,14 @@ module.exports.deleteUserImage =async(req, res)=>{
     }
 
 
-   // await companyDB.findOneAndUpdate({Phone:id},{imageURLs: images}, {returnDocument: 'after'})
+   await companyDB.findOneAndUpdate({Phone:id},{imageURLs: images}, {returnDocument: 'after'})
 
-    // .then(async(saved)=>{
-    //     await s3Client.send(new DeleteObjectCommand(deleteParams));
+    .then(async(saved)=>{
+        // await s3Client.send(new DeleteObjectCommand(deleteParams));
 
-    //     res.send('deleted', saved.imageURLs)
-    // })
-    // .catch((e)=>{console.log(e)})
+        res.send('deleted', saved.imageURLs)
+    })
+    .catch((e)=>{console.log(e)})
     
     try{ await s3Client.send(new DeleteObjectCommand(deleteParams));
 
