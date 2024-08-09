@@ -573,10 +573,10 @@ module.exports.deleteUserImage =async(req, res)=>{
     })
     .catch((e)=>{console.log(e)})
     
-    try{ await s3Client.send(new DeleteObjectCommand(deleteParams));
+    // try{ await s3Client.send(new DeleteObjectCommand(deleteParams));
 
-        res.send('deleted', saved.imageURLs)}
-        catch(e){console.log(e)}
+    //     res.send('deleted', saved.imageURLs)}
+    //     catch(e){console.log(e)}
    
 
 }
