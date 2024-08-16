@@ -71,7 +71,9 @@ const Footer = () => {
                 </div>
                 <div className='footerList'>
                      <div>
-                        covendx@gmail.com
+                        <a href='mailto:covendx@gmail.com' target='_blank'>
+                            covendx@gmail.com
+                        </a>
                      </div>
                      
                      <div className={callus? 'footerOrange footerbtnwidth' : 'footerOrange' }

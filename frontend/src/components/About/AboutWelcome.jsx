@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import logo from '../../assets/logo.png'
 
 const AboutWelcome = ({about_ref}) => {
 
@@ -8,7 +9,9 @@ const AboutWelcome = ({about_ref}) => {
     <div className='AboutMain'>
         <div>
             <div className='aboutSubHead'>Welcome to</div>
-            <div className='aboutHead'>Covendx</div>
+            <div className='aboutHeadImg'>
+              <img src={logo}/>
+            </div>
             <div className='subHead'>your trusted partner for tailored vendors <br /> solutions that meets seamless integration. </div>
         </div>
         {/* <div className='text'>Our platform simplifies the process of connecting with the right agencies, allowing clients to focus on their core business while we handle the intricacies of vendors.

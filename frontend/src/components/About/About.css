@@ -18,10 +18,16 @@
     font-weight: 700;
 }
 
-.aboutHead{
-    font-size: 88px;
-    font-weight: 700;
-    color: var(--orange);
+.aboutHeadImg{
+    /* font-size: 88px; */
+    /* font-weight: 700; */
+    /* color: var(--orange); */
+    width: 60%;
+    margin: 16px auto;
+}
+.aboutHeadImg>img{
+    object-fit: contain;
+    width: 100%;
 }
 
 .aboutBtn{
@@ -152,8 +158,8 @@
         font-size: 24px;
     }
     
-    .aboutHead{
-        font-size: 48px;
+    .aboutHeadImg{
+        /* font-size: 48px; */
     }
     
     .aboutBtn{
