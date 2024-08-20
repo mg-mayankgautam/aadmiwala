@@ -88,7 +88,7 @@ const handleLogout = async() =>{
           </div>
         </Link>
         <div className='navItems'>
-            <div>Enterprise</div>
+            {/* <div>Enterprise</div> */}
             <div> <a href="about">About Us</a></div>
             
             <div>
