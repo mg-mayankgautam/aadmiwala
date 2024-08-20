@@ -179,12 +179,14 @@ module.exports.addRecruitingCompany= async (req,res)=>{
     // console.log('req.files',req.files);
     // console.log('working backend',req.body);
 
-    const {image,fullName, email, phone, companyName, GSTno, agencyBriefing, servicetype, priceRange, country, address, City, pwd} = req.body;
+    const {image,fullName, email, phone, companyName, GSTno, agencyBriefing, servicetype, priceRange, country, address, City, Flexi, pwd} = req.body;
+
+    const flexi = JSON.parse(Flexi)
 
     const imgsarray = req.files;
     const Phone = Number(phone);
 
-
+    console.log(flexi, 'flexi')
 
     const user = await userDB.findOne({Phone});
 
@@ -231,7 +233,7 @@ module.exports.addRecruitingCompany= async (req,res)=>{
 
     
 
-        let newCompany = new companyDB({fullName, email, Phone, companyName, GSTno, agencyBriefing, serviceType, priceRange, country, address, city, imageURLs, date});
+        let newCompany = new companyDB({fullName, email, Phone, companyName, GSTno, agencyBriefing, serviceType, priceRange, country, address, city, imageURLs, date, flexi});
 
 
 

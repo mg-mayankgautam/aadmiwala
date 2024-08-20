@@ -62,8 +62,23 @@
     object-fit: cover;
 }
 
+.newDiv{
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
 .new{
     background-color: var(--green);
+    padding: 4px 8px;
+    color: white;
+    font-weight: 800;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+
+.flexi{
+    background-color: #C775FE;
     padding: 4px 8px;
     color: white;
     font-weight: 800;

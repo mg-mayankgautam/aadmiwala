@@ -237,3 +237,14 @@ font-weight: 700;
   .city_input_text{
     margin-bottom: 12px;
   }
+
+  .recr_flexi_input{
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+  .recr_flexi_radio{
+    display: flex;
+    gap: 8px;
+  }

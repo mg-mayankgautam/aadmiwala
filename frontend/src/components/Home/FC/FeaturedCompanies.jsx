@@ -70,6 +70,24 @@ const FeaturedCompanies = () => {
             </div>
             <div className='text'>Today's talent marketplace</div>
           </div>
+
+          <div className='flexiBtnsDiv'>
+            <div className='flexiBtns'>
+              IT Support
+            </div>
+            <div className='flexiBtns'>
+              Admin Support
+            </div>
+            <div className='flexiBtns'>
+              Office Boy
+            </div>
+            <div className='flexiBtns'>
+              Blue Collar
+            </div>
+            <div className='flexiBtns'>
+              Flexi Services
+            </div>
+          </div>
           
           <div className='FC_container'>
             

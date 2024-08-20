@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import logo from '../../assets/logo.png'
 import useAuth from '../../hook/useAuth';
-import './Nav.css'
+import './HomeNav.css'
 import CallIcon from '@mui/icons-material/Call';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import MenuIcon from '@mui/icons-material/Menu';
 
 
-const Nav = ({ userLogged, setUserLogged}) => {
+const HomeNav = ({ userLogged, setUserLogged}) => {
 
   const {auth, setAuth}= useAuth();
   const [callus, setcallus]= useState(false);
@@ -81,7 +81,7 @@ const handleLogout = async() =>{
 
 
   return (
-    <div className='Nav'>
+    <div className='HomeNav'>
         <Link to="/">
           <div className='navLogoDiv'>
             <img src={logo} className='navLogo'/>
@@ -197,4 +197,4 @@ const handleLogout = async() =>{
   )
 }
 
-export default Nav
+export default HomeNav

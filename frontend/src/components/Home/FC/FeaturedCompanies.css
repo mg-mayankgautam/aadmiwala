@@ -25,6 +25,25 @@
     color: var(--orange);
 }
 
+.flexiBtnsDiv{
+    display: flex;
+    padding: 0 64px;
+    gap: 16px;
+    margin: 24px 0;
+}
+.flexiBtns{
+    padding: 6px 10px;
+    border: 1px solid var(--green);
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.flexiBtns:hover{
+    background-color: var(--green);
+    color: white;
+}
+
 .FC_container{
     display: flex;
     gap: 32px;

@@ -1,23 +1,35 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
+import HomeNav from './components/HomeNav/HomeNav';
 import Footer from './components/Footer/Footer';
 
+const Layout = ({ userLogged, setUserLogged }) => {
+  const [isHome, setIsHome] = useState(false);
+  const location = useLocation();
 
-const Layout = ({ userLogged, setUserLogged}) => {
+  useEffect(() => {
+    if(location.pathname === '/'){
+      setIsHome(true);
+    }
+    else{
+      setIsHome(false)
+    }
+  }, [location]);
 
   return (
-  
     <div className="App">
-      
-      <Nav userLogged={userLogged} setUserLogged={setUserLogged} />
+      {isHome ? (
+        <HomeNav userLogged={userLogged} setUserLogged={setUserLogged} />
+      ) : (
+        <Nav userLogged={userLogged} setUserLogged={setUserLogged} />
+      )}
 
-      <Outlet/>
+      <Outlet />
 
-      <Footer/>
+      <Footer />
     </div>
-    
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

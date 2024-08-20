@@ -18,7 +18,8 @@ const companySchema = new Schema({
     address: {type:String},
     city: {type:Array},
     imageURLs: {type:Array},
-    date: {type:String}
+    date: {type:String},
+    flexi: {type:Object}
 });
 
 module.exports =mongoose.model('companies', companySchema);
