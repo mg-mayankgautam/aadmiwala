@@ -2,6 +2,8 @@ import './App.css';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Layout from './Layout';
 import HomePage from './components/Home/HomePage';
+import AdminPage from './components/Admin/AdminPage';
+
 import AboutPage from './components/About/AboutPage';
 import AddCompany from './components/AddRecruitmentCompany/AddCompany'
 import Companies from './components/Companies/Companies';
@@ -50,6 +52,8 @@ function App() {
               <Route path="company/:id" element={<CompanyPage/>}/>
               <Route path="sharerequirements" element={<ShareReq/>}/>
 
+              <Route path="admin" element={<AdminPage/>}/>   
+              
               <Route element={<RequireloginAuth/>}>
                 <Route path="login"  element={<LoginPage userLogged={userLogged} setUserLogged={setUserLogged}/>}/>
               </Route>

@@ -89,6 +89,7 @@
 .CC_text{
     font-size: 14px;
     margin-top: 30px;
+    padding: 16px;
 }
 .CC1_box {
     /* padding: 32px; */
@@ -256,6 +257,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
     
     .flip-box-inner2 {

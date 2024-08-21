@@ -9,17 +9,17 @@ import './Challenges.css'
 const Challenges = () => {
 
 
-  return (
-<>
-    <div className='Challenges'>
+    return (
+        <>
+            <div className='Challenges'>
 
-        <div className='challengesHead'>Why Covendx?</div>
+                <div className='challengesHead'>Why Covendx?</div>
 
-        {/* <div className='text'>tform simplifies agency connections, <br />allowing you to focus on core business while we manage vendor intricacies.</div> */}
+                {/* <div className='text'>tform simplifies agency connections, <br />allowing you to focus on core business while we manage vendor intricacies.</div> */}
 
-        <div className='challengesContainer'>
-       
-            {/* <div className='CC_box'>
+                <div className='challengesContainer'>
+
+                    {/* <div className='CC_box'>
                 <div className='flip-box-inner'>
                     <div className='flip-box-front'>
                         <img src={c1} className='CC_icon'/>
@@ -33,7 +33,7 @@ const Challenges = () => {
                 
             </div> */}
 
-            {/* <div className='CC1_box'>
+                    {/* <div className='CC1_box'>
                 <div className='inner'>
                     <div className='front'>
                     <img src={c2} className='CC_icon' alt="Icon" />
@@ -47,7 +47,7 @@ const Challenges = () => {
                 </div>
             </div> */}
 
-            {/* <div className='CC_box1'>
+                    {/* <div className='CC_box1'>
                 <div className='flip-box-inner1'>
                     <div className='flip-box-front1'>
                         <img src={c1} className='CC_icon'/>
@@ -61,81 +61,81 @@ const Challenges = () => {
                 
             </div> */}
 
-            <div className='CC_box2'>
-                <div className='flip-box-inner2'>
-                    <div className='flip-box-front2'>
-                        <img src={c1} className='CC_icon'/>
-                        <div className='subHead'>Ensuring Quality and <br />Reliability</div>
+                    <div className='CC_box2'>
+                        <div className='flip-box-inner2'>
+                            <div className='flip-box-front2'>
+                                <img src={c1} className='CC_icon' />
+                                <div className='subHead'>Ensuring Quality and <br />Reliability</div>
+                            </div>
+
+                            <div className='flip-box-back2'>
+                                <div className='CC_text'> Covendx meticulously evaluates and validates all vendor agencies in our network to ensure they meet our stringent standards. With our quality assurance processes in place, you can trust that you are working with reliable partners who deliver top-notch vendor solutions.</div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div className='flip-box-back2'>
-                        <div className='CC_text'> Covendx meticulously evaluates and validates all vendor agencies in our network to ensure they meet our stringent standards. With our quality assurance processes in place, you can trust that you are working with reliable partners who deliver top-notch vendor solutions.</div>
-                    </div>
-                </div>
-                
-            </div>
+                    <div className='CC_box2'>
 
-            <div className='CC_box2'>
-                
-              
 
-                <div className='flip-box-inner2'>
-                    <div className='flip-box-front2'>
-                        <img src={c2} className='CC_icon'/>
-                        <div className='subHead'>Managing Multiple Service <br />Providers</div>
-                    </div>
 
-                    <div className='flip-box-back2'>
-                   
-                <div className='CC_text'> Covendx provides a one-stop solution for all your vendor needs.
-                 Say goodbye to the hassle of dealing with multiple service providers. We streamline the process,
-                  allowing you to access a diverse range of vendor options through a single platform.</div>
-                    </div>
-                </div>
+                        <div className='flip-box-inner2'>
+                            <div className='flip-box-front2'>
+                                <img src={c2} className='CC_icon' />
+                                <div className='subHead'>Managing Multiple Service <br />Providers</div>
+                            </div>
 
-            </div>
+                            <div className='flip-box-back2'>
 
-            <div className='CC_box2'>
-                
-              
-                
+                                <div className='CC_text'> Covendx provides a one-stop solution for all your vendor needs.
+                                    Say goodbye to the hassle of dealing with multiple service providers. We streamline the process,
+                                    allowing you to access a diverse range of vendor options through a single platform.</div>
+                            </div>
+                        </div>
 
-                <div className='flip-box-inner2'>
-                    <div className='flip-box-front2'>
-                    <img src={c3} className='CC_icon'/>
-                    <div className='subHead'>Navigating Legal and <br />Compliance Issues</div>
                     </div>
 
-                    <div className='flip-box-back2'>
-                    <div className='CC_text'> Covendx helps navigate the complexities of labor laws, 
-                regulations, and industry standards. Our team ensures compliance across different regions,
-                 providing peace of mind and mitigating legal risks for your business.</div>
-                    </div>
-                </div>
-            </div>
+                    <div className='CC_box2'>
 
-            <div className='CC_box2'>
-               
-                {/* <div className='subHead'>Finding the Right Talent</div> */}
-                <div className='flip-box-front2'>
-                <img src={c4} className='CC_icon'/>
-                        <div className='subHead'>Finding the Right Talent</div>
+
+
+
+                        <div className='flip-box-inner2'>
+                            <div className='flip-box-front2'>
+                                <img src={c3} className='CC_icon' />
+                                <div className='subHead'>Navigating Legal and <br />Compliance Issues</div>
+                            </div>
+
+                            <div className='flip-box-back2'>
+                                <div className='CC_text'> Covendx helps navigate the complexities of labor laws,
+                                    regulations, and industry standards. Our team ensures compliance across different regions,
+                                    providing peace of mind and mitigating legal risks for your business.</div>
+                            </div>
+                        </div>
                     </div>
-                {/* <div className='CC_text'> Covendx offers tailored staffing solutions, matching businesses with the right talent for their specific requirements. Our extensive network
+
+                    <div className='CC_box2'>
+
+                        {/* <div className='subHead'>Finding the Right Talent</div> */}
+                        <div className='flip-box-front2'>
+                            <img src={c4} className='CC_icon' />
+                            <div className='subHead'>Finding the Right Talent</div>
+                        </div>
+                        {/* <div className='CC_text'> Covendx offers tailored staffing solutions, matching businesses with the right talent for their specific requirements. Our extensive network
                  of vetted staffing agencies ensures access to high-quality candidates who meet your company's unique needs.</div> */}
-                 <div className='flip-box-back2'>
-                        <div className='CC_text'> Covendx offers tailored vedor solutions, matching businesses with the right talent for their specific requirements. Our extensive network
-                        of vetted vendor agencies ensures access to high-quality candidates who meet your company's unique needs.</div>
-                 </div>
+                        <div className='flip-box-back2'>
+                            <div className='CC_text'> Covendx offers tailored vedor solutions, matching businesses with the right talent for their specific requirements. Our extensive network
+                                of vetted vendor agencies ensures access to high-quality candidates who meet your company's unique needs.</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
 
-    </div>
 
-    
 
-</>
-  )
+        </>
+    )
 }
 
 export default Challenges
