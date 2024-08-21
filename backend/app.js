@@ -87,10 +87,14 @@ app.use(express.static(path.join(__dirname, 'photos')));
 // const PASSWORD = 'ixep ljzv drjh lxih'; 
 
 
+app.get('/getcrondata', (req, res) => {
+    res.send(true);
+    })
 
 const AuthRouter = require('./routes/authentication.js');
 app.use('/', AuthRouter);
  
+
 
 
 

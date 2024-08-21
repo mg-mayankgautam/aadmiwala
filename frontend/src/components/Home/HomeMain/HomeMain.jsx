@@ -34,6 +34,7 @@ const HomeMain = ({searchValue,setSearchValue}) => {
     const [searchError, setSearchError] =useState(false);
 
 
+
     useEffect(()=>{
         if(searchType==='city'){
             setCity(true);
@@ -117,6 +118,19 @@ const HomeMain = ({searchValue,setSearchValue}) => {
         return () => clearInterval(interval);
     }, []);
 
+    useEffect(() => {
+      
+        const cron = async() =>{
+            try{
+            const crondata = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getcrondata`);
+            console.log('cronlog',crondata);
+        }catch(e){console.log(e)}
+        }
+        
+        cron();
+     
+    }, [])
+    
 
 
   return (
