@@ -11,6 +11,7 @@ import Faq from './Faq/Faq'
 import FlowChart from './FlowChart'
 import FeaturedCompanies from './FC/FeaturedCompanies'
 import OneStopSoln from './OSS/OneStopSoln'
+import FlexiBanner from './FlexiBanner/FlexiBanner'
 
 
 
@@ -25,6 +26,7 @@ const HomePage = ({searchValue,setSearchValue}) => {
         <HomeMain searchValue={searchValue} setSearchValue={setSearchValue}/>
         <FeaturedCompanies searchValue={searchValue} setSearchValue={setSearchValue}/>
         <Benefits/>
+        <FlexiBanner/>
         <Challenges/>
         {/* <OneStopSoln connect_ref={connect_ref}/> */}
         <Solutions connect_ref={connect_ref}/>

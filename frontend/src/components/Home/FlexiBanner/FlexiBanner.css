@@ -1,0 +1,130 @@
+.FlexiBanner {
+    margin: 100px auto;
+    padding: 64px 64px;
+    background-image: url(../../../assets/flexibg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.FlexiBox {
+    padding: 40px 48px;
+    border-radius: 45px;
+    border: 1px solid #FFF;
+    background: linear-gradient(121deg, rgba(255, 255, 255, 0.50) 31.41%, rgba(255, 255, 255, 0.00) 116.44%);
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(7.5px);
+    display: grid;
+    grid-template-columns: 35% 60%;
+    gap: 5%;
+    /* align-items: center; */
+}
+
+.FlexiImgDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 32px;
+}
+
+.FlexiImgDiv>img {
+    max-width: 100%;
+    /* max-height: 100%; */
+    max-height: 360px;
+}
+
+.FlexiContent {
+    align-self: center;
+}
+
+.flexiHeading {
+    color: var(--orange);
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.flexiCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 56px;
+    justify-content: center;
+}
+
+.flexiCard {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+}
+
+.flexiCard>img {
+    height: 60px;
+}
+
+.flexiCardText {
+    font-weight: 700;
+    max-width: 140px;
+    /* min-width: max-content; */
+}
+
+
+@media only screen and (max-width: 990px) {
+    .flexiCardText {
+        font-size: 14px;
+        max-width: 120px;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .flexiCardsContainer {
+        gap: 24px;
+    }
+
+    .FlexiBox {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto;
+    }
+
+    .FlexiContent {
+        order: 1;
+    }
+
+    .FlexiImgDiv {
+        order: 2;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    .FlexiBanner {
+        padding: 32px 24px;
+    }
+
+    .FlexiBox {
+        padding: 24px 24px;
+    }
+
+    .flexiHeading {
+        font-size: 32px;
+    }
+
+    .flexiCardsContainer {
+        gap: 16px;
+        margin-top: 48px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flexiCard{
+        width: 200px;
+    }
+
+    .flexiCard>img {
+        height: 60px;
+    }
+
+    .flexiCardText {
+        font-weight: 700;
+        max-width: unset;
+    }
+}

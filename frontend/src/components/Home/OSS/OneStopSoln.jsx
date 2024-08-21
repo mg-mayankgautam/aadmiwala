@@ -1,12 +1,12 @@
 import React from 'react'
-import onestop from '../../../assets/onestop.png'
+// import onestop from '../../../assets/onestop.png'
 import './OneStopSoln.css'
 
 const OneStopSoln = ({connect_ref}) => {
   return (
     <div className='OneStopSoln'>
         <div>
-            <img src={onestop} className='OSS_img'/>
+            {/* <img src={onestop} className='OSS_img'/> */}
         </div>
         <div className='OSS_content'>
             <div className='OSS_head'>One-Stop solution</div>
