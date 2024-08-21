@@ -30,13 +30,18 @@
     padding: 0 64px;
     gap: 16px;
     margin: 24px 0;
+    overflow-x: scroll;
 }
+
+.flexiBtnsDiv::-webkit-scrollbar{display: none;}
+
 .flexiBtns{
     padding: 6px 10px;
     border: 1px solid var(--green);
     border-radius: 20px;
     font-size: 12px;
     cursor: pointer;
+    min-width: max-content;
 }
 
 .flexiBtns:hover{

@@ -23,7 +23,7 @@ const HomePage = ({searchValue,setSearchValue}) => {
     <div className='HomePage'>
        
         <HomeMain searchValue={searchValue} setSearchValue={setSearchValue}/>
-        <FeaturedCompanies/>
+        <FeaturedCompanies searchValue={searchValue} setSearchValue={setSearchValue}/>
         <Benefits/>
         <Challenges/>
         {/* <OneStopSoln connect_ref={connect_ref}/> */}

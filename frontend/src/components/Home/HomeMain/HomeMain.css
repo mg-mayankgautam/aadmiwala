@@ -18,7 +18,8 @@
     /* justify-content: center; */
     align-items: flex-start;
     gap: 32px;
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    width: 60%;
     text-align: left;
     padding-left: 48px;
     margin-top: 64px;
@@ -269,28 +270,47 @@
     color: white;
 }
 
-@media only screen and (max-width: 1010px){
-    .mainHead{
-        width: 600px;
-        /* height: 100px; */
-        font-size: 32px;
+@media only screen and (max-width: 1100px){
+    .landingContent{
+        padding-left: 0;
+    }
+    .landingImg{
+        margin-top: 70px;
     }
 }
 
 @media only screen and (orientation: portrait){
     .HomeMain{
         padding: 0px 24px;
+        flex-direction: column;
+    }
+
+    .landingContent{
+        width: 100%;
+        margin-top: 120px;
+    }
+    .landingImgDiv{
+        width: 100%;
+        max-height: 300px;
+    }
+    .landingImg{
+        margin-top: 16px;
     }
     
     .mainHead{
-        /* font-size: 24px; */
+        font-size: 24px;
         font-weight: 700;
         color: var(--orange);
         width: 100% !important;
-        height: 130px !important;
+        height: 80px !important;
     }
-    
     .landingsubHead{
+        font-size: 16px;
+    }
+
+    .landingSearchContainer{
+        padding: 20px 20px;
+        border-radius: 30px;
     }
 
     .landingSearch{
@@ -301,7 +321,7 @@
         display: grid;
         grid-template-columns: auto auto;
         gap: 8px;
-        font-size: 16px;
+        font-size: 12px;
     }
 
     .searchBtn{display: none;}
@@ -309,13 +329,13 @@
     .searchBtnMobile{display: flex;}
     
     .searchdropdown{
-        font-size: 14px;
+        font-size: 12px;
     }
     
     .freqSearchText{
-        text-align: center;
+        /* text-align: center; */
         padding: 0;
-        font-size: 14px;
+        font-size: 12px;
     }
     
     .freqSearchBtns>button{

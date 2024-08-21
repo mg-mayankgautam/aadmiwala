@@ -23,6 +23,11 @@ button{
   font-weight: 700;
 }
 
+.subHead.search{
+  text-align: left;
+  margin-bottom: 8px;
+}
+
 .text{
   font-family: 'inter';
   font-weight: 400;

@@ -401,6 +401,19 @@ module.exports.search= async(req, res)=>{
     const type = req.query.type;
     const input = req.query.input;
 
+    if(input==='Flexi Services'){
+        try{
+            let searchdata = await companyDB.find({'flexi.flexi': true });
+
+            console.log(searchdata);
+
+            if(searchdata.length>0){
+                return res.send(searchdata);
+            }else return res.send(false);
+        }
+        catch(err){console.log(err);}
+    }
+
     if(type==='service'){
         
         try{
