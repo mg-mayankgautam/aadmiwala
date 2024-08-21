@@ -140,6 +140,7 @@
     backdrop-filter: blur(7.5px);
     padding: 24px 32px;
     border-radius: 45px;
+    /* width: max-content; */
 }
 
 .landingSearch{
@@ -287,30 +288,43 @@
 
     .landingContent{
         width: 100%;
-        margin-top: 120px;
+        margin-top: 130px;
+        flex-grow: 1;
+        gap: 160px;
+        z-index: 1;
     }
     .landingImgDiv{
-        width: 100%;
+        width: max-content;
         max-height: 300px;
+        position: absolute;
+        z-index: 0;
+        top: 300px;
+        right: 24px;
     }
     .landingImg{
         margin-top: 16px;
     }
+
+    .landingHeadingDiv{
+        width: 100%;
+    }
     
     .mainHead{
-        font-size: 24px;
+        /* font-size: 24px; */
         font-weight: 700;
         color: var(--orange);
         width: 100% !important;
-        height: 80px !important;
+        height: 130px !important;
     }
     .landingsubHead{
         font-size: 16px;
+        max-width: 260px;
     }
 
     .landingSearchContainer{
         padding: 20px 20px;
         border-radius: 30px;
+        max-width: 260px;
     }
 
     .landingSearch{
@@ -340,5 +354,11 @@
     
     .freqSearchBtns>button{
         font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 360px){
+    .mainHead{
+        font-size: 28px;
     }
 }
