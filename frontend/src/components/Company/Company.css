@@ -30,6 +30,10 @@
 .FC_PR{
     color: #00000099;
 }
+.FC_flexiPR{
+    color: #C775FE;
+    font-weight: 400;
+}
 
 .FC_dataDiv{
     display: flex;

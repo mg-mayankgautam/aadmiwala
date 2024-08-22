@@ -26,8 +26,13 @@ const Company = ({ company }) => {
 
           <div className='FC_PR'>
             Avg Price Range: {company.priceRange} INR
-          </div>
 
+            {company?.flexi?.flexi ?
+              <span className='FC_flexiPR'>
+                <br /> Flexi Price Range: {company.flexi.lowPR} - {company.flexi.highPR} INR
+              </span>
+              : null}
+          </div>
 
         </div>
 
