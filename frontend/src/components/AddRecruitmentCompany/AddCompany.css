@@ -1,4 +1,4 @@
-.AddCompany{
+.AddCompany {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -6,7 +6,7 @@
     padding: 64px;
 }
 
-.recruiting_input_box{
+.recruiting_input_box {
     /* min-height: 400px; */
     /* max-width: 400px; */
     display: flex;
@@ -22,14 +22,14 @@
 }
 
 
-.recruiting_input_heading{
-color: black;
-font-size: 32px;
-font-weight: 700;
+.recruiting_input_heading {
+    color: black;
+    font-size: 32px;
+    font-weight: 700;
 
 }
 
-.recruiting_input_Subheading{
+.recruiting_input_Subheading {
     color: #000000BF;
     font-size: 14px;
     font-weight: 700;
@@ -37,25 +37,25 @@ font-weight: 700;
     margin-bottom: 8px;
 }
 
-.recr_TabsDiv{
+.recr_TabsDiv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2px;
 }
 
-.recr_Tab{
+.recr_Tab {
     background-color: var(--grey);
     height: 3px;
     border-radius: 4px;
 }
 
-.orangeTab{
+.orangeTab {
     background-color: var(--orange);
     height: 3px;
     border-radius: 4px;
 }
 
-.recr_input{
+.recr_input {
     border-radius: 16px;
     padding: 8px 16px;
     border: 1px solid #00000066;
@@ -64,13 +64,13 @@ font-weight: 700;
     margin-top: 12px;
 }
 
-.recr_phone_input_div{
+.recr_phone_input_div {
     display: grid;
     grid-template-columns: 1fr 3fr;
     gap: 16px;
 }
 
-.recr_phone_select{
+.recr_phone_select {
     width: 100%;
     border-radius: 16px;
     padding: 7px 16px;
@@ -79,7 +79,7 @@ font-weight: 700;
     border: 1px solid #00000066;
 }
 
-.recr_select{
+.recr_select {
     width: 100%;
     border-radius: 16px;
     padding: 7px 16px;
@@ -88,14 +88,14 @@ font-weight: 700;
     border: 1px solid #00000066;
 }
 
-.recr_range_input_div{
+.recr_range_input_div {
     display: flex;
     gap: 16px;
     margin-top: 16px;
     /* justify-content: space-between; */
 }
 
-.recr_range_input{
+.recr_range_input {
     border-radius: 16px;
     padding: 8px 16px;
     border: 1px solid #00000066;
@@ -105,7 +105,7 @@ font-weight: 700;
     max-width: 150px;
 }
 
-.addImgBtn{
+.addImgBtn {
     margin: 16px 0 32px;
     border-radius: 20px;
     padding: 4px 12px;
@@ -116,7 +116,7 @@ font-weight: 700;
     font-size: 13px;
 }
 
-.recr_phone_input{
+.recr_phone_input {
     border-radius: 16px;
     padding: 8px 16px;
     border: 1px solid #00000066;
@@ -126,12 +126,12 @@ font-weight: 700;
 }
 
 
-.recr_btns_div{
+.recr_btns_div {
     display: flex;
     gap: 16px;
 }
 
-.recruiting_next_btn{
+.recruiting_next_btn {
     flex-grow: 1;
     max-width: 392px;
     border-radius: 20px;
@@ -142,7 +142,7 @@ font-weight: 700;
     font-weight: 600;
 }
 
-.recruiting_back_btn{
+.recruiting_back_btn {
     flex-grow: 1;
     max-width: 392px;
     border-radius: 20px;
@@ -160,17 +160,20 @@ font-weight: 700;
     margin-bottom: 16px !important;
 }
 
-.css-1tw9w9k-MuiAutocomplete-root .MuiAutocomplete-inputRoot .MuiAutocomplete-input{
+.css-1tw9w9k-MuiAutocomplete-root .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
     min-width: 0 !important;
 }
 
 
 
-.recruiting_input_box> div> div, .recr_phone_input_div> div, .PasswordDiv{
+.recruiting_input_box>div>div,
+.recr_phone_input_div>div,
+.PasswordDiv {
     position: relative
 }
 
-.error, .validerror{
+.error,
+.validerror {
     font-size: 11px;
     margin: 0;
     color: #d22323;
@@ -178,38 +181,48 @@ font-weight: 700;
     bottom: 0;
     right: 10px;
     font-weight: 400;
-  }
+}
 
-.error{
+.error {
     left: 10px;
     bottom: -10px;
     font-weight: 600;
     font-size: 12px;
 }
-.recruiting_input_box>div{position: relative;}
+
+.recruiting_input_box>div {
+    position: relative;
+}
 
 
-.invalid, .invalid:focus{
+.invalid,
+.invalid:focus {
     outline: none;
     /* border-color: #9b2b2b; */
     border-color: #d22323;
 }
-.valid, .valid:focus{
-  outline: none;
-  border-color: #299158;
-  /* border: 1px solid #299158; */
+
+.valid,
+.valid:focus {
+    outline: none;
+    border-color: #299158;
+    /* border: 1px solid #299158; */
 }
 
-.fileInputDiv{
+.fileInputDiv {
     position: relative;
-  }
+}
 
-  .inputFile{
+.inputFile {
     cursor: pointer;
     margin-top: 12px;
-    margin-bottom: 0px;    
-  }
-  .inputFileLabel, .inputFileLabel1, .inputFileLabel2, .inputFileLabel3{
+    margin-bottom: 0px;
+}
+
+.inputFileLabel,
+.inputFileLabel1,
+.inputFileLabel2,
+.inputFileLabel3 {
     background-color: var(--green);
     position: absolute;
     left: 13px;
@@ -224,27 +237,121 @@ font-weight: 700;
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-  }
+}
 
-  .inputFileLabel1{top: 90px}
-  .inputFileLabel2{top: 142px}
-  .inputFileLabel3{top: 192px}
+.inputFileLabel1 {
+    top: 90px
+}
 
-  .selectservicetext{margin-bottom: 12px;}
-  .city_input_div{
-    margin-bottom: 16px;
-  }
-  .city_input_text{
+.inputFileLabel2 {
+    top: 142px
+}
+
+.inputFileLabel3 {
+    top: 192px
+}
+
+.selectservicetext {
     margin-bottom: 12px;
-  }
+}
 
-  .recr_flexi_input{
+.city_input_div {
+    margin-bottom: 16px;
+    display: block;
+}
+
+.city_input_div_Mobile{
+    margin-bottom: 16px;
+    display: none;
+}
+
+.city_input_text {
+    margin-bottom: 12px;
+}
+
+.recr_flexi_input {
     display: flex;
     gap: 8px;
     flex-direction: column;
     margin-bottom: 16px;
-  }
-  .recr_flexi_radio{
+}
+
+.recr_flexi_radio {
     display: flex;
+    align-items: center;
     gap: 8px;
-  }
+}
+
+.servicesdropdown_Mobile {
+    display: none;
+}
+
+.servicesdropdown {
+    display: block;
+}
+
+@media only screen and (orientation: portrait) {
+    .AddCompany {
+        padding: 24px;
+        font-size: 14px;
+    }
+
+    .recruiting_input_box {
+        padding: 24px 24px 32px;
+        margin-top: 32px;
+        font-size: 14px;
+    }
+
+
+    .recruiting_input_heading {
+        font-size: 24px;
+
+    }
+
+    .recr_input {
+        width: 200px;
+    }
+
+    .recr_phone_input_div {
+        grid-template-columns: auto;
+        gap: 8px;
+
+    }
+
+    .recr_phone_select {
+        width: 90px;
+    }
+
+
+    .recr_range_input_div {
+        flex-direction: column;
+    }
+
+    .recr_phone_input {
+        width: 200px;
+    }
+
+    .recr_btns_div {
+        gap: 8px;
+    }
+
+    .recr_flexi_radio {
+        gap: 2px;
+    }
+
+    .servicesdropdown_Mobile {
+        display: block;
+    }
+
+    .servicesdropdown {
+        display: none;
+    }
+
+    .city_input_div {
+        display: none;
+    }
+    
+    .city_input_div_Mobile{
+        display: block;
+    }
+}

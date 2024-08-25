@@ -1,4 +1,4 @@
-.LoginPage{
+.LoginPage {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -9,7 +9,7 @@
     background-size: cover;
 }
 
-.LoginBox{
+.LoginBox {
     padding: 32px;
     box-shadow: 0px 10px 53.8px 20px #00000040;
     text-align: left;
@@ -21,14 +21,14 @@
     position: relative;
 }
 
-.loginHead{
+.loginHead {
     font-size: 32px;
     margin-bottom: 8px;
     font-weight: 700;
 }
 
 
-.login_input{
+.login_input {
     border-radius: 20px;
     padding: 10px 16px;
     border: 1px solid #00000066;
@@ -36,7 +36,7 @@
     margin-top: 10px;
 }
 
-.LoginSubmit{
+.LoginSubmit {
     flex-grow: 1;
     max-width: 392px;
     border-radius: 20px;
@@ -48,7 +48,7 @@
     margin-top: 20px;
 }
 
-.loginerror{
+.loginerror {
     font-size: 11px;
     margin: 0;
     color: #d22323;
@@ -56,9 +56,9 @@
     bottom: -16px;
     right: 10px;
     font-weight: 600;
-  }
+}
 
-.invalidUserError{
+.invalidUserError {
     font-size: 11px;
     margin: 0;
     color: #d22323;
@@ -68,4 +68,27 @@
     font-weight: 600;
 }
 
-.LoginPhoneDiv, .LoginPwdDiv{position: relative;}
+.LoginPhoneDiv,
+.LoginPwdDiv {
+    position: relative;
+}
+
+
+@media only screen and (orientation: portrait) {
+    .LoginPage {
+        padding: 24px;
+    }
+
+    .LoginBox {
+        padding: 24px;
+        margin-top: 64px;
+    }
+
+    .loginHead {
+        font-size: 24px;
+    }
+
+    .login_input {
+        width: 200px;
+    }
+}

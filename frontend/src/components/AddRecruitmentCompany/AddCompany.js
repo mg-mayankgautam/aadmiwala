@@ -419,7 +419,7 @@ const AddCompany = () => {
                             <input className='recr_input' type='text' onChange={(e) => setAgencyBriefing(e.target.value)} required value={agencyBriefing} />
                         </div>
 
-                        <div>
+                        <div className='servicesdropdown'>
                             <div className='selectservicetext'>Select the Type of service you provide</div>
                             <Autocomplete
                                 multiple
@@ -439,6 +439,34 @@ const AddCompany = () => {
                                     </li>
                                 )}
                                 style={{ width: 392 }}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="" placeholder="" />
+                                )}
+                                onChange={(event, value) => setServicetype(value)}
+                                value={servicetype}
+                            />
+                        </div>
+
+                        <div className='servicesdropdown_Mobile'>
+                            <div className='selectservicetext'>Select the Type of service you provide</div>
+                            <Autocomplete
+                                multiple
+                                id="checkboxes-tags-demo"
+                                options={services}
+                                disableCloseOnSelect
+                                getOptionLabel={(option) => option}
+                                renderOption={(props, option, { selected }) => (
+                                    <li {...props}>
+                                        <Checkbox
+                                            icon={icon}
+                                            checkedIcon={checkedIcon}
+                                            style={{ marginRight: 8 }}
+                                            checked={selected}
+                                        />
+                                        {option}
+                                    </li>
+                                )}
+                                style={{ width: 230 }}
                                 renderInput={(params) => (
                                     <TextField {...params} label="" placeholder="" />
                                 )}
@@ -622,6 +650,35 @@ const AddCompany = () => {
                                 value={City}
                             />
                         </div>
+
+                        <div className='city_input_div_Mobile'>
+                            <div className='city_input_text'>Cities Operational in:</div>
+                            <Autocomplete
+                                multiple
+                                id="checkboxes-tags-demo"
+                                options={cities}
+                                disableCloseOnSelect
+                                getOptionLabel={(option) => option}
+                                renderOption={(props, option, { selected }) => (
+                                    <li {...props}>
+                                        <Checkbox
+                                            icon={icon}
+                                            checkedIcon={checkedIcon}
+                                            style={{ marginRight: 8 }}
+                                            checked={selected}
+                                        />
+                                        {option}
+                                    </li>
+                                )}
+                                style={{ width: 230 }}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="" placeholder="" />
+                                )}
+                                onChange={(event, value) => setCity(value)}
+                                value={City}
+                            />
+                        </div>
+
                         {!country || !City ? (<p className='error'>
                             please complete all fields.
                         </p>) : <></>}
