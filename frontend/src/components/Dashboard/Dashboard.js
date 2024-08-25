@@ -293,31 +293,61 @@ const Dashboard = () => {
                 <div className='modalBox'>
                     <div onClick={()=> setmodal(false)} className='closeDashModal'> X </div>
                     <div>Select the Type of service you provide</div>
-                    <Autocomplete
-                            multiple
-                            id="checkboxes-tags-demo"
-                            options={services}
-                            disableCloseOnSelect
-                            getOptionLabel={(option) => option}
-                            renderOption={(props, option, { selected }) => (
-                                <li {...props}>
-                                <Checkbox
-                                    icon={icon}
-                                    checkedIcon={checkedIcon}
-                                    style={{ marginRight: 8 }}
-                                    checked={selected}
-                                />
-                                {option}
-                                </li>
-                            )}
-                            style={{ width: 392 }}
-                            value={newServiceType}
-                            onChange={(event, newValue) => setNewServiceType(newValue)}
-                            renderInput={(params) => (
-                                <TextField {...params} label="" placeholder="" />
-                            )}
-                            
-                    />
+                    <div className='muidropdown'>
+                        <Autocomplete
+                                multiple
+                                id="checkboxes-tags-demo"
+                                options={services}
+                                disableCloseOnSelect
+                                getOptionLabel={(option) => option}
+                                renderOption={(props, option, { selected }) => (
+                                    <li {...props}>
+                                    <Checkbox
+                                        icon={icon}
+                                        checkedIcon={checkedIcon}
+                                        style={{ marginRight: 8 }}
+                                        checked={selected}
+                                    />
+                                    {option}
+                                    </li>
+                                )}
+                                style={{ width: 392 }}
+                                value={newServiceType}
+                                onChange={(event, newValue) => setNewServiceType(newValue)}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="" placeholder="" />
+                                )}
+                                
+                        />
+                    </div>
+
+                    <div className='muidropdown_Mobile'>
+                        <Autocomplete
+                                multiple
+                                id="checkboxes-tags-demo"
+                                options={services}
+                                disableCloseOnSelect
+                                getOptionLabel={(option) => option}
+                                renderOption={(props, option, { selected }) => (
+                                    <li {...props}>
+                                    <Checkbox
+                                        icon={icon}
+                                        checkedIcon={checkedIcon}
+                                        style={{ marginRight: 8 }}
+                                        checked={selected}
+                                    />
+                                    {option}
+                                    </li>
+                                )}
+                                style={{ width: 230 }}
+                                value={newServiceType}
+                                onChange={(event, newValue) => setNewServiceType(newValue)}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="" placeholder="" />
+                                )}
+                                
+                        />
+                    </div>
 
                     <button onClick={(e)=> updateUserServices(e)} className='submitNewServices'>Submit New Services</button>
 
@@ -331,31 +361,61 @@ const Dashboard = () => {
                 <div className='modalBox'>
                     <div onClick={()=> setmodal2(false)} className='closeDashModal'> X </div>
                     <div>Edit Operational Cities:</div>
-                    <Autocomplete
-                            multiple
-                            id="checkboxes-tags-demo"
-                            options={cities}
-                            disableCloseOnSelect
-                            getOptionLabel={(option) => option}
-                            renderOption={(props, option, { selected }) => (
-                                <li {...props}>
-                                <Checkbox
-                                    icon={icon}
-                                    checkedIcon={checkedIcon}
-                                    style={{ marginRight: 8 }}
-                                    checked={selected}
-                                />
-                                {option}
-                                </li>
-                            )}
-                            style={{ width: 392 }}
-                            value={newCity}
-                            onChange={(event, newValue) => setNewCity(newValue)}
-                            renderInput={(params) => (
-                                <TextField {...params} label="" placeholder="" />
-                            )}
-                            
-                    />
+                    <div className='muidropdown'>
+                        <Autocomplete
+                                multiple
+                                id="checkboxes-tags-demo"
+                                options={cities}
+                                disableCloseOnSelect
+                                getOptionLabel={(option) => option}
+                                renderOption={(props, option, { selected }) => (
+                                    <li {...props}>
+                                    <Checkbox
+                                        icon={icon}
+                                        checkedIcon={checkedIcon}
+                                        style={{ marginRight: 8 }}
+                                        checked={selected}
+                                    />
+                                    {option}
+                                    </li>
+                                )}
+                                style={{ width: 392 }}
+                                value={newCity}
+                                onChange={(event, newValue) => setNewCity(newValue)}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="" placeholder="" />
+                                )}
+                                
+                        />
+                    </div>
+
+                    <div className='muidropdown_Mobile'>
+                        <Autocomplete
+                                multiple
+                                id="checkboxes-tags-demo"
+                                options={cities}
+                                disableCloseOnSelect
+                                getOptionLabel={(option) => option}
+                                renderOption={(props, option, { selected }) => (
+                                    <li {...props}>
+                                    <Checkbox
+                                        icon={icon}
+                                        checkedIcon={checkedIcon}
+                                        style={{ marginRight: 8 }}
+                                        checked={selected}
+                                    />
+                                    {option}
+                                    </li>
+                                )}
+                                style={{ width: 230 }}
+                                value={newCity}
+                                onChange={(event, newValue) => setNewCity(newValue)}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="" placeholder="" />
+                                )}
+                                
+                        />
+                    </div>
 
                     <button onClick={(e)=> updateUserCities(e)} className='submitNewServices'>Submit New Cities</button>
 

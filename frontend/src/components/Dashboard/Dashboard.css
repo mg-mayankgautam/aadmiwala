@@ -1,11 +1,11 @@
-.Dashboard{
+.Dashboard {
     padding: 64px;
     display: flex;
     min-height: calc(100vh - 179px);
     gap: 56px;
 }
 
-.mainDash{
+.mainDash {
     display: flex;
     flex-wrap: wrap;
     /* flex-direction: column; */
@@ -13,7 +13,7 @@
     flex-grow: 1;
 }
 
-.dash_DataDiv{
+.dash_DataDiv {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -21,7 +21,7 @@
     max-width: 764px;
 }
 
-.dash_Head{
+.dash_Head {
     font-size: 28px;
     font-weight: 700;
     text-align: left;
@@ -31,12 +31,12 @@
     align-items: center;
 }
 
-.dash_BoxFlex{
+.dash_BoxFlex {
     display: flex;
     gap: 20px;
 }
 
-.dash_Box{
+.dash_Box {
     border-radius: 20px;
     /* border: 1px solid #4A4239; */
     max-width: 300px;
@@ -46,20 +46,20 @@
 
     border: 1px solid transparent;
 
-    background: linear-gradient(to right, white, white), linear-gradient(142.65deg, #FFFFFF -10.51%, rgba(227, 143, 38, 0.4) 110.46%); 
+    background: linear-gradient(to right, white, white), linear-gradient(142.65deg, #FFFFFF -10.51%, rgba(227, 143, 38, 0.4) 110.46%);
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
 
     box-shadow: 0px 5px 10px 0px #0000001A;
 }
 
-.dash_boxNum{
+.dash_boxNum {
     font-size: 32px;
     color: var(--orange);
     font-weight: 700;
 }
 
-.dash_boxText{
+.dash_boxText {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,50 +70,52 @@
 }
 
 
-.dash_ServicesDiv{
+.dash_ServicesDiv {
     display: flex;
     flex-direction: column;
     gap: 20px;
     flex-grow: 1;
 }
 
-.dash_servicesHead{
+.dash_servicesHead {
     font-size: 20px;
     font-weight: 700;
     text-align: left;
 }
 
-.dash_servicesContainer{
+.dash_servicesContainer {
     display: flex;
     flex-direction: column;
     gap: 14px;
     font-size: 14px;
 }
 
-.dash_service{
+.dash_service {
     padding: 20px;
     text-align: left;
     border-radius: 20px;
-    border: 1px solid #332F2A ;
+    border: 1px solid #332F2A;
     background-color: white;
 
     border: 1px solid transparent;
 
-    background: linear-gradient(to right, white, white), linear-gradient(142.65deg, #FFFFFF -10.51%, rgba(227, 143, 38, 0.4) 110.46%); 
+    background: linear-gradient(to right, white, white), linear-gradient(142.65deg, #FFFFFF -10.51%, rgba(227, 143, 38, 0.4) 110.46%);
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
 
     box-shadow: 0px 3px 8px 0px #0000001A;
 }
-.service_name{
+
+.service_name {
     font-weight: 700;
     color: var(--orange);
 }
 
-.addNewService{
+.addNewService {
     align-self: baseline;
 }
-.addNewService> button{
+
+.addNewService>button {
     max-width: 392px;
     border-radius: 20px;
     padding: 8px 16px;
@@ -124,7 +126,7 @@
     font-weight: 600;
 }
 
-.dashModal{
+.dashModal {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -137,7 +139,7 @@
     z-index: 6;
 }
 
-.modalBox{
+.modalBox {
     background-color: white;
     border-radius: 20px;
     display: flex;
@@ -153,26 +155,28 @@
     max-height: 550px;
 }
 
-.modalBox::-webkit-scrollbar{display: none;}
+.modalBox::-webkit-scrollbar {
+    display: none;
+}
 
-.submitNewServices{
+.submitNewServices {
     border: none;
     color: white;
     background-color: var(--green);
 }
 
-.closeDashModal{
+.closeDashModal {
     position: absolute;
     top: 16px;
     right: 32px;
     cursor: pointer;
 }
 
-.profileSettings{
+.profileSettings {
     cursor: pointer;
 }
 
-.dashSideBarContainer{
+.dashSideBarContainer {
     width: 350px;
     display: flex;
     flex-direction: column;
@@ -183,24 +187,25 @@
     bottom: 0;
 }
 
-.dashSideBar{
+.dashSideBar {
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 32px;
     border-radius: 20px;
-    border: 1px solid #332f2a25 ;
+    border: 1px solid #332f2a25;
     background-color: #00000010;
     color: var(--black);
     box-shadow: 0px 10px 20px 0px #ffffff1a;
 }
 
-.sidebarTitle{
+.sidebarTitle {
     font-weight: 600;
     color: var(--orange);
 }
 
-.editInfoInput, .PRInfoInput{
+.editInfoInput,
+.PRInfoInput {
     max-width: 500px;
     min-width: 400px;
     border-radius: 20px;
@@ -210,30 +215,30 @@
     margin: 4px 0;
 }
 
-.editInfoInput.inputfile{
+.editInfoInput.inputfile {
     max-width: 400px;
     min-width: 300px;
 }
 
-.PRInfoInput{
+.PRInfoInput {
     max-width: 100%;
     min-width: 150px;
 }
 
-.PRInputDiv{
+.PRInputDiv {
     display: flex;
     justify-content: space-between;
     max-width: 100%;
     gap: 30px;
 }
 
-.modalBox.modal3{
+.modalBox.modal3 {
     font-size: 14px;
     text-align: left;
     padding-top: 0;
 }
 
-.editInfoHeader{
+.editInfoHeader {
     position: sticky;
     top: 0;
     background-color: white;
@@ -241,7 +246,7 @@
     z-index: 5;
 }
 
-.closeEditInfoModal{
+.closeEditInfoModal {
     position: absolute;
     right: 0;
     top: 32px;
@@ -249,7 +254,7 @@
 }
 
 
-.validerrordash{
+.validerrordash {
     font-size: 11px;
     margin: 0;
     color: #d22323;
@@ -259,7 +264,7 @@
     font-weight: 400;
 }
 
-.errordash{
+.errordash {
     font-size: 11px;
     margin: 0;
     color: #d22323;
@@ -269,7 +274,7 @@
     font-weight: 400;
 }
 
-.editIcon{
+.editIcon {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -277,28 +282,28 @@
     font-weight: 600;
 }
 
-.userImgsDiv{
+.userImgsDiv {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin-top: 8px;
 }
 
-.userImgEdit{
+.userImgEdit {
     display: flex;
     gap: 16px;
     align-items: center;
     /* justify-content: ; */
 }
 
-.userImgEdit>img{
+.userImgEdit>img {
     height: 70px;
     width: 70px;
     object-fit: cover;
     object-position: center;
 }
 
-.ManageAcctBtn{
+.ManageAcctBtn {
     border: 1px solid var(--green);
     display: flex;
     background-color: white;
@@ -307,31 +312,31 @@
     justify-content: center;
 }
 
-.dashManageAccount{
+.dashManageAccount {
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 32px;
     border-radius: 20px;
-    border: 1px solid #332f2a25 ;
+    border: 1px solid #332f2a25;
     background-color: #00000010;
     color: var(--black);
     box-shadow: 0px 10px 20px 0px #ffffff1a;
 }
 
-.showEditPhoneBtn{
+.showEditPhoneBtn {
     background-color: var(--green);
     color: white;
 }
 
-.editPhoneDiv{
+.editPhoneDiv {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin-top: 16px;
 }
 
-.submitPhoneBtn{
+.submitPhoneBtn {
     margin-top: 16px;
     background-color: white;
     border: 1px solid var(--green);
@@ -339,10 +344,78 @@
     max-width: 160px;
 }
 
-.editPhoneInput{
+.editPhoneInput {
     border-radius: 20px;
     padding: 8px 16px;
     border: 1px solid #0000002d;
     color: var(--black);
 }
 
+.muidropdown_Mobile{
+    display: none;
+}
+
+.muidropdown{
+    display: block;
+}
+
+@media only screen and (orientation: portrait) {
+    .Dashboard {
+        padding: 24px;
+        flex-direction: column;
+    }
+
+    .dash_Head {
+        font-size: 18px;
+    }
+
+    .dash_Box {
+        max-width: 100%;
+        min-width: unset;
+        padding: 20px;
+    }
+
+    .dash_boxNum {
+        font-size: 24px;
+    }
+
+    .dash_service {
+        font-size: 12px;
+    }
+
+    .dashSideBarContainer {
+        width: 100%;
+        position: static;
+    }
+
+    .editInfoInput,
+    .PRInfoInput {
+        max-width: 500px;
+        min-width: 200px;
+    }
+
+    .editInfoInput.inputfile {
+        max-width: 400px;
+        min-width: 200px;
+    }
+
+    .PRInfoInput {
+        max-width: 100%;
+        min-width: 100px;
+    }
+
+    .PRInputDiv {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+
+    .muidropdown_Mobile{
+        display: block;
+    }
+    
+    .muidropdown{
+        display: none;
+    }
+
+}
