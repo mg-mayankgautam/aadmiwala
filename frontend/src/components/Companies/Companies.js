@@ -39,7 +39,7 @@ const Companies = () => {
     <div className='Companies'>
 
             <div>
-                <div className='subHead'>
+                <div className='subHead search'>
                     Companies
                 </div>
                 <div className='text'>Today's talent marketplace</div>

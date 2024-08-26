@@ -6,8 +6,37 @@ import fl2 from '../../../assets/fl2.png'
 import fl3 from '../../../assets/fl3.png'
 import fl4 from '../../../assets/fl4.png'
 import fl5 from '../../../assets/fl5.png'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-const FlexiBanner = () => {
+const FlexiBanner = ({searchValue, setSearchValue}) => {
+
+    const navigate = useNavigate();
+
+
+    const searchFlexiServices = async () => {
+
+        const freqSearch = 'Flexi Services';
+
+        if (freqSearch) {
+
+            try {
+                const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/search?input=${freqSearch}&type=service`);
+
+                if (data.data) {
+                    setSearchValue(data.data);
+                    navigate(`/search/${freqSearch}`)
+                }
+                else {
+                    // setSearchError(true);
+                }
+
+            }
+            catch (err) { console.log(err); }
+        }
+    }
+
+
     return (
         <div className='FlexiBanner'>
             <div className='FlexiBox'>
@@ -60,6 +89,12 @@ const FlexiBanner = () => {
                         </div>
 
                     </div>
+
+                    <button className='flexiBtn'
+                        onClick={searchFlexiServices}
+                    >
+                        Know More
+                    </button>
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ const HomePage = ({searchValue,setSearchValue}) => {
         <HomeMain searchValue={searchValue} setSearchValue={setSearchValue}/>
         <FeaturedCompanies searchValue={searchValue} setSearchValue={setSearchValue}/>
         <Benefits/>
-        <FlexiBanner/>
+        <FlexiBanner searchValue={searchValue} setSearchValue={setSearchValue}/>
         <Challenges/>
         {/* <OneStopSoln connect_ref={connect_ref}/> */}
         <Solutions connect_ref={connect_ref}/>

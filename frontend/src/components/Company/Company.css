@@ -119,3 +119,35 @@
     height: 16px;
     overflow-y: hidden;
 }
+
+
+@media only screen and (orientation: portrait){
+    .FC_box{
+        font-size: 11px;
+    }
+    .FC_container .FC_box{
+        min-width: 250px;
+        max-width: 250px;
+        min-height: 222px;
+    }
+    .Companies_container .FC_box{
+        min-width: calc(100% - 32px);
+        max-width: calc(100% - 32px);
+    }
+    
+    .FC_TopFlex{
+        display: grid;
+        grid-template-columns: 1fr 80px;
+        gap: 8px;
+    }
+    
+    
+    .FC_ImgsDiv>div{
+        height: 30px;
+        width: 30px;
+    }
+    
+    .FC_facilities{
+        font-size: 12px;
+    }
+}
