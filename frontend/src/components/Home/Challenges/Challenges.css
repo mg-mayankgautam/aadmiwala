@@ -324,4 +324,9 @@
     .Challenges>.text{
         padding: 0 24px;
     }
+
+    .CC_box2{
+        min-width: 270px;
+        max-width: 290px;
+    }
 }

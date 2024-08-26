@@ -65,4 +65,7 @@
         text-align: left;
         gap: 32px;
     }
+    .LC_head{
+        font-size: 40px;
+    }
 }

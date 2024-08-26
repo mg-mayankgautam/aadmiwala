@@ -63,6 +63,8 @@ const CompanyPage = () => {
           <div className='companyTopFlex'>
 
             <div className='companyData'>
+              {company?.flexi?.flexi ? <div className='flexi'>Flexi</div> : null}
+
               <div className='company_date'>Posted {company.date}</div>
 
              
@@ -84,7 +86,15 @@ const CompanyPage = () => {
                 Provides {company.serviceType&&company.serviceType.map(service=><span id=''>{service}, </span>)}
               </div>
 
-              <div className='company_PR'>Average Price Range: {company.priceRange} INR</div>
+              <div className='company_PR'>
+                Average Price Range: {company.priceRange} INR
+
+                {company?.flexi?.flexi ?
+                  <span className='FC_flexiPR'>
+                    <br /> Flexi Price Range: {company.flexi.lowPR} - {company.flexi.highPR} INR
+                  </span>
+                  : null}
+              </div>
 
               <button onClick={()=> setModal(true)} className='getinTouchBtn'>Get in Touch</button>
 

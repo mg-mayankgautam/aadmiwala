@@ -49,7 +49,7 @@ const ShareReq = () => {
     <div className='ShareReq'>
         <div className='LC_content'>
             <div>
-                <div className='LC_head'>Share Requirements</div>
+                <div className='SR_head'>Share Requirements</div>
                 <div className='text'>Please enter the following details</div>
             </div>
             <form onSubmit={sendEmail} className='SR_Inputs'>
