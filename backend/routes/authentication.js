@@ -29,9 +29,11 @@ router.post('/deleteuserimage',authController.deleteUserImage);
 router.post('/verifynewphone',authController.verifyNewPhone);
 router.post('/updateuserphone',authController.updateUserPhone);
 router.post('/logout',authController.logout)
+router.post('/adminlogin',authController.adminlogin)
 
 router.post('/sharerequirements',mailController.shareRequirements)
 router.post('/getintouch',mailController.getInTouch)
+
 
 
 
