@@ -1,6 +1,7 @@
 const companyDB = require("../models/companyDB.js");
 const otpDB=require("../models/otpDB.js")
 const userDB=require("../models/usersDB.js")
+const adminDB=require("../models/adminDB.js")
 
 var axios = require('axios');
 require('dotenv').config();
@@ -682,4 +683,43 @@ module.exports.updateUserPhone =async(req,res)=>{
         console.error(err)
         res.send(false)
     })
+}
+
+///use this for admin signup
+// module.exports.adminlogin=async(req,res)=>{
+
+//     console.log(req.body);
+//    let ID=req.body.ID;
+//    let Pwd=req.body.Pwd
+
+//    let newAdmin = new adminDB({ID,Pwd})
+
+//    newAdmin.save()
+ 
+//             .then((saved)=>{
+//                 console.log('adminuser added success');
+//                 // res.send(true);
+                
+//             })
+//             .catch(err =>{console.log(err);});
+// }
+
+
+module.exports.adminlogin=async(req,res)=>{
+
+    console.log(req.body);
+   let ID=req.body.ID;
+   let Pwd=req.body.Pwd
+
+   
+   let Admin = await adminDB.findOne({ID,Pwd});
+
+    if(!Admin){
+        res.send('thainga')
+    }
+    else if(Admin){
+        res.send(true)
+    }
+
+  
 }
