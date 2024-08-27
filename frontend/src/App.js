@@ -2,7 +2,7 @@ import './App.css';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Layout from './Layout';
 import HomePage from './components/Home/HomePage';
-import AdminPage from './components/Admin/AdminPage';
+import AdminLogin from './components/Admin/AdminLogin';
 
 import AboutPage from './components/About/AboutPage';
 import AddCompany from './components/AddRecruitmentCompany/AddCompany'
@@ -16,6 +16,7 @@ import axios from 'axios'
 import RequireAuth from './RequireAuth';
 import RequireloginAuth from './RequireloginAuth';
 import ShareReq from './components/ShareReq/ShareReq';
+import AdminDashboard from './components/Admin/AdminDashboard';
 
 
 
@@ -44,15 +45,20 @@ function App() {
               setSearchValue={setSearchValue} 
               />} /> 
 
-              {/* <Route path="/blog/:id" element={<Blog/>}/> */}
-
               <Route path="about" element={<AboutPage/>}/>   
               <Route path="addCompany" element={ <AddCompany/>}/>  
               <Route path="companies" element={ <Companies/>}/>  
               <Route path="company/:id" element={<CompanyPage/>}/>
               <Route path="sharerequirements" element={<ShareReq/>}/>
 
-              <Route path="admin" element={<AdminPage/>}/>   
+              {/* <Route element={<RequireloginAuth/>}> */}
+                <Route path="admin" element={<AdminLogin/>}/>   
+              {/* </Route> */}
+
+              {/* <Route element={<RequireAuth />}> */}
+                <Route path="admin/dashboard/:id" element={<AdminDashboard/>}/>
+              {/* </Route> */}
+
               
               <Route element={<RequireloginAuth/>}>
                 <Route path="login"  element={<LoginPage userLogged={userLogged} setUserLogged={setUserLogged}/>}/>
@@ -62,8 +68,7 @@ function App() {
               <Route path="search/:value" element={<SearchPage searchValue={searchValue} setSearchValue={setSearchValue} />}/>
 
               <Route element={<RequireAuth />}>
-
-                  <Route path="dashboard/:id" element={<Dashboard/>}/>
+                <Route path="dashboard/:id" element={<Dashboard/>}/>
               </Route>
       
            

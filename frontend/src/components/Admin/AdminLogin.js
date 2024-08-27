@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './AdminPage.css'
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-// import useAuth from '../../hook/useAuth';
+import useAuth from '../../hook/useAuth';
 import axios from 'axios'
 
-const AdminPage = () => {
+const AdminLogin = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -12,7 +12,7 @@ const AdminPage = () => {
 
 
   //   axios.defaults.withCredentials = true;
-  //   const {setAuth}=useAuth();
+    const {setAuth}=useAuth();
   let { state } = useLocation();
 
   const navigate = useNavigate();
@@ -42,51 +42,52 @@ const AdminPage = () => {
   // }, [PhoneNum, validPhone]);
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   if (error) {
-  //     setinputStyle('invalid');
-  //   }
-  //   else {
-  //     setinputStyle('');
-  //   }
+    if (error) {
+      setinputStyle('invalid');
+    }
+    else {
+      setinputStyle('');
+    }
 
-  // }, [error])
+  }, [error])
 
 
 
   const submitUser = async (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
 
-      // if(PhoneNum && validPhone && Pwd){
-  
-    console.log({ID, Pwd})
+    if (ID && Pwd) {
 
-      try{
-        const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/adminlogin`, {ID, Pwd})
+      // console.log({ID, Pwd})
+
+      try {
+        const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/adminlogin`, { ID, Pwd })
 
         const axiosdata = data.data
-         console.log('validation',axiosdata);
+        console.log('validation', axiosdata);
 
-          // if(!axiosdata){
-          //   // console.log('wrong id');
-          //   seterror(true);
-          // }
-          // else{            
-          //   const user = axiosdata.Username;
-          //     // setAuth({user});
-          //     // console.log('after login',user);
-          //     // setUserLogged(user);
-          //     //  navigate(`/dashboard/${user}`);
-          //   }                
+        if (axiosdata != true) {
+          // console.log('wrong id');
+          seterror(true);
+        }
+        else {
+          const admin = axiosdata.ID;
+          // setAuth({admin});
+          // console.log('after login',user);
+          // setUserLogged(user);
+           navigate(`/admin/dashboard/${admin}`);
+        }
 
       }
 
 
 
-    catch(err){console.log(err);}
-  
+      catch (err) { console.log(err); }
+    }
+
   }
 
 
@@ -102,8 +103,8 @@ const AdminPage = () => {
           <div className='LoginPhoneDiv'>
 
             <div>Enter User ID</div>
-            <input 
-              className={`login_input ${inputStyle}`} 
+            <input
+              className={`login_input ${inputStyle}`}
               // type='Number'
               // placeholder='Phone Number'
               onChange={(e) => setID(e.target.value)}
@@ -128,7 +129,7 @@ const AdminPage = () => {
 
 
           <button type="submit" className='LoginSubmit'
-          onClick={(e)=> submitUser(e)}
+            onClick={(e) => submitUser(e)}
           >
             Login
           </button>
@@ -141,4 +142,4 @@ const AdminPage = () => {
   )
 }
 
-export default AdminPage
+export default AdminLogin
