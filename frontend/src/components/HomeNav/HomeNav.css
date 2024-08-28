@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 12px;
+    font-size: 14px;
     gap: 32px;
     font-weight: 400;
     color: var(--black);
@@ -33,7 +33,7 @@
 .navItems{
     display: flex;
     flex-grow: 1;
-    gap: 16px;
+    gap: 24px;
     justify-content: space-evenly;
 }
 .navItems>div{cursor: pointer;}
