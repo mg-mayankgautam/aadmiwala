@@ -25,7 +25,7 @@
 .footerContent{
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
-    min-height: 250px;
+    min-height: 290px;
     column-gap: 80px;
 }
 

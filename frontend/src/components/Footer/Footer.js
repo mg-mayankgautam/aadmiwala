@@ -20,7 +20,7 @@ const Footer = () => {
                 </div>
                 <div className='footerAddress'>
                     <div className='footerBold '>INDIA</div>
-                    <div>A/3 PC Colony Kankarbagh, <br/> Patna, Bihar</div>
+                    <div>3rd floor, The Emerald,<br/> Patliputra Kurji Rd, <br/>opposite Bharat Petroleum Pump, <br/>Patliputra Industrial Area, Patliputra Colony, <br/>Patna, Bihar- 800013</div>
                 </div>
             </div>
 
@@ -104,8 +104,7 @@ const Footer = () => {
         </div>
 
         <div className='footerCopyright'>
-            ©2024 Covendx, All Rights Reserved. <br />
-            (A Division of Janshakti Manpower Services Pvt. Ltd.)
+            ©2024 Covendx, All Rights Reserved.
         </div>
     </div>
   )
