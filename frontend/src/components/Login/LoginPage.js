@@ -61,7 +61,7 @@ const LoginPage = ({ userLogged, setUserLogged }) => {
 
 
   const submitUser = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
 
     if (PhoneNum && validPhone && Pwd) {
@@ -103,7 +103,11 @@ const LoginPage = ({ userLogged, setUserLogged }) => {
         console.log(PhoneNum)
         const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/forgetpwd`, { PhoneNum })
 
-        //const axiosdata = data.data
+
+        console.log(data.data)
+        const axiosdata = data.data
+        if (axiosdata) { setotpinput(e => !e) }
+        else (console.log('number doesnt exist'))
         // console.log('/a/a/a',axiosdata);
 
         // if (!axiosdata) {
@@ -127,104 +131,175 @@ const LoginPage = ({ userLogged, setUserLogged }) => {
       catch (err) { console.log(err); }
     }
   }
-  
+
 
   const [forgotPWDclicked, setforgotPWDclicked] = useState(false);
+  const [otpinput, setotpinput] = useState(false);
+  const [OTP, setOTP] = useState();
+  const [newpwdinput, setnewpwdinput] = useState(false)
+
+
+  const submitOTP = async () => {
+    console.log(OTP);
+    try {
+      const phone = '+91' + PhoneNum;
+      const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/verifypwdotp`, { phone, OTP })
+      console.log('otp matched', data.data)
+      if (data.data) {
+
+        setnewpwdinput(e => !e);
+      }
+    }
+    catch (e) { console.log(e) }
+  }
+
+
+  const submitnewPassword = async () =>{
+    const phone = '+91' + PhoneNum;
+    console.log(Pwd,OTP,phone);
+    try {
+     
+      const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/changepassword`, { phone, OTP,Pwd })
+      console.log(data.data)
+      if (data.data) {
+        setnewpwdinput(e=>!e);
+        setforgotPWDclicked(e=>!e);
+      }
+    }
+    catch (e) { console.log(e) }
+  }
 
   return (
     <>
 
       <div className='LoginPage'>
 
-        {!forgotPWDclicked?
-          <div className="LoginBox"  >
-            <div className='loginHead'>Login</div>
 
-            <div className='LoginPhoneDiv'>
+        {!newpwdinput ?
+         ( !forgotPWDclicked ?
+            <div className="LoginBox"  >
+          <div className='loginHead'>Login</div>
 
-              <div>Enter Phone Number</div>
-              <input className={`login_input ${inputStyle}`} type='Number'
-                placeholder='Phone Number'
-                onChange={(e) => setPhoneNum(e.target.value)}
-              />
-              {PhoneNum && !validPhone ? (<p className='loginerror'>
-                add valid phone no. without dialing code.
-              </p>) : <></>}
-            </div>
+          <div className='LoginPhoneDiv'>
 
-            <div className='LoginPwdDiv'>
-
-              <div>Enter Password</div>
-              <input className={`login_input`} type='password'
-                placeholder='Password'
-                onChange={(e) => setPwd(e.target.value)}
-              />
-
-              <div>
-                <button
-                onClick={()=>{setforgotPWDclicked(e=>!e)}}
-                >forgot password?</button></div>
-
-
-              {!PhoneNum || !Pwd ? (<p className='loginerror'>
-                please complete all fields.
-              </p>) : <></>}
-            </div>
-
-
-            <button type="submit" className='LoginSubmit'
-              onClick={(e) => submitUser(e)}>
-              Login
-            </button>
-
-            {error ? <p className='invalidUserError'>Invalid Username or Password.</p> : <></>}
-
-          </div>:
-          
-
-
-          
-          <div className="LoginBox"  >
-            <div className='loginHead'>Reset Password</div>
-
-            <div className='LoginPhoneDiv'>
-
-              <div>Enter Phone Number</div>
-              <input className={`login_input ${inputStyle}`} type='Number'
-                placeholder='Phone Number'
-                onChange={(e) => setPhoneNum(e.target.value)}
-              />
-              {PhoneNum && !validPhone ? (<p className='loginerror'>
-                add valid phone no. without dialing code.
-              </p>) : <></>}
-            </div>
-
-            {/* <div className='LoginPwdDiv'>
-
-              <div>Enter Password</div>
-              <input className={`login_input`} type='password'
-                placeholder='Password'
-                onChange={(e) => setPwd(e.target.value)}
-              />
-
-              <div><button>forgot password?</button></div>
-
-
-              {!PhoneNum || !Pwd ? (<p className='loginerror'>
-                please complete all fields.
-              </p>) : <></>}
-            </div> */}
-
-
-            <button type="submit" className='LoginSubmit'
-              onClick={(e) => changePassword(e)}>
-              Send OTP
-            </button>
-
-            {error ? <p className='invalidUserError'>Invalid Username or Password.</p> : <></>}
-
+            <div>Enter Phone Number</div>
+            <input className={`login_input ${inputStyle}`} type='Number'
+              placeholder='Phone Number'
+              onChange={(e) => setPhoneNum(e.target.value)}
+            />
+            {PhoneNum && !validPhone ? (<p className='loginerror'>
+              add valid phone no. without dialing code.
+            </p>) : <></>}
           </div>
-        }
+
+          <div className='LoginPwdDiv'>
+
+            <div>Enter Password</div>
+            <input className={`login_input`} type='password'
+              placeholder='Password'
+              onChange={(e) => setPwd(e.target.value)}
+            />
+
+            <div>
+              <button className='forgetPassBtn'
+                onClick={() => { setforgotPWDclicked(e => !e) }}
+              >forgot password?</button></div>
+
+
+            {!PhoneNum || !Pwd ? (<p className='loginerror'>
+              please complete all fields.
+            </p>) : <></>}
+          </div>
+
+
+          <button type="submit" className='LoginSubmit'
+            onClick={() => submitUser()}>
+            Login
+          </button>
+
+          {error ? <p className='invalidUserError'>Invalid Username or Password.</p> : <></>}
+
+            </div>
+            
+            :
+            <div className="LoginBox"  >
+          <div className='loginHead'>Reset Password</div>
+
+          <div className='LoginPhoneDiv'>
+
+            <div>Enter Phone Number</div>
+            <input className={`login_input ${inputStyle}`} type='Number'
+              placeholder='Phone Number'
+              onChange={(e) => setPhoneNum(e.target.value)}
+            />
+            {PhoneNum && !validPhone ? (<p className='loginerror'>
+              add valid phone no. without dialing code.
+            </p>) : <></>}
+          </div>
+
+          {otpinput ? <div className='LoginPwdDiv'>
+
+            <div>Enter OTP</div>
+            <input
+              className={`login_input`} type='password'
+              placeholder='OTP'
+              onChange={(e) => setOTP(e.target.value)}
+            />
+
+
+
+
+            {/* {!PhoneNum || !Pwd ? (<p className='loginerror'>
+  please complete all fields.
+</p>) : <></>} */}
+          </div> : <></>}
+
+
+          {!otpinput ? <button
+            type="submit"
+            className='LoginSubmit'
+            onClick={(e) => changePassword(e)}>
+            Send OTP
+          </button>
+
+            : <button onClick={() => submitOTP()}>submit OTP</button>
+          }
+
+
+          {error ? <p className='invalidUserError'>Invalid Username or Password.</p> : <></>}
+
+            </div>
+            )
+             : (<div className="LoginBox"  >
+              <div className='loginHead'>enter new password</div>
+    
+              
+    
+              <div className='LoginPwdDiv'>
+    
+                
+                <input className={`login_input`} type='password'
+                  placeholder='Password'
+                  onChange={(e) => setPwd(e.target.value)}
+                />
+    
+               
+    
+    
+              </div>
+    
+    
+              <button type="submit" className='LoginSubmit'
+                onClick={() => submitnewPassword()}
+                
+                >
+                Submit New Password
+              </button>
+    
+             
+    
+                </div>)}
+
 
 
 

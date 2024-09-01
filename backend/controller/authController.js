@@ -16,14 +16,44 @@ const jwt = require('jsonwebtoken');
 
 
 module.exports.verifyOtp=async(req, res)=>{
+    
     const phone = req.body.phone;
+  
     const Otp= req.body.OTP;
+
+    console.log(phone);
 
     const OTP = Number(Otp);
     const Phone = Number(phone);
 
 
     otpDB.findOneAndDelete({Phone, OTP})
+    .then((saved)=>{
+
+        // console.log(saved)
+        if(saved){res.send(true);}
+        else res.send(false);
+    })
+    .catch( err =>{
+        console.error(err)
+        res.send(false)
+    })
+
+}
+
+module.exports.verifyOtpforpwdchange=async(req, res)=>{
+    
+    const phone = req.body.phone;
+  
+    const Otp= req.body.OTP;
+
+    console.log(phone);
+
+    const OTP = Number(Otp);
+    const Phone = Number(phone);
+
+
+    otpDB.findOne({Phone, OTP})
     .then((saved)=>{
 
         // console.log(saved)
@@ -785,9 +815,9 @@ module.exports.forgotpassword=async(req,res)=>{
         req.body
     );
 
-     const Phone = req.body.Phonenum;
+     const PhoneNum = req.body.PhoneNum;
     
-     const PhoneNum = Number('+91' + Phone)
+     const Phone = Number('+91' + PhoneNum)
     //     console.log('phone', Phone);
 
     try{
@@ -807,14 +837,14 @@ module.exports.forgotpassword=async(req,res)=>{
             var config = {
                 method: 'get',
                 maxBodyLength: Infinity,
-                url: `https://2factor.in/API/V1/9dfd8b94-1f26-11ef-8b60-0200cd936042/SMS/${phone}/${OTP}/JNSHKOTP`,
+                url: `https://2factor.in/API/V1/9dfd8b94-1f26-11ef-8b60-0200cd936042/SMS/${Phone}/${OTP}/JNSHKOTP`,
                 headers: { }
               };
 
             axios(config)
               .then(function (response) {
 
-                let newotpentry = new otpDB({Phone:PhoneNum, OTP});
+                let newotpentry = new otpDB({Phone, OTP});
             
            
                 newotpentry.save()
@@ -850,5 +880,43 @@ module.exports.forgotpassword=async(req,res)=>{
         
     }
     catch(err){console.log(err)}
+
+}
+
+
+module.exports.changePassword=async(req,res)=>{
+    console.log('reached changed password',req.body)
+
+    const phone = req.body.phone;
+    
+    const Otp= req.body.OTP;
+    const Pwd=req.body.Pwd;
+
+    // console.log(phone);
+
+    const OTP = Number(Otp);
+    const Phone = Number(phone);
+
+
+    otpDB.findOneAndDelete({Phone, OTP})
+    .then(async(saved)=>{
+
+        // console.log(saved)
+        if(saved){
+            //set new password here
+        
+            await userDB.findOneAndUpdate({Phone:Phone}, {pwd: Pwd}, {returnDocument: 'after'})
+            .then(saved=>{res.send(true)})
+            .catch(error=>{res.send(false)})
+        
+        }
+        else{ console.log('OTP not found');
+            res.send(false);}
+    })
+    .catch( err =>{
+        console.error(err)
+        res.send(false)
+    })
+
 
 }

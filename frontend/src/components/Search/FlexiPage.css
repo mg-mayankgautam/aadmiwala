@@ -33,6 +33,19 @@
     background-color: #b23fff;
 }
 
+.showMainSearchBtn{
+    background-color: #fa9066;
+    padding: 4px 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.showMainSearchBtn:hover{
+    background-color: #ff804e;
+}
+
 .searchPageSearch{
     display: flex;
     /* grid-template-columns: auto auto; */
@@ -107,6 +120,7 @@
     flex-direction: column;
     gap: 8px;
     align-self: center;
+    align-items: center;
     border: 1px solid #FFF;
     background: linear-gradient(121deg, rgba(255, 255, 255, 0.671) 31.41%, rgba(255, 255, 255, 0.00) 116.44%);
     box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.12);
@@ -124,7 +138,7 @@
 .flexiSearchContainer {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
     font-size: 12px;
     margin-top: 16px;
     /* border: 1px solid #FFF;
@@ -133,6 +147,12 @@
     backdrop-filter: blur(7.5px);
     padding: 24px 32px;
     border-radius: 45px; */
+}
+
+.flexiHeadText{
+    color: var(--green);
+    font-weight: 700;
+    font-size: 14px;
 }
 
 

@@ -17,6 +17,8 @@ router.get('/getallcompanies', authController.getCompanies)
 router.get('/getcompanydata',authController.getCompanydata)
 router.post('/verifyphone',authController.verifyPhoneNum)
 router.post('/verifyotp',authController.verifyOtp)
+router.post('/verifypwdotp',authController.verifyOtpforpwdchange)
+
 router.post('/login',authController.logIn)
 router.get('/search',authController.search)
 router.get('/isauth',authController.isauth)
@@ -30,6 +32,10 @@ router.post('/verifynewphone',authController.verifyNewPhone);
 router.post('/updateuserphone',authController.updateUserPhone);
 router.post('/logout',authController.logout)
 
+
+router.post('/changepassword',authController.changePassword)
+
+
 router.post('/forgetpwd',authController.forgotpassword)
 router.post('/adminlogin',authController.adminlogin)
 router.get('/admininfo', authMiddleware, authController.adminInfo)
@@ -37,6 +43,7 @@ router.post('/admindeletecompany', authController.adminDeleteCompany)
 
 router.post('/sharerequirements',mailController.shareRequirements)
 router.post('/getintouch',mailController.getInTouch)
+router.post('/changepassword',authController.changePassword)
 
 
 

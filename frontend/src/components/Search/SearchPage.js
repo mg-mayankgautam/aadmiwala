@@ -19,17 +19,14 @@ const SearchPage = () => {
     const navigate = useNavigate();
 
     const params = new URLSearchParams(location.search);
-    const [inputValue, setinputValue] = useState(params.get('input'));
-    const [typeValue, settypeValue] = useState(params.get('type'));
+    const inputValue = params.get('input');
+    const typeValue = params.get('type');
+    const [showMainSearch, setShowMainSearch] = useState(false);
 
 
-    const [searchError, setSearchError] = useState(false);
     const [searchValue, setSearchValue] = useState([]);
+    const [noFilterSearchValue, setNoFilterSearchValue] = useState([]);
 
-    useEffect(() => {
-        setSearchError(false);
-        console.log(inputValue, typeValue)
-    }, [inputValue, typeValue])
 
     useEffect(() => {
 
@@ -44,9 +41,7 @@ const SearchPage = () => {
 
                     if (data.data) {
                         setSearchValue(data.data);
-                    }
-                    else {
-                        setSearchError(true);
+                        setNoFilterSearchValue(data.data);
                     }
                 }
                 catch (err) { console.log(err); }
@@ -54,15 +49,15 @@ const SearchPage = () => {
         }
 
         getSearchResults()
+        setShowMainSearch(false)
     }, [inputValue, typeValue])
 
 
+    // SEARCH BOX MAIN........
     const [searchInput, setSearchInput] = useState('');
     const [searchType, setSearchType] = useState('service');
     const [service, setService] = useState(true);
     const [city, setCity] = useState(false);
-
-
 
     useEffect(() => {
         if (searchType === 'city') {
@@ -75,11 +70,50 @@ const SearchPage = () => {
         }
     }, [searchType])
 
-
     const findSearchedInput = async () => {
-        settypeValue(searchType)
-        setinputValue(searchInput)
+        navigate(`/search?input=${searchInput}&type=${searchType}`);
     }
+    // .......SEARCH BOX MAIN
+
+
+    const navigateToFlexi = () => {
+        const input = 'Flexi Services'
+        navigate(`/search?input=${input}&type=service`);
+    }
+
+
+    // FLEXI SEARCH FILTER.........
+    const [FlexisearchInput, setFlexiSearchInput] = useState('');
+    const [FlexisearchType, setFlexiSearchType] = useState('service');
+    const [Flexiservice, setFlexiService] = useState(true);
+    const [Flexicity, setFlexiCity] = useState(false);
+
+    useEffect(() => {
+        if (FlexisearchType === 'city') {
+            setFlexiCity(true);
+            setFlexiService(false);
+        }
+        else {
+            setFlexiCity(false);
+            setFlexiService(true);
+        }
+    }, [FlexisearchType])
+
+    const findFlexiSearchedInput = async () => {
+        if (FlexisearchType === 'service') {
+            const filteredResults = noFilterSearchValue.filter(company =>
+                company.serviceType.some(service => service.includes(FlexisearchInput)
+                ));
+            setSearchValue(filteredResults);
+        }
+        else {
+            const filteredResults = noFilterSearchValue.filter(company =>
+                company.city.some(city => city.includes(FlexisearchInput)
+                ));
+            setSearchValue(filteredResults);
+        }
+    }
+    // .........FLEXI SEARCH FILTER
 
 
     return (
@@ -103,46 +137,23 @@ const SearchPage = () => {
                             <div className='text'>Unlock the power of flexibility with Covendx</div>
 
                             <div className='flexiSearchContainer'>
-                                <div className='landingSearch'>
+                                <div className='searchPageSearch'>
                                     <div>
-                                        {/* <input className='searchInput' type='text' placeholder='Search for City / State / Services'/> */}
-                                        {/* <SearchIcon className='searchIcon'/> */}
-
-                                        {city ?
+                                        {Flexicity ?
                                             <Autocomplete
                                                 disablePortal
                                                 id="combo-box-demo"
                                                 options={cities}
                                                 sx={{
                                                     width: 300,
-                                                    // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
-                                                    // },
-                                                    // '& .MuiOutlinedInput-notchedOutline': {
-                                                    //     borderColor: 'white !important', // Border color of the input field
-                                                    // },
-                                                    // '& .MuiInputLabel-root': {
-                                                    //     color: 'white !important', // Default label color
-                                                    //     '&.Mui-focused': {
-                                                    //         color: 'white !important', // Label color when focused
-                                                    //     },
-                                                    // },
-                                                    // '& .MuiFormHelperText-root': {
-                                                    //     color: 'white !important', // Helper text color
-                                                    // },
-                                                    // '& .MuiSvgIcon-root': {
-                                                    //     color: 'white !important', // Icon color
-                                                    // },
                                                     '& .MuiOutlinedInput-root': {
                                                         borderRadius: '30px', // Rounded corners with 25px radius
                                                     },
-                                                    // '& .MuiAutocomplete-input': {
-                                                    //     color: 'white !important', // Text color for typed input
-                                                    // }
                                                 }}
 
-                                                renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
-                                                onChange={(event, value) => setSearchInput(value)}
-                                                value={searchInput} />
+                                                renderInput={(params) => <TextField {...params} label="Search in Flexi Services" className='searchInputMui' />}
+                                                onChange={(event, value) => setFlexiSearchInput(value)}
+                                                value={FlexisearchInput} />
                                             :
                                             <Autocomplete
                                                 disablePortal
@@ -151,52 +162,29 @@ const SearchPage = () => {
                                                 bgColor="white"
                                                 sx={{
                                                     width: 300,
-                                                    // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
-                                                    // },
-                                                    // '& .MuiOutlinedInput-notchedOutline': {
-                                                    //     borderColor: 'white !important', // Border color of the input field
-                                                    // },
-                                                    // '& .MuiInputLabel-root': {
-                                                    //     color: 'white !important', // Default label color
-                                                    //     '&.Mui-focused': {
-                                                    //         color: 'white !important', // Label color when focused
-                                                    //     },
-                                                    // },
-                                                    // '& .MuiFormHelperText-root': {
-                                                    //     color: 'white !important', // Helper text color
-                                                    // },
-                                                    // '& .MuiSvgIcon-root': {
-                                                    //     color: 'white !important', // Icon color
-                                                    // },
                                                     '& .MuiOutlinedInput-root': {
                                                         borderRadius: '30px', // Rounded corners with 25px radius
                                                     },
-                                                    // '& .MuiAutocomplete-input': {
-                                                    //     color: 'white !important', // Text color for typed input
-                                                    // }
                                                 }}
 
-                                                renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
-                                                onChange={(event, value) => setSearchInput(value)}
-                                                value={searchInput} />
+                                                renderInput={(params) => <TextField {...params} label="Search in Flexi Services" className='searchInputMui' />}
+                                                onChange={(event, value) => setFlexiSearchInput(value)}
+                                                value={FlexisearchInput} />
                                         }
 
                                     </div>
 
-                                    <button className='searchBtn' onClick={(e) => findSearchedInput(e)}>Search</button>
+                                    <button className='searchBtn' onClick={(e) => findFlexiSearchedInput(e)}>Search</button>
 
-                                    <select className='searchdropdown' name="" onChange={(e) => setSearchType(e.target.value)} value={searchType}>
+                                    <select className='searchdropdown' name="" onChange={(e) => setFlexiSearchType(e.target.value)} value={FlexisearchType}>
                                         <option value="service">Services</option>
                                         <option value="city">City</option>
                                     </select>
 
                                 </div>
 
-                                <div className='landingSearchMobile'>
+                                <div className='searchPageSearchMobile'>
                                     <div>
-                                        {/* <input className='searchInput' type='text' placeholder='Search for City / State / Services'/> */}
-                                        {/* <SearchIcon className='searchIcon'/> */}
-
                                         {city ?
                                             <Autocomplete
                                                 disablePortal
@@ -220,9 +208,9 @@ const SearchPage = () => {
                                                         fontSize: '12px',  // Change the font size of the placeholder text
                                                     },
                                                 }}
-                                                renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
-                                                onChange={(event, value) => setSearchInput(value)}
-                                                value={searchInput} />
+                                                renderInput={(params) => <TextField {...params} label="Search in Flexi Services" className='searchInputMui' />}
+                                                onChange={(event, value) => setFlexiSearchInput(value)}
+                                                value={FlexisearchInput} />
                                             :
                                             <Autocomplete
                                                 disablePortal
@@ -247,34 +235,25 @@ const SearchPage = () => {
                                                         fontSize: '12px',  // Change the font size of the placeholder text
                                                     },
                                                 }}
-                                                renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
-                                                onChange={(event, value) => setSearchInput(value)}
-                                                value={searchInput} />
+                                                renderInput={(params) => <TextField {...params} label="Search in Flexi Services" className='searchInputMui' />}
+                                                onChange={(event, value) => setFlexiSearchInput(value)}
+                                                value={FlexisearchInput} />
                                         }
 
                                     </div>
 
-                                    <button className='searchBtnMobile' onClick={(e) => findSearchedInput(e)}><SearchIcon /></button>
+                                    <button className='searchBtnMobile' onClick={(e) => findFlexiSearchedInput(e)}><SearchIcon /></button>
 
-                                    <select className='searchdropdown' name="" onChange={(e) => setSearchType(e.target.value)} value={searchType}>
+                                    <select className='searchdropdown' name="" onChange={(e) => setFlexiSearchType(e.target.value)} value={FlexisearchType}>
                                         <option value="service">Services</option>
                                         <option value="city">City</option>
                                     </select>
 
                                 </div>
 
-                                {/* <div className='freqSearch'>
-                            <div className='freqSearchText'>Popular Cities</div>
-
-                            <div className='freqSearchBtns'>
-                                <button onClick={(e) => setfreqSearch(e.target.innerHTML)}>Delhi</button>
-                                <button onClick={(e) => setfreqSearch(e.target.innerHTML)}>Patna</button>
-                                <button onClick={(e) => setfreqSearch(e.target.innerHTML)}>Mumbai</button>
-                                <button onClick={(e) => setfreqSearch(e.target.innerHTML)}>Chennai</button>
-                                <button onClick={(e) => setfreqSearch(e.target.innerHTML)}>Bangalore</button>
-                                
-                            </div>
-                                </div> */}
+                                <div className='flexiHeadText'>
+                                    PAN India | On Demand Vendors | Quick Setup
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -290,181 +269,191 @@ const SearchPage = () => {
                         </div>
                         <div className='text'>Your Search Results</div>
                     </div>
-                    {inputValue === 'Flexi Services' ? <></> :
-                        <div onClick={() => { setinputValue('Flexi Services'); settypeValue('service') }}
-                            className='lookingFlexiBtn'>
+                    {inputValue === 'Flexi Services' ?
+                        <div className='showMainSearchBtn'
+                            onClick={() => setShowMainSearch(!showMainSearch)}
+                        >
+                            Search Other Services
+                        </div>
+                        :
+                        <div className='lookingFlexiBtn'
+                            onClick={() => navigateToFlexi()}
+                        >
                             Looking for Flexi Services?
                         </div>
                     }
                 </div>
-                <div>
-                    <div className='flexiSearchContainer'>
-                        <div className='searchPageSearch'>
-                            <div>
-                                {/* <input className='searchInput' type='text' placeholder='Search for City / State / Services'/> */}
-                                {/* <SearchIcon className='searchIcon'/> */}
+                {showMainSearch || inputValue !== 'Flexi Services'?
+                    <div>
+                        <div className='flexiSearchContainer'>
+                            <div className='searchPageSearch'>
+                                <div>
+                                    {/* <input className='searchInput' type='text' placeholder='Search for City / State / Services'/> */}
+                                    {/* <SearchIcon className='searchIcon'/> */}
 
-                                {city ?
-                                    <Autocomplete
-                                        disablePortal
-                                        id="combo-box-demo"
-                                        options={cities}
-                                        sx={{
-                                            width: 300,
-                                            // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
-                                            // },
-                                            // '& .MuiOutlinedInput-notchedOutline': {
-                                            //     borderColor: 'white !important', // Border color of the input field
-                                            // },
-                                            // '& .MuiInputLabel-root': {
-                                            //     color: 'white !important', // Default label color
-                                            //     '&.Mui-focused': {
-                                            //         color: 'white !important', // Label color when focused
-                                            //     },
-                                            // },
-                                            // '& .MuiFormHelperText-root': {
-                                            //     color: 'white !important', // Helper text color
-                                            // },
-                                            // '& .MuiSvgIcon-root': {
-                                            //     color: 'white !important', // Icon color
-                                            // },
-                                            '& .MuiOutlinedInput-root': {
-                                                borderRadius: '30px', // Rounded corners with 25px radius
-                                            },
-                                            // '& .MuiAutocomplete-input': {
-                                            //     color: 'white !important', // Text color for typed input
-                                            // }
-                                        }}
+                                    {city ?
+                                        <Autocomplete
+                                            disablePortal
+                                            id="combo-box-demo"
+                                            options={cities}
+                                            sx={{
+                                                width: 300,
+                                                // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
+                                                // },
+                                                // '& .MuiOutlinedInput-notchedOutline': {
+                                                //     borderColor: 'white !important', // Border color of the input field
+                                                // },
+                                                // '& .MuiInputLabel-root': {
+                                                //     color: 'white !important', // Default label color
+                                                //     '&.Mui-focused': {
+                                                //         color: 'white !important', // Label color when focused
+                                                //     },
+                                                // },
+                                                // '& .MuiFormHelperText-root': {
+                                                //     color: 'white !important', // Helper text color
+                                                // },
+                                                // '& .MuiSvgIcon-root': {
+                                                //     color: 'white !important', // Icon color
+                                                // },
+                                                '& .MuiOutlinedInput-root': {
+                                                    borderRadius: '30px', // Rounded corners with 25px radius
+                                                },
+                                                // '& .MuiAutocomplete-input': {
+                                                //     color: 'white !important', // Text color for typed input
+                                                // }
+                                            }}
 
-                                        renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
-                                        onChange={(event, value) => setSearchInput(value)}
-                                        value={searchInput} />
-                                    :
-                                    <Autocomplete
-                                        disablePortal
-                                        id="combo-box-demo"
-                                        options={services}
-                                        bgColor="white"
-                                        sx={{
-                                            width: 300,
-                                            // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
-                                            // },
-                                            // '& .MuiOutlinedInput-notchedOutline': {
-                                            //     borderColor: 'white !important', // Border color of the input field
-                                            // },
-                                            // '& .MuiInputLabel-root': {
-                                            //     color: 'white !important', // Default label color
-                                            //     '&.Mui-focused': {
-                                            //         color: 'white !important', // Label color when focused
-                                            //     },
-                                            // },
-                                            // '& .MuiFormHelperText-root': {
-                                            //     color: 'white !important', // Helper text color
-                                            // },
-                                            // '& .MuiSvgIcon-root': {
-                                            //     color: 'white !important', // Icon color
-                                            // },
-                                            '& .MuiOutlinedInput-root': {
-                                                borderRadius: '30px', // Rounded corners with 25px radius
-                                            },
-                                            // '& .MuiAutocomplete-input': {
-                                            //     color: 'white !important', // Text color for typed input
-                                            // }
-                                        }}
+                                            renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
+                                            onChange={(event, value) => setSearchInput(value)}
+                                            value={searchInput} />
+                                        :
+                                        <Autocomplete
+                                            disablePortal
+                                            id="combo-box-demo"
+                                            options={services}
+                                            bgColor="white"
+                                            sx={{
+                                                width: 300,
+                                                // '& .MuiAutocomplete-inputRoot': { color: 'white', // Text color inside the autocomplete
+                                                // },
+                                                // '& .MuiOutlinedInput-notchedOutline': {
+                                                //     borderColor: 'white !important', // Border color of the input field
+                                                // },
+                                                // '& .MuiInputLabel-root': {
+                                                //     color: 'white !important', // Default label color
+                                                //     '&.Mui-focused': {
+                                                //         color: 'white !important', // Label color when focused
+                                                //     },
+                                                // },
+                                                // '& .MuiFormHelperText-root': {
+                                                //     color: 'white !important', // Helper text color
+                                                // },
+                                                // '& .MuiSvgIcon-root': {
+                                                //     color: 'white !important', // Icon color
+                                                // },
+                                                '& .MuiOutlinedInput-root': {
+                                                    borderRadius: '30px', // Rounded corners with 25px radius
+                                                },
+                                                // '& .MuiAutocomplete-input': {
+                                                //     color: 'white !important', // Text color for typed input
+                                                // }
+                                            }}
 
-                                        renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
-                                        onChange={(event, value) => setSearchInput(value)}
-                                        value={searchInput} />
-                                }
+                                            renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
+                                            onChange={(event, value) => setSearchInput(value)}
+                                            value={searchInput} />
+                                    }
 
-                            </div>
+                                </div>
 
-                            <button className='searchBtn' onClick={(e) => findSearchedInput(e)}>Search</button>
+                                <button className='searchBtn' onClick={(e) => findSearchedInput(e)}>Search</button>
 
-                            <select className='searchdropdown' name="" onChange={(e) => setSearchType(e.target.value)} value={searchType}>
-                                <option value="service">Services</option>
-                                <option value="city">City</option>
-                            </select>
-
-                        </div>
-
-                        <div className='searchPageSearchMobile'>
-                            <div>
-                                {/* <input className='searchInput' type='text' placeholder='Search for City / State / Services'/> */}
-                                {/* <SearchIcon className='searchIcon'/> */}
-
-                                {city ?
-                                    <Autocomplete
-                                        disablePortal
-                                        id="combo-box-demo"
-                                        options={cities}
-                                        sx={{
-                                            width: 200,
-                                            '& .MuiOutlinedInput-root': {
-                                                borderRadius: '30px', // Rounded corners with 30px radius
-                                            },
-                                            '& .MuiInputBase-input': {
-                                                fontSize: '12px',  // Change the font size of the input text
-                                            },
-                                            '& .MuiAutocomplete-option': {
-                                                fontSize: '12px',  // Change the font size of dropdown options
-                                            },
-                                            '& .MuiInputLabel-root': {
-                                                fontSize: '12px',  // Change the font size of the label (placeholder when focused)
-                                            },
-                                            '& .MuiInputBase-input::placeholder': {
-                                                fontSize: '12px',  // Change the font size of the placeholder text
-                                            },
-                                        }}
-                                        renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
-                                        onChange={(event, value) => setSearchInput(value)}
-                                        value={searchInput} />
-                                    :
-                                    <Autocomplete
-                                        disablePortal
-                                        id="combo-box-demo"
-                                        options={services}
-                                        bgColor="white"
-                                        sx={{
-                                            width: 200,
-                                            '& .MuiOutlinedInput-root': {
-                                                borderRadius: '30px', // Rounded corners with 30px radius
-                                            },
-                                            '& .MuiInputBase-input': {
-                                                fontSize: '12px',  // Change the font size of the input text
-                                            },
-                                            '& .MuiAutocomplete-option': {
-                                                fontSize: '12px',  // Change the font size of dropdown options
-                                            },
-                                            '& .MuiInputLabel-root': {
-                                                fontSize: '12px',  // Change the font size of the label (placeholder when focused)
-                                            },
-                                            '& .MuiInputBase-input::placeholder': {
-                                                fontSize: '12px',  // Change the font size of the placeholder text
-                                            },
-                                        }}
-                                        renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
-                                        onChange={(event, value) => setSearchInput(value)}
-                                        value={searchInput} />
-                                }
+                                <select className='searchdropdown' name="" onChange={(e) => setSearchType(e.target.value)} value={searchType}>
+                                    <option value="service">Services</option>
+                                    <option value="city">City</option>
+                                </select>
 
                             </div>
 
-                            <button className='searchBtnMobile' onClick={(e) => findSearchedInput(e)}><SearchIcon /></button>
+                            <div className='searchPageSearchMobile'>
+                                <div>
+                                    {/* <input className='searchInput' type='text' placeholder='Search for City / State / Services'/> */}
+                                    {/* <SearchIcon className='searchIcon'/> */}
 
-                            <select className='searchdropdown' name="" onChange={(e) => setSearchType(e.target.value)} value={searchType}>
-                                <option value="service">Services</option>
-                                <option value="city">City</option>
-                            </select>
+                                    {city ?
+                                        <Autocomplete
+                                            disablePortal
+                                            id="combo-box-demo"
+                                            options={cities}
+                                            sx={{
+                                                width: 200,
+                                                '& .MuiOutlinedInput-root': {
+                                                    borderRadius: '30px', // Rounded corners with 30px radius
+                                                },
+                                                '& .MuiInputBase-input': {
+                                                    fontSize: '12px',  // Change the font size of the input text
+                                                },
+                                                '& .MuiAutocomplete-option': {
+                                                    fontSize: '12px',  // Change the font size of dropdown options
+                                                },
+                                                '& .MuiInputLabel-root': {
+                                                    fontSize: '12px',  // Change the font size of the label (placeholder when focused)
+                                                },
+                                                '& .MuiInputBase-input::placeholder': {
+                                                    fontSize: '12px',  // Change the font size of the placeholder text
+                                                },
+                                            }}
+                                            renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
+                                            onChange={(event, value) => setSearchInput(value)}
+                                            value={searchInput} />
+                                        :
+                                        <Autocomplete
+                                            disablePortal
+                                            id="combo-box-demo"
+                                            options={services}
+                                            bgColor="white"
+                                            sx={{
+                                                width: 200,
+                                                '& .MuiOutlinedInput-root': {
+                                                    borderRadius: '30px', // Rounded corners with 30px radius
+                                                },
+                                                '& .MuiInputBase-input': {
+                                                    fontSize: '12px',  // Change the font size of the input text
+                                                },
+                                                '& .MuiAutocomplete-option': {
+                                                    fontSize: '12px',  // Change the font size of dropdown options
+                                                },
+                                                '& .MuiInputLabel-root': {
+                                                    fontSize: '12px',  // Change the font size of the label (placeholder when focused)
+                                                },
+                                                '& .MuiInputBase-input::placeholder': {
+                                                    fontSize: '12px',  // Change the font size of the placeholder text
+                                                },
+                                            }}
+                                            renderInput={(params) => <TextField {...params} label="Search for City / Services" className='searchInputMui' />}
+                                            onChange={(event, value) => setSearchInput(value)}
+                                            value={searchInput} />
+                                    }
 
+                                </div>
+
+                                <button className='searchBtnMobile' onClick={(e) => findSearchedInput(e)}><SearchIcon /></button>
+
+                                <select className='searchdropdown' name="" onChange={(e) => setSearchType(e.target.value)} value={searchType}>
+                                    <option value="service">Services</option>
+                                    <option value="city">City</option>
+                                </select>
+
+                            </div>
                         </div>
                     </div>
-                </div>
+                    :<></>
+                }
             </div>
 
             <div className='Companies_container'>
 
-                {searchError ? <p className='searcherror'>Couldnt find anything</p> : <></>}
+                {searchValue.length === 0 ? <p className='searcherror'>Couldnt find anything</p> : <></>}
 
 
                 {searchValue && searchValue.map(company =>
