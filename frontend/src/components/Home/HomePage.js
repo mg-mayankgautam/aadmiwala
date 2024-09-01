@@ -15,7 +15,7 @@ import FlexiBanner from './FlexiBanner/FlexiBanner'
 
 
 
-const HomePage = ({searchValue,setSearchValue}) => {
+const HomePage = () => {
 
   const connect_ref = useRef();
 
@@ -23,10 +23,10 @@ const HomePage = ({searchValue,setSearchValue}) => {
   return (
     <div className='HomePage'>
        
-        <HomeMain searchValue={searchValue} setSearchValue={setSearchValue}/>
-        <FeaturedCompanies searchValue={searchValue} setSearchValue={setSearchValue}/>
+        <HomeMain />
+        <FeaturedCompanies />
         <Benefits/>
-        <FlexiBanner searchValue={searchValue} setSearchValue={setSearchValue}/>
+        <FlexiBanner />
         <Challenges/>
         {/* <OneStopSoln connect_ref={connect_ref}/> */}
         <Solutions connect_ref={connect_ref}/>

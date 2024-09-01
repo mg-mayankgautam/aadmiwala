@@ -1,17 +1,18 @@
+// require('dotenv').config();
+
 const companyDB = require("../models/companyDB.js");
 const otpDB=require("../models/otpDB.js")
 const userDB=require("../models/usersDB.js")
 const adminDB=require("../models/adminDB.js")
 
 var axios = require('axios');
-require('dotenv').config();
-// const ratingDB = require("../models/ratingsDB.js");
 
 const accountSid=process.env.TWILIO_ACCOUNT_SID;
 const authToken=process.env.TWILIO_AUTH_TOKEN;
 
 const client = require('twilio')('ACf7dcdf5392bef8bfc0b9e42b9a11cb1c','975b7584a795956a40808329e7662f33');
 
+const jwt = require('jsonwebtoken');
 
 
 module.exports.verifyOtp=async(req, res)=>{
@@ -715,11 +716,139 @@ module.exports.adminlogin=async(req,res)=>{
    let Admin = await adminDB.findOne({ID,Pwd});
 
     if(!Admin){
-        res.send('thainga')
+        res.send(false)
     }
     else if(Admin){
-        res.send(true)
+
+        const user = {role: 'Admin', username: ID, password: Pwd}
+
+        if (!process.env.ACCESS_TOKEN_SECRET){
+            throw new Error('JWT secret key is not defined');
+        }
+
+        const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+        res.json({accessToken: accessToken})
     }
 
-  
+}
+
+module.exports.adminInfo=async(req,res)=>{
+
+    // console.log(req.user, 'here')
+    try{
+        let companies= await companyDB.find({})
+   
+        res.send(companies);
+    }
+    catch(err){console.log(err)}
+}
+
+
+module.exports.adminDeleteCompany=async(req,res)=>{
+
+    console.log(req.body.companyToDelete, 'here')
+    const _id = req.body.companyToDelete.companyID;
+    const Phone = req.body.companyToDelete.Phone;
+    
+    companyDB.findOneAndDelete({_id})
+    .then((saved)=>{
+
+        // console.log(saved)
+        if(saved){
+            userDB.findOneAndDelete({Phone})
+            .then((saved2)=>{
+        
+                // console.log(saved, saved2)
+                if(saved2){
+                    res.send(saved);
+                }
+                else res.send(false);
+            })
+            .catch( err =>{
+                console.error(err)
+                res.send(false)
+            })
+        }
+        else res.send(false);
+    })
+    .catch( err =>{
+        console.error(err)
+        res.send(false)
+    })
+}
+
+module.exports.forgotpassword=async(req,res)=>{
+
+
+
+    console.log(
+        req.body
+    );
+
+     const Phone = req.body.Phonenum;
+    
+     const PhoneNum = Number('+91' + Phone)
+    //     console.log('phone', Phone);
+
+    try{
+        const phn = await userDB.findOne({Phone},{Phone:1});
+        
+        if(phn){
+           // generate OTP and return true
+
+
+           
+            
+    
+            const OTP = `${Math.floor(1000+Math.random()*9000)}`;
+
+    
+
+            var config = {
+                method: 'get',
+                maxBodyLength: Infinity,
+                url: `https://2factor.in/API/V1/9dfd8b94-1f26-11ef-8b60-0200cd936042/SMS/${phone}/${OTP}/JNSHKOTP`,
+                headers: { }
+              };
+
+            axios(config)
+              .then(function (response) {
+
+                let newotpentry = new otpDB({Phone:PhoneNum, OTP});
+            
+           
+                newotpentry.save()
+                    .then(async(saved)=>{
+                     console.log('otp added success');
+                    
+                    // const message = await client.messages.create(msgOptions);    
+                    //res.send(true);                    
+                    })
+                    .catch(err =>{
+                    console.log(err);
+                    res.send(false);
+                });                
+               })
+               .catch(function (error) {
+                console.log(error);
+               });
+
+
+
+   
+   
+                res.send(true);
+
+        
+
+        }
+        //IF (PHN) ENDS
+        else{
+            console.log(phn);
+            res.send(false);
+        }
+        
+    }
+    catch(err){console.log(err)}
+
 }

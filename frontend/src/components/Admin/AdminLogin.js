@@ -69,7 +69,7 @@ const AdminLogin = () => {
         const axiosdata = data.data
         console.log('validation', axiosdata);
 
-        if (axiosdata != true) {
+        if (!axiosdata) {
           // console.log('wrong id');
           seterror(true);
         }

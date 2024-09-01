@@ -117,19 +117,6 @@
     text-align: left;
 }
 
-.landingImgDiv{
-    width: 40%;
-    height: 100vh;
-}
-
-.landingImg{
-    max-width: 100%;
-    max-height: 120%;
-    object-fit: cover;
-    object-position: center;
-    margin-top: -40px;
-}
-
 .landingSearchContainer{
     display: flex;
     flex-direction: column;
@@ -169,12 +156,12 @@
 }
 
 .searcherror{
-    font-size: 11px;
+    font-size: 16px;
     margin: 0;
     color: #d22323;
-    position: absolute;
+    /* position: absolute;
     bottom: 40px;
-    right: 120px;
+    right: 120px; */
     font-weight: 600;
 }
 
@@ -272,12 +259,37 @@
     color: white;
 }
 
+
+.landingImgDiv{
+    width: 40%;
+    height: 100vh;
+}
+
+/* .landingImg{
+    max-width: 100%;
+    max-height: 120%;
+    object-fit: cover;
+    object-position: center;
+    margin-top: -40px;
+} */
+
+
 @media only screen and (max-width: 1100px){
     .landingContent{
         padding-left: 0;
     }
-    .landingImg{
+    /* .landingImg{
         margin-top: 70px;
+    } */
+}
+
+@media only screen and (max-width: 845px){
+    .mainHead{
+        /* font-size: 24px; */
+        font-weight: 700;
+        color: var(--orange);
+        width: 100% !important;
+        height: 130px !important;
     }
 }
 
@@ -294,29 +306,11 @@
         gap: 160px;
         z-index: 1;
     }
-    .landingImgDiv{
-        width: max-content;
-        max-height: 300px;
-        position: absolute;
-        z-index: 0;
-        top: 300px;
-        right: 24px;
-    }
-    .landingImg{
-        margin-top: 16px;
-    }
 
     .landingHeadingDiv{
         width: 100%;
     }
     
-    .mainHead{
-        /* font-size: 24px; */
-        font-weight: 700;
-        color: var(--orange);
-        width: 100% !important;
-        height: 130px !important;
-    }
     .landingsubHead{
         font-size: 16px;
         max-width: 260px;
@@ -356,6 +350,21 @@
     .freqSearchBtns>button{
         font-size: 12px;
     }
+
+    .landingImgDiv{
+        width: max-content;
+        min-height: 300px;
+        position: absolute;
+        z-index: 0;
+        top: 300px;
+        right: 24px;
+    }
+    .landingImgDiv>svg{
+        height: 300px;
+    }
+    /* .landingImg{
+        margin-top: 16px;
+    } */
 }
 
 @media only screen and (max-width: 360px){

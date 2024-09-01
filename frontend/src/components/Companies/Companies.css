@@ -13,6 +13,7 @@
     margin-top: 32px;
     flex-wrap: wrap;
     justify-content: flex-start;
+    text-align: left;
 }
 
 @media only screen and (orientation: portrait){

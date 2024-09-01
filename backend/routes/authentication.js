@@ -8,7 +8,7 @@ require("dotenv").config();
 
 const authController = require('../controller/authController');
 const mailController = require('../controller/mailController');
-
+const authMiddleware = require('../middlewares/authMiddleware');
 
 
 // router.post('/signUp',authController.signUp)
@@ -29,7 +29,11 @@ router.post('/deleteuserimage',authController.deleteUserImage);
 router.post('/verifynewphone',authController.verifyNewPhone);
 router.post('/updateuserphone',authController.updateUserPhone);
 router.post('/logout',authController.logout)
+
+router.post('/forgetpwd',authController.forgotpassword)
 router.post('/adminlogin',authController.adminlogin)
+router.get('/admininfo', authMiddleware, authController.adminInfo)
+router.post('/admindeletecompany', authController.adminDeleteCompany)
 
 router.post('/sharerequirements',mailController.shareRequirements)
 router.post('/getintouch',mailController.getInTouch)

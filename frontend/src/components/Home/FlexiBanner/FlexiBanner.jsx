@@ -9,31 +9,22 @@ import fl5 from '../../../assets/fl5.png'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-const FlexiBanner = ({searchValue, setSearchValue}) => {
+const FlexiBanner = () => {
 
     const navigate = useNavigate();
 
 
     const searchFlexiServices = async () => {
-
         const freqSearch = 'Flexi Services';
 
         if (freqSearch) {
 
             try {
-                const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/search?input=${freqSearch}&type=service`);
-
-                if (data.data) {
-                    setSearchValue(data.data);
-                    navigate(`/search/${freqSearch}`)
-                }
-                else {
-                    // setSearchError(true);
-                }
-
+                navigate(`/search?input=${freqSearch}&type=service`);
             }
             catch (err) { console.log(err); }
-        }
+      
+          }
     }
 
 

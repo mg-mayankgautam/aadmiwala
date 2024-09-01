@@ -6,7 +6,7 @@ import Company from '../../Company/Company';
 import Loader from '../../Loader/Loader';
 import './FeaturedCompanies.css'
 
-const FeaturedCompanies = ({ searchValue, setSearchValue }) => {
+const FeaturedCompanies = () => {
 
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -69,24 +69,11 @@ const FeaturedCompanies = ({ searchValue, setSearchValue }) => {
   }, [freqSearch])
 
   const findfreqSearched = async () => {
-    // e.preventDefault();
-    console.log(freqSearch);
-
     if (freqSearch) {
 
-      // console.log()
+
       try {
-        const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/search?input=${freqSearch}&type=service`);
-        // console.log(data.data);
-
-        if (data.data) {
-          setSearchValue(data.data);
-          navigate(`/search/${freqSearch}`)
-        }
-        else {
-          // setSearchError(true);
-        }
-
+          navigate(`/search?input=${freqSearch}&type=service`);
       }
       catch (err) { console.log(err); }
 

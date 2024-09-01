@@ -6,6 +6,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { useNavigate } from 'react-router-dom';
 import './HomeMain.css'
 import landing from '../../../assets/homeillusfull.png'
+import SVG from './SVG.js';
 
 
 
@@ -23,7 +24,7 @@ const texts = [
     "One Vendor, One Contract, One Payment Solution"
 ];
 
-const HomeMain = ({ searchValue, setSearchValue }) => {
+const HomeMain = () => {
     const navigate = useNavigate();
 
     const [searchInput, setSearchInput] = useState('');
@@ -31,7 +32,7 @@ const HomeMain = ({ searchValue, setSearchValue }) => {
     const [searchType, setSearchType] = useState('service');
     const [service, setService] = useState(true);
     const [city, setCity] = useState(false);
-    const [searchError, setSearchError] = useState(false);
+    // const [searchError, setSearchError] = useState(false);
 
 
 
@@ -46,9 +47,6 @@ const HomeMain = ({ searchValue, setSearchValue }) => {
         }
     }, [searchType])
 
-    useEffect(() => {
-        setSearchError(false);
-    }, [searchType, searchInput])
 
     useEffect(() => {
         // console.log(freqSearch);
@@ -65,22 +63,11 @@ const HomeMain = ({ searchValue, setSearchValue }) => {
         if (searchInput) {
 
             try {
-                const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/search?input=${searchInput}&type=${searchType}`);
-                console.log(data.data);
-
-                if (data.data) {
-                    setSearchValue(data.data);
-                    navigate(`/search/${searchInput}`)
-                }
-                else {
-                    setSearchError(true);
-                }
-
+                navigate(`/search?input=${searchInput}&type=${searchType}`);
             }
             catch (err) { console.log(err); }
 
         }
-
     }
 
     const findfreqSearched = async () => {
@@ -91,17 +78,7 @@ const HomeMain = ({ searchValue, setSearchValue }) => {
 
             // console.log()
             try {
-                const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/search?input=${freqSearch}&type=city`);
-                // console.log(data.data);
-
-                if (data.data) {
-                    setSearchValue(data.data);
-                    navigate(`/search/${freqSearch}`)
-                }
-                else {
-                    setSearchError(true);
-                }
-
+                navigate(`/search?input=${freqSearch}&type=city`);
             }
             catch (err) { console.log(err); }
 
@@ -241,7 +218,6 @@ const HomeMain = ({ searchValue, setSearchValue }) => {
                                 <option value="city">City</option>
                             </select>
 
-                            {searchError ? <p className='searcherror'>Couldnt find anything</p> : <></>}
                         </div>
 
                         <div className='landingSearchMobile'>
@@ -314,7 +290,6 @@ const HomeMain = ({ searchValue, setSearchValue }) => {
                                 <option value="city">City</option>
                             </select>
 
-                            {searchError ? <p className='searcherror'>Couldnt find anything</p> : <></>}
                         </div>
 
                         <div className='freqSearch'>
@@ -333,7 +308,9 @@ const HomeMain = ({ searchValue, setSearchValue }) => {
                 </div>
 
                 <div className='landingImgDiv'>
-                    <img src={landing} className='landingImg' />
+                    <SVG/>
+                    {/* <img src={landing1} className='landingImg' /> */}
+
                 </div>
             </div>
 

@@ -3,7 +3,6 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import Layout from './Layout';
 import HomePage from './components/Home/HomePage';
 import AdminLogin from './components/Admin/AdminLogin';
-
 import AboutPage from './components/About/AboutPage';
 import AddCompany from './components/AddRecruitmentCompany/AddCompany'
 import Companies from './components/Companies/Companies';
@@ -25,7 +24,6 @@ function App() {
   axios.defaults.withCredentials = true;
   // axios.defaults.Credentials= true;
 
-  const [searchValue, setSearchValue] = useState([]);
   const [userLogged, setUserLogged] = useState('');
   
 
@@ -41,9 +39,7 @@ function App() {
       <Route  path="/" element={<Layout userLogged={userLogged} setUserLogged={setUserLogged} />}>
             
               <Route 
-              index element={<HomePage searchValue={searchValue} 
-              setSearchValue={setSearchValue} 
-              />} /> 
+              index element={<HomePage />} /> 
 
               <Route path="about" element={<AboutPage/>}/>   
               <Route path="addCompany" element={ <AddCompany/>}/>  
@@ -65,7 +61,7 @@ function App() {
               </Route>
 
 
-              <Route path="search/:value" element={<SearchPage searchValue={searchValue} setSearchValue={setSearchValue} />}/>
+              <Route path="search" element={<SearchPage />}/>
 
               <Route element={<RequireAuth />}>
                 <Route path="dashboard/:id" element={<Dashboard/>}/>
