@@ -43,6 +43,10 @@ const SearchPage = () => {
                         setSearchValue(data.data);
                         setNoFilterSearchValue(data.data);
                     }
+                    else{
+                        setSearchValue([]);
+                        setNoFilterSearchValue([]);
+                    }
                 }
                 catch (err) { console.log(err); }
             }
