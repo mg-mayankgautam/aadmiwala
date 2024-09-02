@@ -10,7 +10,7 @@
 
 .CompanyCompareTable{
     display: grid;
-    grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr) auto;
+    grid-template-columns: auto auto auto;
     border: 1px solid var(--green);
     border-radius: 25px;
     width: 50%;
@@ -35,6 +35,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .compareCriteriaHead{

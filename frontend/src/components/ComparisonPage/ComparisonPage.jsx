@@ -15,6 +15,7 @@ const ComparisonPage = () => {
   const [filteredServices, setFilteredServices] = useState([])
   const [filteredCities, setFilteredCities] = useState([])
   const [selectedCompany, setSelectedCompany] = useState()
+  const [compareCriteria, setCompareCriteria] = useState('service')
 
 
   useEffect(() => {
@@ -104,19 +105,27 @@ const ComparisonPage = () => {
 
         <div className='compareCriteriaHead'>Compare With:</div>
         <div className='compareCriteriaDiv'>
-          <div className='compareCriteriaBtn'>
+          <div className='compareCriteriaBtn' onClick={()=> setCompareCriteria('service')}>
             Services
           </div>
-          <div className='compareCriteriaBtn'>
+          <div className='compareCriteriaBtn' onClick={()=> setCompareCriteria('city')}>
             Cities
           </div>
         </div>
 
-        {filteredServices && filteredServices.map(company =>
-          <div onClick={()=> setSelectedCompany(company)}>
-            <Company company={company} />
-          </div>
-        )}
+        {compareCriteria === 'service' ?
+          (filteredServices && filteredServices.map(company =>
+            <div onClick={() => setSelectedCompany(company)}>
+              <Company company={company} />
+            </div>
+          ))
+          :
+          (filteredCities && filteredCities.map(company =>
+            <div onClick={() => setSelectedCompany(company)}>
+              <Company company={company} />
+            </div>
+          ))
+        }
 
       </div>
 
