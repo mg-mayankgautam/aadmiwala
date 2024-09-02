@@ -12,10 +12,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const CompanyPage = () => {
-
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -92,6 +94,7 @@ const CompanyPage = () => {
               </div>
 
               <button onClick={() => setModal(true)} className='getinTouchBtn'>Get in Touch</button>
+              <button onClick={()=> {navigate(`/compare/${id}`)}} className='getinTouchBtn'>Compare Service</button>   
 
             </div>
 
@@ -102,6 +105,8 @@ const CompanyPage = () => {
                 )}
               </div>
             }
+
+ 
 
           </div>
 
