@@ -21,7 +21,8 @@
     color: rgba(0, 0, 0, 0.651);
     font-weight: 700;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.082);
 }
 
 .CompanyCompareTable>.criteria{

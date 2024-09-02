@@ -109,9 +109,9 @@ const ComparisonPage = () => {
         </div>
 
         {filteredServices && filteredServices.map(company =>
-          <Link key={company._id}>
+          <div onClick={()=> setSelectedCompany(company)}>
             <Company company={company} />
-          </Link>
+          </div>
         )}
 
       </div>
