@@ -4,7 +4,7 @@
     align-items: center;
     padding: 0px 64px;
     margin: 0 auto;
-    background-image: url(../../../assets/homebg.png);
+    background-image: url(../../../assets/Header\ 77.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -121,7 +121,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    font-size: 12px;
+    font-size: 14px;
     border: 1px solid #FFF;
     background: linear-gradient(121deg, rgba(255, 255, 255, 0.50) 31.41%, rgba(255, 255, 255, 0.00) 116.44%);
     box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.12);
@@ -320,6 +320,7 @@
         padding: 20px 20px;
         border-radius: 30px;
         max-width: 260px;
+        font-size: 12px;
     }
 
     .landingSearch{
