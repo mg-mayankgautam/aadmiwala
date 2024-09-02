@@ -2,85 +2,119 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 
+
 const SVG = () => {
+
+    const bubbleAnimation = {
+        animate: {
+            scale: [1, 1.1, 1],
+            y: [0, -20, 0],
+            z: [0, 5, 0]
+            // transition: {
+                
+            // }
+        }
+    };
+
+
+
+
     return (
         <svg viewBox="0 0 433 985" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-            <g id="svg">
+            <motion.g
+                id="svg"
+                initial="initial"
+                animate="animate"
+            >
                 <motion.rect
                     id="Rectangle 111"
-                    animate={{ scale: [1, 1.1, 1] , y:[-10, 0, -10]}}
-                    transition={{ times: [0, 1], duration: 4, delay: 0, repeat: Infinity, type: 'keyframes', ease: 'easeInOut' }}
+                    variants={bubbleAnimation}
                     x="157"
                     y="637"
                     width="111"
                     height="348"
                     fill="url(#pattern0_77_401)"
+                    transition={{ delay: 0, duration: 4, ease: 'easeInOut', 
+                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    }}
                 />
 
                 <motion.rect
                     id="Rectangle 112"
-                    animate={{ scale: [1, 1.1, 1]  , y:[-10, 0, -10]}}
-                    transition={{ times: [0, 1], duration: 4, delay: 1, repeat: Infinity, type: 'keyframes', ease: 'easeInOut' }}
+                    variants={bubbleAnimation}
                     x="155"
                     y="316"
                     width="124"
                     height="312"
                     fill="url(#pattern1_77_401)"
+                    transition={{ delay: 4, duration: 4, ease: 'easeInOut', 
+                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    }}
                 />
 
                 <motion.rect
                     id="Rectangle 113"
-                    animate={{ scale: [1, 1.1, 1]  , y:[-10, 0, -10]}}
-                    transition={{ times: [0, 1], duration: 4, delay: 2, repeat: Infinity, type: 'keyframes', ease: 'easeInOut' }}
+                    variants={bubbleAnimation}
                     x="156"
                     width="124"
                     height="311"
                     fill="url(#pattern2_77_401)"
+                    transition={{ delay: 8, duration: 4, ease: 'easeInOut', 
+                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    }}
                 />
 
                 <motion.rect
                     id="Rectangle 114"
-                    animate={{ scale: [1, 1.1, 1]  , y:[-10, 0, -10]}}
-                    transition={{ times: [0, 1], duration: 4, delay: 3, repeat: Infinity, type: 'keyframes', ease: 'easeInOut' }}
+                    variants={bubbleAnimation}
                     x="309"
                     y="514"
                     width="124"
                     height="342"
                     fill="url(#pattern3_77_401)"
+                    transition={{ delay: 12, duration: 4, ease: 'easeInOut', 
+                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    }}
                 />
 
                 <motion.rect
                     id="Rectangle 115"
-                    animate={{ scale: [1, 1.1, 1]  , y:[-10, 0, -10]}}
-                    transition={{ times: [0, 1], duration: 4, delay: 4, repeat: Infinity, type: 'keyframes', ease: 'easeInOut' }}
+                    variants={bubbleAnimation}
                     y="551"
                     width="117"
                     height="334"
                     fill="url(#pattern4_77_401)"
+                    transition={{ delay: 16, duration: 4, ease: 'easeInOut', 
+                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    }}
                 />
 
                 <motion.rect
                     id="Rectangle 116"
-                    animate={{ scale: [1, 1.1, 1]  , y:[-10, 0, -10]}}
-                    transition={{ times: [0, 1], duration: 4, delay: 5, repeat: Infinity, type: 'keyframes', ease: 'easeInOut' }}
+                    variants={bubbleAnimation}
                     y="228"
                     width="125"
                     height="289"
                     fill="url(#pattern5_77_401)"
+                    transition={{ delay: 20, duration: 4, ease: 'easeInOut', 
+                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    }}
                 />
 
                 <motion.rect
                     id="Rectangle 117"
-                    animate={{ scale: [1, 1.1, 1]  , y:[-10, 0, -10]}}
-                    transition={{ times: [0, 1], duration: 4, delay: 6, repeat: Infinity, type: 'keyframes', ease: 'easeInOut' }}
+                    variants={bubbleAnimation}
                     x="304"
                     y="166"
                     width="125"
                     height="329"
                     fill="url(#pattern6_77_401)"
+                    transition={{ delay: 24, duration: 4, ease: 'easeInOut', 
+                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    }}
                 />
+            </motion.g>
 
-            </g>
             <defs>
                 <pattern id="pattern0_77_401" patternContentUnits="objectBoundingBox" width="1" height="1">
                     <use xlinkHref="#image0_77_401" transform="scale(0.00900901 0.00287356)" />
