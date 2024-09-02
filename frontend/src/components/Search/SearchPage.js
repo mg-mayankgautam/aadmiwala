@@ -43,7 +43,7 @@ const SearchPage = () => {
                         setSearchValue(data.data);
                         setNoFilterSearchValue(data.data);
                     }
-                    else{
+                    else {
                         setSearchValue([]);
                         setNoFilterSearchValue([]);
                     }
@@ -287,7 +287,7 @@ const SearchPage = () => {
                         </div>
                     }
                 </div>
-                {showMainSearch || inputValue !== 'Flexi Services'?
+                {showMainSearch || inputValue !== 'Flexi Services' ?
                     <div>
                         <div className='flexiSearchContainer'>
                             <div className='searchPageSearch'>
@@ -451,7 +451,7 @@ const SearchPage = () => {
                             </div>
                         </div>
                     </div>
-                    :<></>
+                    : <></>
                 }
             </div>
 
@@ -469,6 +469,52 @@ const SearchPage = () => {
             </div>
 
 
+            {/* {inputValue === 'Flexi Services' ?
+                <div className='FlexiBanner' style={{ marginTop: '80px' }}>
+
+                    <div className='FlexiPointersBanner'>
+
+                        <div className='flexiPage_Heading'>
+                            Covendx Flexi Features
+                        </div>
+
+                        <div className='flexiBannerPointers'>
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>01</div>
+                                <div className='pointerText'>New Project Request</div>
+                            </div>
+
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>02</div>
+                                <div className='pointerText'>Evaluate and Prioritize</div>
+                            </div>
+
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>03</div>
+                                <div className='pointerText'>Delegate to Service Provider</div>
+                            </div>
+
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>04</div>
+                                <div className='pointerText'>Facilitate Communication</div>
+                            </div>
+
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>05</div>
+                                <div className='pointerText'>Confirm Task Completion</div>
+                            </div>
+
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>06</div>
+                                <div className='pointerText'>Process Payment</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                : <></>
+            } */}
         </div>
 
     )

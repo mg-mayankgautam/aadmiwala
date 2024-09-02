@@ -103,7 +103,7 @@ const ComparisonPage = () => {
 
       <div className='compareWith_Container'>
 
-        <div className='compareCriteriaHead'>Compare With:</div>
+        <div className='compareCriteriaHead'>Compare By:</div>
         <div className='compareCriteriaDiv'>
           <div className='compareCriteriaBtn' onClick={()=> setCompareCriteria('service')}>
             Services
