@@ -54,7 +54,11 @@ const ComparisonPage = () => {
     console.log(filteredCities, filteredServices);
   }, [filteredCities, filteredServices])
 
+  useEffect(() => {
 
+    window.scrollTo(0, 0)
+
+  }, [selectedCompany]);
 
 
   return (

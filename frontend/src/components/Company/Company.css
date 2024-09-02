@@ -13,6 +13,7 @@
     background: linear-gradient(to right, white, white), linear-gradient(180deg, #332F2A 0%, #221505 100%);; 
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
+    cursor: pointer;
 }
 
 .FC_TopFlex{
