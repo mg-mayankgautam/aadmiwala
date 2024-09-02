@@ -15,6 +15,9 @@ const authMiddleware = require('../middlewares/authMiddleware');
 router.post('/addrecruitingcompany',upload.array("image"), authController.addRecruitingCompany)
 router.get('/getallcompanies', authController.getCompanies)
 router.get('/getcompanydata',authController.getCompanydata)
+router.get('/getcompanyfilterdata',authController.getfilterCompanydata)
+
+
 router.post('/verifyphone',authController.verifyPhoneNum)
 router.post('/verifyotp',authController.verifyOtp)
 router.post('/verifypwdotp',authController.verifyOtpforpwdchange)

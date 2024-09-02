@@ -421,6 +421,18 @@ module.exports.getCompanydata=async(req,res)=>{
    res.send(companydata);
 }
 
+module.exports.getfilterCompanydata=async(req,res)=>{
+  //  console.log('here',req.query.id);
+      const _id = req.query.id;
+      let companydata = await companyDB.findOne({_id});
+    
+     console.log(companydata.city);
+     console.log(companydata.serviceType);
+     
+
+    // res.send(companydata);
+ }
+
 
 module.exports.search= async(req, res)=>{
 

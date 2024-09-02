@@ -3,7 +3,7 @@ import logo from '../../assets/logo.png'
 import useAuth from '../../hook/useAuth';
 import './Nav.css'
 import CallIcon from '@mui/icons-material/Call';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import MenuIcon from '@mui/icons-material/Menu';
 
