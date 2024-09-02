@@ -1,0 +1,67 @@
+.ComparisonPage{
+    display: flex;
+    padding: 64px;
+    gap: 64px;
+    text-align: left;
+    font-size: 14px;
+    min-height: 100vh;
+    align-items: flex-start;
+}
+
+.CompanyCompareTable{
+    display: grid;
+    grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr) auto;
+    border: 1px solid var(--green);
+    border-radius: 25px;
+    width: 50%;
+}
+
+.CompanyCompareTable>div{
+    padding: 8px 16px;
+    color: rgba(0, 0, 0, 0.651);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.CompanyCompareTable>.criteria{
+    font-weight: 700;
+    color: var(--green);
+    font-size: 16px;
+}
+
+.compare_cities{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.compareCriteriaHead{
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+.compareCriteriaDiv{
+    display: flex;
+    gap: 16px;
+}
+
+.compareCriteriaBtn{
+    background-color: #C775FE;
+    padding: 4px 8px;
+    color: white;
+    font-weight: 800;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.compareCriteriaBtn:hover{
+    background-color: #ae3ff8;
+}
+
+.compareWith_Container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
