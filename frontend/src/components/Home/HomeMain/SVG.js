@@ -7,11 +7,9 @@ const SVG = () => {
 
     const bubbleAnimation = {
         animate: {
-            scale: [1, 1.1, 1],
+            // scale: [1, 1.1, 1],
             y: [0, -20, 0],
-            z: [0, 5, 0]
             // transition: {
-                
             // }
         }
     };
@@ -28,39 +26,42 @@ const SVG = () => {
             >
                 <motion.rect
                     id="Rectangle 111"
-                    variants={bubbleAnimation}
+                    animate= {{y: [0, +20, 0]}}
                     x="157"
                     y="637"
                     width="111"
                     height="348"
                     fill="url(#pattern0_77_401)"
-                    transition={{ delay: 0, duration: 4, ease: 'easeInOut', 
-                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    transition={{
+                        delay: 0, duration: 4, ease: 'easeInOut',
+                        repeat: Infinity, repeatType: 'loop', repeatDelay: 0
                     }}
                 />
 
                 <motion.rect
                     id="Rectangle 112"
-                    variants={bubbleAnimation}
+                    animate= {{y: [0, +20, 0]}}
                     x="155"
                     y="316"
                     width="124"
                     height="312"
                     fill="url(#pattern1_77_401)"
-                    transition={{ delay: 4, duration: 4, ease: 'easeInOut', 
-                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    transition={{
+                        delay:0, duration: 4, ease: 'easeInOut',
+                        repeat: Infinity, repeatType: 'loop', repeatDelay: 0
                     }}
                 />
 
                 <motion.rect
                     id="Rectangle 113"
-                    variants={bubbleAnimation}
+                    animate= {{y: [0, +20, 0]}}
                     x="156"
                     width="124"
                     height="311"
                     fill="url(#pattern2_77_401)"
-                    transition={{ delay: 8, duration: 4, ease: 'easeInOut', 
-                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    transition={{
+                        delay:0, duration: 4, ease: 'easeInOut',
+                        repeat: Infinity, repeatType: 'loop', repeatDelay: 0
                     }}
                 />
 
@@ -72,8 +73,9 @@ const SVG = () => {
                     width="124"
                     height="342"
                     fill="url(#pattern3_77_401)"
-                    transition={{ delay: 12, duration: 4, ease: 'easeInOut', 
-                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    transition={{
+                        delay: 0, duration: 4, ease: 'easeInOut',
+                        repeat: Infinity, repeatType: 'loop', repeatDelay: 0
                     }}
                 />
 
@@ -84,8 +86,9 @@ const SVG = () => {
                     width="117"
                     height="334"
                     fill="url(#pattern4_77_401)"
-                    transition={{ delay: 16, duration: 4, ease: 'easeInOut', 
-                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    transition={{
+                        delay: 0, duration: 4, ease: 'easeInOut',
+                        repeat: Infinity, repeatType: 'loop', repeatDelay: 0
                     }}
                 />
 
@@ -96,8 +99,9 @@ const SVG = () => {
                     width="125"
                     height="289"
                     fill="url(#pattern5_77_401)"
-                    transition={{ delay: 20, duration: 4, ease: 'easeInOut', 
-                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    transition={{
+                        delay: 0, duration: 4, ease: 'easeInOut',
+                        repeat: Infinity, repeatType: 'loop', repeatDelay: 0
                     }}
                 />
 
@@ -109,8 +113,9 @@ const SVG = () => {
                     width="125"
                     height="329"
                     fill="url(#pattern6_77_401)"
-                    transition={{ delay: 24, duration: 4, ease: 'easeInOut', 
-                        // repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+                    transition={{
+                        delay: 0, duration: 4, ease: 'easeInOut',
+                        repeat: Infinity, repeatType: 'loop', repeatDelay: 0
                     }}
                 />
             </motion.g>
@@ -153,4 +158,97 @@ const SVG = () => {
 
 export default SVG
 
-{/* <motion.g id="g1_2" animate={{x:[-50, 0, -50]}} transition={{times:[0,1], duration:2, repeat: Infinity, type:'keyframes', ease:'easeInOut'}}> */ }
+//      <motion.g
+//         id = "svg"
+//         initial = "initial"
+//         animate = "animate"
+//          >
+//                 <motion.rect
+//                     id="Rectangle 111"
+//                     variants={bubbleAnimation}
+//                     x="157"
+//                     y="637"
+//                     width="111"
+//                     height="348"
+//                     fill="url(#pattern0_77_401)"
+//                     transition={{ delay: 0, duration: 4, ease: 'easeInOut', 
+//                         repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+//                     }}
+//                 />
+
+//                 <motion.rect
+//                     id="Rectangle 112"
+//                     variants={bubbleAnimation}
+//                     x="155"
+//                     y="316"
+//                     width="124"
+//                     height="312"
+//                     fill="url(#pattern1_77_401)"
+//                     transition={{ delay: 4, duration: 4, ease: 'easeInOut', 
+//                         repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+//                     }}
+//                 />
+
+//                 <motion.rect
+//                     id="Rectangle 113"
+//                     variants={bubbleAnimation}
+//                     x="156"
+//                     width="124"
+//                     height="311"
+//                     fill="url(#pattern2_77_401)"
+//                     transition={{ delay: 8, duration: 4, ease: 'easeInOut', 
+//                         repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+//                     }}
+//                 />
+
+//                 <motion.rect
+//                     id="Rectangle 114"
+//                     variants={bubbleAnimation}
+//                     x="309"
+//                     y="514"
+//                     width="124"
+//                     height="342"
+//                     fill="url(#pattern3_77_401)"
+//                     transition={{ delay: 12, duration: 4, ease: 'easeInOut', 
+//                         repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+//                     }}
+//                 />
+
+//                 <motion.rect
+//                     id="Rectangle 115"
+//                     variants={bubbleAnimation}
+//                     y="551"
+//                     width="117"
+//                     height="334"
+//                     fill="url(#pattern4_77_401)"
+//                     transition={{ delay: 16, duration: 4, ease: 'easeInOut', 
+//                         repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+//                     }}
+//                 />
+
+//                 <motion.rect
+//                     id="Rectangle 116"
+//                     variants={bubbleAnimation}
+//                     y="228"
+//                     width="125"
+//                     height="289"
+//                     fill="url(#pattern5_77_401)"
+//                     transition={{ delay: 20, duration: 4, ease: 'easeInOut', 
+//                         repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+//                     }}
+//                 />
+
+//                 <motion.rect
+//                     id="Rectangle 117"
+//                     variants={bubbleAnimation}
+//                     x="304"
+//                     y="166"
+//                     width="125"
+//                     height="329"
+//                     fill="url(#pattern6_77_401)"
+//                     transition={{ delay: 24, duration: 4, ease: 'easeInOut', 
+//                         repeat: Infinity, repeatType: 'loop', repeatDelay: 6 
+//                     }}
+//                 />
+//             </motion.g >
+    {/* <motion.g id="g1_2" animate={{x:[-50, 0, -50]}} transition={{times:[0,1], duration:2, repeat: Infinity, type:'keyframes', ease:'easeInOut'}}> */ }
