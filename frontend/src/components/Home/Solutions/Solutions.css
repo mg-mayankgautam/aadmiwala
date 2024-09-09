@@ -86,4 +86,25 @@
         flex-direction: column;
         margin: 72px 24px;
     }
+
+    .USP_container{
+        gap: 8px;
+    }
+    
+    .USP_box{
+        padding: 16px 24px;
+        /* width: calc(50% - 10px - 48px); */
+        height: 30px;
+        font-size: 12px;
+        display: grid;
+        grid-template-columns: 40px auto;
+        justify-content: start;
+    }
+    .USP_box>img{
+        width: 30px;
+    }
+    
+    .USP_box:hover{
+        padding: 20px 24px;
+    }
 }

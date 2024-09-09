@@ -17,6 +17,8 @@ import RequireloginAuth from './RequireloginAuth';
 import ShareReq from './components/ShareReq/ShareReq';
 import AdminDashboard from './components/Admin/AdminDashboard';
 import ComparisonPage from './components/ComparisonPage/ComparisonPage'
+import Blogs from './components/Blogs/Blogs';
+import BlogPage from './components/BlogPage/BlogPage';
 
 
 function App() {
@@ -47,6 +49,10 @@ function App() {
               <Route path="company/:id" element={<CompanyPage/>}/>
               <Route path="compare/:id" element={<ComparisonPage/>}/>
               <Route path="sharerequirements" element={<ShareReq/>}/>
+
+              <Route path="blogs" element={<Blogs/>}/>
+              <Route path="blog/:id" element={<BlogPage/>}/>
+
 
               {/* <Route element={<RequireloginAuth/>}> */}
                 <Route path="admin" element={<AdminLogin/>}/>   

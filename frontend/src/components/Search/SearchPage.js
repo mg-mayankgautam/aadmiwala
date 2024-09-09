@@ -7,6 +7,8 @@ import './FlexiPage.css'
 import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import arrowUp from '../../assets/arrowUp.png'
+import arrowDown from '../../assets/arrowDown.png'
 
 
 const SearchPage = () => {
@@ -469,8 +471,8 @@ const SearchPage = () => {
             </div>
 
 
-            {/* {inputValue === 'Flexi Services' ?
-                <div className='FlexiBanner' style={{ marginTop: '80px' }}>
+            {inputValue === 'Flexi Services' ?
+                <div className='FlexiBanner' style={{ margin: '80px 0' }}>
 
                     <div className='FlexiPointersBanner'>
 
@@ -478,30 +480,45 @@ const SearchPage = () => {
                             Covendx Flexi Features
                         </div>
 
-                        <div className='flexiBannerPointers'>
+                        <div className='flexiPointersContainer'>
                             <div className='bannerPointer'>
                                 <div className='pointerNum'>01</div>
                                 <div className='pointerText'>New Project Request</div>
+                                <div className='arrow'>
+                                    <img src={arrowUp}/>
+                                </div>
                             </div>
 
                             <div className='bannerPointer'>
                                 <div className='pointerNum'>02</div>
                                 <div className='pointerText'>Evaluate and Prioritize</div>
+                                <div className='arrow mobilesmall'>
+                                    <img src={arrowDown}/>
+                                </div>
                             </div>
 
                             <div className='bannerPointer'>
                                 <div className='pointerNum'>03</div>
                                 <div className='pointerText'>Delegate to Service Provider</div>
+                                <div className='arrow mobile'>
+                                    <img src={arrowUp}/>
+                                </div>
                             </div>
 
                             <div className='bannerPointer'>
                                 <div className='pointerNum'>04</div>
                                 <div className='pointerText'>Facilitate Communication</div>
+                                <div className='arrow mobilesmall'>
+                                    <img src={arrowDown}/>
+                                </div>
                             </div>
 
                             <div className='bannerPointer'>
                                 <div className='pointerNum'>05</div>
                                 <div className='pointerText'>Confirm Task Completion</div>
+                                <div className='arrow'>
+                                    <img src={arrowUp}/>
+                                </div>
                             </div>
 
                             <div className='bannerPointer'>
@@ -514,7 +531,7 @@ const SearchPage = () => {
                     </div>
                 </div>
                 : <></>
-            } */}
+            }
         </div>
 
     )

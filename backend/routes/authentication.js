@@ -43,6 +43,11 @@ router.post('/forgetpwd',authController.forgotpassword)
 router.post('/adminlogin',authController.adminlogin)
 router.get('/admininfo', authMiddleware, authController.adminInfo)
 router.post('/admindeletecompany', authController.adminDeleteCompany)
+router.post('/adminaddblogs',upload.array("image"), authController.adminAddBlogs)
+router.get('/getallblogs', authController.getAllBlogs)
+router.post('/admindeleteblog', authController.adminDeleteBlog)
+router.get('/getblogdata', authController.getBlogData)
+
 
 router.post('/sharerequirements',mailController.shareRequirements)
 router.post('/getintouch',mailController.getInTouch)

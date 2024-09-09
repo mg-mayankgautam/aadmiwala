@@ -4,6 +4,7 @@ const companyDB = require("../models/companyDB.js");
 const otpDB=require("../models/otpDB.js")
 const userDB=require("../models/usersDB.js")
 const adminDB=require("../models/adminDB.js")
+const blogsDB=require("../models/blogsDB.js")
 
 var axios = require('axios');
 
@@ -333,10 +334,12 @@ module.exports.addRecruitingCompany= async (req,res)=>{
 
 module.exports.getCompanies =async (req, res) =>{
 
-    let company= await companyDB.find({})
-   
-    res.send(company);
-
+    try{
+        let company= await companyDB.find({})
+    
+        res.send(company);
+    }
+    catch(err){console.log(err)}
 }
 
 
@@ -413,12 +416,13 @@ module.exports.isauth=async (req,res)=>{
 
 
 module.exports.getCompanydata=async(req,res)=>{
-   // console.log('here',req.query.id);
-    const _id = req.query.id;
-    let companydata = await companyDB.findOne({_id});
-   
-    // console.log(companydata);
-    res.send(companydata);
+    try{
+        const _id = req.query.id;
+        let companydata = await companyDB.findOne({_id});
+    
+        res.send(companydata);
+    }
+    catch(err){console.log(err)}
 }
 
 module.exports.getfilterCompanydata=async(req,res)=>{
@@ -938,4 +942,69 @@ module.exports.changePassword=async(req,res)=>{
     })
 
 
+}
+
+module.exports.adminAddBlogs=async(req,res) =>{
+
+    console.log(req.body);
+
+    const {blogTitle, blogText, blogTime} = req.body;
+
+    const img = req.files;
+
+    const imageURL = {url: '', fileName: ''}
+    
+
+    let newBlog = new blogsDB({blogTitle, blogText, blogTime, imageURL});
+
+    newBlog.save()
+        .then((saved)=>{
+            console.log('blog added success');
+            res.send(saved);
+                
+        })
+        .catch(err =>{console.log(err);});
+
+}
+
+module.exports.getAllBlogs =async (req, res) =>{
+
+    try{
+        let blogs= await blogsDB.find({})
+        // console.log(blogs)
+    
+        res.send(blogs);
+    }
+    catch(err){console.log(err)}
+
+}
+
+
+module.exports.getBlogData=async(req,res)=>{
+    try{
+        const _id = req.query.id;
+
+        let blogdata = await blogsDB.findOne({_id});
+        
+        res.send(blogdata);
+    }
+    catch(err){console.log(err)}
+}
+
+module.exports.adminDeleteBlog=async(req,res)=>{
+
+    console.log(req.body.blogToDelete, 'here')
+    const _id = req.body.blogToDelete;
+    
+    blogsDB.findOneAndDelete({_id})
+    .then((saved)=>{
+        if(saved){
+            res.send(saved);
+        }
+        else res.send(false);
+    })
+    .catch( err =>{
+        console.error(err)
+        res.send(false)
+    })
 }

@@ -12,6 +12,9 @@ const Layout = ({ userLogged, setUserLogged }) => {
     if(location.pathname === '/'){
       setIsHome(true);
     }
+    else if(location.pathname === '/blogs'){
+      setIsHome(true)
+    }
     else{
       setIsHome(false)
     }

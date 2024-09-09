@@ -36,7 +36,9 @@ const Footer = () => {
                         <div className='footerSocialMedia'><img src={ig}/> Instagram</div>
                     </a>
                     
-                    <div>Blogs</div>
+                    <div>
+                        <Link to={`/blogs`}>Blogs</Link>
+                    </div>
                     <div>
                         <Link to={`/about`}>About Us</Link>
                     </div>

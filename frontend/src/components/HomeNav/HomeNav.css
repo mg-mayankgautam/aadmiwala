@@ -87,6 +87,9 @@
     right: 0;
     display: none;
     justify-content: flex-end;
+    height: 100vh;
+    height: 100dvh;
+    height: 100lvh;
 }
 
 .mobilenavItems{
@@ -101,6 +104,8 @@
 .mobilenavBtns{
     display: flex;
     gap: 16px;
+    flex-direction: column;
+    margin-bottom: 48px;
 }
 
 .mobileNav{

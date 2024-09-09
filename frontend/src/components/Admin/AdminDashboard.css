@@ -15,6 +15,24 @@
     /* align-items: flex-start; */
 }
 
+.admin_servicesHead {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    display: flex;
+    gap: 16px;
+}
+.showServicesBtn{
+    cursor: pointer;
+    transition: color 200ms ease-in-out;
+}
+.showServicesBtn:hover{
+    color: var(--orange);
+}
+.showServicesBtn.selected{
+    color: var(--orange);
+}
+
 .adminCompany_deleteDiv {
     display: flex;
     justify-content: flex-end;
@@ -25,6 +43,11 @@
     border: 1px solid transparent;
     background-color: #d9534f;
     color: white;
+}
+.adminBlog_deleteDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .modal-overlay {
@@ -78,9 +101,44 @@
     background-color: #f0f0f0;
 }
 
+.addBlogBtn{
+    font-size: 14px;
+    border: none;
+    background-color: var(--green);
+    color: white;
+}
+
+.blogsContainer.admin {
+    padding: 32px 0px;
+}
+
+.blogBox.admin {
+    min-height: 550px;
+    font-size: 14px;
+}
+
+.blogText.admin {
+    overflow-y: hidden;
+    max-height: 100px;
+    min-height: 100px;
+}
+
 
 @media only screen and (orientation: portrait) {
     .AdminDashboard {
         padding: 24px;
+    }
+
+    .blogsContainer.admin {
+        padding: 32px 0px;
+    }
+    
+    .blogBox.admin {
+        min-height: unset;
+    }
+    
+    .blogText.admin {
+        max-height: 100px;
+        min-height: unset;
     }
 }
