@@ -946,14 +946,35 @@ module.exports.changePassword=async(req,res)=>{
 
 module.exports.adminAddBlogs=async(req,res) =>{
 
-    console.log(req.body);
+    console.log('949',req.body);
+    console.log(req.files)
 
     const {blogTitle, blogText, blogTime} = req.body;
 
-    const img = req.files;
+    const img = req.files[0];
 
-    const imageURL = {url: '', fileName: ''}
+    // const imageURL = '';
     
+
+   
+        // console.log(img);
+            const fileName = generateFileName();
+
+
+            const uploadParams = {
+                Bucket: bucketName,
+                Body: img.buffer,
+                Key: fileName,
+                ContentType: img.mimetype
+            }
+
+            await s3Client.send(new PutObjectCommand(uploadParams));
+            const imageURL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
+            //  console.log(URL);
+            
+        
+
+        
 
     let newBlog = new blogsDB({blogTitle, blogText, blogTime, imageURL});
 
