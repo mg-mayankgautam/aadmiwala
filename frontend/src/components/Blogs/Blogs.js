@@ -16,7 +16,7 @@ const Blogs = () => {
             try {
                 const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getallblogs`);
                 const array = data.data;
-                console.log(array)
+                // console.log(array)
                 setBlogs(array);
 
             } catch (err) {
@@ -61,11 +61,11 @@ const Blogs = () => {
                         <Link to={`/blog/${blog._id}`} key={blog._id}>
                             <div className='blogBox'>
                                 <div className='blogImg'>
-                                    <img src="https://gratisography.com/wp-content/uploads/2024/01/gratisography-reindeer-dog-800x525.jpg" />
+                                    <img src={blog.imageURL} />
                                 </div>
                                 <div className='blogContent'>
                                     <div className='blogTime'>
-                                        {blog.blogTime}
+                                        Read Time: {blog.blogTime}
                                     </div>
                                     <div className='blogHead'>
                                         {blog.blogTitle}

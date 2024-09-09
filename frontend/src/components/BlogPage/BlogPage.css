@@ -27,7 +27,7 @@
 
 .blogPageImg {
     width: 100%;
-    margin: 16px 0 80px;
+    margin: 16px 0 40px;
     height: 480px;
 }
 
@@ -35,12 +35,14 @@
     border-radius: 20px;
     width: 100%;
     height: 100%;
+    /* object-position: top; */
     object-fit: cover;
 }
 
 .blogPageText{
     max-width: 800px;
     margin-left: 40px;
+    white-space: pre-wrap;
 }
 
 
