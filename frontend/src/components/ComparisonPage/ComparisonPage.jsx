@@ -71,9 +71,9 @@ const ComparisonPage = () => {
         <div>{company.companyName}</div>
         <div>{selectedCompany && selectedCompany.companyName} </div>
 
-        <div className='criteria'>Company Description:</div>
-        <div>{company.agencyBriefing}</div>
-        <div>{selectedCompany && selectedCompany.agencyBriefing} </div>
+        <div className='criteria'>Price Range:</div>
+        <div>{company.priceRange} INR</div>
+        <div>{selectedCompany && (selectedCompany.priceRange+ ' INR')}</div>
 
 
         <div className='criteria'>Cities:</div>
@@ -98,6 +98,21 @@ const ComparisonPage = () => {
             selectedCompany.serviceType && selectedCompany.serviceType.map(service => <span id=''>{service}, </span>)
           )}
         </div>
+
+        <div className='criteria'>Flexi Services:</div>
+        <div>{company.flexi ? 'Yes' : 'No' }</div>
+        <div>{selectedCompany && (selectedCompany.flexi ? 'Yes' : 'No' )}</div>
+
+        <div className='criteria'>Flexi Price Range:</div>
+        <div>{company.flexi ? company.flexi.lowPR+' - '+company.flexi.highPR+' INR' : '-' }</div>
+        <div>{selectedCompany && (selectedCompany.flexi ? selectedCompany.flexi.lowPR+' - '+selectedCompany.flexi.highPR+' INR' : '-' )}</div>
+
+        
+        <div className='criteria'>Company Description:</div>
+        <div>{company.agencyBriefing}</div>
+        <div>{selectedCompany && selectedCompany.agencyBriefing} </div>
+
+        
 
       </div>
 

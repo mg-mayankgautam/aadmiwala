@@ -14,6 +14,8 @@
     border: 1px solid var(--green);
     border-radius: 25px;
     width: 50%;
+    position: sticky;
+    top: 144px;
 }
 
 .CompanyCompareTable>div{
@@ -67,4 +69,46 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+@media only screen and (max-width: 1024px){
+    .ComparisonPage{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    
+    .CompanyCompareTable{
+        width: 100%;
+        position: static;
+        top: unset;
+    }
+}
+
+@media only screen and (orientation: portrait){
+    .ComparisonPage{
+        padding: 64px 24px;
+        font-size: 12px;
+    }
+    
+    .CompanyCompareTable{
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: scroll;
+    }
+    .CompanyCompareTable::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .CompanyCompareTable>.criteria{
+        /* position: sticky;
+        left: 0; */
+    }
+
+    .compareWith_Container .FC_box{
+        min-width: calc(100% - 32px);
+        max-width: calc(100% - 32px);
+    }
+
+    .CompanyCompareTable>.criteria{
+        font-size: 12px;
+    }
 }
