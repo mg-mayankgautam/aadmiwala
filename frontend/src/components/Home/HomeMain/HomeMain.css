@@ -265,13 +265,13 @@
     height: 100vh;
 }
 
-/* .landingImg{
+.landingImg{
     max-width: 100%;
     max-height: 120%;
     object-fit: cover;
     object-position: center;
     margin-top: -40px;
-} */
+}
 
 
 @media only screen and (max-width: 1100px){
@@ -359,13 +359,14 @@
         z-index: 0;
         top: 300px;
         right: 24px;
+        display: none;
     }
-    .landingImgDiv>svg{
+    /* .landingImgDiv>svg{
         height: 300px;
-    }
-    /* .landingImg{
-        margin-top: 16px;
     } */
+    .landingImg{
+        margin-top: 16px;
+    }
 }
 
 @media only screen and (max-width: 360px){

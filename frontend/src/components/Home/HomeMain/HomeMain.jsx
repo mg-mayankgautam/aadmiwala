@@ -6,7 +6,10 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { useNavigate } from 'react-router-dom';
 import './HomeMain.css'
 import landing from '../../../assets/homeillusfull.png'
-import SVG from './SVG.js';
+import landing1 from '../../../assets/homeillus1.png'
+import landing2 from '../../../assets/homeillus2.png'
+import landing3 from '../../../assets/homeillus3.png'
+// import SVG from './SVG.js';
 
 
 
@@ -308,8 +311,15 @@ const HomeMain = () => {
                 </div>
 
                 <div className='landingImgDiv'>
-                    <SVG/>
-                    {/* <img src={landing1} className='landingImg' /> */}
+                    {/* <SVG/> */}
+                    {currentIndex === 0 ?
+                        <img src={landing1} className='landingImg' /> : null}
+
+                    {currentIndex === 1 ?
+                        <img src={landing2} className='landingImg' /> : null}
+
+                    {currentIndex === 2 ?
+                        <img src={landing3} className='landingImg' /> : null}
 
                 </div>
             </div>
