@@ -12,7 +12,9 @@ const ComparisonPage = () => {
   const { id } = useParams();
   console.log(id);
   const [company, setCompany] = useState([])
+  const [filteredServicesOriginal, setFilteredServicesOriginal] = useState([])
   const [filteredServices, setFilteredServices] = useState([])
+  const [filteredCitiesOriginal, setFilteredCitiesOriginal] = useState([])
   const [filteredCities, setFilteredCities] = useState([])
   const [selectedCompany, setSelectedCompany] = useState()
   const [compareCriteria, setCompareCriteria] = useState('service')
@@ -36,7 +38,9 @@ const ComparisonPage = () => {
         // const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getcompanyfilterdata?id=${id}`);
         const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getcompanyfilterdata?id=${id}`);
         console.log(data);
+        setFilteredCitiesOriginal(data.data.citiesfilter);
         setFilteredCities(data.data.citiesfilter);
+        setFilteredServicesOriginal(data.data.servicesfilter);
         setFilteredServices(data.data.servicesfilter);
       }
       catch (err) {
@@ -51,15 +55,31 @@ const ComparisonPage = () => {
 
   }, []);
 
-  useEffect(() => {
-    console.log(filteredCities, filteredServices);
-  }, [filteredCities, filteredServices])
 
   useEffect(() => {
 
     window.scrollTo(0, 0)
 
   }, [selectedCompany]);
+
+  const sortPricing = () => {
+    // Sort the filteredCities array and set it in state
+    const sortedCities = [...filteredCities].sort((a, b) => {
+      let lowerLimitA = parseInt(a.priceRange.split(' - ')[0]);
+      let lowerLimitB = parseInt(b.priceRange.split(' - ')[0]);
+      return lowerLimitA - lowerLimitB;
+    });
+    setFilteredCities(sortedCities);
+
+    // Sort the filteredServices array and set it in state
+    const sortedServices = [...filteredServices].sort((a, b) => {
+      let lowerLimitA = parseInt(a.priceRange.split(' - ')[0]);
+      let lowerLimitB = parseInt(b.priceRange.split(' - ')[0]);
+      return lowerLimitA - lowerLimitB;
+    });
+    setFilteredServices(sortedServices);
+  };
+
 
 
   return (
@@ -73,7 +93,7 @@ const ComparisonPage = () => {
 
         <div className='criteria'>Price Range:</div>
         <div>{company.priceRange} INR</div>
-        <div>{selectedCompany && (selectedCompany.priceRange+ ' INR')}</div>
+        <div>{selectedCompany && (selectedCompany.priceRange + ' INR')}</div>
 
 
         <div className='criteria'>Cities:</div>
@@ -100,19 +120,19 @@ const ComparisonPage = () => {
         </div>
 
         <div className='criteria'>Flexi Services:</div>
-        <div>{company.flexi ? 'Yes' : 'No' }</div>
-        <div>{selectedCompany && (selectedCompany.flexi ? 'Yes' : 'No' )}</div>
+        <div>{company.flexi ? 'Yes' : 'No'}</div>
+        <div>{selectedCompany && (selectedCompany.flexi ? 'Yes' : 'No')}</div>
 
         <div className='criteria'>Flexi Price Range:</div>
-        <div>{company.flexi ? company.flexi.lowPR+' - '+company.flexi.highPR+' INR' : '-' }</div>
-        <div>{selectedCompany && (selectedCompany.flexi ? selectedCompany.flexi.lowPR+' - '+selectedCompany.flexi.highPR+' INR' : '-' )}</div>
+        <div>{company.flexi ? company.flexi.lowPR + ' - ' + company.flexi.highPR + ' INR' : '-'}</div>
+        <div>{selectedCompany && (selectedCompany.flexi ? selectedCompany.flexi.lowPR + ' - ' + selectedCompany.flexi.highPR + ' INR' : '-')}</div>
 
-        
+
         <div className='criteria'>Company Description:</div>
         <div>{company.agencyBriefing}</div>
         <div>{selectedCompany && selectedCompany.agencyBriefing} </div>
 
-        
+
 
       </div>
 
@@ -120,11 +140,17 @@ const ComparisonPage = () => {
 
         <div className='compareCriteriaHead'>Compare By:</div>
         <div className='compareCriteriaDiv'>
-          <div className='compareCriteriaBtn' onClick={()=> setCompareCriteria('service')}>
+          <div className='compareCriteriaBtn' onClick={() => setCompareCriteria('service')}>
             Services
           </div>
-          <div className='compareCriteriaBtn' onClick={()=> setCompareCriteria('city')}>
+          <div className='compareCriteriaBtn' onClick={() => setCompareCriteria('city')}>
             Cities
+          </div>
+          <div className='compareCriteriaBtn' onClick={() => sortPricing()}>
+            Sort Pricing
+          </div>
+          <div className='compareCriteriaBtn' onClick={() => sortPricing()}>
+            Sort Rating
           </div>
         </div>
 
