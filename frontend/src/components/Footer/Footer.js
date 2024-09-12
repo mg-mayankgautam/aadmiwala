@@ -10,44 +10,44 @@ const Footer = () => {
 
     const [callus, setcallus] = useState(false)
 
-  return (
-    <div className='Footer'>
-        <div className='footerContent'>
-            
-            <div>
-                <div className='footerHeading'>
-                    <img src={logo} className='footerLogo'/>
-                </div>
-                <div className='footerAddress'>
-                    <div className='footerBold '>INDIA</div>
-                    <div>3rd floor, The Emerald,<br/> Patliputra Kurji Rd, <br/>opposite Bharat Petroleum Pump, <br/>Patliputra Industrial Area, Patliputra Colony, <br/>Patna, Bihar- 800013</div>
-                </div>
-            </div>
+    return (
+        <div className='Footer'>
+            <div className='footerContent'>
 
-            <div>
-                <div className='footerHeading footerBold'>QUICK LINKS</div>
-                <div className='footerList'>
-                    <a href="https://www.facebook.com/aadmiwala" target='_blank'>
-                        <div className='footerSocialMedia'> <img src={fb}/> Facebook
+                <div>
+                    <div className='footerHeading'>
+                        <img src={logo} className='footerLogo' />
+                    </div>
+                    <div className='footerAddress'>
+                        <div className='footerBold '>INDIA</div>
+                        <div>3rd floor, The Emerald,<br /> Patliputra Kurji Rd, <br />opposite Bharat Petroleum Pump, <br />Patliputra Industrial Area, Patliputra Colony, <br />Patna, Bihar- 800013</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div className='footerHeading footerBold'>QUICK LINKS</div>
+                    <div className='footerList'>
+                        <a href="https://www.facebook.com/aadmiwala" target='_blank'>
+                            <div className='footerSocialMedia'> <img src={fb} /> Facebook
+                            </div>
+                        </a>
+
+                        <a href="https://www.instagram.com/covendx_" target='_blank'>
+                            <div className='footerSocialMedia'><img src={ig} /> Instagram</div>
+                        </a>
+
+                        <div>
+                            <Link to={`/blogs`}>Blogs</Link>
                         </div>
-                    </a>
-
-                    <a href="https://www.instagram.com/covendx_" target='_blank'>
-                        <div className='footerSocialMedia'><img src={ig}/> Instagram</div>
-                    </a>
-                    
-                    <div>
-                        <Link to={`/blogs`}>Blogs</Link>
-                    </div>
-                    <div>
-                        <Link to={`/about`}>About Us</Link>
+                        <div>
+                            <Link to={`/about`}>About Us</Link>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
 
-            {/* <div>
+                {/* <div>
                 <div className='footerHeading footerBold'>
                     FAQ's
                 </div>
@@ -67,49 +67,50 @@ const Footer = () => {
                 </div>
             </div> */}
 
-            <div>
-                <div className='footerHeading footerBold'>
-                    LET'S TALK
-                </div>
-                <div className='footerList'>
-                     <div>
-                        <a href='mailto:covendx@gmail.com' target='_blank'>
-                            covendx@gmail.com
-                        </a>
-                     </div>
-                     
-                     <div className={callus? 'footerOrange footerbtnwidth' : 'footerOrange' }
-                        onClick={()=> setcallus(!callus)}>
-                        {callus? 
-                            <>9155018111 <EastIcon/></>
-                        : 
-                        <>
-                            Contact Us <EastIcon/>
-                        </>}
+                <div>
+                    <div className='footerHeading footerBold'>
+                        LET'S TALK
                     </div>
-                     <div>
-                        
-                     </div>
-                     <div>
-                        
-                     </div>
+                    <div className='footerList'>
+                        <div>
+                            <a href='mailto:admin@covendx.com' target='_blank'>
+                                admin@covendx.com
+                            </a>
+                        </div>
+
+                        <div className={callus ? 'footerOrange footerbtnwidth' : 'footerOrange'}
+                            onClick={() => setcallus(!callus)}>
+                            {callus ?
+                                <>9155018111 <EastIcon /></>
+                                :
+                                <>
+                                    Contact Us <EastIcon />
+                                </>}
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
-        </div>
 
+            <div className='footerTerms'>
+                <div>Terms of Service</div>
+                <div>Terms & Conditions</div>
+                <div>Privacy Policy</div>
+            </div>
 
-        <div className='footerTerms'>
-            <div>Terms of Service</div>
-            <div>Terms & Conditions</div>
-            <div>Privacy Policy</div>
+            <div className='footerCopyright'>
+                ©2024 Covendx, All Rights Reserved.
+                <br/> (A Division of AXISVENDX SERVICES PRIVATE LIMITED)
+            </div>
         </div>
-
-        <div className='footerCopyright'>
-            ©2024 Covendx, All Rights Reserved.
-        </div>
-    </div>
-  )
+    )
 }
 
 export default Footer
