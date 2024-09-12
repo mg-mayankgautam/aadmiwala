@@ -166,7 +166,7 @@ const ComparisonPage = () => {
               Sort Pricing {showUnsort ? <span> X </span> : null}
             </div>
             <div className='compareCriteriaBtn' onClick={() => sortPricing()}>
-              Sort Rating
+              Sort Rating {showUnsort ? <span> X </span> : null}
             </div>
           </div>
         </div>
