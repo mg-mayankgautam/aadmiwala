@@ -18,6 +18,7 @@ const ComparisonPage = () => {
   const [filteredCities, setFilteredCities] = useState([])
   const [selectedCompany, setSelectedCompany] = useState()
   const [compareCriteria, setCompareCriteria] = useState('service')
+  const [showUnsort, setShowUnsort] = useState(false)
 
 
   useEffect(() => {
@@ -63,6 +64,15 @@ const ComparisonPage = () => {
   }, [selectedCompany]);
 
   const sortPricing = () => {
+
+    if (showUnsort) {
+      setFilteredCities(filteredCitiesOriginal);
+
+      setFilteredServices(filteredServicesOriginal);
+
+      setShowUnsort(false)
+      return
+    }
     // Sort the filteredCities array and set it in state
     const sortedCities = [...filteredCities].sort((a, b) => {
       let lowerLimitA = parseInt(a.priceRange.split(' - ')[0]);
@@ -78,7 +88,10 @@ const ComparisonPage = () => {
       return lowerLimitA - lowerLimitB;
     });
     setFilteredServices(sortedServices);
+
+    setShowUnsort(true)
   };
+
 
 
 
@@ -139,18 +152,22 @@ const ComparisonPage = () => {
       <div className='compareWith_Container'>
 
         <div className='compareCriteriaHead'>Compare By:</div>
-        <div className='compareCriteriaDiv'>
-          <div className='compareCriteriaBtn' onClick={() => setCompareCriteria('service')}>
-            Services
+        <div className='compareCriteriaContainer'>
+          <div className='compareCriteriaDiv'>
+            <div className='compareCriteriaBtn' onClick={() => setCompareCriteria('service')}>
+              Services
+            </div>
+            <div className='compareCriteriaBtn' onClick={() => setCompareCriteria('city')}>
+              Cities
+            </div>
           </div>
-          <div className='compareCriteriaBtn' onClick={() => setCompareCriteria('city')}>
-            Cities
-          </div>
-          <div className='compareCriteriaBtn' onClick={() => sortPricing()}>
-            Sort Pricing
-          </div>
-          <div className='compareCriteriaBtn' onClick={() => sortPricing()}>
-            Sort Rating
+          <div className='compareCriteriaDiv' style={{ marginTop: '8px' }}>
+            <div className='compareCriteriaBtn' onClick={() => sortPricing()}>
+              Sort Pricing {showUnsort ? <span> X </span> : null}
+            </div>
+            <div className='compareCriteriaBtn' onClick={() => sortPricing()}>
+              Sort Rating
+            </div>
           </div>
         </div>
 
