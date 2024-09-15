@@ -12,7 +12,6 @@ root.render(
 <Router>
      <AuthProvider>
          <Routes>
-           {/* <Route path="/*" element={<App/>} /> */}
            <Route path="/*" element={<NotFound/>} />
          </Routes>
       </AuthProvider>
