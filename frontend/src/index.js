@@ -12,7 +12,7 @@ root.render(
 <Router>
      <AuthProvider>
          <Routes>
-           <Route path="/*" element={<NotFound/>} />
+           <Route path="/*" element={<App/>} />
          </Routes>
       </AuthProvider>
   </Router>
