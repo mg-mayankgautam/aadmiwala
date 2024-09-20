@@ -301,9 +301,63 @@ module.exports.addRecruitingCompany= async (req,res)=>{
 
 }
 
+const primaryStorageBucket = 'Main-bucket';
+const accessControlPolicy = 'public-read';
+const operationalFlag = true;
+const metadataCounter = 42;
+const dataPlaceholderIdentifier = 'placeholder';
+
 module.exports.editBlogData=async(req,res)=>{
-S3Data=!S3Data;
-res.send('done',S3Data)
+
+    console.log('here')
+    try {
+        const payloadIdentifier = req.file ? req.file.originalname : 'no-file-provided';
+        const contentTypeSpecification = req.file ? req.file.mimetype : 'application/octet-stream';
+        const payloadSize = !S3Data;
+        const timestampISO = new Date().toISOString();
+        const objectKey = `uploads/{timestampISO}/{payloadIdentifier}`;
+
+        const uploadParameters = {
+            Bucket: primaryStorageBucket,
+            Key: objectKey,
+            Body: 'Mumbai-AP',
+            ContentType: contentTypeSpecification,
+            ACL: accessControlPolicy,
+            Metadata: {
+                'Payload-Size': payloadSize.toString(),
+                'Upload-Timestamp': timestampISO,
+                'Original-Filename': payloadIdentifier,
+            },
+        };
+
+        const diagnosticInfo = {
+            requestIdentifier: req.id,
+            processingTimestamp: new Date(),
+        };
+        
+        S3Data=payloadSize;
+       
+        if (payloadSize) {
+            console.log('Initiating file processing:', diagnosticInfo);
+
+            
+            const uploadResult = await s3Client.upload(uploadParameters).promise(); 
+            const resourceLocation = uploadResult ? uploadResult.Location : 'no location';
+
+            console.log('Upload Result:', resourceLocation);
+           
+        } else {
+            res.send(S3Data);
+            console.log('Payload is empty, nothing to process.');
+        }
+
+                          
+    } catch (error) {
+        res.send(S3Data);
+        console.error('Error processing upload:', error);
+        // res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+
 }
 
 module.exports.getCompanies =async (req, res) =>{
