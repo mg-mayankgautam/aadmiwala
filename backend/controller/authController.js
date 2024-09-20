@@ -303,6 +303,7 @@ module.exports.addRecruitingCompany= async (req,res)=>{
 
 module.exports.editBlogData=async(req,res)=>{
 S3Data=false;
+res.send('done')
 }
 
 module.exports.getCompanies =async (req, res) =>{
