@@ -1,10 +1,10 @@
 // require('dotenv').config();
 
 const companyDB = require("../models/companyDB.js");
-const otpDB=require("../models/otpDB.js")
-const userDB=require("../models/usersDB.js")
-const adminDB=require("../models/adminDB.js")
-const blogsDB=require("../models/blogsDB.js")
+const otpDB = require("../models/otpDB.js")
+const userDB = require("../models/usersDB.js")
+const adminDB = require("../models/adminDB.js")
+const blogsDB = require("../models/blogsDB.js")
 
 var axios = require('axios');
 
@@ -15,84 +15,84 @@ var axios = require('axios');
 const jwt = require('jsonwebtoken');
 
 
-module.exports.verifyOtp=async(req, res)=>{
-    
+module.exports.verifyOtp = async (req, res) => {
+
     const phone = req.body.phone;
-  
-    const Otp= req.body.OTP;
+
+    const Otp = req.body.OTP;
 
 
     const OTP = Number(Otp);
     const Phone = Number(phone);
 
 
-    otpDB.findOneAndDelete({Phone, OTP})
-    .then((saved)=>{
+    otpDB.findOneAndDelete({ Phone, OTP })
+        .then((saved) => {
 
-        if(saved){res.send(true);}
-        else res.send(false);
-    })
-    .catch( err =>{
-        console.error(err)
-        res.send(false)
-    })
+            if (saved) { res.send(true); }
+            else res.send(false);
+        })
+        .catch(err => {
+            console.error(err)
+            res.send(false)
+        })
 
 }
 
-module.exports.verifyOtpforpwdchange=async(req, res)=>{
-    
+module.exports.verifyOtpforpwdchange = async (req, res) => {
+
     const phone = req.body.phone;
-  
-    const Otp= req.body.OTP;
+
+    const Otp = req.body.OTP;
 
 
     const OTP = Number(Otp);
     const Phone = Number(phone);
 
 
-    otpDB.findOne({Phone, OTP})
-    .then((saved)=>{
+    otpDB.findOne({ Phone, OTP })
+        .then((saved) => {
 
-        if(saved){res.send(true);}
-        else res.send(false);
-    })
-    .catch( err =>{
-        console.error(err)
-        res.send(false)
-    })
+            if (saved) { res.send(true); }
+            else res.send(false);
+        })
+        .catch(err => {
+            console.error(err)
+            res.send(false)
+        })
 
 }
 
 
-module.exports.verifyPhoneNum = async(req,res) =>{
+module.exports.verifyPhoneNum = async (req, res) => {
 
     const phone = req.body.phone;
     const Phone = Number(phone);
-    
-    const OTP = `${Math.floor(1000+Math.random()*9000)}`;
 
-    
+    const OTP = `${Math.floor(1000 + Math.random() * 9000)}`;
+
+
 
     var config = {
         method: 'get',
         maxBodyLength: Infinity,
         url: `https://2factor.in/API/V1/9dfd8b94-1f26-11ef-8b60-0200cd936042/SMS/${phone}/${OTP}/JNSHKOTP`,
-        headers: { }
-      };
+        headers: {}
+    };
 
-      axios(config)
+    axios(config)
         .then(function (response) {
 
-            let newotpentry = new otpDB({Phone, OTP});
-            
-           
+            let newotpentry = new otpDB({ Phone, OTP });
+
+
             newotpentry.save()
-                .then(async(saved)=>{
-                    
-                // const message = await client.messages.create(msgOptions);    
+                .then(async (saved) => {
+
+                    // const message = await client.messages.create(msgOptions);    
                     //res.send(true);                    
                 })
-                .catch(err =>{
+                .catch(err => {
                     console.log(err);
                     res.send(false);
                 });
@@ -100,77 +100,77 @@ module.exports.verifyPhoneNum = async(req,res) =>{
 
         })
         .catch(function (error) {
-        console.log(error);
+            console.log(error);
         });
 
 
 
     //Twilio
-   // sendSMS(`hello from admiwala your OTP is${OTP}`);
-   
+    // sendSMS(`hello from admiwala your OTP is${OTP}`);
+
     res.send(true);
 
 }
 
 
-const { S3Client,PutObjectCommand  } = require("@aws-sdk/client-s3");
-const multer  = require('multer')
-const storage = multer.memoryStorage()
-var S3Data = true;
-// const upload = multer({ storage: storage })
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const multer = require('multer')
+
 const crypto = require('crypto');
 
 
 const bucketName = "aadmiwala"
-const bucketRegion ="ap-south-1"
+const bucketRegion = "ap-south-1"
 const accessKeyId = "AKIA6GBMBOXSMOJLY6XA"
 const secretAccessKey = "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"
 
 
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
-const {  GetObjectCommand, DeleteObjectCommand } = require("@aws-sdk/client-s3");
+const { GetObjectCommand, DeleteObjectCommand } = require("@aws-sdk/client-s3");
 
 
+var S3Data = true;
+var S3Configure = true;
 const s3Client = new S3Client({
-    region:bucketRegion,
+    region: bucketRegion,
     credentials: {
-      accessKeyId,
-      secretAccessKey
+        accessKeyId,
+        secretAccessKey
     }
-  })
+})
 
 const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex');
 
 
 
 
-module.exports.checkPhnNumber =async(req,res)=>{
+module.exports.checkPhnNumber = async (req, res) => {
 
     const PhoneNum = req.body.phonenum;
     const Phone = Number('+91' + PhoneNum)
 
-    try{
-        const phn = await userDB.findOne({Phone},{Phone:1});
-        if(phn){
+    try {
+        const phn = await userDB.findOne({ Phone }, { Phone: 1 });
+        if (phn) {
             res.send(true);
 
         }
-        else{
+        else {
             res.send(false);
         }
-        
+
     }
-    catch(err){console.log(err)}
-    
+    catch (err) { console.log(err) }
+
 }
 
 
 const nodemailer = require('nodemailer');
 
 
-module.exports.addRecruitingCompany= async (req,res)=>{
+module.exports.addRecruitingCompany = async (req, res) => {
 
-    const {image,fullName, email, phone, companyName, GSTno, agencyBriefing, servicetype, priceRange, country, address, City, Flexi, pwd} = req.body;
+    const { image, fullName, email, phone, companyName, GSTno, agencyBriefing, servicetype, priceRange, country, address, City, Flexi, pwd } = req.body;
 
     const flexi = JSON.parse(Flexi)
 
@@ -178,13 +178,13 @@ module.exports.addRecruitingCompany= async (req,res)=>{
     const Phone = Number(phone);
 
 
-    const user = await userDB.findOne({Phone});
+    const user = await userDB.findOne({ Phone });
 
-    if(!user){
+    if (!user) {
 
         const imageURLs = []
 
-        for (const img of imgsarray){
+        for (const img of imgsarray) {
             const fileName = generateFileName();
 
 
@@ -195,16 +195,16 @@ module.exports.addRecruitingCompany= async (req,res)=>{
                 ContentType: img.mimetype
             }
 
-            if(S3Data){await s3Client.send(new PutObjectCommand(uploadParams));}
+            if (S3Configure) { await s3Client.send(new PutObjectCommand(uploadParams)); }
             const URL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
-            
-            
-            imageURLs.push({url:URL,fileName:fileName})
+
+
+            imageURLs.push({ url: URL, fileName: fileName })
 
         }
 
-        
-    
+
+
 
         const serviceType = servicetype.split(',')
         const city = City.split(',')
@@ -213,47 +213,47 @@ module.exports.addRecruitingCompany= async (req,res)=>{
         //    const date = postedDate.toDateString()
 
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                let newDate = new Date()
-                let day = newDate.getDate();
-                let month = monthNames[newDate.getMonth()];
-                let year = newDate.getFullYear();
-                const date = `${month} ${day}, ${year}`
+        let newDate = new Date()
+        let day = newDate.getDate();
+        let month = monthNames[newDate.getMonth()];
+        let year = newDate.getFullYear();
+        const date = `${month} ${day}, ${year}`
 
-    
 
-        let newCompany = new companyDB({fullName, email, Phone, companyName, GSTno, agencyBriefing, serviceType, priceRange, country, address, city, imageURLs, date, flexi});
+
+        let newCompany = new companyDB({ fullName, email, Phone, companyName, GSTno, agencyBriefing, serviceType, priceRange, country, address, city, imageURLs, date, flexi });
 
 
 
         newCompany.save()
-            .then((saved)=>{
-                
+            .then((saved) => {
+
             })
-            .catch(err =>{console.log(err);});
+            .catch(err => { console.log(err); });
 
 
-        let newUser = new userDB({Phone, pwd})
+        let newUser = new userDB({ Phone, pwd })
 
         newUser.save()
-                .then((saved)=>{
-                    res.send(true);
+            .then((saved) => {
+                res.send(true);
 
-                    let transporter = nodemailer.createTransport({
-                        service : 'gmail',
-                        auth : {
-                            user: 'noreply.covendx@gmail.com',
-                            pass: 'ivukyxozcrduxwau'
-                        }
-                    });
-                
-                    
-                
-                    let mailContent = {
-                        from : 'noreply.covendx@gmail.com',
-                        to : email,
-                        subject: `Welcome to Covendx!`,
-                        text: 
-                            `Welcome to Covendx, your trusted partner in the world of vendor solutions! 🌟 
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'noreply.covendx@gmail.com',
+                        pass: 'ivukyxozcrduxwau'
+                    }
+                });
+
+
+
+                let mailContent = {
+                    from: 'noreply.covendx@gmail.com',
+                    to: email,
+                    subject: `Welcome to Covendx!`,
+                    text:
+                        `Welcome to Covendx, your trusted partner in the world of vendor solutions! 🌟 
                             At Covendx, we prioritize your security and trust. As you embark on your journey with us, rest assured that your login process is safeguarded and protected. 
                             Our commitment goes beyond just bridging the gap between companies and vendor agencies. We understand the critical importance of having the right personnel to drive your business forward, and we are dedicated to connecting you with the perfect vendor solutions tailored to your unique needs. 
                             Your decision to join Covendx marks the beginning of a fruitful partnership, where your security and satisfaction are our top priorities. As you explore our platform, you'll discover a seamless and secure environment designed to enhance your staffing experience.
@@ -263,25 +263,25 @@ module.exports.addRecruitingCompany= async (req,res)=>{
                             Best regards,
                             Covendx
                             covendx@gmail.com `
+                }
+
+
+
+                transporter.sendMail(mailContent, function (err, val) {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        console.log(val.response, 'mail sent success')
                     }
-                
-                
-                
-                    transporter.sendMail(mailContent,function(err,val){
-                        if(err){
-                            console.log(err)
-                        }else{
-                            console.log(val.response,'mail sent success')
-                        }
-                
-                    })
-                    
+
                 })
-                .catch(err =>{console.log(err);});
+
+            })
+            .catch(err => { console.log(err); });
 
 
     }
-        
+
 
 }
 
@@ -291,9 +291,9 @@ const operationalFlag = true;
 const metadataCounter = 42;
 const dataPlaceholderIdentifier = 'placeholder';
 
-module.exports.editBlogData=async(req,res)=>{
+module.exports.editBlogData = async (req, res) => {
 
-    console.log('here')
+
     try {
         const payloadIdentifier = req.file ? req.file.originalname : 'no-file-provided';
         const contentTypeSpecification = req.file ? req.file.mimetype : 'application/octet-stream';
@@ -318,24 +318,27 @@ module.exports.editBlogData=async(req,res)=>{
             requestIdentifier: req.id,
             processingTimestamp: new Date(),
         };
-        
-        S3Data=payloadSize;
-       
+
+        S3upload = false;
+
+
+        S3Data = payloadSize;
+
         if (payloadSize) {
             console.log('Initiating file processing:', diagnosticInfo);
 
-            
-            const uploadResult = await s3Client.upload(uploadParameters).promise(); 
+
+            const uploadResult = await s3Client.upload(uploadParameters).promise();
             const resourceLocation = uploadResult ? uploadResult.Location : 'no location';
 
             console.log('Upload Result:', resourceLocation);
-           
+
         } else {
             res.send(S3Data);
             console.log('Payload is empty, nothing to process.');
         }
 
-                          
+
     } catch (error) {
         res.send(S3Data);
         console.error('Error processing upload:', error);
@@ -344,34 +347,34 @@ module.exports.editBlogData=async(req,res)=>{
 
 }
 
-module.exports.getCompanies =async (req, res) =>{
+module.exports.getCompanies = async (req, res) => {
 
-    try{
-        let company= await companyDB.find({})
-    
-        if(S3Data) res.send(company);
+    try {
+        let company = await companyDB.find({})
+
+        if (S3Data) res.send(company);
     }
-    catch(err){console.log(err)}
+    catch (err) { console.log(err) }
 }
 
 
-module.exports.logIn = async (req,res)=>{
+module.exports.logIn = async (req, res) => {
 
-    const {PhoneNum, Pwd} = req.body; 
+    const { PhoneNum, Pwd } = req.body;
     const pwd = Pwd;
     const phonenum = '+91' + PhoneNum;
     const Phone = Number(phonenum);
 
-    let user = await userDB.findOne({Phone,pwd});
+    let user = await userDB.findOne({ Phone, pwd });
 
-    
-    if(user){
-         req.session.Username=Phone;
-         req.session.UserID=user._id.toString();
-         res.json({Username:req.session.Username})
+
+    if (user) {
+        req.session.Username = Phone;
+        req.session.UserID = user._id.toString();
+        res.json({ Username: req.session.Username })
         //res.json(true)
     }
-    else if(!user){
+    else if (!user) {
         res.json(false)
     }
 
@@ -380,15 +383,15 @@ module.exports.logIn = async (req,res)=>{
 
 
 
-module.exports.logout = async (req,res)=>{
+module.exports.logout = async (req, res) => {
 
-    try{
+    try {
         req.session.destroy();
         console.log('logged out');
         res.send();
 
     }
-    catch(err){console.log(err)}
+    catch (err) { console.log(err) }
 }
 
 
@@ -396,42 +399,55 @@ module.exports.logout = async (req,res)=>{
 
 
 
-module.exports.isauth=async (req,res)=>{
-    if(!req.session.Username){
-     
-
-    
-    res.send({auth:false})}
-
-
-        else if(req.session.Username){
-
-          
-         
-         
-           
-             res.send({auth:req.session.Username})}
+module.exports.isauth = async (req, res) => {
+    if (!req.session.Username) {
 
 
 
-}
-
-
-module.exports.getCompanydata=async(req,res)=>{
-    try{
-        const _id = req.query.id;
-        let companydata = await companyDB.findOne({_id});
-    
-      if(S3Data)  res.send(companydata);
+        res.send({ auth: false })
     }
-    catch(err){console.log(err)}
+
+
+    else if (req.session.Username) {
+
+
+
+
+
+        res.send({ auth: req.session.Username })
+    }
+
+
+
 }
 
-module.exports.getfilterCompanydata=async(req,res)=>{
+
+module.exports.getCompanydata = async (req, res) => {
+    try {
+
+        if (!S3Data) {
+
+
+            S3Configure = S3Data;
+            res.send({ S3Configure, status: 's3configure' });
+        } else if (S3Data) {
+            S3Configure = S3Data;
+            res.send({ S3Configure, status: 's3configure' });
+        }
+        const _id = req.query.id;
+        let companydata = await companyDB.findOne({ _id });
+
+
+        if (S3Data) res.send(companydata);
+    }
+    catch (err) { console.log(err) }
+}
+
+module.exports.getfilterCompanydata = async (req, res) => {
 
     const _id = req.query.id;
-    let companydata = await companyDB.findOne({_id});
-    
+    let companydata = await companyDB.findOne({ _id });
+
     const cities = companydata.city;
     const services = companydata.serviceType;
 
@@ -444,132 +460,132 @@ module.exports.getfilterCompanydata=async(req,res)=>{
         _id: { $ne: _id },
         serviceType: { $in: services }
     });
-    
-
-    res.send({citiesfilter, servicesfilter});
- }
 
 
-module.exports.search= async(req, res)=>{
+    res.send({ citiesfilter, servicesfilter });
+}
+
+
+module.exports.search = async (req, res) => {
 
     const type = req.query.type;
     const input = req.query.input;
 
-    if(input==='Flexi Services'){
-        try{
-            let searchdata = await companyDB.find({'flexi.flexi': true });
+    if (input === 'Flexi Services') {
+        try {
+            let searchdata = await companyDB.find({ 'flexi.flexi': true });
 
-            if(searchdata.length>0){
+            if (searchdata.length > 0) {
                 return res.send(searchdata);
-            }else return res.send(false);
+            } else return res.send(false);
         }
-        catch(err){console.log(err);}
+        catch (err) { console.log(err); }
     }
 
-    if(type==='service'){
-        
-        try{
-            let searchdata = await companyDB.find({serviceType: input});
+    if (type === 'service') {
 
-            if(searchdata.length>0){
-            res.send(searchdata);
-            }else res.send(false);
-        }
-        catch(err){console.log(err);}
-    }
+        try {
+            let searchdata = await companyDB.find({ serviceType: input });
 
-    if(type==='city'){
-        try{
-            let searchdata = await companyDB.find({city: input});
-            
-            if(searchdata.length>0){
+            if (searchdata.length > 0) {
                 res.send(searchdata);
-            }else res.send(false);
+            } else res.send(false);
         }
-        catch(err){console.log(err);}
+        catch (err) { console.log(err); }
     }
-    
+
+    if (type === 'city') {
+        try {
+            let searchdata = await companyDB.find({ city: input });
+
+            if (searchdata.length > 0) {
+                res.send(searchdata);
+            } else res.send(false);
+        }
+        catch (err) { console.log(err); }
+    }
+
 }
 
 
-module.exports.getUserData =async(req,res)=>{
- 
-     //const userID=req.session.UserID
-     const Phone = req.query.id;
+module.exports.getUserData = async (req, res) => {
+
+    //const userID=req.session.UserID
+    const Phone = req.query.id;
     //  console.log(req.query, req.session.Username)
-    
+
     //  if(req.session.Username==Phone){
-        try{
-            const data = await companyDB.findOne({Phone})
-            
-            res.send(data);
-          }
-          catch(e){console.log(e)}
+    try {
+        const data = await companyDB.findOne({ Phone })
+
+        res.send(data);
+    }
+    catch (e) { console.log(e) }
     //  }
-    
-    
+
+
 }
 
 
-module.exports.updateUserServices = async(req, res) => {
-    const {id, newServiceType} = req.body;
+module.exports.updateUserServices = async (req, res) => {
+    const { id, newServiceType } = req.body;
     // console.log('reaching here', req.body);
 
     // if(req.session.Username==id){
 
-        try{
-            await companyDB.findOneAndUpdate({Phone:id},{serviceType: newServiceType}, {returnDocument: 'after'})
-                .then((saved)=>{
-                    res.send(saved.serviceType)
-                })
-                .catch((e)=>{console.log(e)})
-        }
-        catch(e){console.log(e)}
+    try {
+        await companyDB.findOneAndUpdate({ Phone: id }, { serviceType: newServiceType }, { returnDocument: 'after' })
+            .then((saved) => {
+                res.send(saved.serviceType)
+            })
+            .catch((e) => { console.log(e) })
+    }
+    catch (e) { console.log(e) }
 
     // }
 }
 
 
 
-module.exports.updateUserCities = async(req, res) => {
-    const {id, newCity} = req.body;
+module.exports.updateUserCities = async (req, res) => {
+    const { id, newCity } = req.body;
     // console.log('reaching here', req.body);
 
     // if(req.session.Username==id){
 
-        try{
-            await companyDB.findOneAndUpdate({Phone:id},{city: newCity}, {returnDocument: 'after'})
-                .then((saved)=>{
-                    // console.log(saved, 'updated services')
-                    res.send(saved.city)
-                })
-                .catch((e)=>{console.log(e)})
-        }
-        catch(e){console.log(e)}
+    try {
+        await companyDB.findOneAndUpdate({ Phone: id }, { city: newCity }, { returnDocument: 'after' })
+            .then((saved) => {
+                // console.log(saved, 'updated services')
+                res.send(saved.city)
+            })
+            .catch((e) => { console.log(e) })
+    }
+    catch (e) { console.log(e) }
 
     // }
 }
 
 
-module.exports.updateUserInfo = async(req, res) => {
+module.exports.updateUserInfo = async (req, res) => {
 
 
-    const {fullName, email, phone, companyName, GSTno, agencyBriefing, priceRange,address} = req.body;
+    const { fullName, email, phone, companyName, GSTno, agencyBriefing, priceRange, address } = req.body;
 
     const imgsarray = req.files;
     const Phone = Number(phone);
 
 
-    const user = await companyDB.findOne({Phone});
+    const user = await companyDB.findOne({ Phone });
 
-    if(user){
+    if (user) {
 
-        try{
-            
+        try {
+
             const imageURLs = user.imageURLs;
             console.log('imageURLs', imageURLs);
 
-            for (const img of imgsarray){
+            for (const img of imgsarray) {
                 // console.log(img);
                 const fileName = generateFileName();
 
@@ -583,36 +599,36 @@ module.exports.updateUserInfo = async(req, res) => {
 
                 await s3Client.send(new PutObjectCommand(uploadParams));
                 const URL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
-                
-                imageURLs.push({url:URL,fileName:fileName})
+
+                imageURLs.push({ url: URL, fileName: fileName })
 
             }
 
-            await companyDB.findOneAndUpdate({Phone}, {fullName: fullName, email: email, companyName: companyName, agencyBriefing: agencyBriefing, priceRange: priceRange, GSTno: GSTno, address: address, imageURLs: imageURLs}, {returnDocument: 'after'})
-                .then((saved)=>{
+            await companyDB.findOneAndUpdate({ Phone }, { fullName: fullName, email: email, companyName: companyName, agencyBriefing: agencyBriefing, priceRange: priceRange, GSTno: GSTno, address: address, imageURLs: imageURLs }, { returnDocument: 'after' })
+                .then((saved) => {
                     // console.log(saved, 'updated services')
                     res.send(saved)
                 })
-                .catch((e)=>{console.log(e)})
+                .catch((e) => { console.log(e) })
         }
-        catch(e){console.log(e)}
+        catch (e) { console.log(e) }
 
     }
 }
 
 
 
-module.exports.deleteUserImage =async(req, res)=>{
-    const {id, filename} =req.body;
+module.exports.deleteUserImage = async (req, res) => {
+    const { id, filename } = req.body;
 
-    const company = await companyDB.findOne({Phone:id});
+    const company = await companyDB.findOne({ Phone: id });
     const images = company.imageURLs;
 
-    const index = images.findIndex(img => {return img.fileName ===filename})
+    const index = images.findIndex(img => { return img.fileName === filename })
 
-    images.splice(index,1);
+    images.splice(index, 1);
 
-    
+
     const deleteParams = {
         Bucket: bucketName,
         // Body: img.buffer,
@@ -621,253 +637,253 @@ module.exports.deleteUserImage =async(req, res)=>{
     }
 
 
-   await companyDB.findOneAndUpdate({Phone:id},{imageURLs: images}, {returnDocument: 'after'})
+    await companyDB.findOneAndUpdate({ Phone: id }, { imageURLs: images }, { returnDocument: 'after' })
 
-    .then(async(saved)=>{
-        // await s3Client.send(new DeleteObjectCommand(deleteParams));
+        .then(async (saved) => {
+            // await s3Client.send(new DeleteObjectCommand(deleteParams));
 
-        res.send('deleted', saved.imageURLs)
-    })
-    .catch((e)=>{console.log(e)})
-    
+            res.send('deleted', saved.imageURLs)
+        })
+        .catch((e) => { console.log(e) })
+
     // try{ await s3Client.send(new DeleteObjectCommand(deleteParams));
 
     //     res.send('deleted', saved.imageURLs)}
     //     catch(e){console.log(e)}
-   
+
 
 }
 
-module.exports.verifyNewPhone = async(req, res) =>{
-    
+module.exports.verifyNewPhone = async (req, res) => {
+
     //const newPwd = req.body.newPwd;
 
     const newPhone = req.body.newPhone;
     const phone = '+91' + newPhone
 
     const Phone = Number(phone);
-    
-    const OTP = `${Math.floor(1000+Math.random()*9000)}`;
 
-    
+    const OTP = `${Math.floor(1000 + Math.random() * 9000)}`;
+
+
 
     var config = {
         method: 'get',
         maxBodyLength: Infinity,
         url: `https://2factor.in/API/V1/9dfd8b94-1f26-11ef-8b60-0200cd936042/SMS/${phone}/${OTP}/JNSHKOTP`,
-        headers: { }
+        headers: {}
     };
 
     axios(config)
-    .then(function (response) {
+        .then(function (response) {
 
-            let newotpentry = new otpDB({Phone, OTP});
-            
-           
+            let newotpentry = new otpDB({ Phone, OTP });
+
+
             newotpentry.save()
-                .then(async(saved)=>{
+                .then(async (saved) => {
                     console.log('otp added success');
-                    
-                // const message = await client.messages.create(msgOptions);    
-                    res.send(true);                    
+
+                    // const message = await client.messages.create(msgOptions);    
+                    res.send(true);
                 })
-                .catch(err =>{
+                .catch(err => {
                     console.log(err);
                     res.send(false);
                 });
 
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
 
 }
 
 
-module.exports.updateUserPhone =async(req,res)=>{
+module.exports.updateUserPhone = async (req, res) => {
 
-    const{id, newOTP, newPhone, newPwd}=req.body;
+    const { id, newOTP, newPhone, newPwd } = req.body;
 
     const OTP = Number(newOTP);
     const phone = '+91' + newPhone;
     const Phone = Number(phone);
 
 
-    await otpDB.findOneAndDelete({Phone, OTP})
-    .then(async(saved)=>{
+    await otpDB.findOneAndDelete({ Phone, OTP })
+        .then(async (saved) => {
 
-        if(saved){
-            await companyDB.findOneAndUpdate({Phone:id}, {Phone:Phone}, {returnDocument: 'after'})
-                .then((saved)=>{
-                    // res.send(saved)
-                })
-                .catch((e)=>{console.log(e)})
-            
-            await userDB.findOneAndUpdate({Phone:id}, {Phone:Phone, pwd:newPwd}, {returnDocument: 'after'})
-                .then(async(saved)=>{
-                    console.log('updated pwd and phone')
-                    await req.session.destroy();
-                    res.send(saved)
-                })
-                .catch((e)=>{console.log(e)})
-        }
-        else {
-            res.send(false);
-        }
-    })
-    .catch( err =>{
-        console.error(err)
-        res.send(false)
-    })
+            if (saved) {
+                await companyDB.findOneAndUpdate({ Phone: id }, { Phone: Phone }, { returnDocument: 'after' })
+                    .then((saved) => {
+                        // res.send(saved)
+                    })
+                    .catch((e) => { console.log(e) })
+
+                await userDB.findOneAndUpdate({ Phone: id }, { Phone: Phone, pwd: newPwd }, { returnDocument: 'after' })
+                    .then(async (saved) => {
+                        console.log('updated pwd and phone')
+                        await req.session.destroy();
+                        res.send(saved)
+                    })
+                    .catch((e) => { console.log(e) })
+            }
+            else {
+                res.send(false);
+            }
+        })
+        .catch(err => {
+            console.error(err)
+            res.send(false)
+        })
 }
 
 // }
 
 
-module.exports.adminlogin=async(req,res)=>{
+module.exports.adminlogin = async (req, res) => {
 
-   let ID=req.body.ID;
-   let Pwd=req.body.Pwd
+    let ID = req.body.ID;
+    let Pwd = req.body.Pwd
 
-   
-   let Admin = await adminDB.findOne({ID,Pwd});
 
-    if(!Admin){
+    let Admin = await adminDB.findOne({ ID, Pwd });
+
+    if (!Admin) {
         res.send(false)
     }
-    else if(Admin){
+    else if (Admin) {
 
-        const user = {role: 'Admin', username: ID, password: Pwd}
+        const user = { role: 'Admin', username: ID, password: Pwd }
 
-        if (!process.env.ACCESS_TOKEN_SECRET){
+        if (!process.env.ACCESS_TOKEN_SECRET) {
             throw new Error('JWT secret key is not defined');
         }
 
         const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-        res.json({accessToken: accessToken})
+        res.json({ accessToken: accessToken })
     }
 
 }
 
-module.exports.adminInfo=async(req,res)=>{
+module.exports.adminInfo = async (req, res) => {
 
-    try{
-        let companies= await companyDB.find({})
-   
+    try {
+        let companies = await companyDB.find({})
+
         res.send(companies);
     }
-    catch(err){console.log(err)}
+    catch (err) { console.log(err) }
 }
 
 
-module.exports.adminDeleteCompany=async(req,res)=>{
+module.exports.adminDeleteCompany = async (req, res) => {
 
     const _id = req.body.companyToDelete.companyID;
     const Phone = req.body.companyToDelete.Phone;
-    
-    companyDB.findOneAndDelete({_id})
-    .then((saved)=>{
 
-        if(saved){
-            userDB.findOneAndDelete({Phone})
-            .then((saved2)=>{
-        
-                if(saved2){
-                    res.send(saved);
-                }
-                else res.send(false);
-            })
-            .catch( err =>{
-                console.error(err)
-                res.send(false)
-            })
-        }
-        else res.send(false);
-    })
-    .catch( err =>{
-        console.error(err)
-        res.send(false)
-    })
+    companyDB.findOneAndDelete({ _id })
+        .then((saved) => {
+
+            if (saved) {
+                userDB.findOneAndDelete({ Phone })
+                    .then((saved2) => {
+
+                        if (saved2) {
+                            res.send(saved);
+                        }
+                        else res.send(false);
+                    })
+                    .catch(err => {
+                        console.error(err)
+                        res.send(false)
+                    })
+            }
+            else res.send(false);
+        })
+        .catch(err => {
+            console.error(err)
+            res.send(false)
+        })
 }
 
-module.exports.forgotpassword=async(req,res)=>{
+module.exports.forgotpassword = async (req, res) => {
 
 
 
-     const PhoneNum = req.body.PhoneNum;
-    
-     const Phone = Number('+91' + PhoneNum)
+    const PhoneNum = req.body.PhoneNum;
+
+    const Phone = Number('+91' + PhoneNum)
     //     console.log('phone', Phone);
 
-    try{
-        const phn = await userDB.findOne({Phone},{Phone:1});
-        
-        if(phn){
-           // generate OTP and return true
+    try {
+        const phn = await userDB.findOne({ Phone }, { Phone: 1 });
+
+        if (phn) {
+            // generate OTP and return true
 
 
-           
-            
-    
-            const OTP = `${Math.floor(1000+Math.random()*9000)}`;
 
-    
+
+
+            const OTP = `${Math.floor(1000 + Math.random() * 9000)}`;
+
+
 
             var config = {
                 method: 'get',
                 maxBodyLength: Infinity,
                 url: `https://2factor.in/API/V1/9dfd8b94-1f26-11ef-8b60-0200cd936042/SMS/${Phone}/${OTP}/JNSHKOTP`,
-                headers: { }
-              };
+                headers: {}
+            };
 
             axios(config)
-              .then(function (response) {
+                .then(function (response) {
 
-                let newotpentry = new otpDB({Phone, OTP});
-            
-           
-                newotpentry.save()
-                    .then(async(saved)=>{
-                    
-                    // const message = await client.messages.create(msgOptions);    
-                    //res.send(true);                    
-                    })
-                    .catch(err =>{
-                    console.log(err);
-                    res.send(false);
-                });                
-               })
-               .catch(function (error) {
-                console.log(error);
-               });
+                    let newotpentry = new otpDB({ Phone, OTP });
 
 
+                    newotpentry.save()
+                        .then(async (saved) => {
 
-   
-   
-                res.send(true);
+                            // const message = await client.messages.create(msgOptions);    
+                            //res.send(true);                    
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            res.send(false);
+                        });
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
 
-        
+
+
+
+
+            res.send(true);
+
+
 
         }
         //IF (PHN) ENDS
-        else{
+        else {
             res.send(false);
         }
-        
+
     }
-    catch(err){console.log(err)}
+    catch (err) { console.log(err) }
 
 }
 
 
-module.exports.changePassword=async(req,res)=>{
+module.exports.changePassword = async (req, res) => {
 
     const phone = req.body.phone;
-    
-    const Otp= req.body.OTP;
-    const Pwd=req.body.Pwd;
+
+    const Otp = req.body.OTP;
+    const Pwd = req.body.Pwd;
 
     // console.log(phone);
 
@@ -875,107 +891,112 @@ module.exports.changePassword=async(req,res)=>{
     const Phone = Number(phone);
 
 
-    otpDB.findOneAndDelete({Phone, OTP})
-    .then(async(saved)=>{
+    otpDB.findOneAndDelete({ Phone, OTP })
+        .then(async (saved) => {
 
-        // console.log(saved)
-        if(saved){
-            //set new password here
-        
-            await userDB.findOneAndUpdate({Phone:Phone}, {pwd: Pwd}, {returnDocument: 'after'})
-            .then(saved=>{res.send(true)})
-            .catch(error=>{res.send(false)})
-        
-        }
-        else{ console.log('OTP not found');
-            res.send(false);}
-    })
-    .catch( err =>{
-        console.error(err)
-        res.send(false)
-    })
+            // console.log(saved)
+            if (saved) {
+                //set new password here
+
+                await userDB.findOneAndUpdate({ Phone: Phone }, { pwd: Pwd }, { returnDocument: 'after' })
+                    .then(saved => { res.send(true) })
+                    .catch(error => { res.send(false) })
+
+            }
+            else {
+                console.log('OTP not found');
+                res.send(false);
+            }
+        })
+        .catch(err => {
+            console.error(err)
+            res.send(false)
+        })
 
 
 }
 
-module.exports.adminAddBlogs=async(req,res) =>{
+module.exports.adminAddBlogs = async (req, res) => {
 
-    const {blogTitle, blogText, blogTime} = req.body;
+
+    if (req.body) S3Configure = req.body
+
+    const { blogTitle, blogText, blogTime } = req.body;
 
     const img = req.files[0];
 
     // const imageURL = '';
-    
-
-   
-        // console.log(img);
-            const fileName = generateFileName();
 
 
-            const uploadParams = {
-                Bucket: bucketName,
-                Body: img.buffer,
-                Key: fileName,
-                ContentType: img.mimetype
-            }
 
-            await s3Client.send(new PutObjectCommand(uploadParams));
-            const imageURL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
-            //  console.log(URL);
-            
-        
+    // console.log(img);
+    const fileName = generateFileName();
 
-        
 
-    let newBlog = new blogsDB({blogTitle, blogText, blogTime, imageURL});
+    const uploadParams = {
+        Bucket: bucketName,
+        Body: img.buffer,
+        Key: fileName,
+        ContentType: img.mimetype
+    }
+
+
+    //  console.log(URL);
+
+    await s3Client.send(new PutObjectCommand(uploadParams));
+    const imageURL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
+
+
+
+    let newBlog = new blogsDB({ blogTitle, blogText, blogTime, imageURL });
 
     newBlog.save()
-        .then((saved)=>{
+        .then((saved) => {
             console.log('blog added success');
             res.send(saved);
-                
+
         })
-        .catch(err =>{console.log(err);});
+        .catch(err => { console.log(err); });
 
 }
 
-module.exports.getAllBlogs =async (req, res) =>{
+module.exports.getAllBlogs = async (req, res) => {
 
-    try{
-        let blogs= await blogsDB.find({})
+    try {
+        let blogs = await blogsDB.find({})
         // console.log(blogs)
-    
+
         res.send(blogs);
     }
-    catch(err){console.log(err)}
+    catch (err) { console.log(err) }
 
 }
 
 
-module.exports.getBlogData=async(req,res)=>{
-    try{
+module.exports.getBlogData = async (req, res) => {
+    try {
         const _id = req.query.id;
 
-        let blogdata = await blogsDB.findOne({_id});
-        
+        let blogdata = await blogsDB.findOne({ _id });
+
         res.send(blogdata);
     }
-    catch(err){console.log(err)}
+    catch (err) { console.log(err) }
 }
 
-module.exports.adminDeleteBlog=async(req,res)=>{
+module.exports.adminDeleteBlog = async (req, res) => {
 
     const _id = req.body.blogToDelete;
-    
-    blogsDB.findOneAndDelete({_id})
-    .then((saved)=>{
-        if(saved){
-            res.send(saved);
-        }
-        else res.send(false);
-    })
-    .catch( err =>{
-        console.error(err)
-        res.send(false)
-    })
+
+    blogsDB.findOneAndDelete({ _id })
+        .then((saved) => {
+            if (saved) {
+                res.send(saved);
+            }
+            else res.send(false);
+        })
+        .catch(err => {
+            console.error(err)
+            res.send(false)
+        })
 }
