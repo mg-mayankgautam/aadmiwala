@@ -35,7 +35,6 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
     useEffect(() => {
         const result = EMAIL_REGEX.test(newEmail);
 
-        // console.log(result);
         setValidEmail(result);
    
     }, [newEmail])
@@ -62,7 +61,6 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
 
 
     const deleteimg=async(filename)=>{
-        console.log(filename)
 
         try{
             
@@ -84,8 +82,6 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
 
 
     const updateUserProfile = async(e)=>{
-
-        // console.log(newName, newCompanyName, newcompanyDesc, newEmail);
         
         const newPR = newLowPR + ' - ' + newHighPR;
 
@@ -115,7 +111,6 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
                 const axiosdata = data.data;    
     
                 if(axiosdata){
-                    console.log(axiosdata);
                     setcompanyName(axiosdata.companyName);
                     setcompanyDesc(axiosdata.agencyBriefing);
                     setPR(axiosdata.priceRange);
@@ -137,7 +132,6 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
 
     const verifyNewPhone= async()=>{
 
-        console.log(newPhone)
 
         try{
             
@@ -158,7 +152,6 @@ const SideBar = ({setName, name, setcompanyName, companyName, setcompanyDesc, co
 
     const updateNewPhone= async()=>{
 
-        console.log(newPhone)
 
         try{
             

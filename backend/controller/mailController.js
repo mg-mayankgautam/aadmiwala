@@ -3,7 +3,6 @@ const nodemailer = require('nodemailer');
 
 module.exports.shareRequirements = async(req, res)=>{
 
-    console.log(req.body.postdata);
     const name = req.body.postdata.name;
     const phone = req.body.postdata.phone;
     const email = req.body.postdata.email;
@@ -50,7 +49,6 @@ module.exports.shareRequirements = async(req, res)=>{
 
 module.exports.getInTouch = async(req, res)=>{
 
-    console.log(req.body.postdata);
     const name = req.body.postdata.name;
     const phone = req.body.postdata.phone;
     const email = req.body.postdata.email;

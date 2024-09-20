@@ -16,7 +16,6 @@ const Blogs = () => {
             try {
                 const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getallblogs`);
                 const array = data.data;
-                // console.log(array)
                 setBlogs(array);
 
             } catch (err) {

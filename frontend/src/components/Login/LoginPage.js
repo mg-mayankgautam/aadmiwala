@@ -17,7 +17,6 @@ const LoginPage = ({ userLogged, setUserLogged }) => {
   const { setAuth } = useAuth();
   let { state } = useLocation();
 
-  //console.log(state.prev);
 
   const navigate = useNavigate();
   const [PhoneNum, setPhoneNum] = useState('');//storing number
@@ -69,16 +68,13 @@ const LoginPage = ({ userLogged, setUserLogged }) => {
         const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, { PhoneNum, Pwd })
 
         const axiosdata = data.data
-        // console.log('/a/a/a',axiosdata);
 
         if (!axiosdata) {
-          // console.log('wrong id');
           seterror(true);
         }
         else {
           const user = axiosdata.Username;
           setAuth({ user });
-          // console.log('after login',user);
           setUserLogged(user);
           navigate(`/dashboard/${user}`);
 
@@ -100,24 +96,17 @@ const LoginPage = ({ userLogged, setUserLogged }) => {
     if (PhoneNum && validPhone) {
       try {
 
-        console.log(PhoneNum)
         const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/forgetpwd`, { PhoneNum })
 
-
-        console.log(data.data)
         const axiosdata = data.data
         if (axiosdata) { setotpinput(e => !e) }
-        else (console.log('number doesnt exist'))
-        // console.log('/a/a/a',axiosdata);
 
         // if (!axiosdata) {
-        //   // console.log('wrong id');
         //   seterror(true);
         // }
         // else {
         //   const user = axiosdata.Username;
         //   setAuth({ user });
-        //   // console.log('after login',user);
         //   setUserLogged(user);
         //   navigate(`/dashboard/${user}`);
 
@@ -140,11 +129,9 @@ const LoginPage = ({ userLogged, setUserLogged }) => {
 
 
   const submitOTP = async () => {
-    console.log(OTP);
     try {
       const phone = '+91' + PhoneNum;
       const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/verifypwdotp`, { phone, OTP })
-      console.log('otp matched', data.data)
       if (data.data) {
 
         setnewpwdinput(e => !e);
@@ -156,11 +143,10 @@ const LoginPage = ({ userLogged, setUserLogged }) => {
 
   const submitnewPassword = async () =>{
     const phone = '+91' + PhoneNum;
-    console.log(Pwd,OTP,phone);
     try {
      
       const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/changepassword`, { phone, OTP,Pwd })
-      console.log(data.data)
+      
       if (data.data) {
         setnewpwdinput(e=>!e);
         setforgotPWDclicked(e=>!e);

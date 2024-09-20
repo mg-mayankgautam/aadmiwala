@@ -21,7 +21,6 @@ module.exports.verifyOtp=async(req, res)=>{
   
     const Otp= req.body.OTP;
 
-    console.log(phone);
 
     const OTP = Number(Otp);
     const Phone = Number(phone);
@@ -30,7 +29,6 @@ module.exports.verifyOtp=async(req, res)=>{
     otpDB.findOneAndDelete({Phone, OTP})
     .then((saved)=>{
 
-        // console.log(saved)
         if(saved){res.send(true);}
         else res.send(false);
     })
@@ -47,7 +45,6 @@ module.exports.verifyOtpforpwdchange=async(req, res)=>{
   
     const Otp= req.body.OTP;
 
-    console.log(phone);
 
     const OTP = Number(Otp);
     const Phone = Number(phone);
@@ -56,7 +53,6 @@ module.exports.verifyOtpforpwdchange=async(req, res)=>{
     otpDB.findOne({Phone, OTP})
     .then((saved)=>{
 
-        // console.log(saved)
         if(saved){res.send(true);}
         else res.send(false);
     })
@@ -92,7 +88,6 @@ module.exports.verifyPhoneNum = async(req,res) =>{
            
             newotpentry.save()
                 .then(async(saved)=>{
-                    console.log('otp added success');
                     
                 // const message = await client.messages.create(msgOptions);    
                     //res.send(true);                    
@@ -103,7 +98,6 @@ module.exports.verifyPhoneNum = async(req,res) =>{
                 });
 
 
-            console.log(JSON.stringify(response.data));
         })
         .catch(function (error) {
         console.log(error);
@@ -154,17 +148,14 @@ module.exports.checkPhnNumber =async(req,res)=>{
 
     const PhoneNum = req.body.phonenum;
     const Phone = Number('+91' + PhoneNum)
-        console.log('phone', Phone);
 
     try{
         const phn = await userDB.findOne({Phone},{Phone:1});
         if(phn){
             res.send(true);
-            console.log(phn);
 
         }
         else{
-            console.log(phn);
             res.send(false);
         }
         
@@ -179,9 +170,6 @@ const nodemailer = require('nodemailer');
 
 module.exports.addRecruitingCompany= async (req,res)=>{
 
-    // console.log('req.files',req.files);
-    // console.log('working backend',req.body);
-
     const {image,fullName, email, phone, companyName, GSTno, agencyBriefing, servicetype, priceRange, country, address, City, Flexi, pwd} = req.body;
 
     const flexi = JSON.parse(Flexi)
@@ -189,7 +177,6 @@ module.exports.addRecruitingCompany= async (req,res)=>{
     const imgsarray = req.files;
     const Phone = Number(phone);
 
-    console.log(flexi, 'flexi')
 
     const user = await userDB.findOne({Phone});
 
@@ -198,7 +185,6 @@ module.exports.addRecruitingCompany= async (req,res)=>{
         const imageURLs = []
 
         for (const img of imgsarray){
-        // console.log(img);
             const fileName = generateFileName();
 
 
@@ -211,7 +197,7 @@ module.exports.addRecruitingCompany= async (req,res)=>{
 
             if(S3Data){await s3Client.send(new PutObjectCommand(uploadParams));}
             const URL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
-            //  console.log(URL);
+            
             
             imageURLs.push({url:URL,fileName:fileName})
 
@@ -232,7 +218,6 @@ module.exports.addRecruitingCompany= async (req,res)=>{
                 let month = monthNames[newDate.getMonth()];
                 let year = newDate.getFullYear();
                 const date = `${month} ${day}, ${year}`
-        console.log(date);
 
     
 
@@ -242,8 +227,6 @@ module.exports.addRecruitingCompany= async (req,res)=>{
 
         newCompany.save()
             .then((saved)=>{
-                console.log('company added success');
-                // res.send(true);
                 
             })
             .catch(err =>{console.log(err);});
@@ -253,7 +236,6 @@ module.exports.addRecruitingCompany= async (req,res)=>{
 
         newUser.save()
                 .then((saved)=>{
-                    console.log('user added success');
                     res.send(true);
 
                     let transporter = nodemailer.createTransport({
@@ -288,7 +270,9 @@ module.exports.addRecruitingCompany= async (req,res)=>{
                     transporter.sendMail(mailContent,function(err,val){
                         if(err){
                             console.log(err)
-                        }else{console.log(val.response,'mail sent success')}
+                        }else{
+                            console.log(val.response,'mail sent success')
+                        }
                 
                     })
                     
@@ -320,18 +304,14 @@ module.exports.getCompanies =async (req, res) =>{
 module.exports.logIn = async (req,res)=>{
 
     const {PhoneNum, Pwd} = req.body; 
-    console.log(PhoneNum, Pwd);
     const pwd = Pwd;
     const phonenum = '+91' + PhoneNum;
     const Phone = Number(phonenum);
 
     let user = await userDB.findOne({Phone,pwd});
-   
-   console.log(user);
 
     
     if(user){
-        console.log('welcome')
          req.session.Username=Phone;
          req.session.UserID=user._id.toString();
          res.json({Username:req.session.Username})
@@ -353,7 +333,6 @@ module.exports.logout = async (req,res)=>{
         console.log('logged out');
         res.send();
 
-     //   res.send(false);
     }
     catch(err){console.log(err)}
 }
@@ -364,13 +343,8 @@ module.exports.logout = async (req,res)=>{
 
 
 module.exports.isauth=async (req,res)=>{
- console.log('isauth controller');
     if(!req.session.Username){
      
-
-       
-    
-
 
     
     res.send({auth:false})}
@@ -417,8 +391,6 @@ module.exports.getfilterCompanydata=async(req,res)=>{
         serviceType: { $in: services }
     });
     
-    // console.log(citiesfilter);
-    // console.log(servicesfilter);
 
     res.send({citiesfilter, servicesfilter});
  }
@@ -426,15 +398,12 @@ module.exports.getfilterCompanydata=async(req,res)=>{
 
 module.exports.search= async(req, res)=>{
 
-    console.log('here',req.query);
     const type = req.query.type;
     const input = req.query.input;
 
     if(input==='Flexi Services'){
         try{
             let searchdata = await companyDB.find({'flexi.flexi': true });
-
-            console.log(searchdata);
 
             if(searchdata.length>0){
                 return res.send(searchdata);
@@ -447,8 +416,6 @@ module.exports.search= async(req, res)=>{
         
         try{
             let searchdata = await companyDB.find({serviceType: input});
-
-            console.log(searchdata);
 
             if(searchdata.length>0){
             res.send(searchdata);
@@ -473,15 +440,13 @@ module.exports.search= async(req, res)=>{
 
 module.exports.getUserData =async(req,res)=>{
  
-     //console.log(req.query.username, 'get username') 
      //const userID=req.session.UserID
      const Phone = req.query.id;
-     console.log(req.query, req.session.Username)
+    //  console.log(req.query, req.session.Username)
     
     //  if(req.session.Username==Phone){
         try{
             const data = await companyDB.findOne({Phone})
-            console.log(data,'found user');
             
             res.send(data);
           }
@@ -501,7 +466,6 @@ module.exports.updateUserServices = async(req, res) => {
         try{
             await companyDB.findOneAndUpdate({Phone:id},{serviceType: newServiceType}, {returnDocument: 'after'})
                 .then((saved)=>{
-                    // console.log(saved, 'updated services')
                     res.send(saved.serviceType)
                 })
                 .catch((e)=>{console.log(e)})
@@ -537,15 +501,12 @@ module.exports.updateUserInfo = async(req, res) => {
 
 
     const {fullName, email, phone, companyName, GSTno, agencyBriefing, priceRange,address} = req.body;
-     console.log('req.body', req.body);
-     console.log('req.files', req.files);
 
     const imgsarray = req.files;
     const Phone = Number(phone);
 
 
     const user = await companyDB.findOne({Phone});
-    console.log('user', user);
 
     if(user){
 
@@ -568,7 +529,6 @@ module.exports.updateUserInfo = async(req, res) => {
 
                 await s3Client.send(new PutObjectCommand(uploadParams));
                 const URL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
-                //  console.log(URL);
                 
                 imageURLs.push({url:URL,fileName:fileName})
 
@@ -590,7 +550,6 @@ module.exports.updateUserInfo = async(req, res) => {
 
 module.exports.deleteUserImage =async(req, res)=>{
     const {id, filename} =req.body;
-    console.log(id, filename)
 
     const company = await companyDB.findOne({Phone:id});
     const images = company.imageURLs;
@@ -631,7 +590,6 @@ module.exports.verifyNewPhone = async(req, res) =>{
 
     const newPhone = req.body.newPhone;
     const phone = '+91' + newPhone
-    // console.log(newPwd,phone)
 
     const Phone = Number(phone);
     
@@ -664,8 +622,6 @@ module.exports.verifyNewPhone = async(req, res) =>{
                     res.send(false);
                 });
 
-
-            console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
         console.log(error);
@@ -690,7 +646,6 @@ module.exports.updateUserPhone =async(req,res)=>{
         if(saved){
             await companyDB.findOneAndUpdate({Phone:id}, {Phone:Phone}, {returnDocument: 'after'})
                 .then((saved)=>{
-                    // console.log(saved, 'updated services')
                     // res.send(saved)
                 })
                 .catch((e)=>{console.log(e)})
@@ -713,29 +668,11 @@ module.exports.updateUserPhone =async(req,res)=>{
     })
 }
 
-///use this for admin signup
-// module.exports.adminlogin=async(req,res)=>{
-
-//     console.log(req.body);
-//    let ID=req.body.ID;
-//    let Pwd=req.body.Pwd
-
-//    let newAdmin = new adminDB({ID,Pwd})
-
-//    newAdmin.save()
- 
-//             .then((saved)=>{
-//                 console.log('adminuser added success');
-//                 // res.send(true);
-                
-//             })
-//             .catch(err =>{console.log(err);});
 // }
 
 
 module.exports.adminlogin=async(req,res)=>{
 
-    console.log(req.body);
    let ID=req.body.ID;
    let Pwd=req.body.Pwd
 
@@ -761,7 +698,6 @@ module.exports.adminlogin=async(req,res)=>{
 
 module.exports.adminInfo=async(req,res)=>{
 
-    // console.log(req.user, 'here')
     try{
         let companies= await companyDB.find({})
    
@@ -773,19 +709,16 @@ module.exports.adminInfo=async(req,res)=>{
 
 module.exports.adminDeleteCompany=async(req,res)=>{
 
-    console.log(req.body.companyToDelete, 'here')
     const _id = req.body.companyToDelete.companyID;
     const Phone = req.body.companyToDelete.Phone;
     
     companyDB.findOneAndDelete({_id})
     .then((saved)=>{
 
-        // console.log(saved)
         if(saved){
             userDB.findOneAndDelete({Phone})
             .then((saved2)=>{
         
-                // console.log(saved, saved2)
                 if(saved2){
                     res.send(saved);
                 }
@@ -807,10 +740,6 @@ module.exports.adminDeleteCompany=async(req,res)=>{
 module.exports.forgotpassword=async(req,res)=>{
 
 
-
-    console.log(
-        req.body
-    );
 
      const PhoneNum = req.body.PhoneNum;
     
@@ -846,7 +775,6 @@ module.exports.forgotpassword=async(req,res)=>{
            
                 newotpentry.save()
                     .then(async(saved)=>{
-                     console.log('otp added success');
                     
                     // const message = await client.messages.create(msgOptions);    
                     //res.send(true);                    
@@ -871,7 +799,6 @@ module.exports.forgotpassword=async(req,res)=>{
         }
         //IF (PHN) ENDS
         else{
-            console.log(phn);
             res.send(false);
         }
         
@@ -882,7 +809,6 @@ module.exports.forgotpassword=async(req,res)=>{
 
 
 module.exports.changePassword=async(req,res)=>{
-    console.log('reached changed password',req.body)
 
     const phone = req.body.phone;
     
@@ -919,9 +845,6 @@ module.exports.changePassword=async(req,res)=>{
 }
 
 module.exports.adminAddBlogs=async(req,res) =>{
-
-    console.log('949',req.body);
-    console.log(req.files)
 
     const {blogTitle, blogText, blogTime} = req.body;
 
@@ -988,7 +911,6 @@ module.exports.getBlogData=async(req,res)=>{
 
 module.exports.adminDeleteBlog=async(req,res)=>{
 
-    console.log(req.body.blogToDelete, 'here')
     const _id = req.body.blogToDelete;
     
     blogsDB.findOneAndDelete({_id})

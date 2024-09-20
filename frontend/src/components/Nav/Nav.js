@@ -1,198 +1,187 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logo.png'
 import useAuth from '../../hook/useAuth';
 import './Nav.css'
 import CallIcon from '@mui/icons-material/Call';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import MenuIcon from '@mui/icons-material/Menu';
 
 
-const Nav = ({ userLogged, setUserLogged}) => {
+const Nav = ({ userLogged, setUserLogged }) => {
 
-  const {auth, setAuth}= useAuth();
-  const [callus, setcallus]= useState(false);
-  const [showMobileNav, setShowMobileNav]= useState(false);
+  const { auth, setAuth } = useAuth();
+  const [callus, setcallus] = useState(false);
+  const [showMobileNav, setShowMobileNav] = useState(false);
 
   useEffect(() => {
-        
-      
-    const verifyAuth = async ()=>{
-        try {
-            const URL =  `${process.env.REACT_APP_BACKEND_URL}/isauth`;
-            //console.log('url',URL);
-            const response = await axios.get(URL);
-
-            // console.log(response.data.auth);
-           if(!response.data.auth){
-           
-                 
-           //    console.log('auth')
-               
-               }
 
 
-              else if(response.data.auth){
-               
-                // console.log(response.data.auth);
-               const user = response.data.auth;
-               setAuth({user});
-               setUserLogged(user);
-              
-              }   
-       
-     } catch (err) {
-             if (err.response) {
-               // Not in the 200 response range 
-               console.log(err.response.data);
-               console.log(err.response.status);
-               console.log(err.response.headers);
-             } else {
-               console.log(`Error: ${err.message}`);
-             }
-     }
-    }  
-    
-    
+    const verifyAuth = async () => {
+      try {
+        const URL = `${process.env.REACT_APP_BACKEND_URL}/isauth`;
+        const response = await axios.get(URL);
 
-  verifyAuth();
-}, [])
+        if (!response.data.auth) {
 
 
-const handleLogout = async() =>{
-  // console.log('logout');
-  try{
-    const data = await axios.post( `${process.env.REACT_APP_BACKEND_URL}/logout`);
-    
-    if(!data.data){
-      // console.log('data.data',data.data)
-    //  console.log('kuch ni aya',auth)
-      const boo = data.data;
-    setAuth('');
-    setUserLogged('');
-   // navigate(0)
+        }
+
+
+        else if (response.data.auth) {
+          const user = response.data.auth;
+          setAuth({ user });
+          setUserLogged(user);
+
+        }
+
+      } catch (err) {
+        if (err.response) {
+          // Not in the 200 response range 
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else {
+          console.log(`Error: ${err.message}`);
+        }
+      }
+    }
+
+
+
+    verifyAuth();
+  }, [])
+
+
+  const handleLogout = async () => {
+    try {
+      const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/logout`);
+
+      if (!data.data) {
+        const boo = data.data;
+        setAuth('');
+        setUserLogged('');
+        // navigate(0)
+      }
+
+    }
+    catch (e) { console.log(e) }
   }
-    //console.log(data);
-    //console.log(auth);
-           
-  }
-  catch(e){console.log(e)}
-}
 
 
   return (
     <div className='Nav'>
-        <Link to="/">
-          <div className='navLogoDiv'>
-            <img src={logo} className='navLogo'/>
-          </div>
-        </Link>
-        <div className='navItems'>
-            <div>Enterprise</div>
-            <div> <a href="about">About Us</a></div>
-            
-            <div>
-              <Link to={`sharerequirements`} >Share Requirements</Link>
-            </div>
-
-            <div className='navItemBold'>
-                
-                <Link to={`addCompany`} >+ Add Service Providers</Link>
-            
-            </div>
+      <Link to="/">
+        <div className='navLogoDiv'>
+          <img src={logo} className='navLogo' />
         </div>
-        <div className='navBtns'>
-            <button className={callus? 'navSignupBtn navbtnwidth' : 'navSignupBtn' }
-            onClick={()=> setcallus(!callus)}> <CallIcon/>
-              {callus? 
-                <> 9155018111</>
-              : 
-              <>
-                Call Us
-              </>}
-            </button>
+      </Link>
+      <div className='navItems'>
+        <div>Enterprise</div>
+        <div> <a href="about">About Us</a></div>
 
-            {auth.user? 
-            <>
-            <Link to={`/dashboard/${auth.user}`}>
-                <button className='navLoginBtn'>Dashboard</button>
-            </Link>
-            
-            <button className='navLoginBtn' onClick={handleLogout}>Logout</button>
-            </>
-            
+        <div>
+          <Link to={`sharerequirements`} >Share Requirements</Link>
+        </div>
+
+        <div className='navItemBold'>
+
+          <Link to={`addCompany`} >+ Add Service Providers</Link>
+
+        </div>
+      </div>
+      <div className='navBtns'>
+        <button className={callus ? 'navSignupBtn navbtnwidth' : 'navSignupBtn'}
+          onClick={() => setcallus(!callus)}> <CallIcon />
+          {callus ?
+            <> 9155018111</>
             :
-            <Link to={`login`}>
-                <button className='navLoginBtn'>Log In</button>
+            <>
+              Call Us
+            </>}
+        </button>
+
+        {auth.user ?
+          <>
+            <Link to={`/dashboard/${auth.user}`}>
+              <button className='navLoginBtn'>Dashboard</button>
             </Link>
+
+            <button className='navLoginBtn' onClick={handleLogout}>Logout</button>
+          </>
+
+          :
+          <Link to={`login`}>
+            <button className='navLoginBtn'>Log In</button>
+          </Link>
         }
 
-            
-        </div>
 
-        <div className='hamburgerIcon' 
-          onClick={()=> setShowMobileNav(true)}>
-            <MenuIcon/>
-        </div>
+      </div>
 
-        {
-          showMobileNav? 
-            <div className='mobileNavContainer'>
+      <div className='hamburgerIcon'
+        onClick={() => setShowMobileNav(true)}>
+        <MenuIcon />
+      </div>
 
-              <div className='mobileNav'>
+      {
+        showMobileNav ?
+          <div className='mobileNavContainer'>
 
-                  <div className='closeMobileNavBtn' onClick={()=> setShowMobileNav(false)}>X</div>
+            <div className='mobileNav'>
 
-                  <div className='mobilenavItems'>
-                      <div>Enterprise</div>
-                      <div> <a href="about">About Us</a></div>
-                      
-                      <div>
-                        <Link to={`sharerequirements`} >Share Requirements</Link>
-                      </div>
+              <div className='closeMobileNavBtn' onClick={() => setShowMobileNav(false)}>X</div>
 
-                      <div className='navItemBold'>
-                          
-                          <Link to={`addCompany`} >+ Add Service Providers</Link>
-                      
-                      </div>
-                  </div>
+              <div className='mobilenavItems'>
+                <div>Enterprise</div>
+                <div> <a href="about">About Us</a></div>
 
-                  <div className='mobilenavBtns'>
-                      <button className={callus? 'navSignupBtn navbtnwidth' : 'navSignupBtn' }
-                      onClick={()=> setcallus(!callus)}> <CallIcon/>
-                        {callus? 
-                          <> 9155018111</>
-                        : 
-                        <>
-                          Call Us
-                        </>}
-                      </button>
+                <div>
+                  <Link to={`sharerequirements`} >Share Requirements</Link>
+                </div>
 
-                      {auth.user? 
-                      <>
-                      <Link to={`/dashboard/${auth.user}`}>
-                          <button className='navLoginBtn'>Dashboard</button>
-                      </Link>
-                      
-                      <button className='navLoginBtn' onClick={handleLogout}>Logout</button>
-                      </>
-                      
-                      :
-                      <Link to={`login`}>
-                          <button className='navLoginBtn'>Log In</button>
-                      </Link>
-                  }
+                <div className='navItemBold'>
 
-                      
-                  </div>
+                  <Link to={`addCompany`} >+ Add Service Providers</Link>
+
+                </div>
               </div>
 
+              <div className='mobilenavBtns'>
+                <button className={callus ? 'navSignupBtn navbtnwidth' : 'navSignupBtn'}
+                  onClick={() => setcallus(!callus)}> <CallIcon />
+                  {callus ?
+                    <> 9155018111</>
+                    :
+                    <>
+                      Call Us
+                    </>}
+                </button>
+
+                {auth.user ?
+                  <>
+                    <Link to={`/dashboard/${auth.user}`}>
+                      <button className='navLoginBtn'>Dashboard</button>
+                    </Link>
+
+                    <button className='navLoginBtn' onClick={handleLogout}>Logout</button>
+                  </>
+
+                  :
+                  <Link to={`login`}>
+                    <button className='navLoginBtn'>Log In</button>
+                  </Link>
+                }
+
+
+              </div>
             </div>
 
-            :
-            <></>
-        }
+          </div>
+
+          :
+          <></>
+      }
     </div>
   )
 }

@@ -52,7 +52,6 @@ const HomeMain = () => {
 
 
     useEffect(() => {
-        // console.log(freqSearch);
         if (freqSearch) {
             findfreqSearched()
         }
@@ -61,7 +60,6 @@ const HomeMain = () => {
 
     const findSearchedInput = async (e) => {
         e.preventDefault();
-        console.log(searchInput);
 
         if (searchInput) {
 
@@ -75,11 +73,9 @@ const HomeMain = () => {
 
     const findfreqSearched = async () => {
         // e.preventDefault();
-        console.log(freqSearch);
 
         if (freqSearch) {
 
-            // console.log()
             try {
                 navigate(`/search?input=${freqSearch}&type=city`);
             }
@@ -103,7 +99,6 @@ const HomeMain = () => {
         const cron = async () => {
             try {
                 const crondata = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getcrondata`);
-                console.log('cronlog', crondata);
             } catch (e) { console.log(e) }
         }
 

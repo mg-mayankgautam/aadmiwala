@@ -12,7 +12,6 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    // console.log(id)
   }, [])
 
   const [showServices, setShowServices] = useState(true)
@@ -24,7 +23,6 @@ const AdminDashboard = () => {
     const getCompanies = async () => {
       try {
         const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/admininfo`);
-        console.log(data.data);
         const array = data.data
         setCompanies(array);
       }
@@ -49,11 +47,9 @@ const AdminDashboard = () => {
     setShowModal(false);
     if (companyToDelete) {
       try {
-        console.log(companyToDelete)
         const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/admindeletecompany`,
           { companyToDelete }
         );
-        console.log(data);
         if (data) {
           setCompanies(companies.filter(company => company._id !== companyToDelete.companyID));
           setCompanyToDelete(null);
@@ -90,8 +86,6 @@ const AdminDashboard = () => {
       try {
         const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/adminaddblogs`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
 
-        console.log('submit succeess')
-        console.log(data.data);
         if (data.data) {
           window.location.reload();
         }
@@ -112,7 +106,6 @@ const AdminDashboard = () => {
       try {
         const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getallblogs`);
         const array = data.data;
-        console.log(array)
         setBlogs(array);
 
       } catch (err) {
@@ -136,11 +129,9 @@ const AdminDashboard = () => {
     setShowModal2(false);
     if (blogToDelete) {
       try {
-        console.log(blogToDelete)
         const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/admindeleteblog`,
           { blogToDelete }
         );
-        console.log(data);
         if (data) {
           setBlogs(blogs.filter(blog => blog._id !== blogToDelete));
           setblogToDelete(null);

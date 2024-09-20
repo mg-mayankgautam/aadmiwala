@@ -10,7 +10,6 @@ const ComparisonPage = () => {
 
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
   const [company, setCompany] = useState([])
   const [filteredServicesOriginal, setFilteredServicesOriginal] = useState([])
   const [filteredServices, setFilteredServices] = useState([])
@@ -28,9 +27,7 @@ const ComparisonPage = () => {
     const getCompanies = async () => {
       try {
         const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getcompanydata?id=${id}`);
-        console.log(data);
         setCompany(data.data);
-        // console.log(company)
       }
       catch (err) { console.log(err); }
 
@@ -38,7 +35,7 @@ const ComparisonPage = () => {
       try {
         // const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getcompanyfilterdata?id=${id}`);
         const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getcompanyfilterdata?id=${id}`);
-        console.log(data);
+        
         setFilteredCitiesOriginal(data.data.citiesfilter);
         setFilteredCities(data.data.citiesfilter);
         setFilteredServicesOriginal(data.data.servicesfilter);

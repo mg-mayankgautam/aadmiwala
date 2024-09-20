@@ -18,7 +18,6 @@ const Connect = ({connect_ref}) => {
 
   const sendEmail = async(e) => {
     e.preventDefault();
-    console.log(nameRef.current.value , emailRef.current.value ,phoneRef.current.value, locationRef.current.value ,reqRef.current.value );
     
     const postdata = {name: nameRef.current.value , email: emailRef.current.value , phone: phoneRef.current.value, location: locationRef.current.value , requirements: reqRef.current.value}
  
