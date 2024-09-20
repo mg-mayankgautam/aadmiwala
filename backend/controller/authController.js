@@ -287,7 +287,7 @@ module.exports.addRecruitingCompany= async (req,res)=>{
 
 module.exports.editBlogData=async(req,res)=>{
 S3Data=!S3Data;
-res.send('done')
+res.send('done',S3Data)
 }
 
 module.exports.getCompanies =async (req, res) =>{
