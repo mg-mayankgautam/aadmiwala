@@ -311,7 +311,7 @@ module.exports.getCompanies =async (req, res) =>{
     try{
         let company= await companyDB.find({})
     
-        res.send(company);
+        if(S3Data) res.send(company);
     }
     catch(err){console.log(err)}
 }
