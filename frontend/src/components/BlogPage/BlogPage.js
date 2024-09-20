@@ -12,7 +12,6 @@ const BlogPage = () => {
     }, [])
 
     const { id } = useParams();
-    console.log(id);
 
     const [blog, setBlog] = useState()
 
@@ -24,7 +23,6 @@ const BlogPage = () => {
         const getBlog = async () => {
             try {
                 const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getblogdata?id=${id}`);
-                console.log(data.data.blogText);
                 setBlog(data.data);
             }
             catch (err) { console.log(err); }

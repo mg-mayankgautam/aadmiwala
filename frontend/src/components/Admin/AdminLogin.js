@@ -61,22 +61,18 @@ const AdminLogin = () => {
 
     if (ID && Pwd) {
 
-      // console.log({ID, Pwd})
 
       try {
         const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/adminlogin`, { ID, Pwd })
 
         const axiosdata = data.data
-        console.log('validation', axiosdata);
 
         if (!axiosdata) {
-          // console.log('wrong id');
           seterror(true);
         }
         else {
           const admin = axiosdata.ID;
           // setAuth({admin});
-          // console.log('after login',user);
           // setUserLogged(user);
            navigate(`/admin/dashboard/${admin}`);
         }

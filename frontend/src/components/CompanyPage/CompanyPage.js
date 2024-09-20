@@ -23,7 +23,6 @@ const CompanyPage = () => {
   }, [])
 
   const { id } = useParams();
-  console.log(id);
 
   const [company, setCompany] = useState([])
   const [modal, setModal] = useState(false)
@@ -38,9 +37,7 @@ const CompanyPage = () => {
     const getCompanies = async () => {
       try {
         const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getcompanydata?id=${id}`);
-        console.log(data);
         setCompany(data.data);
-        console.log(company)
       }
       catch (err) { console.log(err); }
     }

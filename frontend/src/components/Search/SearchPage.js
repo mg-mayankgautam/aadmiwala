@@ -33,14 +33,12 @@ const SearchPage = () => {
     useEffect(() => {
 
         const getSearchResults = async () => {
-            console.log(inputValue, typeValue);
 
             if (inputValue && typeValue) {
 
                 try {
                     const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/search?input=${inputValue}&type=${typeValue}`);
-                    console.log(data.data);
-
+                    
                     if (data.data) {
                         setSearchValue(data.data);
                         setNoFilterSearchValue(data.data);

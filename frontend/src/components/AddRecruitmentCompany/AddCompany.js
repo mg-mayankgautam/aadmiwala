@@ -123,7 +123,6 @@ const AddCompany = () => {
     useEffect(() => {
         const result = PHONE_REGEX.test(phonee);
 
-        // console.log(result);
         setValidPhone(result);
 
     }, [phonee])
@@ -131,7 +130,6 @@ const AddCompany = () => {
     useEffect(() => {
         const result = EMAIL_REGEX.test(email);
 
-        // console.log(result);
         setValidEmail(result);
 
     }, [email])
@@ -139,7 +137,6 @@ const AddCompany = () => {
     useEffect(() => {
         const result = PASS_REGEX.test(pwd);
 
-        // console.log(result);
         setValidPwd(result);
 
     }, [pwd])
@@ -176,9 +173,6 @@ const AddCompany = () => {
         }
     }, [isFlexi]);
 
-    useEffect(() => {
-        console.log(flexi)
-    }, [flexi]);
 
 
     const nextBtn1 = async (e) => {
@@ -239,8 +233,6 @@ const AddCompany = () => {
                 const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/verifyphone`, { phone })
 
 
-                console.log(data.data);
-
                 if (data.data) {
                     setslide4(true);
                     //  setPasswordComp(true);// remove this when adding otp feature
@@ -260,8 +252,7 @@ const AddCompany = () => {
 
 
         const phone = '+91' + phonee
-        // console.log(fullName,email, phone, companyName, serviceType, agencyBriefing, noOfPositions, country, address, city);
-
+        
 
 
         if (phone && validPhone && OTP && !phonefromDB) {
@@ -270,8 +261,6 @@ const AddCompany = () => {
             try {
                 const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/verifyotp`, { phone, OTP })
 
-                console.log('submit succeess')
-                console.log(data.data);
                 if (data.data) {
                     setPasswordComp(true);
                     setslide4(false);
@@ -296,7 +285,6 @@ const AddCompany = () => {
 
         const phone = '+91' + phonee
         const priceRange = lowPR + ' - ' + highPR;
-        //   console.log(servicetype);
 
         const formData = new FormData();
 
@@ -317,8 +305,6 @@ const AddCompany = () => {
         formData.append("City", City);
         formData.append("Flexi", JSON.stringify(flexi));
         formData.append("pwd", pwd);
-        // formData.append("city", city);
-        console.log(formData)
 
         if (fullName && email && validEmail && phone && validPhone && !phonefromDB && companyName && servicetype && priceRange && country && City && pwd) {
 
@@ -326,8 +312,6 @@ const AddCompany = () => {
             try {
                 const data = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/addrecruitingcompany`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
 
-                console.log('submit succeess')
-                console.log(data.data);
                 if (data.data) {
                     navigate(`/login`)
                 }

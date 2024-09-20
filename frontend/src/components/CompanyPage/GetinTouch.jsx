@@ -15,7 +15,6 @@ const GetinTouch = ({company}) => {
 
   const sendEmail = async(e) => {
     e.preventDefault();
-    console.log(nameRef.current.value , emailRef.current.value ,phoneRef.current.value,);
     
     const postdata = {name: nameRef.current.value , email: emailRef.current.value , phone: phoneRef.current.value, postedby : company.fullName,
       companyname : company.companyName}
