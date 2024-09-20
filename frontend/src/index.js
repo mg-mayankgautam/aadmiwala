@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider';
+import NotFound from './NotFound';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 

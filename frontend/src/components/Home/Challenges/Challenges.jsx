@@ -103,13 +103,11 @@ const Challenges = () => {
                         <div className='flip-box-inner2'>
                             <div className='flip-box-front2'>
                                 <img src={c3} className='CC_icon' />
-                                <div className='subHead'>Navigating Legal and <br />Compliance Issues</div>
+                                <div className='subHead'>Streamlined Access <br/>to Services</div>
                             </div>
 
                             <div className='flip-box-back2'>
-                                <div className='CC_text'> Covendx helps navigate the complexities of labor laws,
-                                    regulations, and industry standards. Our team ensures compliance across different regions,
-                                    providing peace of mind and mitigating legal risks for your business.</div>
+                                <div className='CC_text'>Covendx provides a unified platform where companies can easily find service providers, while providers can seamlessly connect with companies looking for their expertise. This simplifies the process of service discovery and hiring for companies, and allows service providers to access a broader market.</div>
                             </div>
                         </div>
                     </div>
@@ -124,8 +122,8 @@ const Challenges = () => {
                         {/* <div className='CC_text'> Covendx offers tailored staffing solutions, matching businesses with the right talent for their specific requirements. Our extensive network
                  of vetted staffing agencies ensures access to high-quality candidates who meet your company's unique needs.</div> */}
                         <div className='flip-box-back2'>
-                            <div className='CC_text'> Covendx offers tailored vedor solutions, matching businesses with the right talent for their specific requirements. Our extensive network
-                                of vetted vendor agencies ensures access to high-quality candidates who meet your company's unique needs.</div>
+                            <div className='CC_text'> Covendx offers tailored vendor solutions, matching businesses with the right talent for their specific requirements. Our extensive network
+                                of vetted vendor agencies ensures access to high-quality vendors who meet your company's unique needs.</div>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import Nav from '../Nav/Nav'
 import './Home.css'
 import HomeMain from './HomeMain/HomeMain'
@@ -17,22 +17,26 @@ import FlexiBanner from './FlexiBanner/FlexiBanner'
 
 const HomePage = () => {
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const connect_ref = useRef();
 
 
   return (
     <div className='HomePage'>
-       
-        <HomeMain />
-        <FeaturedCompanies />
-        <Benefits/>
-        <FlexiBanner />
-        <Challenges/>
-        {/* <OneStopSoln connect_ref={connect_ref}/> */}
-        <Solutions connect_ref={connect_ref}/>
-        <Faq/>
-        <Connect connect_ref={connect_ref}/>
-        {/* <Footer/> */}
+
+      <HomeMain />
+      <FeaturedCompanies />
+      <Benefits />
+      <FlexiBanner />
+      <Challenges />
+      {/* <OneStopSoln connect_ref={connect_ref}/> */}
+      <Solutions connect_ref={connect_ref} />
+      <Faq />
+      <Connect connect_ref={connect_ref} />
+      {/* <Footer/> */}
     </div>
   )
 }

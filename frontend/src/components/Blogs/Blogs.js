@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Blogs.css';
-import header from '../../assets/blogsheader.png'
+import header from '../../assets/blogsheader1.jpg'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ const Blogs = () => {
             try {
                 const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getallblogs`);
                 const array = data.data;
-                console.log(array)
+                // console.log(array)
                 setBlogs(array);
 
             } catch (err) {
@@ -45,10 +45,10 @@ const Blogs = () => {
                             Featured
                         </div>
                         <div className='blogHeaderHead'>
-                            Ctalk: Redefining Engagement Between Companies and Recruitment Agencies
+                            Mastering B2B Success: Key Strategies for Growth
                         </div>
                         <div className='blogHeaderText'>
-                            Communication with hiring agencies can be very cumbersome and tedious especially when delicate information like job updates or candidate status needs to be conveyed under tight deadlines. For instance, you probably want to let "Agency A" know that "Agency B" has already submitted the candidate's resume (that Agency A is trying to submit) for the open job.
+                            Unlock the secrets to thriving in the B2B world with our comprehensive guide. Learn how to build robust client relationships, leverage cutting-edge technology, and implement effective marketing strategies. Dive into the essentials of networking, partnerships, and exceptional customer service to navigate the complexities of B2B business and drive sustainable growth. Discover how these strategies can set your business apart and pave the way for long-term success.
                         </div>
                     </div>
                 </div>
@@ -61,11 +61,11 @@ const Blogs = () => {
                         <Link to={`/blog/${blog._id}`} key={blog._id}>
                             <div className='blogBox'>
                                 <div className='blogImg'>
-                                    <img src="https://gratisography.com/wp-content/uploads/2024/01/gratisography-reindeer-dog-800x525.jpg" />
+                                    <img src={blog.imageURL} />
                                 </div>
                                 <div className='blogContent'>
                                     <div className='blogTime'>
-                                        {blog.blogTime}
+                                        Read Time: {blog.blogTime}
                                     </div>
                                     <div className='blogHead'>
                                         {blog.blogTitle}

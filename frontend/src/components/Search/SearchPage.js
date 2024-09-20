@@ -129,9 +129,9 @@ const SearchPage = () => {
             {inputValue === 'Flexi Services' ?
                 <div className='FlexiPage_Banner'>
 
-                    <div className='FlexiPage_ImgDiv'>
+                    {/* <div className='FlexiPage_ImgDiv'>
                         <img src={flexiimg} alt="" />
-                    </div>
+                    </div> */}
 
 
                     <div className='FlexiPage_Box'>
@@ -262,6 +262,68 @@ const SearchPage = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                : <></>
+            }
+
+            {inputValue === 'Flexi Services' ?
+                <div className='FlexiBanner' style={{ margin: '32px 0 40px' }}>
+
+                    <div className='FlexiPointersBanner'>
+
+                        <div className='flexiPage_Heading'>
+                            Covendx Flexi Features
+                        </div>
+
+                        <div className='flexiPointersContainer'>
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>01</div>
+                                <div className='pointerText'>New Project Request</div>
+                                <div className='arrow'>
+                                    <img src={arrowUp} />
+                                </div>
+                            </div>
+
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>02</div>
+                                <div className='pointerText'>Evaluate and Prioritize</div>
+                                <div className='arrow mobilesmall'>
+                                    <img src={arrowDown} />
+                                </div>
+                            </div>
+
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>03</div>
+                                <div className='pointerText'>Delegate to Service Provider</div>
+                                <div className='arrow mobile'>
+                                    <img src={arrowUp} />
+                                </div>
+                            </div>
+
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>04</div>
+                                <div className='pointerText'>Facilitate Communication</div>
+                                <div className='arrow mobilesmall'>
+                                    <img src={arrowDown} />
+                                </div>
+                            </div>
+
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>05</div>
+                                <div className='pointerText'>Confirm Task Completion</div>
+                                <div className='arrow'>
+                                    <img src={arrowUp} />
+                                </div>
+                            </div>
+
+                            <div className='bannerPointer'>
+                                <div className='pointerNum'>06</div>
+                                <div className='pointerText'>Process Payment</div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
                 : <></>
@@ -470,68 +532,6 @@ const SearchPage = () => {
 
             </div>
 
-
-            {inputValue === 'Flexi Services' ?
-                <div className='FlexiBanner' style={{ margin: '80px 0' }}>
-
-                    <div className='FlexiPointersBanner'>
-
-                        <div className='flexiPage_Heading'>
-                            Covendx Flexi Features
-                        </div>
-
-                        <div className='flexiPointersContainer'>
-                            <div className='bannerPointer'>
-                                <div className='pointerNum'>01</div>
-                                <div className='pointerText'>New Project Request</div>
-                                <div className='arrow'>
-                                    <img src={arrowUp}/>
-                                </div>
-                            </div>
-
-                            <div className='bannerPointer'>
-                                <div className='pointerNum'>02</div>
-                                <div className='pointerText'>Evaluate and Prioritize</div>
-                                <div className='arrow mobilesmall'>
-                                    <img src={arrowDown}/>
-                                </div>
-                            </div>
-
-                            <div className='bannerPointer'>
-                                <div className='pointerNum'>03</div>
-                                <div className='pointerText'>Delegate to Service Provider</div>
-                                <div className='arrow mobile'>
-                                    <img src={arrowUp}/>
-                                </div>
-                            </div>
-
-                            <div className='bannerPointer'>
-                                <div className='pointerNum'>04</div>
-                                <div className='pointerText'>Facilitate Communication</div>
-                                <div className='arrow mobilesmall'>
-                                    <img src={arrowDown}/>
-                                </div>
-                            </div>
-
-                            <div className='bannerPointer'>
-                                <div className='pointerNum'>05</div>
-                                <div className='pointerText'>Confirm Task Completion</div>
-                                <div className='arrow'>
-                                    <img src={arrowUp}/>
-                                </div>
-                            </div>
-
-                            <div className='bannerPointer'>
-                                <div className='pointerNum'>06</div>
-                                <div className='pointerText'>Process Payment</div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                : <></>
-            }
         </div>
 
     )
@@ -545,5 +545,5 @@ const cities = [
 ];
 
 const services = [
-    'Administrative Support', 'Facility Service', 'Housekeeping Services', 'Customer Service', 'Blue Collar', 'White Collar', 'Reception Service', 'Security Service', 'IT Support', 'Catering Service', 'AC/Telephone Repair', 'Electrician/Plumber Service', 'Mailroom Service', 'Pest Control', 'Office Boy', 'Other'
+    'Administrative Support', 'Facility Service', 'Housekeeping Services', 'Customer Service', 'Blue Collar', 'White Collar', 'Reception Service', 'Security Service', 'IT Support', 'Catering Service', 'AC/Telephone Repair', 'Electrician/Plumber Service', 'Mailroom Service', 'Pest Control', 'Office Boy', 'Logistics and Supply Chain', 'Marketing and Branding', 'Construction and Renovation', 'HVAC Services', 'Other'
 ]

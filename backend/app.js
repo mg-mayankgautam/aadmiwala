@@ -14,9 +14,10 @@ const cookieParser = require('cookie-parser');
 
 
 app.use(cors( 
-    {        // origin: process.env.FRONTEND_URL, 
-        // origin: 'https://covendx.com', 
-        origin: "http://localhost:3000",  
+    {
+        // origin: process.env.FRONTEND_URL, 
+        origin: 'https://covendx.com', 
+        // origin: "http://localhost:3000",  
         // origin: '*',
        credentials: true, 
       withCredentials: true
@@ -26,8 +27,8 @@ app.use(cors(
 app.use((req, res, next)=>{
     res.setHeader(
         "Access-Control-Allow-Origin",
-        // "https://covendx.com"
-        "http://localhost:3000"
+        "https://covendx.com"
+        // "http://localhost:3000"
     );
     res.setHeader(
         "Access-Control-Allow-Headers",

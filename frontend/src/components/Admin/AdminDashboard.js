@@ -275,7 +275,7 @@ const AdminDashboard = () => {
                 blogs.map((blog,i) => (
                   <div className='blogBox admin' key={i}>
                     <div className='blogImg'>
-                      <img src="https://gratisography.com/wp-content/uploads/2024/01/gratisography-reindeer-dog-800x525.jpg" />
+                      <img src={blog.imageURL} />
                     </div>
                     <div className='blogContent'>
                       <div className='adminBlog_deleteDiv'>

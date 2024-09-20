@@ -24,7 +24,7 @@ const BlogPage = () => {
         const getBlog = async () => {
             try {
                 const data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getblogdata?id=${id}`);
-                console.log(data);
+                console.log(data.data.blogText);
                 setBlog(data.data);
             }
             catch (err) { console.log(err); }
@@ -49,7 +49,7 @@ const BlogPage = () => {
             <div className='blogPageTitle'>{blog?.blogTitle}</div>
 
             <div className='blogPageImg'>
-                <img src="https://gratisography.com/wp-content/uploads/2024/01/gratisography-reindeer-dog-800x525.jpg" />
+                <img src={blog?.imageURL} />
             </div>
 
             <div className='blogPageText'>{blog?.blogText}</div>

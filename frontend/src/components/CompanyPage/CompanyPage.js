@@ -94,7 +94,7 @@ const CompanyPage = () => {
               </div>
 
               <button onClick={() => setModal(true)} className='getinTouchBtn'>Get in Touch</button>
-              <button onClick={()=> {navigate(`/compare/${id}`)}} className='getinTouchBtn'>Compare Service</button>   
+              <button onClick={()=> {navigate(`/compare/${id}`)}} className='getinTouchBtn two'>Compare Service</button>   
 
             </div>
 
