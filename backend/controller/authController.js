@@ -393,7 +393,7 @@ module.exports.getCompanydata=async(req,res)=>{
         const _id = req.query.id;
         let companydata = await companyDB.findOne({_id});
     
-        res.send(companydata);
+      if(S3Data)  res.send(companydata);
     }
     catch(err){console.log(err)}
 }
