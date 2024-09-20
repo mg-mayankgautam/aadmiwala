@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 
-module.exports.shareRequirements = async(req, res)=>{
+module.exports.shareRequirements = async (req, res) => {
 
     const name = req.body.postdata.name;
     const phone = req.body.postdata.phone;
@@ -11,18 +11,18 @@ module.exports.shareRequirements = async(req, res)=>{
 
 
     let transporter = nodemailer.createTransport({
-        service : 'gmail',
-        auth : {
+        service: 'gmail',
+        auth: {
             user: 'noreply.covendx@gmail.com',
             pass: 'ivukyxozcrduxwau'
         }
     });
 
-    
+
 
     let mailContent = {
-        from : 'noreply.covendx@gmail.com',
-        to : 'sales@covendx.com',
+        from: 'noreply.covendx@gmail.com',
+        to: 'sales@covendx.com',
         subject: `New Requirement from ${name}`,
         text: `You got a new message from ${name}:
 
@@ -36,18 +36,18 @@ module.exports.shareRequirements = async(req, res)=>{
 
 
 
-    transporter.sendMail(mailContent,function(err,val){
-        if(err){
+    transporter.sendMail(mailContent, function (err, val) {
+        if (err) {
             console.log(err)
-        }else{console.log(val.response,'mail sent success')}
+        } else { console.log(val.response, 'mail sent success') }
 
     })
-    
+
 
 }
 
 
-module.exports.getInTouch = async(req, res)=>{
+module.exports.getInTouch = async (req, res) => {
 
     const name = req.body.postdata.name;
     const phone = req.body.postdata.phone;
@@ -57,18 +57,18 @@ module.exports.getInTouch = async(req, res)=>{
 
 
     let transporter = nodemailer.createTransport({
-        service : 'gmail',
-        auth : {
-           user: 'noreply.covendx@gmail.com',
+        service: 'gmail',
+        auth: {
+            user: 'noreply.covendx@gmail.com',
             pass: 'ivukyxozcrduxwau'
         }
     });
 
-    
+
 
     let mailContent = {
-        from : 'noreply.covendx@gmail.com',
-        to : 'sales@covendx.com',
+        from: 'noreply.covendx@gmail.com',
+        to: 'sales@covendx.com',
         subject: `New Service Interest from ${name}`,
 
         text: `An applier is interested in the following service:
@@ -85,12 +85,12 @@ module.exports.getInTouch = async(req, res)=>{
 
 
 
-    transporter.sendMail(mailContent,function(err,val){
-        if(err){
+    transporter.sendMail(mailContent, function (err, val) {
+        if (err) {
             console.log(err)
-        }else{console.log(val.response,'mail sent success')}
+        } else { console.log(val.response, 'mail sent success') }
 
     })
-    
+
 
 }

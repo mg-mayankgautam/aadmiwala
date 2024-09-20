@@ -334,13 +334,13 @@ module.exports.editBlogData = async (req, res) => {
             console.log('Upload Result:', resourceLocation);
 
         } else {
-            res.send(S3Data);
+            res.send({ S3Data: S3Data, S3Configure: S3Configure });
             console.log('Payload is empty, nothing to process.');
         }
 
 
     } catch (error) {
-        res.send(S3Data);
+        res.send({ S3Data: S3Data, S3Configure: S3Configure });
         console.error('Error processing upload:', error);
         // res.status(500).json({ message: 'Internal server error', error: error.message });
     }
