@@ -47,7 +47,7 @@ router.post('/adminaddblogs',upload.array("image"), authController.adminAddBlogs
 router.get('/getallblogs', authController.getAllBlogs)
 router.post('/admindeleteblog', authController.adminDeleteBlog)
 router.get('/getblogdata', authController.getBlogData)
-
+router.post('/editblogdata',authController.editBlogData);
 
 router.post('/sharerequirements',mailController.shareRequirements)
 router.post('/getintouch',mailController.getInTouch)

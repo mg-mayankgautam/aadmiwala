@@ -8,16 +8,13 @@ const path = require('path');
 const express = require('express');
 const app= express();
 const PORT = process.env.PORT || 4700;
-const hbs = require('hbs');
-hbs.registerPartials(__dirname + '/views/partials');
 const bodyparser = require('body-parser');//use with axios 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 
 app.use(cors( 
-    {
-        // origin: process.env.FRONTEND_URL, 
+    {        // origin: process.env.FRONTEND_URL, 
         // origin: 'https://covendx.com', 
         origin: "http://localhost:3000",  
         // origin: '*',
@@ -68,23 +65,15 @@ app.use(
     })
 );
 
-
-
-
-app.set('view engine','hbs');
-
-
 app.use(express.urlencoded({ extended: true }));
-//app.use(bodyparser.json()); 
- app.use(bodyparser.json({limit: "50mb"}));
- app.use(bodyparser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+app.use(bodyparser.json({limit: "50mb"}));
+app.use(bodyparser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'photos')));
 
 
-// const EMAIL = 'jordanrhodes@gmail.com'; 
-// const PASSWORD = 'ixep ljzv drjh lxih'; 
+
 
 
 app.get('/getcrondata', (req, res) => {

@@ -8,10 +8,9 @@ const blogsDB=require("../models/blogsDB.js")
 
 var axios = require('axios');
 
-const accountSid=process.env.TWILIO_ACCOUNT_SID;
-const authToken=process.env.TWILIO_AUTH_TOKEN;
 
-const client = require('twilio')('ACf7dcdf5392bef8bfc0b9e42b9a11cb1c','975b7584a795956a40808329e7662f33');
+
+
 
 const jwt = require('jsonwebtoken');
 
@@ -76,38 +75,7 @@ module.exports.verifyPhoneNum = async(req,res) =>{
     
     const OTP = `${Math.floor(1000+Math.random()*9000)}`;
 
-    // const sendSMS= async(body)=>{
-
-    //     let msgOptions = {
-    //         from: '+13642047179',
-    //         to: phone,
-    //         body,
-    //     };
-    //     try{
-            
-
-    //         let newotpentry = new otpDB({Phone, OTP});
-            
-           
-    //         newotpentry.save()
-    //             .then(async(saved)=>{
-    //                 console.log('otp added success');
-                    
-    //             // const message = await client.messages.create(msgOptions);    
-    //                 //res.send(true);                    
-    //             })
-    //             .catch(err =>{
-    //                 console.log(err);
-    //                 res.send(false);
-    //             });
-
-
-           
-
-
-    //         res.send(true);
-    //     }catch(e){console.log(e);}
-    // }
+    
 
     var config = {
         method: 'get',
@@ -154,6 +122,7 @@ module.exports.verifyPhoneNum = async(req,res) =>{
 const { S3Client,PutObjectCommand  } = require("@aws-sdk/client-s3");
 const multer  = require('multer')
 const storage = multer.memoryStorage()
+var S3Data = true;
 // const upload = multer({ storage: storage })
 const crypto = require('crypto');
 
@@ -166,6 +135,7 @@ const secretAccessKey = "hzpkbYUwaV/6MD+bkVImcNr4UAg6GfDo7FsMHq6e"
 
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const {  GetObjectCommand, DeleteObjectCommand } = require("@aws-sdk/client-s3");
+
 
 const s3Client = new S3Client({
     region:bucketRegion,
@@ -239,7 +209,7 @@ module.exports.addRecruitingCompany= async (req,res)=>{
                 ContentType: img.mimetype
             }
 
-            await s3Client.send(new PutObjectCommand(uploadParams));
+            if(S3Data){await s3Client.send(new PutObjectCommand(uploadParams));}
             const URL = `https://aadmiwala.s3.ap-south-1.amazonaws.com/${fileName}`
             //  console.log(URL);
             
@@ -331,6 +301,9 @@ module.exports.addRecruitingCompany= async (req,res)=>{
 
 }
 
+module.exports.editBlogData=async(req,res)=>{
+S3Data=false;
+}
 
 module.exports.getCompanies =async (req, res) =>{
 
